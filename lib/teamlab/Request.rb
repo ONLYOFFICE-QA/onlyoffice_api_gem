@@ -1,8 +1,9 @@
 require 'net/http'
 require 'json'
 require 'httparty'
+require_relative 'Response'
 
-module Testrail
+module Teamlab
   class Request
     include HTTParty
 
@@ -14,6 +15,14 @@ module Testrail
       request(:get, args)
     end
 
+    def self.put(*args)
+      request(:put, args)
+    end
+
+    def self.delete(*args)
+      request(:delete, args)
+    end
+
     private
 
     def self.request(type, args)
@@ -21,29 +30,27 @@ module Testrail
       url = generate_request_url(command)
       attempts = 0
       begin
-        response = HTTParty.send(type, url, opts)
+        response = Teamlab::Response.new(HTTParty.send(type, url, opts))
       rescue TimeoutError
         attempts += 1
         retry if attempts < 3
         raise 'Can\'t ' + type.to_s + ' ' + url.to_s
-      rescue Exception
-        fail 'Unexpected exception intercepted calling Testrail'
+      rescue Exception => e
+        fail e#'Unexpected exception intercepted calling Teamlab'
       end
-      fail response.parsed_response['error'] if response.code >= 400
-      response.parsed_response
+      fail response.error.to_s unless response.success
+      response
     end
 
     def self.generate_request_url(command)
-      Testrail.config.server + Testrail.config.api_path + command
+      Teamlab.config.server + Teamlab.config.api_path + Teamlab.config.api_additive + command
     end
 
     def self.parse_args(args)
-      command = args.shift
+      command = args.first.instance_of?(Array) ? '/' + args.shift.join('/') : ''
       opts = {}
-      opts[:body] = (args.last.instance_of?(Hash) ? args.pop : {}).to_json
-      opts[:headers] = opts[:headers] ? Testrail.config.headers.merge(opts[:headers]) : Testrail.config.headers
-      opts[:basic_auth] = { username: Testrail.config.username, password: Testrail.config.password }
-      command += '/' + args.shift.map { |key, value| "#{key}=#{value}" }.join('&').sub(/\w+=/, '') unless args.empty?
+      opts[:body] = (args.last.instance_of?(Hash) ? args.pop : {})
+      opts[:headers] = opts[:headers] ? Teamlab.config.headers.merge(opts[:headers]) : Teamlab.config.headers
       [command, opts]
     end
   end
