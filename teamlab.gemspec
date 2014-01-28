@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Teamlab::VERSION
   spec.authors       = ["rzagudaev"]
   spec.email         = ["roman-zagudaev@yandex.ru"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Ruby Framework to interact with TeamLab API 2.0}
+  spec.summary       = %q{Ruby gem for TeamLab}
   spec.homepage      = ""
   spec.license       = "MIT"
 
