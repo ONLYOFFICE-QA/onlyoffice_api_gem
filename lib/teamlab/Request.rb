@@ -1,11 +1,13 @@
 require 'net/http'
 require 'json'
 require 'httparty'
+require 'httmultiparty'
 require_relative 'Response'
 
 module Teamlab
   class Request
     include HTTParty
+    include HTTMultiParty
 
     def self.post(*args)
       request(:post, args)
@@ -47,11 +49,17 @@ module Teamlab
     end
 
     def self.parse_args(args)
-      command = args.first.instance_of?(Array) ? '/' + args.shift.join('/') : ''
+      command = args.first.instance_of?(Array) ? '/' + args.shift.join('/') : args.shift.to_s
       opts = {}
-      opts[:body] = (args.last.instance_of?(Hash) ? args.pop : {})
-      opts[:headers] = opts[:headers] ? Teamlab.config.headers.merge(opts[:headers]) : Teamlab.config.headers
+      opts[:body] = args.last.instance_of?(Hash) ? args.pop : {}
+      opts[:headers] = args.last.instance_of?(Hash) ? Teamlab.config.headers.merge(args.last.delete(:headers)) : Teamlab.config.headers#opts[:body][:headers] ? Teamlab.config.headers.merge(opts[:body].delete[:headers]) : Teamlab.config.headers
       [command, opts]
     end
+
+    #def self.parse_multipart(files)
+    #  multipart = { 'file' => { path: files.shift, type: 'text/plain' } }
+    #  files.each_with_index { |file, i| multipart["file#{i+1}"] = { path: file, type: 'text/plain' } }
+    #  multipart
+    #end
   end
 end

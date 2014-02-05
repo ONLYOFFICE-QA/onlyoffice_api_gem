@@ -5,6 +5,8 @@ require 'teamlab/Response'
 require 'teamlab/Modules/People'
 require 'teamlab/Modules/Group'
 require 'teamlab/Modules/Settings'
+require 'teamlab/Modules/Files'
+require 'teamlab/Modules/Project'
 
 module Teamlab
 
@@ -21,6 +23,16 @@ module Teamlab
   def self.settings
     Teamlab.config.api_additive = 'settings'
     @settings ||= Teamlab::Settings.new
+  end
+
+  def self.files
+    Teamlab.config.api_additive = 'files'
+    @files ||= Teamlab::Files.new
+  end
+
+  def self.project
+    Teamlab.config.api_additive = 'project'
+    @files ||= Teamlab::Project.new
   end
 end
 

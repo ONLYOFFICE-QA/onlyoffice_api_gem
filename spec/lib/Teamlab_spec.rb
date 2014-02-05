@@ -30,7 +30,7 @@ describe Teamlab do
         @response.error.should be_nil
       end
 
-      it 'returns Teamlab::response object with hash body' do
+      it 'returns Teamlab::Response object with hash body' do
         @response.body.should be_instance_of(Hash)
       end
     end
@@ -338,6 +338,331 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:command) { :set_product_admin }
         let(:args) { [SETTINGS_TALK_MODULE_ID, SETTINGS_TEST_USER] }
+      end
+    end
+  end
+
+  describe '[Settings]' do
+    let(:teamlab_module) { :files }
+
+    describe '#get_my_files' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_my_files }
+      end
+    end
+
+    describe '#get_trash' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_trash }
+      end
+    end
+
+    describe '#get_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_folder }
+        let(:args) { FOLDER_COMMON_DOCS_ID }
+      end
+    end
+
+    describe '#new_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :new_folder }
+        let(:args) { [FOLDER_COMMON_DOCS_ID, FOLDER_TITLE] }
+      end
+    end
+
+    describe '#rename_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :rename_folder }
+        let(:args) { [FOLDER_FOR_OPERATIONS_ID, FOLDER_TITLE] }
+      end
+    end
+
+    describe '#get_shared_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_shared_docs }
+      end
+    end
+
+    describe '#get_common_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_common_docs }
+      end
+    end
+
+    describe '#search' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :search }
+        let(:args) { FOLDER_TITLE }
+      end
+    end
+
+    describe '#get_recent_upload_files' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_recent_upload_files }
+        let(:args) { FOLDER_COMMON_DOCS_ID }
+      end
+    end
+
+    describe '#get_share_link' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_share_link }
+        let(:args) { [FOLDER_FOR_OPERATIONS_ID, FILES_SHARE_TYPE] }
+      end
+    end
+
+    describe '#upload_to_my_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :upload_to_my_docs }
+        let(:args) { FILE_TO_UPLOAD }
+      end
+    end
+
+    describe '#upload_to_common_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :upload_to_common_docs }
+        let(:args) { FILE_TO_UPLOAD }
+      end
+    end
+
+    describe '#upload_to_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :upload_to_folder }
+        let(:args) { [FOLDER_FOR_OPERATIONS_ID, FILE_TO_UPLOAD] }
+      end
+    end
+
+    describe '#chunked_upload' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :chunked_upload }
+        let(:args) { [FOLDER_FOR_OPERATIONS_ID, FILE_MORE_THAN_5_MB, FILE_SIZE_IN_BYTES] }
+      end
+    end
+
+    describe '#create_txt_in_my_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_txt_in_my_docs }
+        let(:args) { [NEW_FILE_NAME, NEW_FILE_CONTENT] }
+      end
+    end
+
+    describe '#create_html_in_my_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_html_in_my_docs }
+        let(:args) { [NEW_FILE_NAME, NEW_FILE_CONTENT] }
+      end
+    end
+
+    describe '#create_txt_in_common_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_txt_in_common_docs }
+        let(:args) { [NEW_FILE_NAME, NEW_FILE_CONTENT] }
+      end
+    end
+
+    describe '#create_html_in_common_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_html_in_common_docs }
+        let(:args) { [NEW_FILE_NAME, NEW_FILE_CONTENT] }
+      end
+    end
+
+    describe '#create_txt' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_txt }
+        let(:args) { [FOLDER_FOR_OPERATIONS_ID, NEW_FILE_NAME, NEW_FILE_CONTENT] }
+      end
+    end
+
+    describe '#create_html' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_html }
+        let(:args) { [FOLDER_FOR_OPERATIONS_ID, NEW_FILE_NAME, NEW_FILE_CONTENT] }
+      end
+    end
+
+    describe '#create_file' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_file }
+        let(:args) { [FOLDER_FOR_OPERATIONS_ID, NEW_FILE_NAME] }
+      end
+    end
+
+    describe '#get_file_info' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_file_info }
+        let(:args) { FILE_FOR_OPERATIONS_ID }
+      end
+    end
+
+    describe '#get_file_history' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_file_history }
+        let(:args) { FILE_FOR_OPERATIONS_ID }
+      end
+    end
+
+    describe '#get_third_party_files' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_third_party_files }
+        let(:args) { [THIRD_PARTY_SERVICE, THIRD_PARTY_LOGIN_DATA] }
+      end
+    end
+
+    describe '#update_file_info' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_file_info }
+        let(:args) { [FILE_FOR_OPERATIONS_ID, NEW_FILE_NAME, FILE_FOR_OPERATIONS_VERSION] }
+      end
+    end
+
+    describe '#finish_importing' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :finish_importing }
+      end
+    end
+
+    describe '#import_from_third_party' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :import_from_third_party }
+        let(:args) { [THIRD_PARTY_SERVICE, THIRD_PARTY_FOLDER_ID, IGNORE_COINCIDENCE_FILES, DATA_TO_IMPORT, THIRD_PARTY_LOGIN_DATA] }
+      end
+    end
+
+    describe '#delete_file' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :delete_file }
+        let(:args) { FILE_TO_DELETE_ID }
+      end
+    end
+
+    describe '#delete_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :delete_folder }
+        let(:args) { FOLDER_TO_DELETE_ID }
+      end
+    end
+
+    describe '#get_file_operations_list' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_file_operations_list }
+      end
+    end
+
+    describe '#move_files' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :move_files }
+        let(:args) { [FOLDER_FOR_OPERATIONS_ID, { folderIds: [FOLDER_TO_DELETE_ID], fileids: [FILE_TO_DELETE_ID], overwrite: true}] }
+      end
+    end
+
+    describe '#copy_to_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :copy_to_folder }
+        let(:args) { [FOLDER_FOR_OPERATIONS_ID, { folderIds: [FOLDER_TO_DELETE_ID], fileids: [FILE_TO_DELETE_ID], overwrite: true}] }
+      end
+    end
+
+    describe '#delete' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :delete }
+        let(:args) { [ folderIds: [FOLDER_TO_DELETE_ID], fileids: [FILE_TO_DELETE_ID] ] }
+      end
+    end
+
+    describe '#finish_all' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :finish_all }
+      end
+    end
+
+    describe '#clear_recycle_bin' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :clear_recycle_bin }
+      end
+    end
+
+    describe '#mark_as_read' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :clear_recycle_bin }
+      end
+    end
+
+    describe '#finish_operations' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :finish_operations }
+        let(:args) { [ folderIds: [FOLDER_FOR_OPERATIONS_ID], fileids: [FILE_FOR_OPERATIONS_ID] ] }
+      end
+    end
+
+    describe '#get_file_sharing' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_file_sharing }
+        let(:args) { FILE_FOR_OPERATIONS_ID }
+      end
+    end
+
+    describe '#get_folder_sharing' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_folder_sharing }
+        let(:args) { FOLDER_FOR_OPERATIONS_ID }
+      end
+    end
+
+    describe '#share_file' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :share_file }
+        let(:args) { [FILE_FOR_OPERATIONS_ID, USER_ID, ACCESS_TYPE, { notify: NOTIFY_USER, sharingMessage: NOTIFICATION_MESSAGE }] }
+      end
+    end
+
+    describe '#share_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :share_folder }
+        let(:args) { [FOLDER_FOR_OPERATIONS_ID, USER_ID, ACCESS_TYPE, { notify: NOTIFY_USER, sharingMessage: NOTIFICATION_MESSAGE }] }
+      end
+    end
+
+    describe '#remove_file_sharing_rights' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :remove_file_sharing_rights }
+        let(:args) { [ FILE_FOR_OPERATIONS_ID, [USER_ID] ] }
+      end
+    end
+
+    describe '#remove_folder_sharing_rights' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :remove_folder_sharing_rights }
+        let(:args) { [ FOLDER_FOR_OPERATIONS_ID, [USER_ID] ] }
+      end
+    end
+
+    describe '#get_third_party' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_third_party }
+      end
+    end
+
+    describe '#remove_third_party_account' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :remove_third_party_account }
+        let(:args) { PROVIDER_ID }
+      end
+    end
+  end
+
+  describe '[Project]' do
+    let(:teamlab_module) { :project }
+
+    describe '#get_import_status' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_import_status }
+      end
+    end
+
+    describe '#add_importing_url_to_queue' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_importing_url_to_queue }
       end
     end
   end
