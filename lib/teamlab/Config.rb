@@ -27,7 +27,7 @@ module Teamlab
     end
 
     def default_configuration
-      self.server = 'https://example.testrail.com'
+      self.server = 'https://teamlab.com'
       self.api_path = '/api/2.0/'
       self.api_additive = ''
       self.username = 'user'

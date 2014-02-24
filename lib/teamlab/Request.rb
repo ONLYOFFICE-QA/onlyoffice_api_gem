@@ -52,7 +52,7 @@ module Teamlab
       command = args.first.instance_of?(Array) ? '/' + args.shift.join('/') : args.shift.to_s
       opts = {}
       opts[:body] = args.last.instance_of?(Hash) ? args.pop : {}
-      opts[:headers] = args.last.instance_of?(Hash) ? Teamlab.config.headers.merge(args.last.delete(:headers)) : Teamlab.config.headers#opts[:body][:headers] ? Teamlab.config.headers.merge(opts[:body].delete[:headers]) : Teamlab.config.headers
+      opts[:headers] = opts[:headers] ? Teamlab.config.headers.merge(opts[:headers]) : Teamlab.config.headers#opts[:body][:headers] ? Teamlab.config.headers.merge(opts[:body].delete[:headers]) : Teamlab.config.headers
       [command, opts]
     end
 

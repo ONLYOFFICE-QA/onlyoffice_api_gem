@@ -663,7 +663,61 @@ describe Teamlab do
     describe '#add_importing_url_to_queue' do
       it_should_behave_like 'an api request' do
         let(:command) { :add_importing_url_to_queue }
+        let(:args) { [BASECAMP_URL, BASECAMP_LOGIN, BASECAMP_PSW, IMPORT_CLOSED_PROJECTS, DISABLE_NOTIFICATONS, IMPORT_USERS_AS_COLLABORATORS] }
       end
     end
+
+    describe '#get_projects_for_import' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_projects_for_import }
+      end
+    end
+
+    describe '#get_import_status' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_import_status }
+      end
+    end
+
+    describe '#get_latest_discussion_messages' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_latest_discussion_messages }
+      end
+    end
+
+    describe '#get_message_by_filter' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_message_by_filter }
+      end
+    end
+
+    describe '#get_messages' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_messages }
+        let(:args) { PROJECT_ID_FOR_OPERATIONS }
+      end
+    end
+
+    describe '#get_message' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_message }
+        let(:args) { MESSAGE_ID }
+      end
+    end
+
+    describe '#check_subscription_to_discussion' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :check_subscription_to_discussion }
+        let(:args) { MESSAGE_ID }
+      end
+    end
+
+    describe '#add_message' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_message }
+        let(:args) { [PROJECT_ID_FOR_OPERATIONS, MESSAGE_TITLE, MESSAGE_CONTENT, USERS_TO_DELETE] }
+      end
+    end
+
   end
 end
