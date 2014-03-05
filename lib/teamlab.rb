@@ -7,6 +7,7 @@ require 'teamlab/Modules/Group'
 require 'teamlab/Modules/Settings'
 require 'teamlab/Modules/Files'
 require 'teamlab/Modules/Project'
+require 'teamlab/Modules/Crm'
 
 module Teamlab
 
@@ -32,7 +33,12 @@ module Teamlab
 
   def self.project
     Teamlab.config.api_additive = 'project'
-    @files ||= Teamlab::Project.new
+    @project ||= Teamlab::Project.new
+  end
+
+  def self.crm
+    Teamlab.config.api_additive = 'crm'
+    @crm ||= Teamlab::CRM.new
   end
 end
 

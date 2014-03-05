@@ -68,7 +68,7 @@ describe Teamlab do
     describe '#get_user_by_username' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_user_by_username }
-        let(:args) { USER_ID }
+        let(:args) { USERNAME_FOR_OPERATIONS }
       end
     end
 
@@ -718,6 +718,87 @@ describe Teamlab do
         let(:args) { [PROJECT_ID_FOR_OPERATIONS, MESSAGE_TITLE, MESSAGE_CONTENT, USERS_TO_DELETE] }
       end
     end
+
+    describe '#upload_file_to_task' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :upload_file_to_task }
+        let(:args) { [TASK_ID, FEW_FILES_IDS] }
+      end
+    end
+
+    describe '#update_project' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_project }
+        let(:args) { [PROJECT_ID_FOR_OPERATIONS, RANDOM_TITLE, RESPONSIBLE_ID, { description: PROJECT_DESCRIPTION}] }
+      end
+    end
+
+    describe '#update_project_task' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_project_task }
+        let(:args) { [TASK_ID, RANDOM_TITLE] }
+      end
+    end
+
+    describe '#get_projects_teams' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_projects_teams }
+        let(:args) { [[PROJECT_ID_FOR_OPERATIONS, ANOTHER_PROJECT_ID]] }
+      end
+    end
+
+    describe '#get_task_by_filter' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_task_by_filter }
+      end
+    end
+
+    describe '#add_task' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_task }
+        let(:args) { [PROJECT_ID_FOR_OPERATIONS, RANDOM_TITLE] }
+      end
+    end
+
+    describe '#add_task_from_discussion' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_task_from_discussion }
+        let(:args) { [PROJECT_ID_FOR_OPERATIONS, MESSAGE_ID] }
+      end
+    end
+
+    describe '#update_task_milestone' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_task_milestone }
+        let(:args) { [TASK_ID, MILESTONE_ID] }
+      end
+    end
+
+    describe '#update_milestone' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_milestone }
+        let(:args) { [MILESTONE_ID, RANDOM_TITLE, SOME_DATE] }
+      end
+    end
+
+    describe '#add_task_time' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_task_time }
+        let(:args) { [TASK_ID, RANDOM_NOTE, SIMPLE_DATE, USER_ID, 2, PROJECT_ID_FOR_OPERATIONS] }
+      end
+    end
+
+    describe '#update_task_time' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_task_time }
+        let(:args) { [TIME_ID, RANDOM_NOTE, SIMPLE_DATE, USER_ID, 2] }
+      end
+    end
+  end
+
+  describe '[CRM]' do
+    let(:teamlab_module) { :crm }
+
 
   end
 end

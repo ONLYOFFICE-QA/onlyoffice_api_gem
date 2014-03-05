@@ -1,6 +1,5 @@
-SERVER = 'https://autotestdoc.teamlab.com'
-#SERVER = 'https://autotestdoc.teamlab.info'
-USERNAME = 'shockwavenn@gmail.com'
+SERVER = 'https://autotestdoc.teamlab.info'
+USERNAME = 'teamlab.ruby@gmail.com'
 PASSWORD = '123456'
 
 def args
@@ -19,10 +18,11 @@ end
 #region People
 SEARCH_USER_NAME = 'Allison'
 USER_FILTER = { activationStatus: 1 }
-USER_ID = 'ed15b5d0-4e7d-478a-9a11-45640378a8f8'#'e83cceef-2cbf-4cdf-9a4c-fea4e810705b'
+USER_ID = 'efcb452b-2be3-4311-b539-fabad4d42e95'#'e83cceef-2cbf-4cdf-9a4c-fea4e810705b'
+USERNAME_FOR_OPERATIONS = 'kcwijpgg'
 USER_STATUS = 'Active'
 SEARCH_QUERY = 'Doria'
-USER_EMAIL = 'shockwavenn@gmail.com'
+USER_EMAIL = random_email
 IS_VISITOR = false
 NEW_USER_FIRSTNAME = random_word(7, true)
 NEW_USER_LASTNAME = random_word(7, true)
@@ -59,9 +59,10 @@ FOLDER_FOR_OPERATIONS_ID = '1553123'
 FILE_FOR_OPERATIONS_ID = '3434235'
 FILE_FOR_OPERATIONS_VERSION = 1
 FILES_SHARE_TYPE = 'Read'
-FILE_TO_UPLOAD = '/home/zagudaev-2/Documents/txt_files.txt'
+FILE_TO_UPLOAD = '/mnt/data_share/Files/PDF/AllPDF/600 Essential Words for the TOEIC Test.pdf'
 FILE_MORE_THAN_5_MB = '/mnt/data_share/Files/PDF/AllPDF/600 Essential Words for the TOEIC Test.pdf'
 FILE_SIZE_IN_BYTES = 107374182.4
+FEW_FILES_IDS = [3482982, 3482961, 3482965]
 NEW_FILE_NAME = random_word(8)
 NEW_FILE_CONTENT = random_word(40)
 THIRD_PARTY_SERVICE = 'Box.com'
@@ -86,9 +87,19 @@ BASECAMP_PSW = "123456"
 IMPORT_CLOSED_PROJECTS = true
 DISABLE_NOTIFICATONS = false
 IMPORT_USERS_AS_COLLABORATORS = true
-PROJECT_ID_FOR_OPERATIONS = '405065'
-MESSAGE_ID = '268060'
+PROJECT_ID_FOR_OPERATIONS = '4322'
+MESSAGE_ID = '3878'
 
+TASK_ID = '12406'
+RESPONSIBLE_ID = '187ecad1-eeb4-4173-a6c0-1c225ad72fb2'
+RANDOM_TITLE = random_word(10, true)
+PROJECT_DESCRIPTION = random_word(10, true)
+ANOTHER_PROJECT_ID = 9735
+MILESTONE_ID = 422849
+SOME_DATE = '2015-03-23T14:27:14'
+SIMPLE_DATE = '2011-10-1'
+RANDOM_NOTE = random_word(12)
+TIME_ID = 528238
 #endregion
 
 #endregion
