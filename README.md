@@ -23,7 +23,7 @@ First of all, you should configure your enviroment by commands
     $ Teamlab.configure do |config|
     $   config.server = 'example.teamlab.com'
     $   config.username = 'foo'
-    $   config.password = 'bar
+    $   config.password = 'bar'
     $ end
 
 and then call methods you need:
