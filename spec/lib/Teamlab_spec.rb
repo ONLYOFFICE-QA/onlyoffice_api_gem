@@ -65,6 +65,13 @@ describe Teamlab do
       end
     end
 
+    describe '#add_user' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_user }
+        let(:args) { [IS_VISITOR, random_email, NEW_USER_FIRSTNAME, NEW_USER_LASTNAME] }
+      end
+    end
+
     describe '#get_user_by_username' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_user_by_username }
@@ -97,13 +104,6 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:command) { :search_with_status }
         let(:args) { [USER_STATUS, SEARCH_QUERY] }
-      end
-    end
-
-    describe '#add_user' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :add_user }
-        let(:args) { [IS_VISITOR, random_email, NEW_USER_FIRSTNAME, NEW_USER_LASTNAME] }
       end
     end
 
@@ -435,7 +435,7 @@ describe Teamlab do
     describe '#chunked_upload' do
       it_should_behave_like 'an api request' do
         let(:command) { :chunked_upload }
-        let(:args) { [FOLDER_FOR_OPERATIONS_ID, FILE_MORE_THAN_5_MB, FILE_SIZE_IN_BYTES] }
+        let(:args) { [FOLDER_FOR_OPERATIONS_ID, FILE_TO_UPLOAD] }
       end
     end
 
@@ -673,6 +673,12 @@ describe Teamlab do
       end
     end
 
+    describe '#get_projects' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_projects }
+      end
+    end
+
     describe '#get_import_status' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_import_status }
@@ -799,6 +805,329 @@ describe Teamlab do
   describe '[CRM]' do
     let(:teamlab_module) { :crm }
 
+    describe '#get_all_opportunity_stages' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_all_opportunity_stages }
+      end
+    end
+
+    describe '#get_curreny_list' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_currency_list }
+      end
+    end
+
+    describe '#get_opportunity_list' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_opportunity_list }
+      end
+    end
+
+    describe '#get_result_of_convertation' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_result_of_convertation }
+      end
+    end
+
+    describe '#create_opportunity_stage' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_opportunity_stage }
+        let(:args) { [RANDOM_TITLE, OPPORTUNITY_COLOR_NAME] }
+      end
+    end
+
+    describe '#update_opportunity_stage' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_opportunity_stage }
+        let(:args) { [OPPORTUNITY_ID, RANDOM_TITLE, OPPORTUNITY_COLOR_NAME] }
+      end
+    end
+
+    describe '#update_opportunity_stage_order' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_opportunity_stage_order }
+      end
+    end
+
+    describe '#set_opportunity_access_rights' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :set_opportunity_access_rights }
+      end
+    end
+
+    describe '#update_opportunity' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_opportunity }
+        let(:args) { [OPPORTUNITY_ID, CONTACT_ID, RANDOM_TITLE, RESPONSIBLE_ID, STAGE_ID] }
+      end
+    end
+
+    describe '#update_opportunity_stage_color' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_opportunity_stage_color }
+        let(:args) { [STAGE_ID, OPPORTUNITY_COLOR_NAME] }
+      end
+    end
+
+    describe '#update_opportunity_stage_color' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_opportunity_stage_color }
+        let(:args) { [OPPORTUNITY_ID, OPPORTUNITY_COLOR_NAME] }
+      end
+    end
+
+    describe '#set_rights_to_opportunity' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :set_rights_to_opportunity }
+        let(:args) { [OPPORTUNITY_ID, IS_PRIVATE, FEW_USER_IDS] }
+      end
+    end
+
+    describe '#update_opportunity_to_stage' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_opportunity_to_stage }
+        let(:args) { [OPPORTUNITY_ID, STAGE_ID] }
+      end
+    end
+
+    describe '#get_invoice_taxes' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_invoice_taxes }
+      end
+    end
+
+    describe '#get_cases_by_prefix' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_cases_by_prefix }
+        let(:args) { [CONTACT_ID, RANDOM_TITLE] }
+      end
+    end
+
+    describe '#get_invoice_sample' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_invoice_sample }
+      end
+    end
+
+    describe '#get_invoices' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_invoices }
+      end
+    end
+
+    describe '#get_contacts' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_contacts }
+      end
+    end
+
+    describe '#get_settings' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_settings }
+      end
+    end
+
+    describe '#get_invoice_items' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_invoice_items }
+      end
+    end
+
+    describe '#get_invoice_by_id' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_invoice_by_id }
+        let(:args) { [INVOICE_ID] }
+      end
+    end
+
+    describe '#get_simple_contacts' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_simple_contacts }
+      end
+    end
+
+    describe '#create_task' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_task }
+        let(:args) { [RANDOM_TITLE, SOME_DATE, RESPONSIBLE_ID, CATEGORY_ID] }
+      end
+    end
+
+    describe '#create_invoice_line' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_invoice_line }
+        let(:args) { [INVOICE_ID] }
+      end
+    end
+
+    describe '#create_invoice_tax' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_invoice_tax }
+        let(:args) { [RANDOM_TITLE, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#create_invoice_tax' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_invoice_tax }
+        let(:args) { [RANDOM_TITLE, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#create_contact_type' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_contact_type }
+        let(:args) { [RANDOM_TITLE] }
+      end
+    end
+
+    describe '#create_contact_status' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_contact_status }
+        let(:args) { [RANDOM_TITLE, OPPORTUNITY_COLOR_NAME] }
+      end
+    end
+
+    describe '#create_person' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_person }
+        let(:args) { [NEW_USER_FIRSTNAME, NEW_USER_LASTNAME] }
+      end
+    end
+
+    describe '#create_company' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_company }
+        let(:args) { [RANDOM_TITLE] }
+      end
+    end
+
+    describe '#create_task_group' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_task_group }
+        let(:args) { [RANDOM_TITLE] }
+      end
+    end
+
+    describe '#add_tag_to_batch_contacts' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_tag_to_batch_contacts }
+        let(:args) { [RANDOM_TAGS] }
+      end
+    end
+
+    describe '#add_tag_to_batch_contacts' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_tag_to_batch_contacts }
+        let(:args) { [RANDOM_TAGS] }
+      end
+    end
+
+    describe '#set_is_portal_configured' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :set_is_portal_configured }
+      end
+    end
+
+    describe '#update_task' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_task }
+        let(:args) { TASK_ID }
+      end
+    end
+
+    describe '#update_invoice_tax' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_invoice_tax }
+        let(:args) { TAX_ID }
+      end
+    end
+
+    describe '#update_contact_type' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_contact_type }
+        let(:args) { [CONTACT_ID, RANDOM_TITLE] }
+      end
+    end
+
+    describe '#update_contact_status' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_contact_status }
+        let(:args) { [CONTACT_ID, {title: RANDOM_TITLE}] }
+      end
+    end
+
+    describe '#update_crm_contact_tag_setting' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_crm_contact_tag_setting }
+      end
+    end
+
+    describe '#save_number_settings' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :save_number_settings }
+        let(:args) {[AUTOGENERATED, random_word(3, true), rand(10)]}
+      end
+    end
+
+    describe '#set_access_to_batch_contact' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :set_access_to_batch_contact }
+      end
+    end
+
+    describe '#update_statuses_contact_order' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_statuses_contact_order }
+      end
+    end
+
+    describe '#save_terms_settings' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :save_terms_settings }
+      end
+    end
+
+    describe '#update_crm_contact_status_settings' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_crm_contact_status_settings }
+      end
+    end
+
+    describe '#update_invoice_patch_status' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_invoice_patch_status }
+        let(:args) { [INVOICE_STATUS, [INVOICE_ID]]}
+      end
+    end
+
+    describe '#update_contact_status_color' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_contact_status_color }
+        let(:args) { [CONTACT_ID, OPPORTUNITY_COLOR_NAME]}
+      end
+    end
+
+    describe '#update_person' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_person }
+        let(:args) { [CONTACT_ID]}
+      end
+    end
+
+    describe '#update_contact_status_by_id' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_contact_status_by_id }
+        let(:args) { [CONTACT_ID, CONTACT_STATUS_ID]}
+      end
+    end
+
+    describe '#update_invoice_line' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_invoice_line }
+        let(:args) { [INVOICE_ID]}
+      end
+    end
 
   end
 end

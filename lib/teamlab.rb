@@ -38,7 +38,7 @@ module Teamlab
 
   def self.crm
     Teamlab.config.api_additive = 'crm'
-    @crm ||= Teamlab::CRM.new
+    @crm ||= Teamlab::Crm.new
   end
 end
 
