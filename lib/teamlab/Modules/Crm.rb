@@ -730,10 +730,44 @@ module Teamlab
       @request.delete(%w(case), caseIds: case_ids.flatten)
     end
 
-    def delete_case_group_by_filter(*case_ids)
-      @request.delete(%w(case), caseIds: case_ids.flatten)
+    def delete_case_group_by_filter(options = {})
+      @request.delete(%w(case filter), options)
     end
 
+    def delete_case(case_id)
+      @request.delete(['case', case_id.to_s])
+    end
 
+    def delete_case_contact(case_id, contact_id)
+      @request.delete(['case', case_id.to_s, 'contact', contact_id.to_s])
+    end
+
+    def get_user_field_values(entity_type, entity_id)
+      @request.get([entity_type.to_s, entity_id.to_s, 'customfield'])
+    end
+
+    def get_user_field_list(entity_type)
+      @request.get([entity_type.to_s, 'customfield', 'definitions'])
+    end
+
+    def create_user_field(entity_type, field_type, options = {})
+      @request.post([entity_type.to_s, 'customfield'], {fieldType: field_type}.merge(options))
+    end
+
+    def set_user_field_value(entity_type, entity_id, field_id, field_value)
+      @request.post([entity_type.to_s, entity_id.to_s, 'customfield', field_id.to_s], fieldValue: field_value)
+    end
+
+    def update_selected_user_field(entity_type, user_field_id, field_type, options = {})
+      @request.put([entity_type.to_s, 'customfield', user_field_id.to_s], {fieldType: field_type}.merge(options))
+    end
+
+    def update_user_fields_order(entity_type, *field_ids)
+      @request.put([entity_type.to_s, 'customfield', 'reorder'], {fieldIds: field_ids.flatten})
+    end
+
+    def delete_user_field(entity_type, field_id)
+      @request.delete([entity_type.to_s, 'customfield', field_id.to_s])
+    end
   end
 end
