@@ -38,7 +38,7 @@ module Teamlab
         retry if attempts < 3
         raise 'Can\'t ' + type.to_s + ' ' + url.to_s
       rescue Exception => e
-        fail e#'Unexpected exception intercepted calling Teamlab'
+        fail e
       end
       fail response.error.to_s unless response.success
       response
@@ -52,15 +52,10 @@ module Teamlab
       command = args.first.instance_of?(Array) ? '/' + args.shift.join('/') : args.shift.to_s
       opts = {}
       opts[:body] = args.last.instance_of?(Hash) ? args.pop : {}
-      opts[:headers] = opts[:body][:headers] ? Teamlab.config.headers.merge(opts[:body].delete(:headers)) : Teamlab.config.headers#opts[:body][:headers] ? Teamlab.config.headers.merge(opts[:body].delete[:headers]) : Teamlab.config.headers
+      opts[:headers] = opts[:body][:headers] ? Teamlab.config.headers.merge(opts[:body].delete(:headers)) : Teamlab.config.headers
       opts[:query] = opts.delete(:body) if opts[:body].key?(:somefile)
       [command, opts]
     end
 
-    #def self.parse_multipart(files)
-    #  multipart = { file: { path: files.shift, type: 'text/plain' } }
-    #  files.each_with_index { |file, i| multipart["file#{i+1}".to_sym] = { path: file, type: 'text/plain' } }
-    #  multipart
-    #end
   end
 end

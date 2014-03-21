@@ -243,7 +243,7 @@ module Teamlab
 #=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
 
     def update_invoice(id, options = {})
-      @request.put(['invoice', id], options)
+      @request.put(['invoice', id.to_s], options)
     end
 
     def update_crm_contact_tag_setting(options = {})
