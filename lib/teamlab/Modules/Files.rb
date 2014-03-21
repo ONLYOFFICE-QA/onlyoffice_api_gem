@@ -45,17 +45,25 @@ module Teamlab
       @request.put([file_id, 'sharedlink'], share: share)
     end
 
+#================================== TODO: UPLOAD FILES ================================
+
     def upload_to_my_docs(*files)
       @request.post(['@my', 'upload'], files, headers: { 'Content-Type' => 'multipart/form-data' } ) #НЕ МАТАТ
     end
+
+#================================== TODO: UPLOAD FILES ================================
 
     def upload_to_common_docs(*files)
       @request.post(['@common', 'upload'], files, headers: { 'Content-Type' => 'multipart/form-data' } ) #НЕ МАТАТ
     end
 
+#================================== TODO: UPLOAD FILES ================================
+
     def upload_to_folder(folder_id, *files)
       @request.post([folder_id.to_s, 'upload'], files, headers: { 'Content-Type' => 'multipart/form-data' } ) #НЕ МАТАТ
     end
+
+#================================== TODO: UPLOAD FILES ================================
 
     def chunked_upload(folder_id, filename, file_size)
       @request.post([folder_id.to_s, 'upload', 'create_session'], fileName: filename, fileSize: file_size) #НЕ МАТАТ

@@ -903,6 +903,12 @@ describe Teamlab do
       end
     end
 
+    describe '#get_contact_statuses' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_contact_statuses }
+      end
+    end
+
     describe '#get_invoice_sample' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_invoice_sample }
@@ -1046,14 +1052,14 @@ describe Teamlab do
     describe '#update_contact_type' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_contact_type }
-        let(:args) { [CONTACT_ID, RANDOM_TITLE] }
+        let(:args) { [CONTACT_TYPE_ID, RANDOM_TITLE] }
       end
     end
 
     describe '#update_contact_status' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_contact_status }
-        let(:args) { [CONTACT_ID, {title: RANDOM_TITLE}] }
+        let(:args) { [CONTACT_STATUS_ID, {title: RANDOM_TITLE}] }
       end
     end
 
@@ -1104,7 +1110,7 @@ describe Teamlab do
     describe '#update_contact_status_color' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_contact_status_color }
-        let(:args) { [CONTACT_ID, OPPORTUNITY_COLOR_NAME]}
+        let(:args) { [CONTACT_STATUS_ID, OPPORTUNITY_COLOR_NAME]}
       end
     end
 
@@ -1128,6 +1134,177 @@ describe Teamlab do
         let(:args) { [INVOICE_ID]}
       end
     end
+
+    describe '#create_history_category' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_history_category }
+        let(:args) { [RANDOM_TITLE, RANDOM_TITLE] }
+      end
+    end
+
+    describe '#update_history_category' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_history_category }
+        let(:args) { [HISTORY_CATEGORY_ID, RANDOM_TITLE] }
+      end
+    end
+
+    describe '#get_task_list_by_filter' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_task_list_by_filter }
+      end
+    end
+
+    describe '#get_all_task_categories' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_all_task_categories }
+      end
+    end
+
+    describe '#create_task_category' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_task_category }
+        let(:args) { [RANDOM_TITLE, RANDOM_NOTE, {description: RANDOM_NOTE, sortOrder: 4 }] }
+      end
+    end
+
+    describe '#get_contact_upcoming_tasks' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_contact_upcoming_tasks }
+        let(:args) { [CONTACTS_IDS] }
+      end
+    end
+
+    describe '#update_task_category' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_task_category }
+        let(:args) { [CATEGORY_ID, { title: RANDOM_TITLE, description: RANDOM_NOTE, imageName: RANDOM_NOTE, sortOrder: 4 }] }
+      end
+    end
+
+    describe '#get_all_contact_types' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_all_contact_types }
+      end
+    end
+
+    describe '#get_contact_by_id' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_contact_by_id }
+        let(:args) { [CONTACT_ID] }
+      end
+    end
+
+    describe '#get_all_contact_info_types' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_all_contact_info_types }
+      end
+    end
+
+    describe '#get_contacts_by_project_id' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_contacts_by_project_id }
+        let(:args) { [PROJECT_ID_FOR_OPERATIONS] }
+      end
+    end
+
+    describe '#get_contact_type' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_contact_type }
+        let(:args) { [CONTACT_TYPE_ID] }
+      end
+    end
+
+    describe '#get_contact_info' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_contact_info }
+        let(:args) { [CONTACT_ID, CONTACT_INFORMATION_ID] }
+      end
+    end
+
+    describe '#get_company_linked_persons_list' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_company_linked_persons_list }
+        let(:args) { [COMPANY_ID] }
+      end
+    end
+
+    describe '#quick_person_list_creation' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :quick_person_list_creation }
+        let(:args) { [NEW_RANDOM_USERS_ARRAY] }
+      end
+    end
+
+    describe '#add_contact_info' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_contact_info }
+        let(:args) { [CONTACT_ID, INFO_TYPE, RANDOM_NOTE, INFO_CATEGORY] }
+      end
+    end
+
+    describe '#add_persons_to_company' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_persons_to_company }
+        let(:args) { [COMPANY_ID, CONTACT_ID] }
+      end
+    end
+
+    describe '#link_contact_with_project' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :link_contact_with_project }
+        let(:args) { [CONTACT_ID, PROJECT_ID_FOR_OPERATIONS] }
+      end
+    end
+
+    describe '#add_contact_address' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_contact_address }
+        let(:args) { [CONTACT_ID, CATEGORY_ID, RANDOM_TITLE] }
+      end
+    end
+
+    describe '#set_contacts_access_rights' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :set_contacts_access_rights }
+        let(:args) { [[CONTACT_ID]] }
+      end
+    end
+
+    describe '#set_contact_access_rights' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :set_contact_access_rights }
+        let(:args) { [CONTACT_ID] }
+      end
+    end
+
+    describe '#update_company' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_company }
+        let(:args) { [COMPANY_ID, RANDOM_TITLE] }
+      end
+    end
+
+    describe '#update_contact_info' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_contact_info }
+        let(:args) { [CONTACT_INFORMATION_ID, CONTACT_ID, INFO_TYPE, RANDOM_TITLE] }
+      end
+    end
+
+    describe '#change_contact_photo_by_url' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :change_contact_photo_by_url }
+        let(:args) { [CONTACT_ID, IMAGE_URL] }
+      end
+    end
+
+    describe '#add_tag_to_case_group_by_filter' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_tag_to_case_group_by_filter }
+      end
+    end
+
 
   end
 end

@@ -270,8 +270,8 @@ module Teamlab
       @request.put(['invoice', 'status', status.to_s], {invoiceids: invoice_ids})
     end
 
-    def update_contact_status_color(id, color)
-      @request.put(['contact', 'status', id.to_s, 'color'], color: color)
+    def update_contact_status_color(status_id, color)
+      @request.put(['contact', 'status', status_id.to_s, 'color'], color: color)
     end
 
 #=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
@@ -288,6 +288,451 @@ module Teamlab
       @request.put(['invoiceline', invoice_line_id], {invoiceId: invoice_id}.merge(options))
     end
 
+#=========================================== TODO: Заделать MULTIPART-FORM DATA =====================================================
+
+    def change_contact_photo(contact_id, photo)
+      @request.put(['contact', contact_id.to_s, 'changephoto'], {photo: photo})
+    end
+
+    def update_person_and_its_company_status(person_id, contact_status_id)
+      @request.put(['contact', 'preson', person_id.to_s, 'status'], contactStatusId: contact_status_id)
+    end
+
+    def update_company_and_participants_status(company_id, contact_status_id)
+      @request.put(['contact', 'company', company_id.to_s, 'status'], contactStatusId: contact_status_id)
+    end
+
+    def delete_batch_invoices(*invoice_ids)
+      @request.delete(%w(invoice), [invoiceids: invoice_ids.flatten])
+    end
+
+    def delete_batch_items(*ids)
+      @request.delete(%w(invoiceitem), ids: ids.flatten)
+    end
+
+    def delete_batch_contacts_by_filter(options = {})
+      @request.delete(%w(contact filter), options)
+    end
+
+    def delete_invoice_item(id)
+      @request.delete(['invoiceitem', id.to_s])
+    end
+
+    def delete_invoice_tax(id)
+      @request.delete(['invoice', 'tax', id.to_s])
+    end
+
+    def delete_invoice(id)
+      @request.delete(['invoice', id.to_s])
+    end
+
+    def delete_invoice_line(id)
+      @request.delete(['invoiceline', id.to_s])
+    end
+
+    def delete_contact_status(contact_status_id)
+      @request.delete('contact', 'status', contact_status_id)
+    end
+
+    def delete_deal_from_contact(contact_id, opportunity_id)
+      @request.delete(['contact', contact_id.to_s, 'opportunity', opportunity_id.to_s])
+    end
+
+    def get_event_list_by_filter(options = {})
+      @request.get(%w(history filter), options)
+    end
+
+    def get_all_history_categories
+      @request.get(%w(history category))
+    end
+
+#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+
+    def create_event(options = {})
+      @request.post(%w(history), options)
+    end
+
+    def create_history_category(title, image_name, options = {})
+      @request.post(%w(history category), {title: title.to_s, imageName: image_name.to_s}.merge(options))
+    end
+
+    def update_history_category(id, title, options = {})
+      @request.put(['history', 'category', id.to_s], {title: title}.merge(options))
+    end
+
+    def update_history_categories_order(*titles)
+      @request.put(%w(history category reorder), {titles: titles.flatten})
+    end
+
+    def update_history_category_icon(id, icon_name)
+      @request.put(['history', 'category', id.to_s, 'icon'], imageName: icon_name.to_s)
+    end
+
+    def delete_event_and_related_files(id)
+      @request.delete(['history', id.to_s])
+    end
+
+    def delete_history_category(id)
+      @request.delete(['history', 'category', id.to_s])
+    end
+
+    def get_task_list_by_filter(options = {})
+      @request.get(%w(task filter), options)
+    end
+
+    def get_all_task_categories
+      @request.get(%w(task category))
+    end
+
+    def get_task_by_id(task_id)
+      @request.get(['task', task_id.to_s])
+    end
+
+    def get_task_category(category_id)
+      @request.get(['task', 'category', category_id.to_s])
+    end
+
+    def create_task_category(title, image_name, options = {})
+      @request.post(%w(task category), {title: title.to_s, imageName: image_name.to_s}.merge(options))
+    end
+
+    def get_contact_upcoming_tasks(contact_id)
+      @request.post(%w(contact task near), contactid: contact_id)
+    end
+
+    def update_task_category(category_id, options = {})
+      @request.put(['task', 'category', category_id.to_s], options)
+    end
+
+    def close_task(task_id)
+      @request.put(['task', task_id.to_s, 'close'])
+    end
+
+    def resume_task(task_id)
+      @request.put(['task', task_id.to_s, 'reopen'])
+    end
+
+    def update_task_categories_order(*titles)
+      @request.put(%w(task category reorder), titles: titles.flatten)
+    end
+
+    def update_task_category_icon(id, image_name)
+      @request.put(['task', 'category', id.to_s, 'icon'], imageName: image_name.to_s)
+    end
+
+    def delete_task(id)
+      @request.delete(['task', id.to_s])
+    end
+
+    def delete_task_category(category_id)
+      @request.delete(['task', 'category', category_id.to_s])
+    end
+
+    def get_all_contact_types
+      @request.get(%w(contact type))
+    end
+
+    def get_contact_by_id(id)
+      @request.get(['contact', id.to_s])
+    end
+
+    def get_all_contact_info_types
+      @request.get(%w(contact data infotype))
+    end
+
+    def get_contacts_by_project_id(id)
+      @request.get(['contact', 'project', id.to_s])
+    end
+
+    def get_contact_type(id)
+      @request.get(['contact', 'type', id.to_s])
+    end
+
+    def get_contact_info(contact_id, contact_info_id)
+      @request.get(['contact', contact_id.to_s, 'data', contact_info_id.to_s])
+    end
+
+    def get_all_categories(info_type)
+      @request.get(['contact', 'data', info_type.to_s, 'category'])
+    end
+
+    def get_company_linked_persons_list(company_id)
+      @request.get(['contact', 'company', company_id.to_s, 'person'])
+    end
+
+    def get_contact_information_by_type(contact_id, info_type)
+      @request.get(['contact', contact_id.to_s, 'data', info_type.to_s])
+    end
+
+    def group_contact_info(*items)
+      @request.post(%w(contact data), items: items.flatten)
+    end
+
+    def quick_person_list_creation(*data)
+      @request.post(%w(contact person quick), data: data.flatten)
+    end
+
+    def quick_company_list_creation(*names)
+      @request.post(%w(contact company quick), companyName: names.flatten)
+    end
+
+    def add_contact_info(contact_id, infotype, data, category, options = {})
+      @request.post(['contact', contact_id.to_s, 'data'], { infoType: infotype, data: data, category: category }.merge(options))
+    end
+
+    def link_contact_list_with_project(project_id, *contact_ids)
+      @request.post(['contact', 'project', project_id.to_s], contactId: contact_ids.flatten)
+    end
+
+    def add_persons_to_company(company_id, person_id)
+      @request.post(['contact', 'company', company_id.to_s, 'person'], personId: person_id)
+    end
+
+    def link_contact_with_project(contact_id, project_id)
+      @request.post(['contact', contact_id.to_s, 'project', project_id.to_s])
+    end
+
+    def add_contact_address(contact_id, category, address, options = {})
+      @request.post(['contact', contact_id.to_s, 'data', 'address', category.to_s], {address: address.to_s}.merge(options))
+    end
+
+    def delete_contact_group(*contact_ids)
+      @request.put(%w(contact), contactids: contact_ids.flatten)
+    end
+
+    def group_contact_info_update(*items)
+      @request.put(%w(contact data), items: items.flatten)
+    end
+
+    def merge_contacts(from_contact_id, to_contact_id)
+      @request.put(%w(contact merge), fromcontactid: from_contact_id, tocontactid: to_contact_id)
+    end
+
+    def set_contacts_access_rights(contact_ids, options = {})
+      @request.put(%w(contact access), {contactId: contact_ids}.merge(options))
+    end
+
+    def update_contact_types_order(*titles)
+      @request.put(%w(contact type reorder), titles: titles.flatten)
+    end
+
+    def set_contact_access_rights(contact_id, options = {})
+      @request.put(['contact', contact_id.to_s, 'access'], options)
+    end
+
+    def update_company(company_id, company_name, options = {})
+      @request.put(['contact', 'company', company_id.to_s], {companyName: company_name.to_s}.merge(options))
+    end
+
+    def update_contact_info(information_id, contact_id, info_type, data, options = {})
+      @request.put(['contact', contact_id.to_s, 'data', information_id.to_s], {infoType: info_type, data: INFO_DATA}.merge(options))
+    end
+
+    def change_contact_photo_by_url(contact_id, photo_url)
+      @request.put(['contact', contact_id.to_s, 'changephotobyurl'], photourl: photo_url)
+    end
+
+    def update_contact_address(contact_id, information_record_id, address, options = {})
+      @request.put(['contact', contact_id.to_s, 'data', 'address', information_record_id.to_s], {address: address}.merge(options))
+    end
+
+    def delete_contact(id)
+      @request.delete(['contact', id.to_s])
+    end
+
+    def delete_contact_type(contact_type_id)
+      @request.delete(['contact', 'type', contact_type_id.to_s])
+    end
+
+    def delete_contact_info(contact_id, info_id)
+      @request.delete(['contact', contact_id.to_s, 'data', info_id.to_s])
+    end
+
+    def delete_person_from_company(company_id, person_id)
+      @request.delete(['contact', 'company', company_id.to_s, 'person'], {personId: person_id})
+    end
+
+    def delete_ontact_address(contact_id, information_record_id)
+      @request.delete(['contact', contact_id.to_s, 'data', 'address', information_record_id.to_s])
+    end
+
+    def remove_contact_from_project(contact_id, project_id)
+      @request.delete(['contact', contact_id.to_s, 'project', project_id.to_s])
+    end
+
+    def get_root_folder_id
+      @request.get(%w(files root))
+    end
+
+    def get_file_list(entity_type, entity_id)
+      @request.get([entity_type.to_s, entity_id.to_s, 'files'])
+    end
+
+    def associate_file_with_entity(entity_type, entity_id, *fileids)
+      @request.post([entity_type, entity_id, 'files'], files: fileids.flatten)
+    end
+
+    def create_txt(entity_type, entity_id, title, options = {})
+      @request.post([entity_type.to_s, entity_id.to_s, 'files', 'text'], {title: title}.merge(options))
+    end
+
+#================================== TODO: UPLOAD FILES ================================
+
+    def upload_file(entity_type, entity_id, *files)
+      @request.post([entity_type.to_s, entity_id.to_s, 'files', 'upload'], files)
+    end
+
+    def delete_file(id)
+      @request.post(['files', id.to_s])
+    end
+
+    def get_tags_for_entity_type(entity_type)
+      @request.get([entity_type.to_s, 'tag'])
+    end
+
+    def get_all_contact_tags(contact_id)
+      @request.get(['contact', contact_id.to_s, 'tag'])
+    end
+
+    def get_entity_tags(entity_type, entity_id)
+      @request.get([entity_type.to_s, 'tag', entity_id.to_s])
+    end
+
+    def create_tag(entity_type, tag_name)
+      @request.get([entity_type.to_s, 'tag'], tagName: tag_name)
+    end
+
+#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+
+    def add_tag_to_case_group_by_filter(options = {})
+      @request.post(%w(case filter taglist), options)
+    end
+
+#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+
+    def add_tag_group_to_entity(entity_type, entity_id, tag_name)
+      @request.post([entity_type.to_s, 'taglist'], entityId: entity_id, tagName: tag_name)
+    end
+
+#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+
+    def add_tag_to_opportunity_group(options = {})
+      @request.post(%w(opportunity filter taglist), options)
+    end
+
+    def add_tag(entity_type, entity_id, tag_name)
+      @request.post([entity_type.to_s, entity_id.to_s, 'tag'], tagName: tag_name)
+    end
+
+    def delete_tag(entity_type, tag_name)
+      @request.delete([entity_type.to_s, 'tag'], tagName: tag_name)
+    end
+
+    def delete_unused_tags(entity_type)
+      @request.delete([entity_type.to_s, 'tag', 'unused'])
+    end
+
+    def remove_tag(entity_type, entity_id, tag_name)
+      @request.delete([entity_type.to_s, entity_id.to_s, 'tag'], tagName: tag_name)
+    end
+
+    def get_task_template_container_list(entity_type)
+      @request.get([entity_type.to_s, 'tasktemplatecontainer'])
+    end
+
+    def get_task_template_container(id)
+      @request.get(['tasktemplatecontainer', id.to_s])
+    end
+
+    def get_task_template(id)
+      @request.get(['tasktemplatecontainer', 'tasktemplate', id.to_s])
+    end
+
+    def get_task_template_list_by_container_id(id)
+      @request.get(['tasktemplatecontainer', id.to_s, 'tasktemplate'])
+    end
+
+    def create_task_template_container(entity_type, title)
+      @request.post([entity_type.to_s, 'tasktemplatecontainer'], title: title)
+    end
+
+#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+
+    def create_task_template(container_id, title, options = {})
+      @request.post(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], {title: title}.merge(options))
+    end
+
+    def update_task_template_container(container_id, title)
+      @request.put(['tasktemplatecontainer', container_id.to_s], title: title)
+    end
+
+#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+
+    def update_task_template(container_id, task_template_id,   options = {})
+      @request.put(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], {id: task_template_id.to_s}.merge(options))
+    end
+
+    def delete_task_template_container(container_id)
+      @request.delete(['tasktemplatecontainer', container_id.to_s])
+    end
+
+    def delete_task_template(id)
+      @request.delete(['tasktemplatecontainer', 'tasktemplate', id.to_s])
+    end
+
+#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+
+    def get_case_list(options = {})
+      @request.get(%w(case filter), options)
+    end
+
+    def get_case_by_id(id)
+      @request.get(['case', id.to_s])
+    end
+
+    def get_all_case_contacts(case_id)
+      @request.get(['case', case_id.to_s, 'contact'])
+    end
+
+    def create_case(title, options = {})
+      @request.post(%w(case), {title: title}.merge(options))
+    end
+
+    def add_case_contact(case_id, contact_id)
+      @request.post(['case', case_id.to_s, 'contact'], contactId: contact_id)
+    end
+
+    def set_case_access_rights(case_id, options = {})
+      @request.put(%w(case access), {caseId: case_id}.merge(options))
+    end
+
+    def update_case(case_id, title, options = {})
+      @request.put(['case', case_id.to_s], {title: title}.merge(options))
+    end
+
+    def set_case_access_rights_by_filter(options = {})
+      @request.put(%w(case filter access), options)
+    end
+
+    def resume_case(case_id)
+      @request.put(['case', case_id.to_s, 'reopen'])
+    end
+
+    def close_case(case_id)
+      @request.put(['case', case_id.to_s, 'close'])
+    end
+
+    def set_rights_to_case(case_id, options = {})
+      @request.put(['case', case_id.to_s, 'access'], options)
+    end
+
+    def delete_case_group(*case_ids)
+      @request.delete(%w(case), caseIds: case_ids.flatten)
+    end
+
+    def delete_case_group_by_filter(*case_ids)
+      @request.delete(%w(case), caseIds: case_ids.flatten)
+    end
 
 
   end
