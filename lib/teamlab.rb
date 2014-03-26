@@ -8,6 +8,9 @@ require 'teamlab/Modules/Settings'
 require 'teamlab/Modules/Files'
 require 'teamlab/Modules/Project'
 require 'teamlab/Modules/Crm'
+require 'teamlab/Modules/Community'
+require 'teamlab/Modules/Calendar'
+require 'teamlab/Modules/Mail'
 
 module Teamlab
 
@@ -40,13 +43,19 @@ module Teamlab
     Teamlab.config.api_additive = 'crm'
     @crm ||= Teamlab::Crm.new
   end
-end
 
-#Teamlab::configure do |config|
-#  config.server = 'https://autotestdoc.teamlab.com'
-#  config.username = 'shockwavenn@gmail.com'
-#  config.password = '123456'
-#end
-#
-#a = Teamlab::Commands.people.filter({ 'activationStatus' => :pizda })
-#p a
+  def self.community
+    Teamlab.config.api_additive = 'community'
+    @community ||= Teamlab::Community.new
+  end
+
+  def self.calendar
+    Teamlab.config.api_additive = 'calendar'
+    @calendar ||= Teamlab::Calendar.new
+  end
+
+  def self.mail
+    Teamlab.config.api_additive = 'mail'
+    @mail ||= Teamlab::Mail.new
+  end
+end

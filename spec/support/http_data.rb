@@ -21,7 +21,7 @@ USER_FILTER = { activationStatus: 1 }
 USER_ID = 'efcb452b-2be3-4311-b539-fabad4d42e95'#'e83cceef-2cbf-4cdf-9a4c-fea4e810705b'
 USERNAME_FOR_OPERATIONS = 'kcwijpgg'
 USER_STATUS = 'Active'
-SEARCH_QUERY = 'Doria'
+SEARCH_QUERY = random_word(7, true)
 USER_EMAIL = random_email
 IS_VISITOR = false
 NEW_USER_FIRSTNAME = random_word(7, true)
@@ -130,4 +130,20 @@ INFO_CATEGORY = 'Work'
 IMAGE_URL = 'http://thebooksmugglers.com/wp-content/uploads/2009/02/image002-200x300.jpg'#'http://www.soulscode.com/wp-content/uploads/2011/02/doll-200x300.jpg'
 #endregion
 
+#region Community
+POST_ID = '797eb01e-b13f-49a4-9b4c-b74b40bad876'
+BOOKMARK_ID = 288498
+EVENT_ID = 63569
+THREAD_ID = 4988
+TOPIC_ID = 26560
+COMMUNITY_CATEGORY_ID = 3779
+THREAD_NAME = '1'
+WIKI_PAGE_NAME = 'fsdf'
+WIKI_FILE_NAME = 'rapuncel.jpg'
+WIKI_PAGE_COMMENT_ID = '8a72589a-f9f0-44b7-aed4-1608335f1855'
+#endregion
+
+#region Calendar
+CALENDAR_ID = 1395822265100
+#endregion
 #endregion

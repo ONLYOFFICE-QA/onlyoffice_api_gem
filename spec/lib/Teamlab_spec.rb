@@ -367,7 +367,7 @@ describe Teamlab do
     describe '#new_folder' do
       it_should_behave_like 'an api request' do
         let(:command) { :new_folder }
-        let(:args) { [FOLDER_COMMON_DOCS_ID, FOLDER_TITLE] }
+        let(:args) { ['1553123', FOLDER_TITLE] }
       end
     end
 
@@ -1306,5 +1306,424 @@ describe Teamlab do
     end
 
 
+  end
+
+  describe '[Community]' do
+    let(:teamlab_module) { :community }
+
+    describe '#get_all_posts' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_all_posts }
+      end
+    end
+
+    describe '#get_blog_tags' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_blog_tags }
+      end
+    end
+
+    describe '#get_my_posts' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_my_posts }
+      end
+    end
+
+    describe '#get_post_by_id' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_post }
+        let(:args) { [POST_ID] }
+      end
+    end
+
+    describe '#get_posts_by_tag' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_posts_by_tag }
+        let(:args) { [RANDOM_TAGS.sample] }
+      end
+    end
+
+    describe '#search_posts' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :search_posts }
+        let(:args) { [SEARCH_QUERY] }
+      end
+    end
+
+    describe '#get_user_posts' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_user_posts }
+        let(:args) { [USERNAME_FOR_OPERATIONS] }
+      end
+    end
+
+    describe '#get_comments' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_comments }
+        let(:args) { [POST_ID] }
+      end
+    end
+
+    describe '#create_post' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_post }
+        let(:args) { [RANDOM_TITLE, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#add_comment' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_comment }
+        let(:args) { [POST_ID, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#update_post' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_post }
+        let(:args) { [POST_ID, RANDOM_TITLE, RANDOM_NOTE, {tags: RANDOM_TAGS.join(',')}] }
+      end
+    end
+
+    describe '#get_all_bookmarks' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_all_bookmarks }
+      end
+    end
+
+    describe '#get_all_bookmark_tags' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_all_bookmark_tags }
+      end
+    end
+
+    describe '#get_bookmark' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_bookmark }
+        let(:args) { [BOOKMARK_ID] }
+      end
+    end
+
+    describe '#get_bookmarks_added_by_me' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_bookmarks_added_by_me }
+      end
+    end
+
+    describe '#get_my_favourite_bookmarks' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_my_favourite_bookmarks }
+      end
+    end
+
+    describe '#get_top_of_day_bookmarks' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_top_of_day_bookmarks }
+      end
+    end
+
+    describe '#get_top_of_week_bookmarks' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_top_of_week_bookmarks }
+      end
+    end
+
+    describe '#get_top_of_month_bookmarks' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_top_of_month_bookmarks }
+      end
+    end
+
+    describe '#get_top_of_year_bookmarks' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_top_of_year_bookmarks }
+      end
+    end
+
+    describe '#get_bookmarks_by_tag' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_bookmarks_by_tag }
+        let(:args) { [RANDOM_TAGS.sample] }
+      end
+    end
+
+    describe '#get_recently_added_bookmarks' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_recently_added_bookmarks }
+      end
+    end
+
+    describe '#get_bookmark_comments' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_bookmark_comments }
+        let(:args) { [BOOKMARK_ID] }
+      end
+    end
+
+    describe '#search_bookmarks' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :search_bookmarks }
+        let(:args) { [SEARCH_QUERY] }
+      end
+    end
+
+    describe '#add_bookmark' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_bookmark }
+        let(:args) { [IMAGE_URL, RANDOM_TITLE] }
+      end
+    end
+
+    describe '#add_comment_to_bookmark' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_comment_to_bookmark }
+        let(:args) { [BOOKMARK_ID, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#get_all_events' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_all_events }
+      end
+    end
+
+    describe '#get_my_events' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_my_events }
+      end
+    end
+
+    describe '#get_event' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_event }
+        let(:args) { [EVENT_ID] }
+      end
+    end
+
+    describe '#search_events' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :search_events }
+        let(:args) { [SEARCH_QUERY] }
+      end
+    end
+
+    describe '#create_event' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_event }
+        let(:args) { [RANDOM_TITLE, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#vote_for_event' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :vote_for_event }
+        let(:args) { [EVENT_ID, 1] }
+      end
+    end
+
+    describe '#add_comment_to_event' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_comment_to_event }
+        let(:args) { [EVENT_ID, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#update_event' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_event }
+        let(:args) { [EVENT_ID, RANDOM_TITLE, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#get_forums' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_forums }
+      end
+    end
+
+    describe '#get_thread_topics' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_thread_topics }
+        let(:args) { [THREAD_ID] }
+      end
+    end
+
+    describe '#get_last_updated_topics' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_last_updated_topics }
+      end
+    end
+
+    describe '#get_posts' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_posts }
+        let(:args) { [TOPIC_ID] }
+      end
+    end
+
+    describe '#search_topics' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :search_topics }
+        let(:args) { [random_word(5)] }
+      end
+    end
+
+    describe '#add_thread_to_category' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_thread_to_category }
+        let(:args) { [COMMUNITY_CATEGORY_ID, RANDOM_NOTE, {categoryName: RANDOM_TITLE, threadDescription: random_word(4)}] }
+      end
+    end
+
+    describe '#add_topic_to_thread' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_topic_to_thread }
+        let(:args) { [THREAD_ID, RANDOM_TITLE, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#update_topic_in_thread' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_topic_in_thread }
+        let(:args) { [TOPIC_ID] }
+      end
+    end
+
+    describe '#update_post_in_topic' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_post_in_topic }
+        let(:args) { [TOPIC_ID, POST_ID] }
+      end
+    end
+
+    describe '#get_wiki_pages' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_wiki_pages }
+      end
+    end
+
+    describe '#get_wiki_page' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_wiki_page }
+        let(:args) { [WIKI_PAGE_NAME] }
+      end
+    end
+
+    describe '#get_wiki_file_info' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_wiki_file_info }
+        let(:args) { [WIKI_FILE_NAME] }
+      end
+    end
+
+    describe '#get_page_history' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_page_history }
+        let(:args) { [WIKI_PAGE_NAME] }
+      end
+    end
+
+    describe '#get_all_page_comments' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_all_page_comments }
+        let(:args) { [WIKI_PAGE_NAME] }
+      end
+    end
+
+    describe '#search_wiki_pages_by_name' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :search_wiki_pages_by_name }
+        let(:args) { [RANDOM_TITLE] }
+      end
+    end
+
+    describe '#search_wiki_pages_by_content' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :search_wiki_pages_by_content }
+        let(:args) { [RANDOM_TITLE] }
+      end
+    end
+
+    describe '#create_page' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_page }
+        let(:args) { [RANDOM_TITLE, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#create_wiki_page_comment' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_wiki_page_comment }
+        let(:args) { [WIKI_PAGE_NAME, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#update_wiki_page' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_wiki_page }
+        let(:args) { [WIKI_PAGE_NAME, RANDOM_NOTE] }
+      end
+    end
+
+    describe '#update_wiki_page_comment' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_wiki_page_comment }
+        let(:args) { [WIKI_PAGE_COMMENT_ID, RANDOM_NOTE] }
+      end
+    end
+  end
+
+  describe '[Calendar]' do
+    let(:teamlab_module) { :calendar }
+
+    describe '#get_default_access' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_default_access }
+      end
+    end
+
+    describe '#get_calendar' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_calendar }
+        let(:args) { [CALENDAR_ID] }
+      end
+    end
+
+    describe '#get_subscription_list' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_subscription_list }
+      end
+    end
+
+    describe '#get_icalc_link' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_icalc_link }
+        let(:args) { [CALENDAR_ID] }
+      end
+    end
+
+    describe '#get_access_parameters' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_access_parameters }
+        let(:args) { [CALENDAR_ID] }
+      end
+    end
+  end
+
+  describe '[Mail]' do
+    let(:teamlab_module) { :mail }
+
+    describe '#get_tag_list' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_tag_list }
+      end
+    end
+
+    describe '#create_tag' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_tag }
+        let(:args) { [random_word(4), {style: rand(15)}] }
+      end
+    end
   end
 end
