@@ -1708,6 +1708,22 @@ describe Teamlab do
         let(:args) { [CALENDAR_ID] }
       end
     end
+
+    describe '#create_calendar' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_calendar }
+        let(:args) { [RANDOM_TITLE] }
+      end
+    end
+
+    #describe '#create_calendar_by_ical_link' do
+    #  it_should_behave_like 'an api request' do
+    #    let(:command) { :create_calendar_by_ical_link }         #ХЗ ГДЕ ВЗЯТЬ ЛИНКУ
+    #    let(:args) { [RANDOM_TITLE] }
+    #  end
+    #end
+
+
   end
 
   describe '[Mail]' do
