@@ -58,8 +58,8 @@ module Teamlab
       @request.put(['invite'], { 'userIds' => user_ids })
     end
 
-    def delete(user_ids = [])
-      @request.put(['delete'], { 'userIds' => user_ids })
+    def delete(*user_ids)
+      @request.put(['delete'], { 'userIds' => user_ids.flatten })
     end
 
     def update_user(user_id, is_visitor, email, firstname, lastname, options = {})
