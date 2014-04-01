@@ -5,6 +5,10 @@ module Teamlab
       @request = Teamlab::Request
     end
 
+    def get_message(id, options = {})
+      @request.get(['messages', id.to_s], options)
+    end
+
     def get_account_list
       @request.get(%w(accounts))
     end
