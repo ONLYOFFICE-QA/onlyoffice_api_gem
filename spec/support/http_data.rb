@@ -1,6 +1,6 @@
-SERVER = 'https://autotestdoc.teamlab.info'
-USERNAME = 'teamlab.ruby@gmail.com'
-PASSWORD = '123456'
+SERVER = ''
+USERNAME = ''
+PASSWORD = ''
 
 def args
   []
