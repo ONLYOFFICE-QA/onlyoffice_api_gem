@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["roman-zagudaev@yandex.ru"]
   spec.description   = %q{Ruby Framework to interact with TeamLab API 2.0}
   spec.summary       = %q{Ruby gem for TeamLab}
-  spec.homepage      = ""
+  spec.homepage      = 'https://bitbucket.org/rzagudaev/gemteamlab/overview'
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
