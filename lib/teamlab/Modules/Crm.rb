@@ -158,13 +158,13 @@ module Teamlab
       @request.post(%w(task), {title: title, deadline: deadline, responsibleId: responsible_id, categoryId: category_id}.merge(options))
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def create_invoice(options = {})
       @request.post(%w(invoice), options)
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def create_invoice_line(invoice_id)
       @request.post(%w(invoiceline), invoiceId: invoice_id)
@@ -190,7 +190,7 @@ module Teamlab
       @request.post(%w(contact person), {firstName: first_name, lastName: last_name}.merge(options))
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def create_company(name, options = {})
       @request.post(%w(contact company), {name: name}.merge(options))
@@ -216,13 +216,13 @@ module Teamlab
       @request.put(%w(settings), options)
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def update_task(task_id, options = {})
       @request.put(['task', task_id.to_s], options)
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def update_invoice_item(id, options = {})
       @request.put(['invoiceitem', id.to_s], options)
@@ -240,7 +240,7 @@ module Teamlab
       @request.put(['contact', 'status', id.to_s], options)
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def update_invoice(id, options = {})
       @request.put(['invoice', id.to_s], options)
@@ -274,7 +274,7 @@ module Teamlab
       @request.put(['contact', 'status', status_id.to_s, 'color'], color: color)
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def update_person(id, options = {})
       @request.put(['contact', 'person', id.to_s], options)
@@ -288,7 +288,7 @@ module Teamlab
       @request.put(['invoiceline', invoice_line_id], {invoiceId: invoice_id}.merge(options))
     end
 
-#=========================================== TODO: Заделать MULTIPART-FORM DATA =====================================================
+#=========================================== TODO: MULTIPART-FORM DATA =====================================================
 
     def change_contact_photo(contact_id, photo)
       @request.put(['contact', contact_id.to_s, 'changephoto'], {photo: photo})
@@ -346,7 +346,7 @@ module Teamlab
       @request.get(%w(history category))
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def create_event(options = {})
       @request.post(%w(history), options)
@@ -602,19 +602,19 @@ module Teamlab
       @request.get([entity_type.to_s, 'tag'], tagName: tag_name)
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def add_tag_to_case_group_by_filter(options = {})
       @request.post(%w(case filter taglist), options)
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def add_tag_group_to_entity(entity_type, entity_id, tag_name)
       @request.post([entity_type.to_s, 'taglist'], entityId: entity_id, tagName: tag_name)
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def add_tag_to_opportunity_group(options = {})
       @request.post(%w(opportunity filter taglist), options)
@@ -656,7 +656,7 @@ module Teamlab
       @request.post([entity_type.to_s, 'tasktemplatecontainer'], title: title)
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def create_task_template(container_id, title, options = {})
       @request.post(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], {title: title}.merge(options))
@@ -666,7 +666,7 @@ module Teamlab
       @request.put(['tasktemplatecontainer', container_id.to_s], title: title)
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def update_task_template(container_id, task_template_id,   options = {})
       @request.put(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], {id: task_template_id.to_s}.merge(options))
@@ -680,7 +680,7 @@ module Teamlab
       @request.delete(['tasktemplatecontainer', 'tasktemplate', id.to_s])
     end
 
-#=========================================== TODO: ПЕРЕМЕННЫЕ ПОШЛИ ПИЗДОЙ =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def get_case_list(options = {})
       @request.get(%w(case filter), options)
