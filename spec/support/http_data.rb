@@ -1,18 +1,28 @@
-SERVER = ''
-USERNAME = ''
-PASSWORD = ''
+SERVER = 'https://autotestdoc.teamlab.info'
+USERNAME = 'teamlab.ruby@gmail.com'
+PASSWORD = '123456'
 
 def args
   []
 end
 
-def random_word(length, capitalize = false)
+def random_word(length = 8, capitalize = false)
   capitalize ? (0...length).map { ('a'..'z').to_a[rand(26)] }.join.capitalize : (0...length).map { ('a'..'z').to_a[rand(26)] }.join
+end
+
+def random_bool
+  [true, false].sample
 end
 
 def random_email
   random_word(7) + '@sharklasers.com'
 end
+
+def add_data_to_collector
+  false
+end
+
+DATA_COLLECTOR = {user_ids: [], emails: []}
 
 #region OPTIONS
 #region People
@@ -20,19 +30,19 @@ SEARCH_USER_NAME = 'Allison'
 USER_FILTER = { activationStatus: 1 }
 USER_ID = 'efcb452b-2be3-4311-b539-fabad4d42e95'#'e83cceef-2cbf-4cdf-9a4c-fea4e810705b'
 USERNAME_FOR_OPERATIONS = 'kcwijpgg'
-USER_STATUS = 'Active'
+USER_STATUSES = %w(Active Terminated LeaveOfAbsence Default All)
 SEARCH_QUERY = random_word(7, true)
 USER_EMAIL = random_email
 IS_VISITOR = false
 NEW_USER_FIRSTNAME = random_word(7, true)
 NEW_USER_LASTNAME = random_word(7, true)
 USER_CONTACTS = [
-                { type: 'skype', value: 'mondovoshka' },
-                { type: 'email', value: 'mondovoshka@mail.ru' }
+                { type: 'skype', value: random_word },
+                { type: 'email', value: random_email }
                 ]
 FEW_USER_IDS = %w(37f5ce64-9db1-4df9-8b93-436e39721b4d 6d5c7d2f-b81e-4afb-b5d6-cd6ef2426e35)
 USERS_TO_DELETE = ['864663e3-6135-4252-a11c-e507f96e59a9']
-USER_TYPE = 'User'
+USER_TYPES = %w(All User Visitor)
 PATH_TO_IMAGE = 'http://ic.pics.livejournal.com/scryp/14761862/5478/5478_original.jpg'
 #endregion
 

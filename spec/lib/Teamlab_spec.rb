@@ -14,6 +14,7 @@ describe Teamlab do
     before do
       @module = Teamlab.send(teamlab_module)
       @response = args.empty? ? @module.send(command) : @module.send(command, *args)
+      DATA_COLLECTOR[data_param] << @response.body['response'][param_name] if add_data_to_collector
     end
 
     context 'Successful api request' do
@@ -54,7 +55,7 @@ describe Teamlab do
     describe '#search_people' do
       it_should_behave_like 'an api request' do
         let(:command) { :search_people }
-        let(:args) { SEARCH_USER_NAME }
+        let(:args) { random_word(4, true) }
       end
     end
 
@@ -68,126 +69,125 @@ describe Teamlab do
     describe '#add_user' do
       it_should_behave_like 'an api request' do
         let(:command) { :add_user }
-        let(:args) { [IS_VISITOR, random_email, NEW_USER_FIRSTNAME, NEW_USER_LASTNAME] }
+        let(:args) { [random_bool, random_email, random_word(rand(10), true), random_word(rand(10), true)] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) {:user_ids}
+        let(:param_name) {'id'}
       end
     end
 
     describe '#get_user_by_username' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_user_by_username }
-        let(:args) { USERNAME_FOR_OPERATIONS }
+        let(:args) { DATA_COLLECTOR[:user_ids].first }
+        let(:add_data_to_collector) { true }
+        let(:data_param) {:emails}
+        let(:param_name) {'email'}
       end
     end
 
     describe '#get_people_by_status' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_people_by_status }
-        let(:args) { USER_STATUS }
+        let(:args) { USER_STATUSES.sample }
       end
     end
 
     describe '#get_people_by_search_query' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_people_by_search_query }
-        let(:args) { SEARCH_QUERY }
+        let(:args) { random_word }
       end
     end
 
     describe '#remind_password' do
       it_should_behave_like 'an api request' do
         let(:command) { :remind_password }
-        let(:args) { [USER_ID, USER_EMAIL] }
+        let(:args) { [DATA_COLLECTOR[:user_ids].first, DATA_COLLECTOR[:emails].pop] }
       end
     end
 
     describe '#search_with_status' do
       it_should_behave_like 'an api request' do
         let(:command) { :search_with_status }
-        let(:args) { [USER_STATUS, SEARCH_QUERY] }
-      end
-    end
-
-    describe '#active' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :active }
-        let(:args) { [] }
+        let(:args) { [USER_STATUSES.sample.downcase, random_word] }
       end
     end
 
     describe '#update_contacts' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_contacts }
-        let(:args) { [USER_ID, USER_CONTACTS] }
+        let(:args) { [DATA_COLLECTOR[:user_ids].sample, USER_CONTACTS] }
       end
     end
 
     describe '#send_invite' do
       it_should_behave_like 'an api request' do
         let(:command) { :send_invite }
-        let(:args) { [FEW_USER_IDS] }
+        let(:args) { [DATA_COLLECTOR[:user_ids]] }
       end
     end
 
     describe '#delete' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete }
-        let(:args) { [USERS_TO_DELETE] }
+        let(:args) { [[]] }
       end
     end
 
     describe '#update_user' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_user }
-        let(:args) { [USER_ID, IS_VISITOR, random_email, NEW_USER_FIRSTNAME, NEW_USER_LASTNAME, { comment: NEW_USER_FIRSTNAME + ' ' + NEW_USER_LASTNAME}] }
+        let(:args) { [DATA_COLLECTOR[:user_ids].sample, random_bool, random_email, random_word, random_word, { comment: random_word}] }
       end
     end
 
     describe '#change_people_type' do
       it_should_behave_like 'an api request' do
         let(:command) { :change_people_type }
-        let(:args) { [ USER_TYPE, FEW_USER_IDS] }
+        let(:args) { [USER_TYPES.sample, DATA_COLLECTOR[:user_ids]] }
       end
     end
 
     describe '#update_photo' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_photo }
-        let(:args) { [USER_ID, PATH_TO_IMAGE] }
+        let(:args) { [DATA_COLLECTOR[:user_ids].sample, PATH_TO_IMAGE] }
       end
     end
 
     describe '#change_people_status' do
       it_should_behave_like 'an api request' do
         let(:command) { :change_people_status }
-        let(:args) { [ USER_STATUS, FEW_USER_IDS] }
+        let(:args) { [ USER_STATUSES.sample, DATA_COLLECTOR[:user_ids]] }
       end
     end
 
     describe '#add_contacts' do
       it_should_behave_like 'an api request' do
         let(:command) { :add_contacts }
-        let(:args) { [ USER_CONTACTS, USER_ID] }
-      end
-    end
-
-    describe '#delete_user' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :delete_user }
-        let(:args) { USERS_TO_DELETE.first }
+        let(:args) { [ USER_CONTACTS, DATA_COLLECTOR[:user_ids].sample] }
       end
     end
 
     describe '#delete_photo' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_photo }
-        let(:args) { USERS_TO_DELETE.first }
+        let(:args) { DATA_COLLECTOR[:user_ids].sample }
       end
     end
 
     describe '#delete_contacts' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_contacts }
-        let(:args) { [USER_ID, USER_CONTACTS] }
+        let(:args) { [DATA_COLLECTOR[:user_ids].sample, USER_CONTACTS] }
+      end
+    end
+
+    describe '#delete_user' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :delete_user }
+        let(:args) { DATA_COLLECTOR[:user_ids].pop }
       end
     end
   end
@@ -1346,7 +1346,7 @@ describe Teamlab do
     describe '#search_posts' do
       it_should_behave_like 'an api request' do
         let(:command) { :search_posts }
-        let(:args) { [SEARCH_QUERY] }
+        let(:args) { [random_word] }
       end
     end
 
@@ -1463,7 +1463,7 @@ describe Teamlab do
     describe '#search_bookmarks' do
       it_should_behave_like 'an api request' do
         let(:command) { :search_bookmarks }
-        let(:args) { [SEARCH_QUERY] }
+        let(:args) { [random_word] }
       end
     end
 
@@ -1503,7 +1503,7 @@ describe Teamlab do
     describe '#search_events' do
       it_should_behave_like 'an api request' do
         let(:command) { :search_events }
-        let(:args) { [SEARCH_QUERY] }
+        let(:args) { [random_word] }
       end
     end
 

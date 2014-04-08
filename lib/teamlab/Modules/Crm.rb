@@ -37,8 +37,8 @@ module Teamlab
       @request.get(['settings', 'currency', currency.to_s, 'summarytable'])
     end
 
-    def create_opportunity(contact_id, title, responsible_id, options = {})
-      @request.post(%w(opportunity), {contactid: contact_id, title: title, responsibleid: responsible_id}.merge(options))
+    def create_opportunity(title, responsible_id, options = {})
+      @request.post(%w(opportunity), {title: title, responsibleid: responsible_id}.merge(options))
     end
 
     def create_opportunity_stage(title, color, options = {})
@@ -192,8 +192,8 @@ module Teamlab
 
 #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
-    def create_company(name, options = {})
-      @request.post(%w(contact company), {name: name}.merge(options))
+    def create_company(company_name, options = {})
+      @request.post(%w(contact company), {companyName: company_name}.merge(options))
     end
 
     def create_task_group(title, options = {})
