@@ -9,25 +9,29 @@ module Teamlab
     #include HTTParty
     include HTTMultiParty
 
-    def self.post(*args)
+    def initialize(api_additive)
+      @api_additive = api_additive.to_s
+    end
+
+    def post(*args)
       request(:post, args)
     end
 
-    def self.get(*args)
+    def get(*args)
       request(:get, args)
     end
 
-    def self.put(*args)
+    def put(*args)
       request(:put, args)
     end
 
-    def self.delete(*args)
+    def delete(*args)
       request(:delete, args)
     end
 
     private
 
-    def self.request(type, args)
+    def request(type, args)
       command, opts = parse_args(args)
       url = generate_request_url(command)
       attempts = 0
@@ -44,11 +48,11 @@ module Teamlab
       response
     end
 
-    def self.generate_request_url(command)
-      Teamlab.config.server + Teamlab.config.api_path + Teamlab.config.api_additive + command
+    def generate_request_url(command)
+      Teamlab.config.server + Teamlab.config.api_path + @api_additive + command
     end
 
-    def self.parse_args(args)
+    def parse_args(args)
       command = args.first.instance_of?(Array) ? '/' + args.shift.join('/') : args.shift.to_s
       opts = {}
       opts[:body] = args.last.instance_of?(Hash) ? args.pop : {}

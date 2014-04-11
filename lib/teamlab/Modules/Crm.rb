@@ -2,7 +2,7 @@ module Teamlab
   class Crm
 
     def initialize
-      @request = Teamlab::Request
+      @request = Teamlab::Request.new('crm')
     end
 
     def get_all_opportunity_stages

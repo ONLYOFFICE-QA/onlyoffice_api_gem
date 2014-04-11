@@ -3,7 +3,7 @@ module Teamlab
   class Group
 
     def initialize
-      @request = Teamlab::Request
+      @request = Teamlab::Request.new('group')
     end
 
     def get_groups

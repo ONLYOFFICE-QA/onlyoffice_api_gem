@@ -3,7 +3,7 @@ module Teamlab
   class People
 
     def initialize
-      @request = Teamlab::Request
+      @request = Teamlab::Request.new('people')
     end
 
     def get_people
@@ -39,7 +39,7 @@ module Teamlab
     end
 
     def search_with_status(status, query)
-      @request.get(['status', status.to_s, '@search', query.to_s])
+      @request.get(['status', status.to_s, 'search'], {query: query.to_s})
     end
 
     def add_user(is_visitor, email, firstname, lastname, options = {})

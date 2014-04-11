@@ -2,7 +2,7 @@ module Teamlab
   class Files
 
     def initialize
-      @request = Teamlab::Request
+      @request = Teamlab::Request.new('files')
     end
 
     def get_my_files
@@ -41,8 +41,8 @@ module Teamlab
       @request.get([folder_id.to_s, 'feeds'])
     end
 
-    def get_share_link(file_id, share)
-      @request.put([file_id, 'sharedlink'], share: share)
+    def generate_shared_link(file_id, share)
+      @request.put([file_id.to_s, 'sharedlink'], share: share)
     end
 
 #================================== TODO: UPLOAD FILES ================================
@@ -117,6 +117,10 @@ module Teamlab
       @request.put(%w(settings import terminate))
     end
 
+    def import_from_third_party(source, folder_id, ignore_coincidence_files, data_to_import, options = {})
+      @request.put(['settings', 'import', source.to_s, 'data'], {folderId: folder_id.to_s, ignoreCoincidenceFiles: ignore_coincidence_files, dataToImport: data_to_import}.merge(options))
+    end
+
     def delete_file(file_id)
       @request.delete(['file', file_id.to_s])
     end
@@ -129,11 +133,11 @@ module Teamlab
       @request.get(%w(fileops))
     end
 
-    def move_files(dest_folder_id, options)
+    def move_files(dest_folder_id, options = {})
       @request.put(%w(fileops move), { destFolderId: dest_folder_id }.merge(options))
     end
 
-    def copy_to_folder(dest_folder_id, options)
+    def copy_to_folder(dest_folder_id, options = {})
       @request.put(%w(fileops copy), { destFolderId: dest_folder_id }.merge(options))
     end
 

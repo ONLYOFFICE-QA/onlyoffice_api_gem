@@ -1,13 +1,16 @@
-SERVER = 'https://autotestdoc.teamlab.info'
-USERNAME = 'teamlab.ruby@gmail.com'
-PASSWORD = '123456'
+SERVER = ''
+USERNAME = ''
+PASSWORD = ''
+
+DATA_COLLECTOR = {user_ids: [], new_user_ids: [], emails: [], group_ids: [], common_documents_ids: [], my_documents_ids: [],
+                  trash_documents_ids: [], shared_documents_ids: [], new_folder_ids: [], new_file_ids: []}
 
 def args
   []
 end
 
-def random_word(length = 8, capitalize = false)
-  capitalize ? (0...length).map { ('a'..'z').to_a[rand(26)] }.join.capitalize : (0...length).map { ('a'..'z').to_a[rand(26)] }.join
+def random_word(length = 8)
+  (0...length).map { ('a'..'z').to_a[rand(26)] }.join
 end
 
 def random_bool
@@ -15,47 +18,35 @@ def random_bool
 end
 
 def random_email
-  random_word(7) + '@sharklasers.com'
+  random_word + '@sharklasers.com'
 end
 
 def add_data_to_collector
   false
 end
 
-DATA_COLLECTOR = {user_ids: [], emails: []}
+def random_id(param)
+  DATA_COLLECTOR["#{param}_ids".to_sym].sample
+end
+
+def random_settings_entity_id
+  SETTINGS_ENTITY_IDS.sample
+end
 
 #region OPTIONS
 #region People
-SEARCH_USER_NAME = 'Allison'
-USER_FILTER = { activationStatus: 1 }
-USER_ID = 'efcb452b-2be3-4311-b539-fabad4d42e95'#'e83cceef-2cbf-4cdf-9a4c-fea4e810705b'
-USERNAME_FOR_OPERATIONS = 'kcwijpgg'
 USER_STATUSES = %w(Active Terminated LeaveOfAbsence Default All)
-SEARCH_QUERY = random_word(7, true)
-USER_EMAIL = random_email
-IS_VISITOR = false
-NEW_USER_FIRSTNAME = random_word(7, true)
-NEW_USER_LASTNAME = random_word(7, true)
 USER_CONTACTS = [
                 { type: 'skype', value: random_word },
                 { type: 'email', value: random_email }
                 ]
-FEW_USER_IDS = %w(37f5ce64-9db1-4df9-8b93-436e39721b4d 6d5c7d2f-b81e-4afb-b5d6-cd6ef2426e35)
-USERS_TO_DELETE = ['864663e3-6135-4252-a11c-e507f96e59a9']
 USER_TYPES = %w(All User Visitor)
 PATH_TO_IMAGE = 'http://ic.pics.livejournal.com/scryp/14761862/5478/5478_original.jpg'
 #endregion
 
-#region Group
-GROUP_ID = '06a9bf1b-3354-4347-805c-934265b62773'
-GROUP_NAME = random_word(7)
-GROUP_ID_FOR_OPERATIONS = 'd868c0fb-d669-495f-aa00-1279395285ea'
-GROUP_UPDATE_OPTIONS = { groupManager: USER_ID, groupName: GROUP_NAME, members: FEW_USER_IDS }
-GROUP_ID_TO_DELETE = '97b92796-79b1-4688-869e-1d09487d91d8'
-#endregion
-
 #regions Settings
-SETTINGS_ENTITY_IDS = ['ea942538-e68e-4907-9394-035336ee0ba8', '28b10049-dd20-4f54-b986-873bc14ccfc7']
+SETTINGS_ENTITY_IDS = %w(1e044602-43b5-4d79-82f3-fd6208a11960 6743007c-6f95-4d20-8c88-a8601ce5e76d ea942538-e68e-4907-9394-035336ee0ba8
+                         f4d98afd-d336-4332-8778-3c6945c81ea0 2a923037-8b2d-487b-9a22-5ac0918acf3f   bf88953e-3c43-4850-a3fb-b1e43ad53a3e 32d24cb5-7ece-4606-9c94-19216ba42086)
 SETTINGS_TEST_USER = '27cd9da5-4f97-4335-ac45-55dd05d96d89'
 SETTINGS_TALK_MODULE_ID = 'bf88953e-3c43-4850-a3fb-b1e43ad53a3e'
 SETTINGS_VERSION = 2
@@ -63,24 +54,15 @@ SETTINGS_FOR_TALK = { enabled: true }
 #endregion
 
 #region Files
-FOLDER_COMMON_DOCS_ID = '225508'
-FOLDER_TITLE = random_word(10)
-FOLDER_FOR_OPERATIONS_ID = '168228'
-FILE_FOR_OPERATIONS_ID = '3434235'
 FILE_FOR_OPERATIONS_VERSION = 1
-FILES_SHARE_TYPE = 'Read'
+FILES_SHARE_TYPES = %w(None ReadWrite Read Restrict)
 FILE_TO_UPLOAD = '/home/zagudaev-2/mods.txt'
 FILE_MORE_THAN_5_MB = '/mnt/data_share/Files/PDF/AllPDF/600 Essential Words for the TOEIC Test.pdf'
-FILE_SIZE_IN_BYTES = 107374182.4
-FEW_FILES_IDS = [3482982, 3482961, 3482965]
-NEW_FILE_NAME = random_word(8)
-NEW_FILE_CONTENT = random_word(40)
 THIRD_PARTY_SERVICE = 'Box.com'
 THIRD_PARTY_LOGIN = 'teamlab.ruby@gmail.com'
 THIRD_PARTY_PASSWORD = '123456'
 THIRD_PARTY_LOGIN_DATA = {login: THIRD_PARTY_LOGIN, password: THIRD_PARTY_PASSWORD}
 THIRD_PARTY_FOLDER_ID = '1042248535'
-IGNORE_COINCIDENCE_FILES = true
 DATA_TO_IMPORT = []
 FILE_TO_DELETE_ID = '3482889'
 FOLDER_TO_DELETE_ID = '1555056'
@@ -102,8 +84,8 @@ MESSAGE_ID = '3878'
 
 TASK_ID = '12406'
 RESPONSIBLE_ID = '187ecad1-eeb4-4173-a6c0-1c225ad72fb2'
-RANDOM_TITLE = random_word(10, true)
-PROJECT_DESCRIPTION = random_word(10, true)
+RANDOM_TITLE = random_word(10).capitalize
+PROJECT_DESCRIPTION = random_word(10,).capitalize
 ANOTHER_PROJECT_ID = 9735
 MILESTONE_ID = 422849
 SOME_DATE = '2015-03-23T14:27:14'
@@ -133,7 +115,7 @@ CONTACT_STATUS_ID = 1990
 HISTORY_CATEGORY_ID = 241050
 COMPANY_ID = 2971531
 CONTACT_INFORMATION_ID = 452955
-NEW_RANDOM_USERS_ARRAY = (1..rand(5)).collect { {firstName: random_word(rand(3..12), true), lastName: random_word(rand(3..12), true)} }
+NEW_RANDOM_USERS_ARRAY = (1..rand(5)).collect { {firstName: random_word(rand(3..12)).capitalize, lastName: random_word(rand(3..12)).capitalize} }
 INFO_TYPE = 1#'Phone'
 INFO_DATA = 54273553
 INFO_CATEGORY = 'Work'

@@ -8,8 +8,7 @@ module Teamlab
   def self.configure(&block)
     @config ||= Config.new
     yield @config if block_given?
-    @config.api_additive = 'authentication'
-    @config.token = Teamlab::Request.post('', {:userName => @config.username, :password => @config.password}).body['response']['token']
+    @config.token = Teamlab::Request.new('authentication').post('', {:userName => @config.username, :password => @config.password}).body['response']['token']
     @config.headers = { 'authorization' => @config.token}
   end
 

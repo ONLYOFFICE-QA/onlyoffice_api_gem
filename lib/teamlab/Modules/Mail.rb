@@ -2,7 +2,7 @@ module Teamlab
   class Mail
 
     def initialize
-      @request = Teamlab::Request
+      @request = Teamlab::Request.new('mail')
     end
 
     def get_message(id, options = {})

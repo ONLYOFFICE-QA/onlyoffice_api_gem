@@ -1,7 +1,7 @@
 module Teamlab
   class Project
     def initialize
-      @request = Teamlab::Request
+      @request = Teamlab::Request.new('project')
     end
 
     def get_import_status

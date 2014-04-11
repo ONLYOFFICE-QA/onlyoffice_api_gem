@@ -14,7 +14,7 @@ describe Teamlab do
     before do
       @module = Teamlab.send(teamlab_module)
       @response = args.empty? ? @module.send(command) : @module.send(command, *args)
-      DATA_COLLECTOR[data_param] << @response.body['response'][param_name] if add_data_to_collector
+      DATA_COLLECTOR[data_param] << param_names.inject(@response.body['response']) { |resp, param| resp[param] } if add_data_to_collector
     end
 
     context 'Successful api request' do
@@ -55,34 +55,34 @@ describe Teamlab do
     describe '#search_people' do
       it_should_behave_like 'an api request' do
         let(:command) { :search_people }
-        let(:args) { random_word(4, true) }
+        let(:args) { random_word(4) }
       end
     end
 
     describe '#filter' do
       it_should_behave_like 'an api request' do
         let(:command) { :filter_people }
-        let(:args) { USER_FILTER }
+        let(:args) { { activationStatus: 1 } }
       end
     end
 
     describe '#add_user' do
       it_should_behave_like 'an api request' do
         let(:command) { :add_user }
-        let(:args) { [random_bool, random_email, random_word(rand(10), true), random_word(rand(10), true)] }
+        let(:args) { [random_bool, random_email, random_word.capitalize, random_word.capitalize] }
         let(:add_data_to_collector) { true }
-        let(:data_param) {:user_ids}
-        let(:param_name) {'id'}
+        let(:data_param) {:new_user_ids}
+        let(:param_names) {%w(id)}
       end
     end
 
     describe '#get_user_by_username' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_user_by_username }
-        let(:args) { DATA_COLLECTOR[:user_ids].first }
+        let(:args) { DATA_COLLECTOR[:new_user_ids].first }
         let(:add_data_to_collector) { true }
         let(:data_param) {:emails}
-        let(:param_name) {'email'}
+        let(:param_names) {%w(email)}
       end
     end
 
@@ -103,7 +103,7 @@ describe Teamlab do
     describe '#remind_password' do
       it_should_behave_like 'an api request' do
         let(:command) { :remind_password }
-        let(:args) { [DATA_COLLECTOR[:user_ids].first, DATA_COLLECTOR[:emails].pop] }
+        let(:args) { [DATA_COLLECTOR[:new_user_ids].first, DATA_COLLECTOR[:emails].pop] }
       end
     end
 
@@ -117,14 +117,14 @@ describe Teamlab do
     describe '#update_contacts' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_contacts }
-        let(:args) { [DATA_COLLECTOR[:user_ids].sample, USER_CONTACTS] }
+        let(:args) { [random_id(:new_user), USER_CONTACTS] }
       end
     end
 
     describe '#send_invite' do
       it_should_behave_like 'an api request' do
         let(:command) { :send_invite }
-        let(:args) { [DATA_COLLECTOR[:user_ids]] }
+        let(:args) { [DATA_COLLECTOR[:new_user_ids]] }
       end
     end
 
@@ -138,61 +138,62 @@ describe Teamlab do
     describe '#update_user' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_user }
-        let(:args) { [DATA_COLLECTOR[:user_ids].sample, random_bool, random_email, random_word, random_word, { comment: random_word}] }
+        let(:args) { [random_id(:new_user), random_bool, random_email, random_word, random_word, { comment: random_word}] }
       end
     end
 
     describe '#change_people_type' do
       it_should_behave_like 'an api request' do
         let(:command) { :change_people_type }
-        let(:args) { [USER_TYPES.sample, DATA_COLLECTOR[:user_ids]] }
+        let(:args) { [USER_TYPES.sample, DATA_COLLECTOR[:new_user_ids]] }
       end
     end
 
     describe '#update_photo' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_photo }
-        let(:args) { [DATA_COLLECTOR[:user_ids].sample, PATH_TO_IMAGE] }
+        let(:args) { [random_id(:new_user), PATH_TO_IMAGE] }
       end
     end
 
     describe '#change_people_status' do
       it_should_behave_like 'an api request' do
         let(:command) { :change_people_status }
-        let(:args) { [ USER_STATUSES.sample, DATA_COLLECTOR[:user_ids]] }
+        let(:args) { [ USER_STATUSES.sample, DATA_COLLECTOR[:new_user_ids]] }
       end
     end
 
     describe '#add_contacts' do
       it_should_behave_like 'an api request' do
         let(:command) { :add_contacts }
-        let(:args) { [ USER_CONTACTS, DATA_COLLECTOR[:user_ids].sample] }
+        let(:args) { [ USER_CONTACTS, random_id(:new_user)] }
       end
     end
 
     describe '#delete_photo' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_photo }
-        let(:args) { DATA_COLLECTOR[:user_ids].sample }
+        let(:args) { random_id(:new_user) }
       end
     end
 
     describe '#delete_contacts' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_contacts }
-        let(:args) { [DATA_COLLECTOR[:user_ids].sample, USER_CONTACTS] }
+        let(:args) { [random_id(:new_user), USER_CONTACTS] }
       end
     end
 
     describe '#delete_user' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_user }
-        let(:args) { DATA_COLLECTOR[:user_ids].pop }
+        let(:args) { DATA_COLLECTOR[:new_user_ids].pop }
       end
     end
   end
 
   describe '[Group]' do
+
     let(:teamlab_module) { :group }
 
     describe '#get_groups' do
@@ -201,71 +202,75 @@ describe Teamlab do
       end
     end
 
-    describe '#get_group' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :get_group }
-        let(:args) { GROUP_ID }
-      end
-    end
-
     describe '#add_group' do
       it_should_behave_like 'an api request' do
         let(:command) { :add_group }
-        let(:args) { [USER_ID, GROUP_NAME, FEW_USER_IDS] }
+        let(:args) { [random_id(:user), random_word, DATA_COLLECTOR[:user_ids]] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) {:group_ids}
+        let(:param_names) {%w(id)}
+      end
+    end
+
+    describe '#get_group' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_group }
+        let(:args) { random_id(:group) }
       end
     end
 
     describe '#replace_members' do
       it_should_behave_like 'an api request' do
         let(:command) { :replace_members }
-        let(:args) { [GROUP_ID_FOR_OPERATIONS, FEW_USER_IDS] }
+        let(:args) { [random_id(:group), DATA_COLLECTOR[:user_ids]] }
       end
     end
 
     describe '#update_group' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_group }
-        let(:args) { [GROUP_ID_FOR_OPERATIONS, GROUP_UPDATE_OPTIONS] }
+        let(:args) { [random_id(:group), { groupManager: random_id(:user), groupName: random_word, members: DATA_COLLECTOR[:user_ids] }] }
       end
     end
 
     describe '#add_group_users' do
       it_should_behave_like 'an api request' do
         let(:command) { :add_group_users }
-        let(:args) { [GROUP_ID_FOR_OPERATIONS, FEW_USER_IDS] }
+        let(:args) { [random_id(:group), DATA_COLLECTOR[:user_ids]] }
       end
     end
 
     describe '#set_group_manager' do
       it_should_behave_like 'an api request' do
         let(:command) { :set_group_manager }
-        let(:args) { [GROUP_ID_FOR_OPERATIONS, USER_ID] }
+        let(:args) { [random_id(:group), random_id(:user)] }
       end
     end
 
     describe '#move_group_members' do
       it_should_behave_like 'an api request' do
         let(:command) { :move_group_members }
-        let(:args) { [GROUP_ID_FOR_OPERATIONS, GROUP_ID] }
-      end
-    end
-
-    describe '#delete_group' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :delete_group }
-        let(:args) { GROUP_ID_TO_DELETE }
+        let(:args) { [random_id(:group), random_id(:group)] }
       end
     end
 
     describe '#remove_group_members' do
       it_should_behave_like 'an api request' do
         let(:command) { :remove_group_members }
-        let(:args) { GROUP_ID_FOR_OPERATIONS }
+        let(:args) { random_id(:group) }
+      end
+    end
+
+    describe '#delete_group' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :delete_group }
+        let(:args) { DATA_COLLECTOR[:group_ids].pop }
       end
     end
   end
 
   describe '[Settings]' do
+
     let(:teamlab_module) { :settings }
 
     describe '#get_settings' do
@@ -295,210 +300,242 @@ describe Teamlab do
     describe '#get_security' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_security }
-        let(:args) { [SETTINGS_ENTITY_IDS] }
+        let(:args) { [random_settings_entity_id] }
       end
     end
 
     describe '#get_admin_security' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_admin_security }
-        let(:args) { [SETTINGS_TALK_MODULE_ID, SETTINGS_TEST_USER] }
+        let(:args) { [random_settings_entity_id, random_id(:user)] }
       end
     end
 
     describe '#get_product_admin' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_product_admin }
-        let(:args) { [SETTINGS_TALK_MODULE_ID] }
+        let(:args) { [random_settings_entity_id] }
       end
     end
 
     describe '#set_version' do
       it_should_behave_like 'an api request' do
         let(:command) { :set_version }
-        let(:args) { [SETTINGS_VERSION] }
+        let(:args) { [rand(2..50)] }
       end
     end
 
     describe '#set_security' do
       it_should_behave_like 'an api request' do
         let(:command) { :set_security }
-        let(:args) { [SETTINGS_TALK_MODULE_ID, SETTINGS_FOR_TALK] }
+        let(:args) { [random_settings_entity_id, {enabled: random_bool}] }
       end
     end
 
     describe '#set_access' do
       it_should_behave_like 'an api request' do
         let(:command) { :set_access }
-        let(:args) { [SETTINGS_TALK_MODULE_ID] }
+        let(:args) { [random_settings_entity_id, random_bool] }
       end
     end
 
     describe '#set_product_admin' do
       it_should_behave_like 'an api request' do
         let(:command) { :set_product_admin }
-        let(:args) { [SETTINGS_TALK_MODULE_ID, SETTINGS_TEST_USER] }
+        let(:args) { [random_settings_entity_id, random_id(:user)] }
       end
     end
   end
 
-  describe '[Settings]' do
+  describe '[Files]' do
+
+    describe 'Preparing enviroment' do
+      describe '#add_user' do
+        it_should_behave_like 'an api request' do
+          let(:teamlab_module) { :people }
+          let(:command) { :add_user }
+          let(:args) { [random_bool, random_email, random_word.capitalize, random_word.capitalize] }
+          let(:add_data_to_collector) { true }
+          let(:data_param) {:user_ids}
+          let(:param_names) {%w(id)}
+        end
+      end
+    end
+
     let(:teamlab_module) { :files }
 
     describe '#get_my_files' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_my_files }
+        let(:add_data_to_collector) { true }
+        let(:data_param) {:my_documents_ids}
+        let(:param_names) {%w(current id)}
       end
     end
 
     describe '#get_trash' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_trash }
-      end
-    end
-
-    describe '#get_folder' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :get_folder }
-        let(:args) { FOLDER_COMMON_DOCS_ID }
-      end
-    end
-
-    describe '#new_folder' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :new_folder }
-        let(:args) { ['1553123', FOLDER_TITLE] }
-      end
-    end
-
-    describe '#rename_folder' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :rename_folder }
-        let(:args) { [FOLDER_FOR_OPERATIONS_ID, FOLDER_TITLE] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) {:trash_documents_ids}
+        let(:param_names) {%w(current id)}
       end
     end
 
     describe '#get_shared_docs' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_shared_docs }
+        let(:add_data_to_collector) { true }
+        let(:data_param) {:shared_documents_ids}
+        let(:param_names) {%w(current id)}
       end
     end
 
     describe '#get_common_docs' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_common_docs }
+        let(:add_data_to_collector) { true }
+        let(:data_param) {:common_documents_ids}
+        let(:param_names) {%w(current id)}
+      end
+    end
+
+    describe '#new_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :new_folder }
+        let(:args) { [random_id(:my_documents), random_word] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) {:new_folder_ids}
+        let(:param_names) {%w(current id)}
+      end
+    end
+
+    describe '#get_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_folder }
+        let(:args) { random_id(:new_folder) }
+      end
+    end
+
+    describe '#rename_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :rename_folder }
+        let(:args) { [random_id(:new_folder), random_word] }
       end
     end
 
     describe '#search' do
       it_should_behave_like 'an api request' do
         let(:command) { :search }
-        let(:args) { FOLDER_TITLE }
+        let(:args) { random_word }
       end
     end
 
     describe '#get_recent_upload_files' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_recent_upload_files }
-        let(:args) { FOLDER_COMMON_DOCS_ID }
-      end
-    end
-
-    describe '#get_share_link' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :get_share_link }
-        let(:args) { [FOLDER_FOR_OPERATIONS_ID, FILES_SHARE_TYPE] }
-      end
-    end
-
-    describe '#upload_to_my_docs' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :upload_to_my_docs }
-        let(:args) { FILE_TO_UPLOAD }
-      end
-    end
-
-    describe '#upload_to_common_docs' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :upload_to_common_docs }
-        let(:args) { FILE_TO_UPLOAD }
-      end
-    end
-
-    describe '#upload_to_folder' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :upload_to_folder }
-        let(:args) { [FOLDER_FOR_OPERATIONS_ID, FILE_TO_UPLOAD] }
-      end
-    end
-
-    describe '#chunked_upload' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :chunked_upload }
-        let(:args) { [FOLDER_FOR_OPERATIONS_ID, FILE_TO_UPLOAD] }
-      end
-    end
-
-    describe '#create_txt_in_my_docs' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_txt_in_my_docs }
-        let(:args) { [NEW_FILE_NAME, NEW_FILE_CONTENT] }
-      end
-    end
-
-    describe '#create_html_in_my_docs' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_html_in_my_docs }
-        let(:args) { [NEW_FILE_NAME, NEW_FILE_CONTENT] }
-      end
-    end
-
-    describe '#create_txt_in_common_docs' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_txt_in_common_docs }
-        let(:args) { [NEW_FILE_NAME, NEW_FILE_CONTENT] }
-      end
-    end
-
-    describe '#create_html_in_common_docs' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_html_in_common_docs }
-        let(:args) { [NEW_FILE_NAME, NEW_FILE_CONTENT] }
-      end
-    end
-
-    describe '#create_txt' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_txt }
-        let(:args) { [FOLDER_FOR_OPERATIONS_ID, NEW_FILE_NAME, NEW_FILE_CONTENT] }
-      end
-    end
-
-    describe '#create_html' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_html }
-        let(:args) { [FOLDER_FOR_OPERATIONS_ID, NEW_FILE_NAME, NEW_FILE_CONTENT] }
+        let(:args) { [random_id(:my_documents)] }
       end
     end
 
     describe '#create_file' do
       it_should_behave_like 'an api request' do
         let(:command) { :create_file }
-        let(:args) { [FOLDER_FOR_OPERATIONS_ID, NEW_FILE_NAME] }
+        let(:args) { [random_id(:new_folder), random_word] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) {:new_file_ids}
+        let(:param_names) {%w(id)}
+      end
+    end
+
+    describe '#generate_shared_link' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :generate_shared_link }
+        let(:args) { [random_id(:new_file), FILES_SHARE_TYPES.sample] }
+      end
+    end
+
+    #describe '#upload_to_my_docs' do
+    #  it_should_behave_like 'an api request' do
+    #    let(:command) { :upload_to_my_docs }
+    #    let(:args) { FILE_TO_UPLOAD }
+    #  end
+    #end
+    #
+    #describe '#upload_to_common_docs' do
+    #  it_should_behave_like 'an api request' do
+    #    let(:command) { :upload_to_common_docs }
+    #    let(:args) { FILE_TO_UPLOAD }
+    #  end
+    #end
+    #
+    #describe '#upload_to_folder' do
+    #  it_should_behave_like 'an api request' do
+    #    let(:command) { :upload_to_folder }
+    #    let(:args) { [random_id(:new_folder), FILE_TO_UPLOAD] }
+    #  end
+    #end
+    #
+    #describe '#chunked_upload' do
+    #  it_should_behave_like 'an api request' do
+    #    let(:command) { :chunked_upload }
+    #    let(:args) { [random_id(:new_folder), FILE_TO_UPLOAD] }
+    #  end
+    #end
+
+    describe '#create_txt_in_my_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_txt_in_my_docs }
+        let(:args) { [random_word, random_word(rand(100))] }
+      end
+    end
+
+    describe '#create_html_in_my_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_html_in_my_docs }
+        let(:args) { [random_word, random_word(rand(100))] }
+      end
+    end
+
+    describe '#create_txt_in_common_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_txt_in_common_docs }
+        let(:args) { [random_word, random_word(rand(100))] }
+      end
+    end
+
+    describe '#create_html_in_common_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_html_in_common_docs }
+        let(:args) { [random_word, random_word(rand(100))] }
+      end
+    end
+
+    describe '#create_txt' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_txt }
+        let(:args) { [random_id(:new_folder), random_word, random_word(rand(100))] }
+      end
+    end
+
+    describe '#create_html' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_html }
+        let(:args) { [random_id(:new_folder), random_word, random_word(rand(100))] }
       end
     end
 
     describe '#get_file_info' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_file_info }
-        let(:args) { FILE_FOR_OPERATIONS_ID }
+        let(:args) { [random_id(:new_file)] }
       end
     end
 
     describe '#get_file_history' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_file_history }
-        let(:args) { FILE_FOR_OPERATIONS_ID }
+        let(:args) { [random_id(:new_file)] }
       end
     end
 
@@ -512,7 +549,7 @@ describe Teamlab do
     describe '#update_file_info' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_file_info }
-        let(:args) { [FILE_FOR_OPERATIONS_ID, NEW_FILE_NAME, FILE_FOR_OPERATIONS_VERSION] }
+        let(:args) { [random_id(:new_file), random_word, 1] }
       end
     end
 
@@ -525,21 +562,7 @@ describe Teamlab do
     describe '#import_from_third_party' do
       it_should_behave_like 'an api request' do
         let(:command) { :import_from_third_party }
-        let(:args) { [THIRD_PARTY_SERVICE, THIRD_PARTY_FOLDER_ID, IGNORE_COINCIDENCE_FILES, DATA_TO_IMPORT, THIRD_PARTY_LOGIN_DATA] }
-      end
-    end
-
-    describe '#delete_file' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :delete_file }
-        let(:args) { FILE_TO_DELETE_ID }
-      end
-    end
-
-    describe '#delete_folder' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :delete_folder }
-        let(:args) { FOLDER_TO_DELETE_ID }
+        let(:args) { [THIRD_PARTY_SERVICE, THIRD_PARTY_FOLDER_ID, random_bool, [], THIRD_PARTY_LOGIN_DATA] }
       end
     end
 
@@ -552,21 +575,21 @@ describe Teamlab do
     describe '#move_files' do
       it_should_behave_like 'an api request' do
         let(:command) { :move_files }
-        let(:args) { [FOLDER_FOR_OPERATIONS_ID, { folderIds: [FOLDER_TO_DELETE_ID], fileids: [FILE_TO_DELETE_ID], overwrite: true}] }
+        let(:args) { [random_id(:new_folder)] }#, { folderIds: [random_id(:new_folder)], fileids: [random_id(:new_file)], overwrite: random_bool}] }
       end
     end
 
     describe '#copy_to_folder' do
       it_should_behave_like 'an api request' do
         let(:command) { :copy_to_folder }
-        let(:args) { [FOLDER_FOR_OPERATIONS_ID, { folderIds: [FOLDER_TO_DELETE_ID], fileids: [FILE_TO_DELETE_ID], overwrite: true}] }
+        let(:args) { [random_id(:new_folder)] }#, { folderIds: [random_id(:new_folder)], fileids: [random_id(:new_file)], overwrite: random_bool}] }
       end
     end
 
     describe '#delete' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete }
-        let(:args) { [ folderIds: [FOLDER_TO_DELETE_ID], fileids: [FILE_TO_DELETE_ID] ] }
+        let(:args) { [ folderIds: [], fileids: [] ] }
       end
     end
 
@@ -584,56 +607,56 @@ describe Teamlab do
 
     describe '#mark_as_read' do
       it_should_behave_like 'an api request' do
-        let(:command) { :clear_recycle_bin }
+        let(:command) { :mark_as_read }
       end
     end
 
     describe '#finish_operations' do
       it_should_behave_like 'an api request' do
         let(:command) { :finish_operations }
-        let(:args) { [ folderIds: [FOLDER_FOR_OPERATIONS_ID], fileids: [FILE_FOR_OPERATIONS_ID] ] }
+        let(:args) { [ folderIds: [random_id(:new_folder)], fileids: [random_id(:new_file)] ] }
       end
     end
 
     describe '#get_file_sharing' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_file_sharing }
-        let(:args) { FILE_FOR_OPERATIONS_ID }
+        let(:args) { [random_id(:new_file)] }
       end
     end
 
     describe '#get_folder_sharing' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_folder_sharing }
-        let(:args) { FOLDER_FOR_OPERATIONS_ID }
+        let(:args) { [random_id(:new_folder)] }
       end
     end
 
     describe '#share_file' do
       it_should_behave_like 'an api request' do
         let(:command) { :share_file }
-        let(:args) { [FILE_FOR_OPERATIONS_ID, USER_ID, ACCESS_TYPE, { notify: NOTIFY_USER, sharingMessage: NOTIFICATION_MESSAGE }] }
+        let(:args) { [random_id(:new_file), random_id(:user), 1, { notify: random_bool, sharingMessage: random_word }] }
       end
     end
 
     describe '#share_folder' do
       it_should_behave_like 'an api request' do
         let(:command) { :share_folder }
-        let(:args) { [FOLDER_FOR_OPERATIONS_ID, USER_ID, ACCESS_TYPE, { notify: NOTIFY_USER, sharingMessage: NOTIFICATION_MESSAGE }] }
+        let(:args) { [random_id(:new_folder), random_id(:user), 1, { notify: random_bool, sharingMessage: random_word }] }
       end
     end
 
     describe '#remove_file_sharing_rights' do
       it_should_behave_like 'an api request' do
         let(:command) { :remove_file_sharing_rights }
-        let(:args) { [ FILE_FOR_OPERATIONS_ID, [USER_ID] ] }
+        let(:args) { [ random_id(:new_file), [random_id(:user)] ] }
       end
     end
 
     describe '#remove_folder_sharing_rights' do
       it_should_behave_like 'an api request' do
         let(:command) { :remove_folder_sharing_rights }
-        let(:args) { [ FOLDER_FOR_OPERATIONS_ID, [USER_ID] ] }
+        let(:args) { [ random_id(:new_folder), [random_id(:user)] ] }
       end
     end
 
@@ -647,6 +670,20 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:command) { :remove_third_party_account }
         let(:args) { PROVIDER_ID }
+      end
+    end
+
+    describe '#delete_file' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :delete_file }
+        let(:args) { [DATA_COLLECTOR[:new_file_ids].pop] }
+      end
+    end
+
+    describe '#delete_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :delete_folder }
+        let(:args) { [DATA_COLLECTOR[:new_folder_ids].pop] }
       end
     end
   end
@@ -1072,7 +1109,7 @@ describe Teamlab do
     describe '#save_number_settings' do
       it_should_behave_like 'an api request' do
         let(:command) { :save_number_settings }
-        let(:args) {[AUTOGENERATED, random_word(3, true), rand(10)]}
+        let(:args) {[AUTOGENERATED, random_word(3).capitalize, rand(10)]}
       end
     end
 

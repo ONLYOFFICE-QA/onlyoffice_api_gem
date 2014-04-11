@@ -1,7 +1,7 @@
 module Teamlab
   class Community
     def initialize
-      @request = Teamlab::Request
+      @request = Teamlab::Request.new('community')
     end
 
     def get_all_posts
