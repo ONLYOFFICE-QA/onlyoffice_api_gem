@@ -10,25 +10,25 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundle
+    bundle
 
 Or install it yourself as:
 
-    $ gem install teamlab
+    gem install teamlab
 
 ## Usage
 
 First of all, you should configure your enviroment by commands
 
-    $ Teamlab.configure do |config|
-    $   config.server = 'example.teamlab.com'
-    $   config.username = 'foo'
-    $   config.password = 'bar'
-    $ end
+    Teamlab.configure do |config|
+      config.server = 'example.teamlab.com'
+      config.username = 'foo'
+      config.password = 'bar'
+    end
 
 and then call methods you need:
 
-    $ Teamlab.people.get_people
+    Teamlab.people.get_people
 
 
 ## Contributing
@@ -38,3 +38,8 @@ and then call methods you need:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+## Documentation
+
+If you have some questions, you can read original documentation for TeamLab API at http://api.teamlab.com/2.0/
