@@ -42,4 +42,4 @@ and then call methods you need:
 
 ## Documentation
 
-If you have some questions, you can read original documentation for TeamLab API at [url]http://api.teamlab.com/2.0/[/url]
+If you have some questions, you can read original <a href="http://api.teamlab.com/2.0/"> documentation for TeamLab API</a>.
