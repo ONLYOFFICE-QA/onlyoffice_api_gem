@@ -2,8 +2,10 @@ SERVER = ''
 USERNAME = ''
 PASSWORD = ''
 
-DATA_COLLECTOR = {user_ids: [], new_user_ids: [], emails: [], group_ids: [], common_documents_ids: [], my_documents_ids: [],
-                  trash_documents_ids: [], shared_documents_ids: [], new_folder_ids: [], new_file_ids: []}
+DATA_COLLECTOR = {user_ids: [], file_ids: [], new_user_ids: [], emails: [], group_ids: [], common_documents_ids: [], my_documents_ids: [],
+                  trash_documents_ids: [], shared_documents_ids: [], new_folder_ids: [], new_file_ids: [], some_file_ids: [],
+                  project_ids: [], discussion_ids: [], project_template_ids: [], project_task_ids: [], project_milestone_ids: [],
+                  comment_ids: [], report_template_ids: [], project_subtask_ids: []}
 
 def args
   []
@@ -56,26 +58,18 @@ SETTINGS_FOR_TALK = { enabled: true }
 #region Files
 FILE_FOR_OPERATIONS_VERSION = 1
 FILES_SHARE_TYPES = %w(None ReadWrite Read Restrict)
-FILE_TO_UPLOAD = '/home/zagudaev-2/mods.txt'
-FILE_MORE_THAN_5_MB = '/mnt/data_share/Files/PDF/AllPDF/600 Essential Words for the TOEIC Test.pdf'
-THIRD_PARTY_SERVICE = 'Box.com'
-THIRD_PARTY_LOGIN = 'teamlab.ruby@gmail.com'
-THIRD_PARTY_PASSWORD = '123456'
-THIRD_PARTY_LOGIN_DATA = {login: THIRD_PARTY_LOGIN, password: THIRD_PARTY_PASSWORD}
-THIRD_PARTY_FOLDER_ID = '1042248535'
-DATA_TO_IMPORT = []
-FILE_TO_DELETE_ID = '3482889'
-FOLDER_TO_DELETE_ID = '1555056'
-ACCESS_TYPE = 1
-NOTIFY_USER = true
-NOTIFICATION_MESSAGE = random_word(10)
-PROVIDER_ID = '12137'
 #endregion
 
 #region Projects
+PROJECT_STATUSES = %w(open paused closed)
+PROJECT_MILESTONE_STATUSES = %w(open closed)
+PROJECT_TASK_LINK_TYPES = %w(Start End EndStart)
+PROJECT_SECURITY_RIGHTS = %w(None Messages Tasks Files Milestone Contacts)
+PROJECT_TASKS_STATUSES = %w(open closed)
+
 BASECAMP_URL = "https://basecamp.com/2452154"
-BASECAMP_LOGIN = "qwegsdfs@qwe.ru"
-BASECAMP_PSW = "123456"
+BASECAMP_LOGIN = ""
+BASECAMP_PSW = ""
 IMPORT_CLOSED_PROJECTS = true
 DISABLE_NOTIFICATONS = false
 IMPORT_USERS_AS_COLLABORATORS = true

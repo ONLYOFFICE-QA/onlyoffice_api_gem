@@ -21,6 +21,8 @@ module Teamlab
       @request.delete(['accounts', email.to_s])
     end
 
+    #region Tags
+
     def get_tag_list
       @request.get(%w(tags))
     end
@@ -29,6 +31,23 @@ module Teamlab
       @request.post(%w(tags), {name: name}.merge(options))
     end
 
+    def update_tag(id, name, options = {})
+      @request.put(['tags', id.to_s], {name: name}.merge(options))
+    end
+
+    def set_tag_to_messages(id, *message_ids)
+      @request.put(['tags', id.to_s, 'set'], messages: message_ids.flatten)
+    end
+
+    def remove_tag_from_messages(id, *message_ids)
+      @request.put(['tags', id.to_s, 'remove'], messages: message_ids.flatten)
+    end
+
+    def delete_tag(id)
+      @request.delete(['tags', id.to_s])
+    end
+
+    #endregion
   end
 end
 

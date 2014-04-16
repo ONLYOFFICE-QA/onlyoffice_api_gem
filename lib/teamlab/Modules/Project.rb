@@ -4,6 +4,8 @@ module Teamlab
       @request = Teamlab::Request.new('project')
     end
 
+    #region Import
+
     def get_import_status
       @request.get(['import'])
     end
@@ -17,65 +19,77 @@ module Teamlab
       @request.post(%w(import projects), url: url, userName: username, password: password)
     end
 
-    def get_latest_discussion_messages
+    #endregion
+
+    #region Discussions
+
+    def get_latest_discussion_messages #есть тест
       @request.get(['message'])
     end
 
-    def get_message_by_filter(options = {})
+    def get_message_by_filter(options = {}) #есть тест
       @request.get(%w(message filter), options)
     end
 
-    def get_messages(project_id)
+    def get_messages(project_id) #есть тест
       @request.get([project_id.to_s, 'message'])
     end
 
-    def check_subscription_to_discussion(message_id)
+    def check_subscription_to_discussion(message_id) #есть тест
       @request.get(['message', message_id.to_s, 'subscribe'])
     end
 
-    def add_message(project_id, title, content, participants, options = [])
-      @request.get([project_id.to_s, 'message'], { title: title, content: content, participants: participants }.merge(options))
+    def add_message(project_id, title, content, participants, options = {}) #есть тест
+      @request.post([project_id.to_s, 'message'], { title: title, content: content, participants: participants }.merge(options))
     end
 
-    def update_message(message_id, project_id, title, content, options = {})
+    def update_message(message_id, project_id, title, content, options = {}) #есть тест
       @request.put(['message', message_id.to_s], { projectid: project_id, title: title, content: content }.merge(options))
     end
 
-    def subscribe_to_message(message_id)
+    def subscribe_to_message_action(message_id) #есть тест
       @request.put(['message', message_id.to_s, 'subscribe'])
     end
 
-    def delete_message(message_id)
+    def delete_message(message_id) #есть тест
       @request.delete(['message', message_id.to_s])
     end
 
-    def get_task_files(task_id)
+    #endregion
+
+    #region Files
+
+    def get_task_files(task_id) #есть тест
       @request.get(['task', task_id.to_s, 'files'])
     end
 
-    def get_entity_files(entity_id, entity_type)
+    def get_entity_files(entity_id, entity_type) #есть тест
       @request.get([entity_id.to_s, 'entityfiles'], entityType: entity_type)
     end
 
-    def get_message_files(message_id)
+    def get_message_files(message_id) #есть тест
       @request.get(['message', message_id.to_s, 'files'])
     end
 
-    def upload_file_to_task(task_id, *files)
+    def upload_file_to_task(task_id, *files) #есть тест
       @request.post(['task', task_id.to_s, 'files'], files: files.flatten)
     end
 
-    def upload_file_to_message(message_id, *files)
+    def upload_file_to_message(message_id, *files) #есть тест
       @request.post(['message', message_id.to_s, 'files'], files: files.flatten)
     end
 
-    def detach_file_from_task(task_id, file_id)
+    def detach_file_from_task(task_id, file_id) #есть тест
       @request.delete(['task', task_id.to_s, 'files'], fileid: file_id)
     end
 
-    def detach_file_from_message(message_id, file_id)
+    def detach_file_from_message(message_id, file_id) #есть тест
       @request.delete(['task', message_id.to_s, 'files'], fileid: file_id)
     end
+
+    #endregion
+
+    #region Comment
 
     def get_comment(comment_id)
       @request.get(['comment', comment_id.to_s])
@@ -89,33 +103,41 @@ module Teamlab
       @request.get(['message', message_id.to_s, 'comment'])
     end
 
-    def add_task_comment(task_id, content, options = {})
+    def add_task_comment(task_id, content, options = {}) #есть тест
       @request.post(['task', task_id.to_s, 'comment'], { content: content }.merge(options))
     end
 
-    def add_message_comment(message_id, content, options = {})
+    def add_message_comment(message_id, content, options = {}) #есть тест
       @request.post(['task', message_id.to_s, 'comment'], { content: content }.merge(options))
     end
 
-    def update_comment(comment_id, content)
+    def update_comment(comment_id, content) #есть тест
       @request.put(['comment', comment_id.to_s], content: content)
     end
 
-    def delete_comment(comment_id)
+    def delete_comment(comment_id) #есть тест
       @request.delete(['comment', comment_id.to_s])
     end
 
-    def create_report_template(name, options)
+    #endregion
+
+    #region Report Template
+
+    def create_report_template(name, options = {})
       @request.post(['report'], { name: name }.merge(options))
     end
 
-    def update_report_template(report_id, name, options)
+    def update_report_template(report_id, name, options = {})
       @request.put(['report', report_id.to_s], { name: name }.merge(options))
     end
 
     def delete_report_template(report_id)
       @request.delete(['report', report_id.to_s])
     end
+
+    #endregion
+
+    #region Projects
 
     def get_projects
       @request.get
@@ -129,11 +151,11 @@ module Teamlab
       @request.get(['@self'])
     end
 
-    def filter_projects(options)
+    def filter_projects(options = {})
       @request.get(['filter'], options)
     end
 
-    def followed_projects
+    def get_followed_projects
       @request.get(['@follow'])
     end
 
@@ -177,13 +199,12 @@ module Teamlab
       @request.post('', { title: title, description: description, responsibleid: responsible_id, tags: tags, private: private}.merge(options))
     end
 
-    def create_template(title, description)
-      @request.post(['template'], { title: title, description: description})
+    def create_template(title)
+      @request.post(['template'], { title: title })
     end
 
-    def add_milestone(project_id, title, deadline, is_key, is_notify, description, responsible, notify_responsible)
-      @request.post([project_id.to_s, 'milestone'], title: title, deadline: deadline, isKey: is_key, isNotify: is_notify,
-                              description: description, responsible: responsible, notifyResponsible: notify_responsible)
+    def add_milestone(project_id, title, deadline, responsible_id, options = {})
+      @request.post([project_id.to_s, 'milestone'], {title: title, deadline: deadline, responsible: responsible_id}.merge(options))
     end
 
     def update_project_tags(id, tags)
@@ -194,8 +215,8 @@ module Teamlab
       @request.put([id.to_s, 'status'], status: status)
     end
 
-    def update_template(id, title, description)
-      @request.put(['template', id.to_s], title: title, description: description)
+    def update_template(id, title)
+      @request.put(['template', id.to_s], title: title)
     end
 
     def follow_unfollow_project(project_id)
@@ -214,20 +235,22 @@ module Teamlab
       @request.delete(['task', id.to_s])
     end
 
-    def get_tasks_by_ids(task_ids)
-      @request.get(['task'], taskid: task_ids)
+    #endregion
+
+    def get_tasks_by_ids(*task_ids)
+      @request.get(['task'], taskid: task_ids.flatten)
     end
 
-    def get_task_order(id)
-      @request.get([id.to_s, 'order'])
+    def get_task_order(project_id)
+      @request.get([project_id.to_s, 'order'])
     end
 
     def get_simple_task_by_filter(project_id, options = {})
       @request.get(%w(task filter simple), { projectid: project_id }.merge(options))
     end
 
-    def add_link(task_id, options = {})
-      @request.post(['task', task_id.to_s, 'link'], options)
+    def add_link(parent_task_id, dependence_task_id, link_type)
+      @request.post(['task', parent_task_id.to_s, 'link'], dependenceTaskId: dependence_task_id, linkType: link_type)
     end
 
     def update_project(id, title, responsible_id, options = {})
@@ -242,12 +265,14 @@ module Teamlab
       @request.put(['task', task_id.to_s], {title: title.to_s}.merge(options))
     end
 
+    #region Team
+
     def get_project_team(project_id)
       @request.get([project_id.to_s, 'team'])
     end
 
-    def get_projects_teams(project_ids)
-      @request.post(%w(team), ids: project_ids)
+    def get_projects_teams(*project_ids)
+      @request.post(%w(team), ids: project_ids.flatten)
     end
 
     def add_to_team(project_id, user_id)
@@ -265,6 +290,10 @@ module Teamlab
     def remove_from_team(project_id, user_id)
       @request.delete([project_id.to_s, 'team'], userId: user_id)
     end
+
+    #endregion
+
+    #region Tasks
 
     def get_my_tasks
       @request.get(%w(task @self))
@@ -290,7 +319,7 @@ module Teamlab
       @request.get(['task', task_id.to_s, 'notify'])
     end
 
-    def get_all_tasts(project_id)
+    def get_all_tasks(project_id)
       @request.get([project_id.to_s, 'task', '@all'])
     end
 
