@@ -13,8 +13,12 @@ describe Teamlab do
   shared_examples_for 'an api request' do
     before do
       @module = Teamlab.send(teamlab_module)
+      puts "#{command}(#{args.join(', ')})"
       @response = args.empty? ? @module.send(command) : @module.send(command, *args)
-      DATA_COLLECTOR[data_param] << param_names.inject(@response.body['response']) { |resp, param| resp[param] } if add_data_to_collector
+      if add_data_to_collector
+        DATA_COLLECTOR[data_param] ||= []
+        DATA_COLLECTOR[data_param] << param_names.inject(@response.body['response']) { |resp, param| resp[param] }
+      end
     end
 
     context 'Successful api request' do
@@ -55,14 +59,14 @@ describe Teamlab do
     describe '#search_people' do
       it_should_behave_like 'an api request' do
         let(:command) { :search_people }
-        let(:args) { random_word(4) }
+        let(:args) { [random_word(4)] }
       end
     end
 
     describe '#filter' do
       it_should_behave_like 'an api request' do
         let(:command) { :filter_people }
-        let(:args) { { activationStatus: 1 } }
+        let(:args) { [{ activationStatus: 1 }] }
       end
     end
 
@@ -79,7 +83,7 @@ describe Teamlab do
     describe '#get_user_by_username' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_user_by_username }
-        let(:args) { DATA_COLLECTOR[:new_user_ids].first }
+        let(:args) { [random_id(:new_user)] }
         let(:add_data_to_collector) { true }
         let(:data_param) {:emails}
         let(:param_names) {%w(email)}
@@ -89,14 +93,14 @@ describe Teamlab do
     describe '#get_people_by_status' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_people_by_status }
-        let(:args) { USER_STATUSES.sample }
+        let(:args) { [USER_STATUSES.sample] }
       end
     end
 
     describe '#get_people_by_search_query' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_people_by_search_query }
-        let(:args) { random_word }
+        let(:args) { [random_word] }
       end
     end
 
@@ -151,6 +155,7 @@ describe Teamlab do
 
     describe '#update_photo' do
       it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23867'
         let(:command) { :update_photo }
         let(:args) { [random_id(:new_user), PATH_TO_IMAGE] }
       end
@@ -173,7 +178,7 @@ describe Teamlab do
     describe '#delete_photo' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_photo }
-        let(:args) { random_id(:new_user) }
+        let(:args) { [random_id(:new_user)] }
       end
     end
 
@@ -187,7 +192,7 @@ describe Teamlab do
     describe '#delete_user' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_user }
-        let(:args) { DATA_COLLECTOR[:new_user_ids].pop }
+        let(:args) { [DATA_COLLECTOR[:new_user_ids].pop] }
       end
     end
   end
@@ -215,7 +220,7 @@ describe Teamlab do
     describe '#get_group' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_group }
-        let(:args) { random_id(:group) }
+        let(:args) { [random_id(:group)] }
       end
     end
 
@@ -257,14 +262,14 @@ describe Teamlab do
     describe '#remove_group_members' do
       it_should_behave_like 'an api request' do
         let(:command) { :remove_group_members }
-        let(:args) { random_id(:group) }
+        let(:args) { [random_id(:group)] }
       end
     end
 
     describe '#delete_group' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_group }
-        let(:args) { DATA_COLLECTOR[:group_ids].pop }
+        let(:args) { [DATA_COLLECTOR[:group_ids].pop] }
       end
     end
   end
@@ -287,6 +292,7 @@ describe Teamlab do
 
     describe '#get_usage_quota' do
       it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23868'
         let(:command) { :get_usage_quota }
       end
     end
@@ -334,8 +340,9 @@ describe Teamlab do
 
     describe '#set_access' do
       it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23764'
         let(:command) { :set_access }
-        let(:args) { [random_settings_entity_id, random_bool] }
+        let(:args) { [[random_settings_entity_id, random_bool]] }
       end
     end
 
@@ -400,7 +407,7 @@ describe Teamlab do
     describe '#get_folder' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_folder }
-        let(:args) { random_id(:new_folder) }
+        let(:args) { [random_id(:new_folder)] }
       end
     end
 
@@ -414,13 +421,14 @@ describe Teamlab do
     describe '#search' do
       it_should_behave_like 'an api request' do
         let(:command) { :search }
-        let(:args) { random_word }
+        let(:args) { [random_word] }
       end
     end
 
-    describe '#get_recent_upload_files' do
+    describe '#get_recent_uploaded_files' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_recent_upload_files }
+        pending 'http://bugzserver/show_bug.cgi?id=23869'
+        let(:command) { :get_recent_uploaded_files }
         let(:args) { [random_id(:my_documents)] }
       end
     end
@@ -695,40 +703,6 @@ describe Teamlab do
 
   describe '[Project]' do
 
-    describe 'Preparing enviroment' do
-      describe '#add_user' do
-        it_should_behave_like 'an api request' do
-          let(:teamlab_module) { :people }
-          let(:command) { :add_user }
-          let(:args) { [false, random_email, random_word.capitalize, random_word.capitalize] }
-          let(:add_data_to_collector) { true }
-          let(:data_param) { :user_ids }
-          let(:param_names) { %w(id) }
-        end
-      end
-
-      describe '#get_my_files' do
-        it_should_behave_like 'an api request' do
-          let(:teamlab_module) { :files }
-          let(:command) { :get_my_files }
-          let(:add_data_to_collector) { true }
-          let(:data_param) { :my_documents_ids }
-          let(:param_names) { %w(current id) }
-        end
-      end
-
-      describe '#create_file' do
-        it_should_behave_like 'an api request' do
-          let(:teamlab_module) { :files }
-          let(:command) { :create_file }
-          let(:args) { [random_id(:my_documents), random_word] }
-          let(:add_data_to_collector) { true }
-          let(:data_param) { :file_ids }
-          let(:param_names) { %w(id) }
-        end
-      end
-    end
-
     let(:teamlab_module) { :project }
 
     describe '#add_importing_url_to_queue' do
@@ -754,7 +728,7 @@ describe Teamlab do
     describe '#create_project' do
       it_should_behave_like 'an api request' do
         let(:command) { :create_project }
-        let(:args) { [random_word, random_word, random_id(:user), random_word(3), random_bool] }
+        let(:args) { [random_word, random_word, random_id(:user), random_word(3), random_bool, {participants: DATA_COLLECTOR[:user_ids]}] }
         let(:add_data_to_collector) { true }
         let(:data_param) { :project_ids }
         let(:param_names) { %w(id) }
@@ -800,10 +774,20 @@ describe Teamlab do
 
     describe '#create_subtask' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_my_tasks_with_status }
-        let(:args) { [random_id(:project_task), random_id(:user), random_word] }
+        let(:command) { :create_subtask }
+        let(:args) { [DATA_COLLECTOR[:project_task_ids].last, random_id(:user), random_word] }
         let(:add_data_to_collector) { true }
         let(:data_param) { :project_subtask_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#add_task_time' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_task_time }
+        let(:args) { [random_id(:project_task), Time.now.strftime('%Y-%m-%-d'), random_id(:user), DATA_COLLECTOR[:project_ids].last] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :project_task_time_ids }
         let(:param_names) { %w(id) }
       end
     end
@@ -975,7 +959,7 @@ describe Teamlab do
     describe '#get_project' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_project }
-        let(:args) { random_id(:project) }
+        let(:args) { [random_id(:project)] }
       end
     end
 
@@ -1026,6 +1010,7 @@ describe Teamlab do
 
     describe '#get_template' do
       it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23875'
         let(:command) { :get_template }
         let(:args) { [random_id(:project_template)] }
       end
@@ -1110,6 +1095,7 @@ describe Teamlab do
 
     describe '#add_link' do
       it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23861'
         let(:command) { :add_link }
         let(:args) { [random_id(:project_task), random_id(:project_task), PROJECT_TASK_LINK_TYPES.sample] }
       end
@@ -1125,7 +1111,7 @@ describe Teamlab do
     describe '#set_task_order' do
       it_should_behave_like 'an api request' do
         let(:command) { :set_task_order }
-        let(:args) { [random_id(:project_task), '123456'] }
+        let(:args) { [random_id(:project), '123456'] }
       end
     end
 
@@ -1235,6 +1221,7 @@ describe Teamlab do
 
     describe '#update_task_status' do
       it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23860'
         let(:command) { :update_task_status }
         let(:args) { [random_id(:project_task), PROJECT_TASKS_STATUSES.sample] }
       end
@@ -1242,24 +1229,165 @@ describe Teamlab do
 
     describe '#update_subtask' do
       it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23860'
         let(:command) { :update_subtask }
-        let(:args) { [random_id(:project_task), random_id(:project_subtask), random_id(:user), random_word] }
+        let(:args) { [DATA_COLLECTOR[:project_task_ids].last, random_id(:project_subtask), random_id(:user), random_word] }
       end
     end
 
     describe '#update_subtask_status' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_subtask_status }
-        let(:args) { [random_id(:project_task), random_id(:project_subtask), PROJECT_TASKS_STATUSES.sample] }
+        let(:args) { [DATA_COLLECTOR[:project_task_ids].last, random_id(:project_subtask), PROJECT_TASKS_STATUSES.sample] }
       end
     end
 
+    describe '#add_project_contact' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_project_contact }
+        let(:args) { [random_id(:project), random_id(:contact)] }
+      end
+    end
 
+    describe '#get_projects_for_contact' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_projects_for_contact }
+        let(:args) { [random_id(:contact)] }
+      end
+    end
+
+    describe '#get_project_tags' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_project_tags }
+      end
+    end
+
+    describe '#get_project_by_tag' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_project_by_tag }
+        let(:args) { [random_word(4)] }
+      end
+    end
+
+    describe '#get_tags_by_name' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_tags_by_name }
+        let(:args) { [random_word(4)] }
+      end
+    end
+
+    describe '#get_upcoming_milestones' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_upcoming_milestones }
+      end
+    end
+
+    describe '#get_overdue_milestones' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_overdue_milestones }
+      end
+    end
+
+    describe '#get_milestone' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_milestone }
+        let(:args) { [random_id(:project_milestone)] }
+      end
+    end
+
+    describe '#get_milestones_by_filter' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_milestones_by_filter }
+        let(:args) { [{projectid: random_id(:project)}] }
+      end
+    end
+
+    describe '#get_milestone_tasks' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_milestone_tasks }
+        let(:args) { [random_id(:project_milestone)] }
+      end
+    end
+
+    describe '#get_milestones_by_month' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_milestones_by_month }
+        let(:args) { [rand(2000..Time.now.year.to_i), rand(1..12)] }
+      end
+    end
+
+    describe '#get_milestones_by_full_date' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_milestones_by_full_date }
+        let(:args) { [rand(2000..Time.now.year.to_i), rand(1..12), rand(1..31)] }
+      end
+    end
+
+    describe '#update_milestone' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_milestone }
+        let(:args) { [random_id(:project_milestone), random_word, DateTime.commercial(2015).to_s] }
+      end
+    end
+
+    describe '#update_milestone_status' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_milestone_status }
+        let(:args) { [random_id(:project_milestone), PROJECT_MILESTONE_STATUSES.sample] }
+      end
+    end
+
+    describe '#get_time_spent_by_filter' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_time_spent_by_filter }
+      end
+    end
+
+    describe '#get_total_time_spent_by_filter' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_total_time_spent_by_filter }
+      end
+    end
+
+    describe '#get_time_spent' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_time_spent }
+        let(:args) { [random_id(:project_task)] }
+      end
+    end
+
+    describe '#update_task_time' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_task_time }
+        let(:args) { [random_id(:project_task_time), Time.now.strftime('%Y-%m-%-d'), random_id(:user)] }
+      end
+    end
+
+    describe '#update_time_status_of_payment' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_time_status_of_payment }
+        let(:args) { [DATA_COLLECTOR[:project_task_time_ids].sample(rand(2..4)), PROJECT_TASK_TIME_STATUSES.sample] }
+      end
+    end
+
+    describe '#delete_time_spents' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :delete_time_spents }
+        let(:args) { [DATA_COLLECTOR[:project_task_time_ids].pop] }
+      end
+    end
+
+    describe '#delete_project_contact' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :delete_project_contact }
+        let(:args) { [random_id(:project), random_id(:contact)] }
+      end
+    end
 
     describe '#delete_subtask' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_subtask }
-        let(:args) { [random_id(:project_task), random_id(:project_subtask)] }
+        let(:args) { [DATA_COLLECTOR[:project_task_ids].last, DATA_COLLECTOR[:project_subtask_ids].pop] }
       end
     end
 
@@ -1284,10 +1412,16 @@ describe Teamlab do
       end
     end
 
+    describe '#delete_milestone' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :delete_milestone }
+        let(:args) { [DATA_COLLECTOR[:project_milestone_ids].pop] }
+      end
+    end
+
     describe '#delete_task_comments' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_comment }
-        puts DATA_COLLECTOR[:project_task_ids].last
         let(:args) { [DATA_COLLECTOR[:comment_ids].pop] }
       end
     end
@@ -1295,8 +1429,7 @@ describe Teamlab do
     describe '#delete_task' do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_task }
-        puts DATA_COLLECTOR[:project_task_ids].last
-        let(:args) { DATA_COLLECTOR[:project_task_ids].pop }
+        let(:args) { [DATA_COLLECTOR[:project_task_ids].pop] }
       end
     end
 
@@ -1314,25 +1447,226 @@ describe Teamlab do
       end
     end
 
-    describe '#delete_file' do
-      it_should_behave_like 'an api request' do
-        let(:teamlab_module) { :files }
-        let(:command) { :delete_file }
-        let(:args) { [DATA_COLLECTOR[:file_ids].pop] }
-      end
-    end
-
-    describe '#delete_user' do
-      it_should_behave_like 'an api request' do
-        let(:teamlab_module) { :people }
-        let(:command) { :delete_user }
-        let(:args) { DATA_COLLECTOR[:user_ids].pop }
-      end
-    end
-end
+  end
 
   describe '[CRM]' do
+
+    describe 'Preparing enviroment' do
+      describe '#add_user' do
+        it_should_behave_like 'an api request' do
+          let(:teamlab_module) { :people }
+          let(:command) { :add_user }
+          let(:args) { [false, random_email, random_word.capitalize, random_word.capitalize] }
+          let(:add_data_to_collector) { true }
+          let(:data_param) { :user_ids }
+          let(:param_names) { %w(id) }
+        end
+      end
+
+      describe '#get_my_files' do
+        it_should_behave_like 'an api request' do
+          let(:teamlab_module) { :files }
+          let(:command) { :get_my_files }
+          let(:add_data_to_collector) { true }
+          let(:data_param) { :my_documents_ids }
+          let(:param_names) { %w(current id) }
+        end
+      end
+
+      describe '#create_file' do
+        it_should_behave_like 'an api request' do
+          let(:teamlab_module) { :files }
+          let(:command) { :create_file }
+          let(:args) { [random_id(:my_documents), random_word] }
+          let(:add_data_to_collector) { true }
+          let(:data_param) { :file_ids }
+          let(:param_names) { %w(id) }
+        end
+      end
+
+      describe '#create_person' do
+        it_should_behave_like 'an api request' do
+          let(:teamlab_module) { :crm }
+          let(:command) { :create_person }
+          let(:args) { [random_word.capitalize, random_word.capitalize] }
+          let(:add_data_to_collector) { true }
+          let(:data_param) { :contact_ids }
+          let(:param_names) { %w(id) }
+        end
+      end
+    end
+
     let(:teamlab_module) { :crm }
+
+    describe '#create_opportunity_stage' do
+      it_should_behave_like 'an api request' do
+        let(:teamlab_module) { :crm }
+        let(:command) { :create_opportunity_stage }
+        let(:args) { [random_word.capitalize, COLORS_NAMES.sample] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :opportunity_stage_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_person' do
+      it_should_behave_like 'an api request' do
+        let(:teamlab_module) { :crm }
+        let(:command) { :create_person }
+        let(:args) { [random_word.capitalize, random_word.capitalize] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :new_contact_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_opportunity' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_opportunity }
+        let(:args) { [random_id(:opportunity_stage), random_word, random_id(:user)] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :opportunity_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_opportunity_for_group' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_opportunity }
+        let(:args) { [random_id(:opportunity_stage), random_word, random_id(:user)] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :opportunity_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_invoice' do
+      it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23886'
+        let(:command) { :create_invoice }
+        let(:args) { [] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :invoice_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_invoice_for_batch' do
+      it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23886'
+        let(:command) { :create_invoice }
+        let(:args) { [] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :invoice_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_history_category' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_history_category }
+        let(:args) { [random_word, random_word] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :crm_history_category_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_task' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_task }
+        let(:args) { [random_word, DateTime.commercial(2015).to_s, random_id(:user), random_id(:crm_history_category)] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :crm_task_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_invoice_line' do
+      it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23886, http://bugzserver/show_bug.cgi?id=23888'
+        let(:command) { :create_invoice_line }
+        let(:args) { [random_id(:invoice)] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :invoice_line_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_invoice_item' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_invoice_item }
+        let(:args) { [random_word, random_word, rand, random_word] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :invoice_item_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+
+    describe '#create_invoice_item_for_batch' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_invoice_item }
+        let(:args) { [random_word, random_word, rand, random_word] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :invoice_item_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_invoice_tax' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_invoice_tax }
+        let(:args) { [random_word, random_word] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :invoice_tax_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_contact_type' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_contact_type }
+        let(:args) { [random_word] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :contact_type_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_contact_status' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_contact_status }
+        let(:args) { [random_word, COLORS_NAMES.sample] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :contact_status_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    describe '#create_company' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :create_company }
+        let(:args) { [random_word, [random_id(:user)]] }
+        let(:add_data_to_collector) { true }
+        let(:data_param) { :company_ids }
+        let(:param_names) { %w(id) }
+      end
+    end
+
+    #describe '#create_task_group' do
+    #  it_should_behave_like 'an api request' do
+    #    let(:command) { :create_task_group }
+    #    let(:args) { [random_word] }
+    #    let(:add_data_to_collector) { true }
+    #    let(:data_param) { :task_group_ids }
+    #    let(:param_names) { %w(id) }
+    #  end
+    #end
+
+
+
+#================================================== END CREATING ===========================================
 
     describe '#get_all_opportunity_stages' do
       it_should_behave_like 'an api request' do
@@ -1358,64 +1692,74 @@ end
       end
     end
 
-    describe '#create_opportunity_stage' do
+    describe '#get_opportunity_stage' do
       it_should_behave_like 'an api request' do
-        let(:command) { :create_opportunity_stage }
-        let(:args) { [RANDOM_TITLE, OPPORTUNITY_COLOR_NAME] }
+        let(:command) { :get_opportunity_stage }
+        let(:args) { [random_id(:opportunity_stage)] }
       end
     end
 
-    describe '#update_opportunity_stage' do
+    describe '#get_opportunity_by_id' do
       it_should_behave_like 'an api request' do
-        let(:command) { :update_opportunity_stage }
-        let(:args) { [OPPORTUNITY_ID, RANDOM_TITLE, OPPORTUNITY_COLOR_NAME] }
+        let(:command) { :get_opportunity_by_id }
+        let(:args) { [random_id(:opportunity)] }
       end
     end
 
-    describe '#update_opportunity_stage_order' do
+    describe '#get_all_opportunity_contacts' do
       it_should_behave_like 'an api request' do
-        let(:command) { :update_opportunity_stage_order }
+        let(:command) { :get_all_opportunity_contacts }
+        let(:args) { [random_id(:opportunity)] }
+      end
+    end
+
+    describe '#get_summary_table' do
+      it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23883'
+        let(:command) { :get_summary_table }
+        let(:args) { [random_word] }
+      end
+    end
+
+    describe '#add_opportunity_contact' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_opportunity_contact }
+        let(:args) { [random_id(:opportunity), random_id(:new_contact)] }
       end
     end
 
     describe '#set_opportunity_access_rights' do
       it_should_behave_like 'an api request' do
         let(:command) { :set_opportunity_access_rights }
+        let(:args) { [[random_id(:opportunity)], random_bool, random_id(:user)] }
       end
     end
 
-    describe '#update_opportunity' do
+    describe '#update_opportunity_stage' do
       it_should_behave_like 'an api request' do
-        let(:command) { :update_opportunity }
-        let(:args) { [OPPORTUNITY_ID, CONTACT_ID, RANDOM_TITLE, RESPONSIBLE_ID, STAGE_ID] }
+        pending 'http://bugzserver/show_bug.cgi?id=23884'
+        let(:command) { :update_opportunity_stage }
+        let(:args) { [random_id(:opportunity_stage), random_word, COLORS_NAMES.sample] }
       end
     end
 
-    describe '#update_opportunity_stage_color' do
+    describe '#update_opportunity_stages_order' do
       it_should_behave_like 'an api request' do
-        let(:command) { :update_opportunity_stage_color }
-        let(:args) { [STAGE_ID, OPPORTUNITY_COLOR_NAME] }
+        let(:command) { :update_opportunity_stages_order }
+        let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].sample(rand(1..3))] }
       end
     end
 
-    describe '#update_opportunity_stage_color' do
+    describe '#set_opportunity_access_rights_for_users' do
       it_should_behave_like 'an api request' do
-        let(:command) { :update_opportunity_stage_color }
-        let(:args) { [OPPORTUNITY_ID, OPPORTUNITY_COLOR_NAME] }
-      end
-    end
-
-    describe '#set_rights_to_opportunity' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :set_rights_to_opportunity }
-        let(:args) { [OPPORTUNITY_ID, IS_PRIVATE, FEW_USER_IDS] }
+        let(:command) { :set_opportunity_access_rights_for_users }
       end
     end
 
     describe '#update_opportunity_to_stage' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_opportunity_to_stage }
-        let(:args) { [OPPORTUNITY_ID, STAGE_ID] }
+        let(:args) { [random_id(:opportunity), random_id(:opportunity_stage)] }
       end
     end
 
@@ -1425,10 +1769,17 @@ end
       end
     end
 
+    describe '#get_contacts_for_mail' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :get_contacts_for_mail }
+        let(:args) { [DATA_COLLECTOR[:new_contact_ids].sample(rand(1..3))] }
+      end
+    end
+
     describe '#get_cases_by_prefix' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_cases_by_prefix }
-        let(:args) { [CONTACT_ID, RANDOM_TITLE] }
+        let(:args) { [random_id(:new_contact), random_word] }
       end
     end
 
@@ -1444,15 +1795,15 @@ end
       end
     end
 
-    describe '#get_invoices' do
+    describe '#get_invoices_by_filter' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_invoices }
+        let(:command) { :get_invoices_by_filter }
       end
     end
 
-    describe '#get_contacts' do
+    describe '#get_contacts_by_filter' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_contacts }
+        let(:command) { :get_contacts_by_filter }
       end
     end
 
@@ -1462,133 +1813,94 @@ end
       end
     end
 
-    describe '#get_invoice_items' do
+    describe '#get_invoice_items_by_filter' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_invoice_items }
+        let(:command) { :get_invoice_items_by_filter }
       end
     end
 
-    describe '#get_invoice_by_id' do
+    describe '#get_entity_invoices' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_invoice_by_id }
-        let(:args) { [INVOICE_ID] }
-      end
-    end
-
-    describe '#get_simple_contacts' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :get_simple_contacts }
-      end
-    end
-
-    describe '#create_task' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_task }
-        let(:args) { [RANDOM_TITLE, SOME_DATE, RESPONSIBLE_ID, CATEGORY_ID] }
-      end
-    end
-
-    describe '#create_invoice_line' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_invoice_line }
-        let(:args) { [INVOICE_ID] }
-      end
-    end
-
-    describe '#create_invoice_tax' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_invoice_tax }
-        let(:args) { [RANDOM_TITLE, RANDOM_NOTE] }
-      end
-    end
-
-    describe '#create_invoice_tax' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_invoice_tax }
-        let(:args) { [RANDOM_TITLE, RANDOM_NOTE] }
-      end
-    end
-
-    describe '#create_contact_type' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_contact_type }
-        let(:args) { [RANDOM_TITLE] }
-      end
-    end
-
-    describe '#create_contact_status' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_contact_status }
-        let(:args) { [RANDOM_TITLE, OPPORTUNITY_COLOR_NAME] }
-      end
-    end
-
-    describe '#create_person' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_person }
-        let(:args) { [NEW_USER_FIRSTNAME, NEW_USER_LASTNAME] }
-      end
-    end
-
-    describe '#create_company' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :create_company }
-        let(:args) { [RANDOM_TITLE] }
+        let(:command) { :get_entity_invoices }
+        let(:args) { [:contact, random_id(:new_contact)] }
       end
     end
 
     describe '#create_task_group' do
       it_should_behave_like 'an api request' do
         let(:command) { :create_task_group }
-        let(:args) { [RANDOM_TITLE] }
+        let(:args) { [random_word] }
       end
     end
 
     describe '#add_tag_to_batch_contacts' do
       it_should_behave_like 'an api request' do
         let(:command) { :add_tag_to_batch_contacts }
-        let(:args) { [RANDOM_TAGS] }
+        let(:args) { [(1..rand(1..4)).map {random_word(rand(3..6))}] }
       end
     end
 
-    describe '#add_tag_to_batch_contacts' do
+    describe '#add_contact_tag_to_group' do
       it_should_behave_like 'an api request' do
-        let(:command) { :add_tag_to_batch_contacts }
-        let(:args) { [RANDOM_TAGS] }
+        let(:command) { :add_contact_tag_to_group }
+        let(:args) { [:company, random_id(:company), random_word(4)] }
+      end
+    end
+
+    describe '#add_deal_to_contact' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :add_deal_to_contact }
+        let(:args) { [random_id(:new_contact), random_id(:opportunity)] }
       end
     end
 
     describe '#set_is_portal_configured' do
       it_should_behave_like 'an api request' do
         let(:command) { :set_is_portal_configured }
+        let(:args) { [{configured: random_bool}] }
       end
     end
 
     describe '#update_task' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_task }
-        let(:args) { TASK_ID }
+        let(:args) { [random_id(:crm_task), random_word, DateTime.commercial(2015).to_s, random_id(:crm_history_category)] }
+      end
+    end
+
+    describe '#update_invoice_item' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :update_invoice_item }
+        let(:args) { [random_id(:invoice_item), random_word, random_word, rand, random_word] }
       end
     end
 
     describe '#update_invoice_tax' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_invoice_tax }
-        let(:args) { TAX_ID }
+        let(:args) { [random_id(:invoice_tax), random_word] }
       end
     end
 
     describe '#update_contact_type' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_contact_type }
-        let(:args) { [CONTACT_TYPE_ID, RANDOM_TITLE] }
+        let(:args) { [random_id(:contact_type), random_word] }
       end
     end
 
     describe '#update_contact_status' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_contact_status }
-        let(:args) { [CONTACT_STATUS_ID, {title: RANDOM_TITLE}] }
+        let(:args) { [random_id(:contact_status), random_word, {color: COLORS_NAMES.sample}] }
+      end
+    end
+
+    describe '#update_invoice' do
+      it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23886'
+        let(:command) { :update_invoice }
+        let(:args) { [random_id(:invoice)] }
       end
     end
 
@@ -1601,7 +1913,6 @@ end
     describe '#save_number_settings' do
       it_should_behave_like 'an api request' do
         let(:command) { :save_number_settings }
-        let(:args) {[AUTOGENERATED, random_word(3).capitalize, rand(10)]}
       end
     end
 
@@ -1631,210 +1942,149 @@ end
 
     describe '#update_invoice_patch_status' do
       it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23886'
         let(:command) { :update_invoice_patch_status }
-        let(:args) { [INVOICE_STATUS, [INVOICE_ID]]}
+        let(:args) { [INVOICE_STATUSES.sample, DATA_COLLECTOR[:invoice_ids].sample(rand(1..3))] }
       end
     end
 
     describe '#update_contact_status_color' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_contact_status_color }
-        let(:args) { [CONTACT_STATUS_ID, OPPORTUNITY_COLOR_NAME]}
+        let(:args) { [random_id(:contact_status), COLORS_NAMES.sample] }
       end
     end
 
     describe '#update_person' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_person }
-        let(:args) { [CONTACT_ID]}
+        let(:args) { [random_id(:new_contact), random_word.capitalize, random_word.capitalize] }
       end
     end
 
     describe '#update_contact_status_by_id' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_contact_status_by_id }
-        let(:args) { [CONTACT_ID, CONTACT_STATUS_ID]}
+        let(:args) { [random_id(:new_contact), random_id(:contact_status)] }
       end
     end
 
     describe '#update_invoice_line' do
       it_should_behave_like 'an api request' do
+        pending 'http://bugzserver/show_bug.cgi?id=23886, http://bugzserver/show_bug.cgi?id=23888'
         let(:command) { :update_invoice_line }
-        let(:args) { [INVOICE_ID]}
+        let(:args) { [random_id(:invoice_line), random_id(:invoice)] }
       end
     end
 
-    describe '#create_history_category' do
+    #describe '#change_contact_photo' do
+    #  it_should_behave_like 'an api request' do
+    #    let(:command) { :change_contact_photo }
+    #    let(:args) { [random_id(:new_contact), 'path_to_image'] }
+    #  end
+    #end
+
+    describe '#update_person_and_its_company_status' do
       it_should_behave_like 'an api request' do
-        let(:command) { :create_history_category }
-        let(:args) { [RANDOM_TITLE, RANDOM_TITLE] }
+        let(:command) { :update_person_and_its_company_status }
+        let(:args) { [random_id(:new_contact), random_id(:contact_status)] }
       end
     end
 
-    describe '#update_history_category' do
+    describe '#update_company_and_participants_status' do
       it_should_behave_like 'an api request' do
-        let(:command) { :update_history_category }
-        let(:args) { [HISTORY_CATEGORY_ID, RANDOM_TITLE] }
+        let(:command) { :update_company_and_participants_status }
+        let(:args) { [random_id(:company), random_id(:contact_status)] }
       end
     end
 
-    describe '#get_task_list_by_filter' do
+
+
+#================================================== DELETING ================================================
+
+    describe '#delete_batch_invoices' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_task_list_by_filter }
+        pending 'http://bugzserver/show_bug.cgi?id=23886'
+        let(:command) { :delete_batch_invoices }
+        let(:args) { [[DATA_COLLECTOR[:invoice_ids].pop]] }
       end
     end
 
-    describe '#get_all_task_categories' do
+    describe '#delete_batch_items' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_all_task_categories }
+        let(:command) { :delete_batch_items }
+        let(:args) { [[DATA_COLLECTOR[:invoice_item_ids].pop]] }
       end
     end
 
-    describe '#create_task_category' do
+    describe '#delete_batch_contacts_by_filter' do
       it_should_behave_like 'an api request' do
-        let(:command) { :create_task_category }
-        let(:args) { [RANDOM_TITLE, RANDOM_NOTE, {description: RANDOM_NOTE, sortOrder: 4 }] }
+        let(:command) { :delete_batch_contacts_by_filter }
       end
     end
 
-    describe '#get_contact_upcoming_tasks' do
+
+    describe '#delete_opportunity_contact' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_contact_upcoming_tasks }
-        let(:args) { [CONTACTS_IDS] }
+        let(:command) { :delete_opportunity_contact }
+        let(:args) { [random_id(:opportunity), random_id(:new_contact)] }
       end
     end
 
-    describe '#update_task_category' do
+    describe '#delete_opportunity_group' do
       it_should_behave_like 'an api request' do
-        let(:command) { :update_task_category }
-        let(:args) { [CATEGORY_ID, { title: RANDOM_TITLE, description: RANDOM_NOTE, imageName: RANDOM_NOTE, sortOrder: 4 }] }
+        let(:command) { :delete_opportunity_group }
+        let(:args) { [DATA_COLLECTOR[:opportunity_ids].pop] }
       end
     end
 
-    describe '#get_all_contact_types' do
+    describe '#delete_opportunity' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_all_contact_types }
+        let(:command) { :delete_opportunity }
+        let(:args) { [DATA_COLLECTOR[:opportunity_ids].pop] }
       end
     end
 
-    describe '#get_contact_by_id' do
+    describe '#delete_opportunity_group_by_filter' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_contact_by_id }
-        let(:args) { [CONTACT_ID] }
+        let(:command) { :delete_opportunity_group_by_filter }
       end
     end
 
-    describe '#get_all_contact_info_types' do
+    describe '#delete_opportunity_stage' do
       it_should_behave_like 'an api request' do
-        let(:command) { :get_all_contact_info_types }
-      end
-    end
-
-    describe '#get_contacts_by_project_id' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :get_contacts_by_project_id }
-        let(:args) { [PROJECT_ID_FOR_OPERATIONS] }
-      end
-    end
-
-    describe '#get_contact_type' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :get_contact_type }
-        let(:args) { [CONTACT_TYPE_ID] }
-      end
-    end
-
-    describe '#get_contact_info' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :get_contact_info }
-        let(:args) { [CONTACT_ID, CONTACT_INFORMATION_ID] }
-      end
-    end
-
-    describe '#get_company_linked_persons_list' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :get_company_linked_persons_list }
-        let(:args) { [COMPANY_ID] }
-      end
-    end
-
-    describe '#quick_person_list_creation' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :quick_person_list_creation }
-        let(:args) { [NEW_RANDOM_USERS_ARRAY] }
-      end
-    end
-
-    describe '#add_contact_info' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :add_contact_info }
-        let(:args) { [CONTACT_ID, INFO_TYPE, RANDOM_NOTE, INFO_CATEGORY] }
-      end
-    end
-
-    describe '#add_persons_to_company' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :add_persons_to_company }
-        let(:args) { [COMPANY_ID, CONTACT_ID] }
-      end
-    end
-
-    describe '#link_contact_with_project' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :link_contact_with_project }
-        let(:args) { [CONTACT_ID, PROJECT_ID_FOR_OPERATIONS] }
-      end
-    end
-
-    describe '#add_contact_address' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :add_contact_address }
-        let(:args) { [CONTACT_ID, CATEGORY_ID, RANDOM_TITLE] }
-      end
-    end
-
-    describe '#set_contacts_access_rights' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :set_contacts_access_rights }
-        let(:args) { [[CONTACT_ID]] }
-      end
-    end
-
-    describe '#set_contact_access_rights' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :set_contact_access_rights }
-        let(:args) { [CONTACT_ID] }
-      end
-    end
-
-    describe '#update_company' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :update_company }
-        let(:args) { [COMPANY_ID, RANDOM_TITLE] }
-      end
-    end
-
-    describe '#update_contact_info' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :update_contact_info }
-        let(:args) { [CONTACT_INFORMATION_ID, CONTACT_ID, INFO_TYPE, RANDOM_TITLE] }
-      end
-    end
-
-    describe '#change_contact_photo_by_url' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :change_contact_photo_by_url }
-        let(:args) { [CONTACT_ID, IMAGE_URL] }
-      end
-    end
-
-    describe '#add_tag_to_case_group_by_filter' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :add_tag_to_case_group_by_filter }
+        let(:command) { :delete_opportunity_stage }
+        let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].pop] }
       end
     end
 
 
+    describe 'Cleaning enviroment' do
+
+      describe '#delete_file' do
+        it_should_behave_like 'an api request' do
+          let(:teamlab_module) { :files }
+          let(:command) { :delete_file }
+          let(:args) { [DATA_COLLECTOR[:file_ids].pop] }
+        end
+      end
+
+      describe '#delete_user' do
+        it_should_behave_like 'an api request' do
+          let(:teamlab_module) { :people }
+          let(:command) { :delete_user }
+          let(:args) { [DATA_COLLECTOR[:user_ids].pop] }
+        end
+      end
+
+      describe '#delete_contact' do
+        it_should_behave_like 'an api request' do
+          let(:teamlab_module) { :crm }
+          let(:command) { :delete_contact }
+          let(:args) { [DATA_COLLECTOR[:contact_ids].pop] }
+        end
+      end
+    end
   end
 
   describe '[Community]' do

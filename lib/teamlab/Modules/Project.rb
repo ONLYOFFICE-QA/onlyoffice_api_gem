@@ -257,8 +257,8 @@ module Teamlab
       @request.put([id.to_s], { title: title, responsibleId: responsible_id }.merge(options))
     end
 
-    def set_task_order(id, order)
-      @request.put([id.to_s, 'order'], order: order)
+    def set_task_order(project_id, order)
+      @request.put([project_id.to_s, 'order'], order: order)
     end
 
     def update_project_task(task_id, title, options = {})
@@ -371,6 +371,10 @@ module Teamlab
       @request.delete(['task', task_id.to_s, subtask_id.to_s])
     end
 
+    #endregion
+
+    #region Contacts
+
     def get_projects_for_contact(contact_id)
       @request.get(['contact', contact_id.to_s])
     end
@@ -383,6 +387,10 @@ module Teamlab
       @request.delete([project_id.to_s, 'contact'], contactId: contact_id)
     end
 
+    #endregion
+
+    #region Tags
+
     def get_project_tags
       @request.get(%w(tag))
     end
@@ -394,6 +402,8 @@ module Teamlab
     def get_tags_by_name(tag_name)
       @request.get(%w(tag search), tagName: tag_name)
     end
+
+    #endregion
 
     def get_upcoming_milestones
       @request.get(%w(milestone))
@@ -447,20 +457,20 @@ module Teamlab
       @request.get(['task', task_id.to_s, 'time'])
     end
 
-    def add_task_time(task_id, note, date, person_id, hours, project_id)
-      @request.post(['task', task_id.to_s, 'time'], { date: date, note: note, personId: person_id, hours: hours, projectId: project_id })
+    def add_task_time(task_id, date, person_id, project_id, options = {})
+      @request.post(['task', task_id.to_s, 'time'], { date: date, personId: person_id, projectId: project_id }.merge(options))
     end
 
-    def update_task_time(time_id, note, date, person_id, hours)
-      @request.put(['time', time_id.to_s], note: note, date: date, personId: person_id, hours: hours)
+    def update_task_time(time_id, date, person_id, options = {})
+      @request.put(['time', time_id.to_s], { date: date, personId: person_id }.merge(options))
     end
 
     def update_time_status_of_payment(time_ids, status)
       @request.put(%w(time times status), timeids: time_ids, status: status)
     end
 
-    def delete_time_spents(time_ids)
-      @request.delete(%w(time times remove), timeIds: time_ids)
+    def delete_time_spents(*time_ids)
+      @request.delete(%w(time times remove), timeIds: time_ids.flatten)
     end
   end
 end

@@ -37,7 +37,7 @@ module Teamlab
       @request.get(['@search', query.to_s])
     end
 
-    def get_recent_upload_files(folder_id)
+    def get_recent_uploaded_files(folder_id)
       @request.get([folder_id.to_s, 'feeds'])
     end
 

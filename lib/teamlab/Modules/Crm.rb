@@ -5,6 +5,7 @@ module Teamlab
       @request = Teamlab::Request.new('crm')
     end
 
+    #region Opportunity
     def get_all_opportunity_stages
       @request.get(%w(opportunity stage))
     end
@@ -37,11 +38,11 @@ module Teamlab
       @request.get(['settings', 'currency', currency.to_s, 'summarytable'])
     end
 
-    def create_opportunity(title, responsible_id, options = {})
-      @request.post(%w(opportunity), {title: title, responsibleid: responsible_id}.merge(options))
+    def create_opportunity(stage_id, title, responsible_id, options = {}) #есть тест
+      @request.post(%w(opportunity), {stageId: stage_id, title: title, responsibleid: responsible_id}.merge(options))
     end
 
-    def create_opportunity_stage(title, color, options = {})
+    def create_opportunity_stage(title, color, options = {}) #есть тест
       @request.post(%w(opportunity stage), { title: title, color: color }.merge(options))
     end
 
@@ -49,19 +50,19 @@ module Teamlab
       @request.post(['opportunity', opportunity_id.to_s, 'contact', contact_id.to_s])
     end
 
-    def set_opportunity_success_rights(opportunity_id, is_private, access_list)
-      @request.put(%w(opportunity access), opportunityid: opportunity_id, isPrivate: is_private, accessList: access_list)
+    def set_opportunity_access_rights(opportunity_ids, is_private, *users)
+      @request.put(%w(opportunity access), opportunityid: opportunity_ids.to_a.flatten, isPrivate: is_private, accessList: users.flatten)
     end
 
     def update_opportunity_stage(id, title, color, options = {})
       @request.put(['opportunity', 'stage', id.to_s], { title: title, color: color,  }.merge(options))
     end
 
-    def update_opportunity_stage_order(options = {})
+    def update_opportunity_stages_order(options = {})
       @request.put(%w(opportunity stage reorder), options)
     end
 
-    def set_opportunity_access_rights(options = {})
+    def set_opportunity_access_rights_for_users(options = {})
       @request.put(%w(opportunity filter access), options)
     end
 
@@ -82,8 +83,8 @@ module Teamlab
       @request.put(['opportunity', opportunity_id.to_s, 'stage', stage_id.to_s], stageid: stage_id)
     end
 
-    def delete_opportunity_group(opportunity_ids)
-      @request.delete(%w(opportunity), opportunityids: opportunity_ids)
+    def delete_opportunity_group(*opportunity_ids)
+      @request.delete(%w(opportunity), opportunityids: opportunity_ids.flatten)
     end
 
     def delete_opportunity_group_by_filter(options = {})
@@ -102,12 +103,16 @@ module Teamlab
       @request.delete(['opportunity', opportunity_id.to_s, 'contact', contact_id.to_s])
     end
 
+    #endregion
+
+    #region General
+
     def get_invoice_taxes
       @request.get(%w(invoice tax))
     end
 
-    def get_contacts_for_mail(contact_ids)
-      @request.get(%w(contact mail), contactids: contact_ids)
+    def get_contacts_for_mail(*contact_ids)
+      @request.get(%w(contact mail), contactids: contact_ids.flatten)
     end
 
     def get_cases_by_prefix(contact_id, prefix)
@@ -122,11 +127,11 @@ module Teamlab
       @request.get(%w(invoice sample))
     end
 
-    def get_invoices(options = {})
+    def get_invoices_by_filter(options = {})
       @request.get(%w(invoice filter), options)
     end
 
-    def get_contacts(options = {})
+    def get_contacts_by_filter(options = {})
       @request.get(%w(contact filter), options)
     end
 
@@ -134,7 +139,7 @@ module Teamlab
       @request.get(%w(invoice settings))
     end
 
-    def get_invoice_items(options = {})
+    def get_invoice_items_by_filter(options = {})
       @request.get(%w(invoiceitem filter), options)
     end
 
@@ -166,12 +171,12 @@ module Teamlab
 
 #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
-    def create_invoice_line(invoice_id)
-      @request.post(%w(invoiceline), invoiceId: invoice_id)
+    def create_invoice_line(invoice_id, options = {})
+      @request.post(%w(invoiceline), {invoiceId: invoice_id}.merge(options))
     end
 
-    def create_invoice_item(options = {})
-      @request.post(%w(invoiceitem), options)
+    def create_invoice_item(title, description, price, stock_keeping_unit, options = {})
+      @request.post(%w(invoiceitem), {title: title, description: description, price: price, sku: stock_keeping_unit.to_s}.merge(options))
     end
 
     def create_invoice_tax(name, description, options = {})
@@ -190,10 +195,8 @@ module Teamlab
       @request.post(%w(contact person), {firstName: first_name, lastName: last_name}.merge(options))
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
-
-    def create_company(company_name, options = {})
-      @request.post(%w(contact company), {companyName: company_name}.merge(options))
+    def create_company(company_name, managers, options = {})
+      @request.post(%w(contact company), {companyName: company_name, managerList: managers}.merge(options))
     end
 
     def create_task_group(title, options = {})
@@ -216,16 +219,12 @@ module Teamlab
       @request.put(%w(settings), options)
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
-
-    def update_task(task_id, options = {})
-      @request.put(['task', task_id.to_s], options)
+    def update_task(task_id, title, deadline, category_id, options = {})
+      @request.put(['task', task_id.to_s], {title: title, deadline: deadline, categoryid: category_id}.merge(options))
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
-
-    def update_invoice_item(id, options = {})
-      @request.put(['invoiceitem', id.to_s], options)
+    def update_invoice_item(id, title, description, price, stock_keeping_unit, options = {})
+      @request.put(['invoiceitem', id.to_s], {title: title, description: description, price: price, sku: stock_keeping_unit.to_s}.merge(options))
     end
 
     def update_invoice_tax(id, name, options = {})
@@ -236,8 +235,8 @@ module Teamlab
       @request.put(['contact', 'type', id.to_s], {title: title}.merge(options))
     end
 
-    def update_contact_status(id, options = {})
-      @request.put(['contact', 'status', id.to_s], options)
+    def update_contact_status(id, title, options = {})
+      @request.put(['contact', 'status', id.to_s], {title: title.to_s}.merge(options))
     end
 
 #=========================================== TODO: OPTIONAL VARIABLES =====================================================
@@ -248,6 +247,10 @@ module Teamlab
 
     def update_crm_contact_tag_setting(options = {})
       @request.put(%w(contact tag settings), options)
+    end
+
+    def save_number_settings(options = {})
+      @request.put(%w(invoice settings name), options)
     end
 
     def set_access_to_batch_contact(options = {})
@@ -274,10 +277,8 @@ module Teamlab
       @request.put(['contact', 'status', status_id.to_s, 'color'], color: color)
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
-
-    def update_person(id, options = {})
-      @request.put(['contact', 'person', id.to_s], options)
+    def update_person(id, first_name, last_name, options = {})
+      @request.put(['contact', 'person', id.to_s], {firstName: first_name, lastName: last_name}.merge(options))
     end
 
     def update_contact_status_by_id(contact_id, contact_status_id)
@@ -295,7 +296,7 @@ module Teamlab
     end
 
     def update_person_and_its_company_status(person_id, contact_status_id)
-      @request.put(['contact', 'preson', person_id.to_s, 'status'], contactStatusId: contact_status_id)
+      @request.put(['contact', 'person', person_id.to_s, 'status'], contactStatusId: contact_status_id)
     end
 
     def update_company_and_participants_status(company_id, contact_status_id)
@@ -552,7 +553,7 @@ module Teamlab
       @request.delete(['contact', 'company', company_id.to_s, 'person'], {personId: person_id})
     end
 
-    def delete_ontact_address(contact_id, information_record_id)
+    def delete_contact_address(contact_id, information_record_id)
       @request.delete(['contact', contact_id.to_s, 'data', 'address', information_record_id.to_s])
     end
 

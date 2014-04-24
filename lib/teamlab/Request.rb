@@ -44,7 +44,7 @@ module Teamlab
       rescue Exception => e
         fail e
       end
-      fail response.error.to_s unless response.success
+      fail "Error #{response.code}: #{response.error.to_s}" unless response.success
       response
     end
 

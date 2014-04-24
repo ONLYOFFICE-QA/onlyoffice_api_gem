@@ -50,3 +50,18 @@ module Teamlab
     @mail ||= Teamlab::Mail.new
   end
 end
+
+#SERVER = 'https://nctautotest-rubyapitest.teamlab.info'
+#USERNAME = 'teamlab.ruby@gmail.com'
+#PASSWORD = '123456'
+#
+#Teamlab.configure do |config|
+#  config.server = SERVER
+#  config.username = USERNAME
+#  config.password = PASSWORD
+#end
+#
+#a = Teamlab.crm.update_person(3103651, {firstName: 'Asdfg', lastName: 'GBsva'})
+##b = Teamlab.crm.create_invoice( {number: '2', contactId: 3101556, consigneeId: 3101556, templateType: 1, issueDate: '2014-04-10T06:30:00.0000000-07:00', dueDate: '2014-05-10T06:30:00.0000000-07:00',
+##                                currency: 'USD', terms: 'test', entityId: 424, language: 'en-US'} )
+#p a

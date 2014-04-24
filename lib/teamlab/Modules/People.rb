@@ -15,7 +15,7 @@ module Teamlab
     end
 
     def search_people(query)
-      @request.get(['search'], { 'query' => query })
+      @request.get(['search'], { query: query })
     end
 
     def filter_people(filters)
@@ -35,7 +35,7 @@ module Teamlab
     end
 
     def remind_password(user_id, email)
-      @request.get([user_id, 'password'], { 'email' => email })
+      @request.get([user_id, 'password'], { email: email })
     end
 
     def search_with_status(status, query)
@@ -43,7 +43,7 @@ module Teamlab
     end
 
     def add_user(is_visitor, email, firstname, lastname, options = {})
-      @request.post(nil , { 'isVisitor' => is_visitor, 'email' => email, 'firstname' => firstname, 'lastname' =>lastname}.merge(options))
+      @request.post(nil , { isVisitor: is_visitor, email: email, firstname: firstname, lastname: lastname}.merge(options))
     end
 
     def active(options = {})
@@ -54,16 +54,16 @@ module Teamlab
       @request.post([user_id, 'contacts'], contacts)
     end
 
-    def send_invite(user_ids = [])
-      @request.put(['invite'], { 'userIds' => user_ids })
+    def send_invite(*user_ids)
+      @request.put(['invite'], { userIds: user_ids.flatten })
     end
 
     def delete(*user_ids)
-      @request.put(['delete'], { 'userIds' => user_ids.flatten })
+      @request.put(['delete'], { userIds: user_ids.flatten })
     end
 
     def update_user(user_id, is_visitor, email, firstname, lastname, options = {})
-      @request.put([user_id.to_s], { 'isVisitor' => is_visitor, 'email' => email, 'firstname' => firstname, 'lastname' => lastname}.merge(options) )
+      @request.put([user_id.to_s], { isVisitor: is_visitor, email: email, firstname: firstname, lastname: lastname}.merge(options) )
     end
 
     def change_people_type(type, user_ids)
