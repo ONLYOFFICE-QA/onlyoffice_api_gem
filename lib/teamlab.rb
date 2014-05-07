@@ -51,7 +51,7 @@ module Teamlab
   end
 end
 
-#SERVER = 'https://nctautotest-rubyapitest.teamlab.info'
+#SERVER = 'https://nctautotest-rubyapitest6.teamlab.info'
 #USERNAME = 'teamlab.ruby@gmail.com'
 #PASSWORD = '123456'
 #
@@ -61,7 +61,9 @@ end
 #  config.password = PASSWORD
 #end
 #
-#a = Teamlab.crm.update_person(3103651, {firstName: 'Asdfg', lastName: 'GBsva'})
+#
+#b = Teamlab.crm.delete_user_field('contact', 21301)
+##a = Teamlab.crm.create_task('CRM_TASK', DateTime.commercial(2015).to_s, '557dfd28-f423-43dd-91ce-51b9f4c4f8e0', )
 ##b = Teamlab.crm.create_invoice( {number: '2', contactId: 3101556, consigneeId: 3101556, templateType: 1, issueDate: '2014-04-10T06:30:00.0000000-07:00', dueDate: '2014-05-10T06:30:00.0000000-07:00',
 ##                                currency: 'USD', terms: 'test', entityId: 424, language: 'en-US'} )
-#p a
+#p 1

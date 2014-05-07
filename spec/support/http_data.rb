@@ -32,6 +32,10 @@ def random_settings_entity_id
   SETTINGS_ENTITY_IDS.sample
 end
 
+def random_info_category(info_type)
+  Teamlab.crm.get_all_categories(info_type).body['response'].sample
+end
+
 #region OPTIONS
 #region People
 USER_STATUSES = %w(Active Terminated LeaveOfAbsence Default All)
@@ -68,29 +72,16 @@ PROJECT_TASK_TIME_STATUSES = %w(NotChargeable NotBilled Billed )
 BASECAMP_URL = "https://basecamp.com/2452154"
 BASECAMP_LOGIN = ""
 BASECAMP_PSW = ""
-IMPORT_CLOSED_PROJECTS = true
-DISABLE_NOTIFICATONS = false
-IMPORT_USERS_AS_COLLABORATORS = true
-PROJECT_ID_FOR_OPERATIONS = '4322'
-MESSAGE_ID = '3878'
-
-TASK_ID = '12406'
-RESPONSIBLE_ID = '187ecad1-eeb4-4173-a6c0-1c225ad72fb2'
-RANDOM_TITLE = random_word(10).capitalize
-PROJECT_DESCRIPTION = random_word(10,).capitalize
-ANOTHER_PROJECT_ID = 9735
-MILESTONE_ID = 422849
-SOME_DATE = '2015-03-23T14:27:14'
-ANOTHER_DATE = '2015-06-10T06:30:00.0000000-07:00'
-SIMPLE_DATE = '2011-10-1'
-RANDOM_NOTE = random_word(12)
-TIME_ID = 528238
 #endregion
 
 #region CRM
 BID_TYPES = %w(FixedBid PerHour PerDay PerWeek PerMonth PerYear)
 COLORS_NAMES = %w(red yellow black white green purple brown grey blue)
 INVOICE_STATUSES = %w(Draft Sent Rejected Paid Overdue Archived)
+CONTACT_INFO_TYPES = %w(Phone Email Website Skype Twitter LinkedIn Facebook LiveJournal MySpace GMail Blogger Yahoo MSN ICQ Jabber AIM)
+ENTITY_TYPES = %w(opportunity company contact)
+USER_FIELDS = %w(TextField TextArea SelectBox CheckBox Heading Date)
+
 
 OPPORTUNITY_COLOR_NAME = 'red'
 OPPORTUNITY_ID = '74156'
