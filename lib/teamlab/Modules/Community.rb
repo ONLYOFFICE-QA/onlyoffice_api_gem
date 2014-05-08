@@ -158,8 +158,8 @@ module Teamlab
 
 #==================================== TODO: ERROR
 
-    def add_thread_to_category(category_id, category_name, thread_name, options = {})
-      @request.post(%w(forum), {categoryId: category_id, categoryName: category_name.to_s, threadName: thread_name}.merge(options))
+    def add_thread_to_category(category_id, category_name, thread_name, description)
+      @request.post(%w(forum), categoryId: category_id, categoryName: category_name.to_s, threadName: thread_name, description: description)
     end
 
     def add_topic_to_thread(thread_id, subject, content, options = {})
@@ -170,8 +170,8 @@ module Teamlab
       @request.post(['forum', 'topic', topic_id.to_s], {subject: subject, content: content}.merge(options))
     end
 
-    def update_topic_in_thread(topic_id, options = {})
-      @request.put(['forum', 'topic', topic_id.to_s], options)
+    def update_topic_in_thread(topic_id, subject, options = {})
+      @request.put(['forum', 'topic', topic_id.to_s], {subject: subject}.merge(options))
     end
 
     def update_post_in_topic(topic_id, post_id, options = {})
