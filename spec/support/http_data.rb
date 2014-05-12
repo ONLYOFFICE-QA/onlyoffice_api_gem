@@ -1,6 +1,6 @@
-SERVER = ''
-USERNAME = ''
-PASSWORD = ''
+SERVER = 'https://nctautotest-rubyapitest6.teamlab.info'
+USERNAME = 'teamlab.ruby@gmail.com'
+PASSWORD = '123456'
 
 DATA_COLLECTOR = {}
 
@@ -87,20 +87,10 @@ IMAGE_URL = 'http://thebooksmugglers.com/wp-content/uploads/2009/02/image002-200
 #region Community
 SOME_URL = 'www.teamlab.info'
 EVENT_TYPES = %w(None News Order Advert AllNews Poll All)
-
-POST_ID = '797eb01e-b13f-49a4-9b4c-b74b40bad876'
-BOOKMARK_ID = 288498
-EVENT_ID = 63569
-THREAD_ID = 4988
-TOPIC_ID = 26560
-COMMUNITY_CATEGORY_ID = 3779
-THREAD_NAME = '1'
-WIKI_PAGE_NAME = 'fsdf'
-WIKI_FILE_NAME = 'rapuncel.jpg'
-WIKI_PAGE_COMMENT_ID = '8a72589a-f9f0-44b7-aed4-1608335f1855'
 #endregion
 
 #region Calendar
-CALENDAR_ID = 1395822265100
+TIME_ZONES = %w(UTC)
+CALENDAR_TO_UPLOAD = 'path_to_file.ics'
 #endregion
 #endregion

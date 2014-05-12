@@ -61,8 +61,8 @@ end
 #  config.password = PASSWORD
 #end
 #
-#
-#b = Teamlab.crm.delete_user_field('contact', 21301)
+#b = Teamlab.calendar.add_event(21948, 'EventName', {startDate: '2008-04-10T06:30:00.0000000-07:00', endDate: '2008-04-10T06:30:00.0000000-08:00',
+#                                                    repeatType: 'some string'})
 ##a = Teamlab.crm.create_task('CRM_TASK', DateTime.commercial(2015).to_s, '557dfd28-f423-43dd-91ce-51b9f4c4f8e0', )
 ##b = Teamlab.crm.create_invoice( {number: '2', contactId: 3101556, consigneeId: 3101556, templateType: 1, issueDate: '2014-04-10T06:30:00.0000000-07:00', dueDate: '2014-05-10T06:30:00.0000000-07:00',
 ##                                currency: 'USD', terms: 'test', entityId: 424, language: 'en-US'} )
