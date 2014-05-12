@@ -1,6 +1,6 @@
-SERVER = 'https://nctautotest-rubyapitest6.teamlab.info'
-USERNAME = 'teamlab.ruby@gmail.com'
-PASSWORD = '123456'
+SERVER = ''
+USERNAME = ''
+PASSWORD = ''
 
 DATA_COLLECTOR = {}
 
