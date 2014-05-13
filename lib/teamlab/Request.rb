@@ -36,7 +36,7 @@ module Teamlab
       url = generate_request_url(command)
       attempts = 0
       begin
-        response = Teamlab::Response.new(HTTParty.send(type, url, opts))
+        response = Teamlab::Response.new(HTTMultiParty.send(type, url, opts))
       rescue TimeoutError
         attempts += 1
         retry if attempts < 3
@@ -56,10 +56,12 @@ module Teamlab
       command = args.first.instance_of?(Array) ? '/' + args.shift.join('/') : args.shift.to_s
       opts = {}
       opts[:body] = args.last.instance_of?(Hash) ? args.pop : {}
-      opts[:headers] = opts[:body][:headers] ? Teamlab.config.headers.merge(opts[:body].delete(:headers)) : Teamlab.config.headers
-      opts[:query] = opts.delete(:body) if opts[:body].key?(:somefile)
+      opts[:headers] = Teamlab.config.headers
+      if opts[:body].key?(:somefile)
+        opts[:query] = opts.delete(:body)
+        opts[:detect_mime_type] = true
+      end
       [command, opts]
     end
-
   end
 end

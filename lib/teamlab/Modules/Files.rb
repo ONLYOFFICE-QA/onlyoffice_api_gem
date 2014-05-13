@@ -45,44 +45,36 @@ module Teamlab
       @request.put([file_id.to_s, 'sharedlink'], share: share)
     end
 
-#================================== TODO: UPLOAD FILES ================================
-
-    def upload_to_my_docs(*files)
-      @request.post(['@my', 'upload'], files, headers: { 'Content-Type' => 'multipart/form-data' } ) #НЕ МАТАТ
+    def upload_to_my_docs(file)
+      @request.post(%w(@my upload), somefile: File.new(file))
     end
 
-#================================== TODO: UPLOAD FILES ================================
-
-    def upload_to_common_docs(*files)
-      @request.post(['@common', 'upload'], files, headers: { 'Content-Type' => 'multipart/form-data' } ) #НЕ МАТАТ
+    def upload_to_common_docs(file)
+      @request.post(%w(@common upload), somefile: File.new(file))
     end
 
-#================================== TODO: UPLOAD FILES ================================
-
-    def upload_to_folder(folder_id, *files)
-      @request.post([folder_id.to_s, 'upload'], files, headers: { 'Content-Type' => 'multipart/form-data' } ) #НЕ МАТАТ
+    def upload_to_folder(folder_id, file)
+      @request.post([folder_id.to_s, 'upload'], somefile: File.new(file))
     end
-
-#================================== TODO: UPLOAD FILES ================================
 
     def chunked_upload(folder_id, filename, file_size)
-      @request.post([folder_id.to_s, 'upload', 'create_session'], fileName: filename, fileSize: file_size) #НЕ МАТАТ
+      @request.post([folder_id.to_s, 'upload', 'create_session'], fileName: filename, fileSize: file_size)
     end
 
     def create_txt_in_my_docs(title, content)
-      @request.post(['@my', 'text'], title: title.to_s, content: content.to_s)
+      @request.post(%w(@my text), title: title.to_s, content: content.to_s)
     end
 
     def create_html_in_my_docs(title, content)
-      @request.post(['@my', 'html'], title: title.to_s, content: content.to_s)
+      @request.post(%w(@my html), title: title.to_s, content: content.to_s)
     end
 
     def create_txt_in_common_docs(title, content)
-      @request.post(['@common', 'text'], title: title.to_s, content: content.to_s)
+      @request.post(%w(@common text), title: title.to_s, content: content.to_s)
     end
 
     def create_html_in_common_docs(title, content)
-      @request.post(['@common', 'html'], title: title.to_s, content: content.to_s)
+      @request.post(%w(common html), title: title.to_s, content: content.to_s)
     end
 
     def create_txt(folder_id, title, content)

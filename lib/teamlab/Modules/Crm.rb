@@ -577,10 +577,8 @@ module Teamlab
       @request.post([entity_type.to_s, entity_id.to_s, 'files', 'text'], title: title, content: content)
     end
 
-#================================== TODO: UPLOAD FILES ================================
-
-    def upload_file(entity_type, entity_id, *files)
-      @request.post([entity_type.to_s, entity_id.to_s, 'files', 'upload'], files)
+    def upload_file(entity_type, entity_id, file)
+      @request.post([entity_type.to_s, entity_id.to_s, 'files', 'upload'], somefile: File.new(file))
     end
 
     def delete_file(id)

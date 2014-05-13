@@ -214,10 +214,8 @@ module Teamlab
       @request.post(%w(wiki), {name: name.to_s, body: body.to_s})
     end
 
-#================================== TODO: UPLOAD FILES ================================
-
-    def upload_files(*files)
-      @request.post(%w(wiki file), files)
+    def upload_files(file)
+      @request.post(%w(wiki file), somefile: File.new(file))
     end
 
     def create_wiki_page_comment(page_name, content, options = {})
