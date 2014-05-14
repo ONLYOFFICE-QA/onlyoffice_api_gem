@@ -59,6 +59,30 @@ SETTINGS_FOR_TALK = { enabled: true }
 #region Files
 FILE_FOR_OPERATIONS_VERSION = 1
 FILES_SHARE_TYPES = %w(None ReadWrite Read Restrict)
+FILES_FOR_UPLOAD = %w(
+/mnt/data_share/Files/DOCX/AllDOCX/InternationalFoodCrisisAutosaved.docx
+/mnt/data_share/Files/DOCX/AllDOCX/dogs dont tell jokes bm.docx
+/mnt/data_share/Files/DOCX/AllDOCX/Demo-Hayden-Management.docx
+/mnt/data_share/Files/DOCX/AllDOCX/6 sınıf AAAAd.docx
+/mnt/data_share/Files/DOCX/AllDOCX/2010-2011 alparlan i.ö.o. 4.sınıf ingilizce 1.dönem.1yazılı sınzva.docx
+/mnt/data_share/Files/DOCX/AllDOCX/2.15.10TheEngagedUniversity.docx
+/mnt/data_share/Files/XLSX/ICO_IMAGES.xlsx
+/mnt/data_share/Files/XLSX/SmokeTopToolbar.xlsx
+/mnt/data_share/Files/XLSX/Hasil TO GANAPATYA.xlsx
+/mnt/data_share/Files/XLSX/FormulaDoc.xlsx
+/mnt/data_share/Files/XLSX/EML_IMAGES.xlsx
+/mnt/data_share/Files/PPTX/AllPPTX/Abiturientu_tolimesnis_mokymasis_2010.pptx
+/mnt/data_share/Files/PPTX/AllPPTX/Disney Magic 5-D.pptx
+/mnt/data_share/Files/PPTX/AllPPTX/Kutatasok_a_kozteruleten.pptx
+/mnt/data_share/Files/PPTX/AllPPTX/oouchida_booster.pptx
+/mnt/data_share/Files/PPTX/AllPPTX/RR_Customer_Deck_FINAL_11.23.09.pptx
+/mnt/data_share/Files/PPTX/AllPPTX/SMB_Forms_ThruPartner.pptx
+/mnt/data_share/Files/JPG/2flash5.jpg
+/mnt/data_share/Files/JPG/3flash6-a.jpg
+/mnt/data_share/Files/JPG/141_014.jpg
+/mnt/data_share/Files/JPG/5350678_085.jpg
+/mnt/data_share/Files/JPG/animal39_animated_70x80_020.jpg
+)
 #endregion
 
 #region Projects
@@ -91,6 +115,6 @@ EVENT_TYPES = %w(None News Order Advert AllNews Poll All)
 
 #region Calendar
 TIME_ZONES = %w(UTC)
-CALENDAR_TO_UPLOAD = 'path_to_file.ics'
+CALENDAR_TO_UPLOAD = '/mnt/data_share/Files/basic.ics'
 #endregion
 #endregion

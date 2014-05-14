@@ -516,41 +516,38 @@ describe Teamlab do
       end
     end
 
-    #describe '#upload_to_my_docs' do
-    #  it_should_behave_like 'an api request' do
-    #    let(:command) { :upload_to_my_docs }
-    #    let(:args) { FILE_TO_UPLOAD }
-    #  end
-    #end
-    #
-    #describe '#upload_to_common_docs' do
-    #  it_should_behave_like 'an api request' do
-    #    let(:command) { :upload_to_common_docs }
-    #    let(:args) { FILE_TO_UPLOAD }
-    #  end
-    #end
-    #
-    #describe '#upload_to_folder' do
-    #  it_should_behave_like 'an api request' do
-    #    let(:command) { :upload_to_folder }
-    #    let(:args) { [random_id(:new_folder), FILE_TO_UPLOAD] }
-    #  end
-    #end
-    #
-    #describe '#chunked_upload' do
-    #  it_should_behave_like 'an api request' do
-    #    let(:command) { :chunked_upload }
-    #    let(:args) { [random_id(:new_folder), FILE_TO_UPLOAD] }
-    #  end
-    #end
+    describe '#upload_to_my_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :upload_to_my_docs }
+        let(:args) { FILES_FOR_UPLOAD.sample }
+      end
+    end
+
+    describe '#upload_to_common_docs' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :upload_to_common_docs }
+        let(:args) { FILES_FOR_UPLOAD.sample }
+      end
+    end
+
+    describe '#upload_to_folder' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :upload_to_folder }
+        let(:args) { [random_id(:new_folder), FILES_FOR_UPLOAD.sample] }
+      end
+    end
+
+    describe '#chunked_upload' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :chunked_upload }
+        let(:args) { [random_id(:new_folder), File.basename(FILES_FOR_UPLOAD.sample), rand(1..50)] }
+      end
+    end
 
     describe '#create_txt_in_my_docs' do
       it_should_behave_like 'an api request' do
         let(:command) { :create_txt_in_my_docs }
         let(:args) { [random_word, random_word(rand(100))] }
-        #let(:add_data_to_collector) { true }
-        #let(:data_param) {:some_file_ids}
-        #let(:param_names) {%w(current id)}
       end
     end
 
@@ -558,9 +555,6 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:command) { :create_html_in_my_docs }
         let(:args) { [random_word, random_word(rand(100))] }
-        #let(:add_data_to_collector) { true }
-        #let(:data_param) {:some_file_ids}
-        #let(:param_names) {%w(current id)}
       end
     end
 
@@ -568,9 +562,6 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:command) { :create_txt_in_common_docs }
         let(:args) { [random_word, random_word(rand(100))] }
-        #let(:add_data_to_collector) { true }
-        #let(:data_param) {:some_file_ids}
-        #let(:param_names) {%w(current id)}
       end
     end
 
@@ -578,9 +569,6 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:command) { :create_html_in_common_docs }
         let(:args) { [random_word, random_word(rand(100))] }
-        #let(:add_data_to_collector) { true }
-        #let(:data_param) {:some_file_ids}
-        #let(:param_names) {%w(current id)}
       end
     end
 
@@ -588,9 +576,6 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:command) { :create_txt }
         let(:args) { [random_id(:new_folder), random_word, random_word(rand(100))] }
-        #let(:add_data_to_collector) { true }
-        #let(:data_param) {:some_file_ids}
-        #let(:param_names) {%w(current id)}
       end
     end
 
@@ -598,9 +583,6 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:command) { :create_html }
         let(:args) { [random_id(:new_folder), random_word, random_word(rand(100))] }
-        #let(:add_data_to_collector) { true }
-        #let(:data_param) {:some_file_ids}
-        #let(:param_names) {%w(current id)}
       end
     end
 
@@ -2448,12 +2430,12 @@ describe Teamlab do
       end
     end
 
-    #describe '#upload_file' do
-    #  it_should_behave_like 'an api request' do
-    #    let(:command) { :upload_file }
-    #    let(:args) { [entity = ENTITY_TYPES.sample, random_id(entity.to_sym), 'files'] }
-    #  end
-    #end
+    describe '#upload_file' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :upload_file }
+        let(:args) { [entity = ENTITY_TYPES.sample, random_id(entity.to_sym), FILES_FOR_UPLOAD.sample] }
+      end
+    end
 
     describe '#create_tag' do
       it_should_behave_like 'an api request' do
@@ -3508,7 +3490,6 @@ describe Teamlab do
 
     describe '#import_ical' do
       it_should_behave_like 'an api request' do
-        pending 'Upload File'
         let(:command) { :import_ical }
         let(:args) { [random_id(:calendar), CALENDAR_TO_UPLOAD] }
       end

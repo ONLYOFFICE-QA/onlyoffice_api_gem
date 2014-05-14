@@ -51,8 +51,8 @@ module Teamlab
       @request.post([calendar_id.to_s, 'event'], {name: name}.merge(options))
     end
 
-    def import_ical(calendar_id, *files)
-      @request.post([calendar_id.to_s, 'import'], files: files.flatten)
+    def import_ical(calendar_id, file)
+      @request.post([calendar_id.to_s, 'import'], somefile: File.new(file))
     end
 
 #============== TODO: OPTIONAL VARIABLES
