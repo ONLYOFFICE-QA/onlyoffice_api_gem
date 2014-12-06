@@ -66,11 +66,11 @@ FILES_FOR_UPLOAD = %w(
 /mnt/data_share/Files/DOCX/AllDOCX/6 sınıf AAAAd.docx
 /mnt/data_share/Files/DOCX/AllDOCX/2010-2011 alparlan i.ö.o. 4.sınıf ingilizce 1.dönem.1yazılı sınzva.docx
 /mnt/data_share/Files/DOCX/AllDOCX/2.15.10TheEngagedUniversity.docx
-/mnt/data_share/Files/XLSX/ICO_IMAGES.xlsx
-/mnt/data_share/Files/XLSX/SmokeTopToolbar.xlsx
-/mnt/data_share/Files/XLSX/Hasil TO GANAPATYA.xlsx
-/mnt/data_share/Files/XLSX/FormulaDoc.xlsx
-/mnt/data_share/Files/XLSX/EML_IMAGES.xlsx
+/mnt/data_share/Files/XLSX/AllXLSX/ICO_IMAGES.xlsx
+/mnt/data_share/Files/XLSX/AllXLSX/SmokeTopToolbar.xlsx
+/mnt/data_share/Files/XLSX/AllXLSX/Hasil TO GANAPATYA.xlsx
+/mnt/data_share/Files/XLSX/AllXLSX/FormulaDoc.xlsx
+/mnt/data_share/Files/XLSX/AllXLSX/EML_IMAGES.xlsx
 /mnt/data_share/Files/PPTX/AllPPTX/Abiturientu_tolimesnis_mokymasis_2010.pptx
 /mnt/data_share/Files/PPTX/AllPPTX/Disney Magic 5-D.pptx
 /mnt/data_share/Files/PPTX/AllPPTX/Kutatasok_a_kozteruleten.pptx

@@ -14,7 +14,7 @@ module Teamlab
     end
 
     def get_folder(folder_id, options = {})
-      @request.get(['folder', folder_id.to_s], options)
+      @request.get([folder_id.to_s], options)
     end
 
     def new_folder(folder_id, title)
