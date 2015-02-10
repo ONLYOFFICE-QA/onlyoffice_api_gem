@@ -28,7 +28,6 @@ module Teamlab
     def get_shared_docs
       @request.get(['@share'])
     end
-
     def get_common_docs
       @request.get(['@common'])
     end
