@@ -26,6 +26,10 @@ module Teamlab
       @request.get(%w(security), ids: ids)
     end
 
+    def get_ip_restrictions
+      @request.get(%w(iprestrictions))
+    end
+
     def get_admin_security(product_id, user_id)
       @request.get(%w(security administrator), productid: product_id, userid: user_id)
     end
@@ -34,12 +38,24 @@ module Teamlab
       @request.get(['security', 'administrator', product_id.to_s])
     end
 
+    def sms_settings(enable)
+      @request.put(%w(sms), enable: enable)
+    end
+
+    def update_tips(show)
+      @request.put(%w(tips), show: show)
+    end
+
     def set_version(version_id)
       @request.put(%w(version), versionId: version_id)
     end
 
     def set_security(id, options = {})
-      @request.put(%w(security), { id: id }.merge(options))
+      @request.put(%w(security), {id: id}.merge(options))
+    end
+
+    def save_ip_restrictions(ips)
+      @request.put(%w(iprestrictions), ips: ips)
     end
 
     def set_access(id, enabled = true)
@@ -48,6 +64,10 @@ module Teamlab
 
     def set_product_admin(product_id, user_id, administrator = true)
       @request.put(%w(security administrator), productid: product_id, userid: user_id, administrator: administrator)
+    end
+
+    def update_ip_restrictions(enable)
+      @request.put(%w(iprestrictions settings), enable: enable)
     end
   end
 end

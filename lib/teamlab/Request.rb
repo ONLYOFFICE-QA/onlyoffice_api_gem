@@ -32,7 +32,7 @@ module Teamlab
     private
 
     def request(type, args)
-      command, opts = parse_args(args)
+      command, opts = parse_args(args, type)
       url = generate_request_url(command)
       attempts = 0
       begin
@@ -52,7 +52,7 @@ module Teamlab
       Teamlab.config.server + Teamlab.config.api_path + @api_additive + command
     end
 
-    def parse_args(args)
+    def parse_args(args, type)
       command = args.first.instance_of?(Array) ? '/' + args.shift.join('/') : args.shift.to_s
       opts = {}
       opts[:body] = args.last.instance_of?(Hash) ? args.pop : {}
@@ -61,6 +61,7 @@ module Teamlab
         opts[:query] = opts.delete(:body)
         opts[:detect_mime_type] = true
       end
+      opts[:query] = opts.delete(:body) if type == :get
       [command, opts]
     end
   end

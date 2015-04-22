@@ -5,60 +5,7 @@ module Teamlab
       @request = Teamlab::Request.new('files')
     end
 
-    def get_my_files
-      @request.get(['@my'])
-    end
-
-    def get_trash
-      @request.get(['@trash'])
-    end
-
-    def get_folder(folder_id, options = {})
-      @request.get([folder_id.to_s], options)
-    end
-
-    def new_folder(folder_id, title)
-      @request.post(['folder', folder_id.to_s], title: title)
-    end
-
-    def rename_folder(folder_id, title)
-      @request.put(['folder', folder_id.to_s], title: title)
-    end
-
-    def get_shared_docs
-      @request.get(['@share'])
-    end
-    def get_common_docs
-      @request.get(['@common'])
-    end
-
-    def search(query)
-      @request.get(['@search', query.to_s])
-    end
-
-    def get_recent_uploaded_files(folder_id)
-      @request.get([folder_id.to_s, 'feeds'])
-    end
-
-    def generate_shared_link(file_id, share)
-      @request.put([file_id.to_s, 'sharedlink'], share: share)
-    end
-
-    def upload_to_my_docs(file)
-      @request.post(%w(@my upload), somefile: File.new(file))
-    end
-
-    def upload_to_common_docs(file)
-      @request.post(%w(@common upload), somefile: File.new(file))
-    end
-
-    def upload_to_folder(folder_id, file)
-      @request.post([folder_id.to_s, 'upload'], somefile: File.new(file))
-    end
-
-    def chunked_upload(folder_id, filename, file_size)
-      @request.post([folder_id.to_s, 'upload', 'create_session'], fileName: filename, fileSize: file_size)
-    end
+    #region File Creation
 
     def create_txt_in_my_docs(title, content)
       @request.post(%w(@my text), title: title.to_s, content: content.to_s)
@@ -88,6 +35,58 @@ module Teamlab
       @request.post([folder_id.to_s, 'file'], title: title.to_s)
     end
 
+    #endregion
+
+    #region File operations
+
+    def get_file_operations_list
+      @request.get(%w(fileops))
+    end
+
+    def check_conflict(options = {})
+      @request.get(%w(fileops move), options)
+    end
+
+    def check_conversion_status(fileid)
+      @request.get(['fileops', fileid.to_s, 'checkconversion'])
+    end
+
+    def move_to_folder(dest_folder_id, options = {})
+      @request.put(%w(fileops move), {destFolderId: dest_folder_id}.merge(options))
+    end
+
+    def copy_to_folder(dest_folder_id, options = {})
+      @request.put(%w(fileops copy), {destFolderId: dest_folder_id}.merge(options))
+    end
+
+    def delete(options = {})
+      @request.put(%w(fileops delete), options)
+    end
+
+    def finish_all
+      @request.put(%w(fileops terminate))
+    end
+
+    def mark_as_read
+      @request.put(%w(fileops markasread))
+    end
+
+    def clear_recycle_bin
+      @request.put(%w(fileops emptytrash))
+    end
+
+    def finish_operations(options = {})
+      @request.put(%w(fileops bulkdownload), options)
+    end
+
+    def start_conversion(file_id, start)
+      @request.put(['file', file_id.to_s, 'checkconversion'], {start: start})
+    end
+
+    #endregion
+
+    #region Files
+
     def get_file_info(file_id)
       @request.get(['file', file_id.to_s])
     end
@@ -96,61 +95,65 @@ module Teamlab
       @request.get(['file', file_id.to_s, 'history'])
     end
 
-    def get_third_party_files(source, options = {})
-      @request.get(['settings', 'import', source.to_s, 'data'], options)
-    end
-
     def update_file_info(file_id, title, last_version)
       @request.put(['file', file_id.to_s], title: title, lastVersion: last_version)
-    end
-
-    def finish_importing
-      @request.put(%w(settings import terminate))
-    end
-
-    def import_from_third_party(source, folder_id, ignore_coincidence_files, data_to_import, options = {})
-      @request.put(['settings', 'import', source.to_s, 'data'], {folderId: folder_id.to_s, ignoreCoincidenceFiles: ignore_coincidence_files, dataToImport: data_to_import}.merge(options))
     end
 
     def delete_file(file_id)
       @request.delete(['file', file_id.to_s])
     end
 
+    #endregion
+
+    #region Folders
+
+    def get_my_folder
+      @request.get(['@my'])
+    end
+
+    def get_share_folder
+      @request.get(['@share'])
+    end
+
+    def get_trash_folder
+      @request.get(['@trash'])
+    end
+
+    def get_common_folder
+      @request.get(['@common'])
+    end
+
+    def get_projects_folder
+      @request.get(['@projects'])
+    end
+
+    def get_folder(folder_id, options = {})
+      @request.get([folder_id.to_s], options)
+    end
+
+    def get_folder_info(folder_id)
+      @request.get(['folder', folder_id.to_s])
+    end
+
+    def get_folder_path(folder_id)
+      @request.get(['folder', folder_id.to_s, 'path'])
+    end
+
+    def new_folder(folder_id, title)
+      @request.post(['folder', folder_id.to_s], title: title)
+    end
+
+    def rename_folder(folder_id, title)
+      @request.put(['folder', folder_id.to_s], title: title)
+    end
+
     def delete_folder(folder_id)
       @request.delete(['folder', folder_id.to_s])
     end
 
-    def get_file_operations_list
-      @request.get(%w(fileops))
-    end
+    #endregion
 
-    def move_files(dest_folder_id, options = {})
-      @request.put(%w(fileops move), { destFolderId: dest_folder_id }.merge(options))
-    end
-
-    def copy_to_folder(dest_folder_id, options = {})
-      @request.put(%w(fileops copy), { destFolderId: dest_folder_id }.merge(options))
-    end
-
-    def delete(options = {})
-      @request.put(%w(fileops copy), options)
-    end
-
-    def finish_all
-      @request.put(%w(fileops terminate))
-    end
-
-    def clear_recycle_bin
-      @request.put(%w(fileops emptytrash))
-    end
-
-    def mark_as_read
-      @request.put(%w(fileops markasread))
-    end
-
-    def finish_operations(options = {})
-      @request.put(%w(fileops bulkdownload), options)
-    end
+    #region Sharing
 
     def get_file_sharing(file_id)
       @request.get(['file', file_id.to_s, 'share'])
@@ -161,27 +164,65 @@ module Teamlab
     end
 
     def share_file(file_id, user_id, access_type, options = {})
-      @request.put(['file', file_id.to_s, 'share'], { share: { shareTo: user_id, fileShare: access_type}.merge(options) })
+      @request.put(['file', file_id.to_s, 'share'], {share: {shareTo: user_id, fileShare: access_type}.merge(options)})
     end
 
     def share_folder(folder_id, user_id, access_type, options = {})
-      @request.put(['folder', folder_id.to_s, 'share'], { share: { shareTo: user_id, fileShare: access_type}.merge(options) })
+      @request.put(['folder', folder_id.to_s, 'share'], {share: {shareTo: user_id, fileShare: access_type}.merge(options)})
     end
 
-    def remove_file_sharing_rights(file_id, share_to_ids)
-      @request.delete(['file', file_id.to_s, 'share'], shareTo: share_to_ids)
+    def removes_sharing_rights(options = {})
+      @request.delete(['share'], options)
     end
 
-    def remove_folder_sharing_rights(folder_id, share_to_ids)
-      @request.delete(['folder', folder_id.to_s, 'share'], shareTo: share_to_ids)
-    end
+    #endregion
+
+    #region Third-Party Integration
 
     def get_third_party
       @request.get(%w(thirdparty))
     end
 
+    def save_third_party(options = {})
+      @request.post(%w(thirdparty), options)
+    end
+
     def remove_third_party_account(provider_id)
       @request.delete(['thirdparty', provider_id.to_s])
+    end
+
+    #endregion
+
+    #region Uploads
+
+    def upload_to_my_docs(file)
+      @request.post(%w(@my upload), somefile: File.new(file))
+    end
+
+    def upload_to_common_docs(file)
+      @request.post(%w(@common upload), somefile: File.new(file))
+    end
+
+    def upload_to_folder(folder_id, file)
+      @request.post([folder_id.to_s, 'upload'], somefile: File.new(file))
+    end
+
+    def insert_file(folder_id, file, title)
+      @request.post([folder_id.to_s, 'insert'], {somefile: File.new(file), title: title})
+    end
+
+    def chunked_upload(folder_id, filename, file_size)
+      @request.post([folder_id.to_s, 'upload', 'create_session'], fileName: filename, fileSize: file_size)
+    end
+
+    #endregion
+
+    def search(query)
+      @request.get(['@search', query.to_s])
+    end
+
+    def generate_shared_link(file_id, share)
+      @request.put([file_id.to_s, 'sharedlink'], share: share)
     end
 
   end

@@ -35,6 +35,10 @@ module Teamlab
       @request.get([project_id.to_s, 'message'])
     end
 
+    def get_project_message(message_id)
+      @request.get(['message', message_id.to_s])
+    end
+
     def check_subscription_to_discussion(message_id) #есть тест
       @request.get(['message', message_id.to_s, 'subscribe'])
     end
@@ -84,7 +88,7 @@ module Teamlab
     end
 
     def detach_file_from_message(message_id, file_id) #есть тест
-      @request.delete(['task', message_id.to_s, 'files'], fileid: file_id)
+      @request.delete(['message', message_id.to_s, 'files'], fileid: file_id)
     end
 
     #endregion
@@ -108,7 +112,7 @@ module Teamlab
     end
 
     def add_message_comment(message_id, content, options = {}) #есть тест
-      @request.post(['task', message_id.to_s, 'comment'], { content: content }.merge(options))
+      @request.post(['message', message_id.to_s, 'comment'], { content: content }.merge(options))
     end
 
     def update_comment(comment_id, content) #есть тест
@@ -199,8 +203,8 @@ module Teamlab
       @request.post('', { title: title, description: description, responsibleid: responsible_id, tags: tags, private: private}.merge(options))
     end
 
-    def create_template(title)
-      @request.post(['template'], { title: title })
+    def create_template(title, options = {})
+      @request.post(['template'], { title: title }.merge(options))
     end
 
     def add_milestone(project_id, title, deadline, responsible_id, options = {})
@@ -320,7 +324,7 @@ module Teamlab
     end
 
     def get_all_tasks(project_id)
-      @request.get([project_id.to_s, 'task', '@all'])
+      @request.get([project_id.to_s, 'task'])
     end
 
     def check_subscription_to_task_action(task_id)
