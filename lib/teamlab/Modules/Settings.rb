@@ -51,7 +51,7 @@ module Teamlab
     end
 
     def set_security(id, options = {})
-      @request.put(%w(security), {id: id}.merge(options))
+      @request.put(%w(security), { id: id }.merge(options))
     end
 
     def save_ip_restrictions(ips)

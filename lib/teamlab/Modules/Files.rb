@@ -52,11 +52,12 @@ module Teamlab
     end
 
     def move_to_folder(dest_folder_id, options = {})
-      @request.put(%w(fileops move), {destFolderId: dest_folder_id}.merge(options))
+      @request.put(%w(fileops move), { destFolderId: dest_folder_id }.merge(options))
     end
+    alias_method :move_files, :move_to_folder
 
     def copy_to_folder(dest_folder_id, options = {})
-      @request.put(%w(fileops copy), {destFolderId: dest_folder_id}.merge(options))
+      @request.put(%w(fileops copy), { destFolderId: dest_folder_id }.merge(options))
     end
 
     def delete(options = {})
@@ -80,7 +81,7 @@ module Teamlab
     end
 
     def start_conversion(file_id, start)
-      @request.put(['file', file_id.to_s, 'checkconversion'], {start: start})
+      @request.put(['file', file_id.to_s, 'checkconversion'], start: start)
     end
 
     #endregion
@@ -107,19 +108,20 @@ module Teamlab
 
     #region Folders
 
-    def get_my_folder
+    def get_my_docs
       @request.get(['@my'])
     end
+    alias_method :get_my_files, :get_my_docs
 
-    def get_share_folder
+    def get_shared_docs
       @request.get(['@share'])
     end
 
-    def get_trash_folder
+    def get_trash
       @request.get(['@trash'])
     end
 
-    def get_common_folder
+    def get_common_docs
       @request.get(['@common'])
     end
 
@@ -164,11 +166,11 @@ module Teamlab
     end
 
     def share_file(file_id, user_id, access_type, options = {})
-      @request.put(['file', file_id.to_s, 'share'], {share: {shareTo: user_id, fileShare: access_type}.merge(options)})
+      @request.put(['file', file_id.to_s, 'share'], { share: { shareTo: user_id, fileShare: access_type } }.merge(options))
     end
 
     def share_folder(folder_id, user_id, access_type, options = {})
-      @request.put(['folder', folder_id.to_s, 'share'], {share: {shareTo: user_id, fileShare: access_type}.merge(options)})
+      @request.put(['folder', folder_id.to_s, 'share'], { share: { shareTo: user_id, fileShare: access_type } }.merge(options))
     end
 
     def removes_sharing_rights(options = {})
@@ -208,7 +210,7 @@ module Teamlab
     end
 
     def insert_file(folder_id, file, title)
-      @request.post([folder_id.to_s, 'insert'], {somefile: File.new(file), title: title})
+      @request.post([folder_id.to_s, 'insert'], somefile: File.new(file), title: title)
     end
 
     def chunked_upload(folder_id, filename, file_size)
