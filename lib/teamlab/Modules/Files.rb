@@ -166,11 +166,11 @@ module Teamlab
     end
 
     def share_file(file_id, user_id, access_type, options = {})
-      @request.put(['file', file_id.to_s, 'share'], { share: { shareTo: user_id, fileShare: access_type } }.merge(options))
+      @request.put(['file', file_id.to_s, 'share'], { share: { shareTo: user_id, Access: access_type } }.merge(options))
     end
 
     def share_folder(folder_id, user_id, access_type, options = {})
-      @request.put(['folder', folder_id.to_s, 'share'], { share: { shareTo: user_id, fileShare: access_type } }.merge(options))
+      @request.put(['folder', folder_id.to_s, 'share'], { share: { shareTo: user_id, Access: access_type } }.merge(options))
     end
 
     def removes_sharing_rights(options = {})
