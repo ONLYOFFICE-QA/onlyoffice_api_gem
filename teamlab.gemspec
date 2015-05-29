@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["rzagudaev@gmail.com", 'shockwavenn@gmail.com', 'nazarov90@gmail.com']
   spec.description   = %q{Ruby Framework to interact with OnlyOffice\\TeamLab API 2.0}
   spec.summary       = %q{Ruby gem for OnlyOffice\\TeamLab}
-  spec.homepage      = 'https://bitbucket.org/rzagudaev/gemteamlab/overview'
+  spec.homepage      = 'https://github.com/onlyoffice-testing-robot/GemTeamlab'
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
