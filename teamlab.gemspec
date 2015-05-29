@@ -6,8 +6,8 @@ require 'teamlab/version'
 Gem::Specification.new do |spec|
   spec.name          = "teamlab"
   spec.version       = Teamlab::VERSION
-  spec.authors       = ["rzagudaev"]
-  spec.email         = ["rzagudaev@gmail.com"]
+  spec.authors       = ["rzagudaev", 'shockwavenn', 'DaftTrick']
+  spec.email         = ["rzagudaev@gmail.com", 'shockwavenn@gmail.com', 'nazarov90@gmail.com']
   spec.description   = %q{Ruby Framework to interact with TeamLab API 2.0}
   spec.summary       = %q{Ruby gem for TeamLab}
   spec.homepage      = 'https://bitbucket.org/rzagudaev/gemteamlab/overview'
