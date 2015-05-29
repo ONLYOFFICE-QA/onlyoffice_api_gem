@@ -37,10 +37,10 @@ module Teamlab
       attempts = 0
       begin
         response = Teamlab::Response.new(HTTMultiParty.send(type, url, opts))
-      rescue TimeoutError
+      rescue TimeoutError => timeout_exception
         attempts += 1
         retry if attempts < 3
-        raise 'Can\'t ' + type.to_s + ' ' + url.to_s
+        raise "Can't #{type} to #{url} because of TimeoutError: #{timeout_exception}"
       rescue Exception => e
         fail e
       end
