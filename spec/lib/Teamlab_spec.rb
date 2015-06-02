@@ -226,13 +226,6 @@ describe Teamlab do
       end
     end
 
-    describe '#change_people_status' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :change_people_status }
-        let(:args) { [ USER_STATUSES.sample, DATA_COLLECTOR[:new_user_ids]] }
-      end
-    end
-
     describe '#add_contacts' do
       it_should_behave_like 'an api request' do
         let(:command) { :add_contacts }
@@ -251,6 +244,13 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:command) { :delete_contacts }
         let(:args) { [random_id(:new_user), USER_CONTACTS] }
+      end
+    end
+
+    describe '#change_people_status' do
+      it_should_behave_like 'an api request' do
+        let(:command) { :change_people_status }
+        let(:args) { [ 'Terminated', DATA_COLLECTOR[:new_user_ids]] }
       end
     end
 
