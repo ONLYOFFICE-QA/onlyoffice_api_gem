@@ -1,3 +1,8 @@
+0.3.8
+=====
+
+* Fix settings#get_usage_quota method because of typo
+
 0.3.7.1
 =====
 
