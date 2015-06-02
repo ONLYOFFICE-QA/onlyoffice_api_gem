@@ -24,19 +24,19 @@ describe Teamlab do
     context 'Successful api request' do
 
       it 'returns Teamlab::Response object' do
-        @response.should be_instance_of(Teamlab::Response)
+        expect(@response).to be_instance_of(Teamlab::Response)
       end
 
       it 'returns Teamlab::Response object with successful parameter, set to true' do
-        @response.success.should be_true
+        expect(@response.success).to be_truthy
       end
 
       it 'returns Teamlab::Response object with nil error parameter' do
-        @response.error.should be_nil
+        expect(@response.error).to be_nil
       end
 
       it 'returns Teamlab::Response object with hash body' do
-        @response.body.should be_instance_of(Hash)
+        expect(@response.body).to be_instance_of(Hash)
       end
     end
   end
