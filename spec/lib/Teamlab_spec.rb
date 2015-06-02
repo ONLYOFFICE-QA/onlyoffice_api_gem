@@ -221,7 +221,6 @@ describe Teamlab do
 
     describe '#update_photo' do
       it_should_behave_like 'an api request' do
-        pending 'http://bugzserver/show_bug.cgi?id=23867'
         let(:command) { :update_photo }
         let(:args) { [random_id(:new_user), PATH_TO_IMAGE] }
       end
