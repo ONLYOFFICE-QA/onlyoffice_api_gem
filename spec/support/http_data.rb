@@ -1,6 +1,6 @@
-SERVER = ''
-USERNAME = ''
-PASSWORD = ''
+SERVER = 'https://nctautotest-rubygem-test.onlyoffice.com'
+USERNAME = 'teamlab.ruby@gmail.com'
+PASSWORD = '123456'
 
 DATA_COLLECTOR = {}
 
