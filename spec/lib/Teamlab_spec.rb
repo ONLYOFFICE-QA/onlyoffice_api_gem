@@ -357,7 +357,6 @@ describe Teamlab do
 
     describe '#get_usage_quota' do
       it_should_behave_like 'an api request' do
-        pending 'http://bugzserver/show_bug.cgi?id=23868'
         let(:command) { :get_usage_quota }
       end
     end
