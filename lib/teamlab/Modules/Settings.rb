@@ -15,7 +15,7 @@ module Teamlab
     end
 
     def get_usage_quota
-      @request.get(%w('quota))
+      @request.get(%w(quota))
     end
 
     def get_version
