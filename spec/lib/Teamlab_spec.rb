@@ -599,13 +599,6 @@ describe Teamlab do
       end
     end
 
-    describe '#import_from_third_party' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :import_from_third_party }
-        let(:args) { [THIRD_PARTY_SERVICE, THIRD_PARTY_FOLDER_ID, random_bool, [], THIRD_PARTY_LOGIN_DATA] }
-      end
-    end
-
     describe '#get_file_operations_list' do
       it_should_behave_like 'an api request' do
         let(:command) { :get_file_operations_list }
