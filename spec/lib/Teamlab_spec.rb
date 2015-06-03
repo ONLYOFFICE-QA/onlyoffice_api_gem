@@ -511,28 +511,28 @@ describe Teamlab do
     describe '#upload_to_my_docs' do
       it_should_behave_like 'an api request' do
         let(:command) { :upload_to_my_docs }
-        let(:args) { FILES_FOR_UPLOAD.sample }
+        let(:args) { [FILE_FOR_UPLOAD] }
       end
     end
 
     describe '#upload_to_common_docs' do
       it_should_behave_like 'an api request' do
         let(:command) { :upload_to_common_docs }
-        let(:args) { FILES_FOR_UPLOAD.sample }
+        let(:args) { FILE_FOR_UPLOAD }
       end
     end
 
     describe '#upload_to_folder' do
       it_should_behave_like 'an api request' do
         let(:command) { :upload_to_folder }
-        let(:args) { [random_id(:new_folder), FILES_FOR_UPLOAD.sample] }
+        let(:args) { [random_id(:new_folder), FILE_FOR_UPLOAD] }
       end
     end
 
     describe '#chunked_upload' do
       it_should_behave_like 'an api request' do
         let(:command) { :chunked_upload }
-        let(:args) { [random_id(:new_folder), File.basename(FILES_FOR_UPLOAD.sample), rand(1..50)] }
+        let(:args) { [random_id(:new_folder), File.basename(FILE_FOR_UPLOAD), rand(1..50)] }
       end
     end
 
@@ -2425,7 +2425,7 @@ describe Teamlab do
     describe '#upload_file' do
       it_should_behave_like 'an api request' do
         let(:command) { :upload_file }
-        let(:args) { [entity = ENTITY_TYPES.sample, random_id(entity.to_sym), FILES_FOR_UPLOAD.sample] }
+        let(:args) { [entity = ENTITY_TYPES.sample, random_id(entity.to_sym), FILE_FOR_UPLOAD] }
       end
     end
 
