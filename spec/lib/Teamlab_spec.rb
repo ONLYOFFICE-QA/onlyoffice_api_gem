@@ -518,7 +518,7 @@ describe Teamlab do
     describe '#upload_to_common_docs' do
       it_should_behave_like 'an api request' do
         let(:command) { :upload_to_common_docs }
-        let(:args) { FILE_FOR_UPLOAD }
+        let(:args) { [FILE_FOR_UPLOAD] }
       end
     end
 
@@ -3606,14 +3606,6 @@ describe Teamlab do
         let(:teamlab_module) { :files }
         let(:command) { :delete_file }
         let(:args) { [DATA_COLLECTOR[:file_ids].pop] }
-      end
-    end
-
-    describe '#delete_user' do
-      it_should_behave_like 'an api request' do
-        let(:teamlab_module) { :people }
-        let(:command) { :delete_user }
-        let(:args) { [DATA_COLLECTOR[:user_ids].pop] }
       end
     end
 
