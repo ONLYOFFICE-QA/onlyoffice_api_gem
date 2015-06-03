@@ -491,14 +491,6 @@ describe Teamlab do
       end
     end
 
-    describe '#get_recent_uploaded_files' do
-      it_should_behave_like 'an api request' do
-        pending 'http://bugzserver/show_bug.cgi?id=23869'
-        let(:command) { :get_recent_uploaded_files }
-        let(:args) { [random_id(:my_documents)] }
-      end
-    end
-
     describe '#create_file' do
       it_should_behave_like 'an api request' do
         let(:command) { :create_file }
