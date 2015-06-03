@@ -405,7 +405,7 @@ describe Teamlab do
     end
 
     describe '#set_access' do
-      it_should_behave_like 'an api request' do
+      it_should_behave_like 'an api request', :pending do
         pending 'http://bugzserver/show_bug.cgi?id=23764'
         let(:command) { :set_access }
         let(:args) { [[random_settings_entity_id, random_bool]] }
