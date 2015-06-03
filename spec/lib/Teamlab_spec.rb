@@ -599,12 +599,6 @@ describe Teamlab do
       end
     end
 
-    describe '#finish_importing' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :finish_importing }
-      end
-    end
-
     describe '#import_from_third_party' do
       it_should_behave_like 'an api request' do
         let(:command) { :import_from_third_party }
