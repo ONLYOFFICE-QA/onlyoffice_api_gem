@@ -592,13 +592,6 @@ describe Teamlab do
       end
     end
 
-    describe '#get_third_party_files' do
-      it_should_behave_like 'an api request' do
-        let(:command) { :get_third_party_files }
-        let(:args) { [THIRD_PARTY_SERVICE, THIRD_PARTY_LOGIN_DATA] }
-      end
-    end
-
     describe '#update_file_info' do
       it_should_behave_like 'an api request' do
         let(:command) { :update_file_info }
