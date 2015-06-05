@@ -45,10 +45,9 @@ describe '[Calendar]' do
 
   describe '#add_event' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24071'
       let(:command) { :add_event }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], random_word] }
+      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], random_word, {description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false}] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :event_ids }
       let(:param_names) { %w(id) }
