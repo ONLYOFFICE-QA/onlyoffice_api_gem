@@ -82,7 +82,6 @@ describe '[Calendar]' do
 
   describe '#get_icalc_feed' do
     it_should_behave_like 'an api request' do
-      pending 'Выкачивает .ics файл. Response в IDE выглядит извращенно'
       let(:command) { :get_icalc_feed }
       i = -1
       let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], DATA_COLLECTOR[:ical_link_ids][i].split('/').last] }
@@ -91,7 +90,6 @@ describe '[Calendar]' do
 
   describe '#get_calendar_events' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24069'
       let(:command) { :get_calendar_events }
       let(:args) { [DateTime.commercial(2014).to_s, DateTime.commercial(2015).to_s] }
     end
@@ -99,7 +97,6 @@ describe '[Calendar]' do
 
   describe '#get_calendars_and_subscriptions' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24069'
       let(:command) { :get_calendars_and_subscriptions }
       let(:args) { [DateTime.commercial(2014).to_s, DateTime.commercial(2015).to_s] }
     end
