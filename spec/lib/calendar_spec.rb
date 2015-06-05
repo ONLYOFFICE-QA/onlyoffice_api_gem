@@ -36,7 +36,7 @@ describe '[Calendar]' do
   describe '#create_calendar_by_ical_link' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_calendar_by_ical_link }
-      let(:args) { [random_id(:ical_link)] }
+      let(:args) { [random_id(:ical_link), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :calendar_ids }
       let(:param_names) { %w(objectId) }
@@ -103,13 +103,6 @@ describe '[Calendar]' do
       pending 'http://bugzserver/show_bug.cgi?id=24069'
       let(:command) { :get_calendars_and_subscriptions }
       let(:args) { [DateTime.commercial(2014).to_s, DateTime.commercial(2015).to_s] }
-    end
-  end
-
-  describe '#create_calendar_by_ical_link' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :create_calendar_by_ical_link }         #ХЗ ГДЕ ВЗЯТЬ ЛИНКУ
-      let(:args) { [random_id(:ical_link), random_word] }
     end
   end
 
