@@ -10,7 +10,10 @@ shared_examples_for 'an api request' do |*flags|
     @response = args.empty? ? @module.send(command) : @module.send(command, *args)
     if add_data_to_collector
       DATA_COLLECTOR[data_param] ||= []
-      DATA_COLLECTOR[data_param] << param_names.inject(@response.body['response']) { |resp, param| resp[param] }
+      response = [@response.body['response']].flatten
+      response.each do |cur_response|
+        DATA_COLLECTOR[data_param] << param_names.inject(cur_response) { |resp, param| resp[param] }
+      end
     end
   end
 
