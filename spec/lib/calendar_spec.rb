@@ -36,7 +36,7 @@ describe '[Calendar]' do
   describe '#create_calendar_by_ical_link' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_calendar_by_ical_link }
-      let(:args) { [random_id(:ical_link), random_word] }
+      let(:args) { [CALENDAR_WEB_URL, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :calendar_ids }
       let(:param_names) { %w(objectId) }
