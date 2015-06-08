@@ -50,7 +50,7 @@ describe '[Calendar]' do
       let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], random_word, {description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false}] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :event_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w(objectId) }
     end
   end
 
@@ -91,14 +91,14 @@ describe '[Calendar]' do
   describe '#get_calendar_events' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_calendar_events }
-      let(:args) { [DateTime.commercial(2014).to_s, DateTime.commercial(2015).to_s] }
+      let(:args) { [DateTime.new(2014).strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s, DateTime.now.strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s] }
     end
   end
 
   describe '#get_calendars_and_subscriptions' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_calendars_and_subscriptions }
-      let(:args) { [DateTime.commercial(2014).to_s, DateTime.commercial(2015).to_s] }
+      let(:args) { [DateTime.new(2014).strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s, DateTime.now.strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s] }
     end
   end
 
@@ -141,7 +141,7 @@ describe '[Calendar]' do
   describe '#unsubscribe_from_event' do
     it_should_behave_like 'an api request' do
       let(:command) { :unsubscribe_from_event }
-      let(:args) { [random_id(:event)] }
+      let(:args) { [DATA_COLLECTOR[:event_ids][-1]] }
     end
   end
 
@@ -163,6 +163,13 @@ describe '[Calendar]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_calendar }
       let(:args) { [DATA_COLLECTOR[:calendar_ids].pop] }
+    end
+  end
+
+  after :all do
+    all_calendars = Teamlab.calendar.get_calendars_and_subscriptions(DateTime.new(2010).strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s, DateTime.now.strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s).body['response']
+    all_calendars.each do |current_calendar|
+      Teamlab.calendar.delete_calendar(current_calendar['objectId'])
     end
   end
 end
