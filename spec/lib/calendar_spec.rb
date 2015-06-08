@@ -125,7 +125,6 @@ describe '[Calendar]' do
 
   describe '#manage_subscriptions' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24072'
       let(:command) { :manage_subscriptions }
       let(:args) { [[random_word]] }
     end
@@ -133,7 +132,6 @@ describe '[Calendar]' do
 
   describe '#update_event' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24071'
       let(:command) { :update_event }
       i = -1
       let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], DATA_COLLECTOR[:event_ids][i], random_word] }
