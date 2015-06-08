@@ -119,7 +119,7 @@ describe '[Calendar]' do
   describe '#update_calendar_user_view' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_calendar_user_view }
-      let(:args) { [random_id(:calendar), random_word, TIME_ZONES.sample] }
+      let(:args) { [random_id(:calendar), random_word, TIME_ZONES.sample, {textColor: 'red', backgroundColor: 'blue'}] }
     end
   end
 
