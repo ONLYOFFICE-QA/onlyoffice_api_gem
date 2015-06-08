@@ -93,6 +93,6 @@ EVENT_TYPES = %w(None News Order Advert AllNews Poll All)
 #region Calendar
 TIME_ZONES = %w(UTC)
 CALENDAR_TO_UPLOAD = '/mnt/data_share/Files/basic.ics'
-CALENDAR_WEB_URL = 'http://nzfarms.nz/2401943.ics'
+CALENDAR_WEB_URL = 'https://raw.githubusercontent.com/onlyoffice-testing-robot/GemTeamlab/fix/make_test_working/spec/lib/data/basic.ics'
 #endregion
 #endregion
