@@ -159,7 +159,7 @@ module Teamlab
 #==================================== TODO: ERROR
 
     def add_thread_to_category(category_id, category_name, thread_name, description)
-      @request.post(%w(forum), categoryId: category_id, categoryName: category_name.to_s, threadName: thread_name, description: description)
+      @request.post(%w(forum), categoryId: category_id, categoryName: category_name.to_s, threadName: thread_name, threadDescription: description)
     end
 
     def add_topic_to_thread(thread_id, subject, content, options = {})
