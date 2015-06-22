@@ -96,6 +96,10 @@ module Teamlab
       @request.get(['file', file_id.to_s, 'history'])
     end
 
+    def update_file_history(file_id, version, continue_version = false)
+      @request.put(['file', file_id.to_s, 'history'], version: version, continueVersion: continue_version)
+    end
+
     def update_file_info(file_id, title, last_version)
       @request.put(['file', file_id.to_s], title: title, lastVersion: last_version)
     end
