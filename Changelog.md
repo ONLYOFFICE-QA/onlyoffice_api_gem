@@ -1,5 +1,6 @@
 # Change log
 
+## master (unreleased)
 ## 0.39
 =====
 * Add method Files#update_file_history for version finilization
