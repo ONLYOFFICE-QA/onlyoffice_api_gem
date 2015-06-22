@@ -1,8 +1,12 @@
 # Change log
 
 ## master (unreleased)
+=====
+* Add 500 error handler
+
 ## 0.39
 =====
+
 * Add method Files#update_file_history for version finilization
 * Fix Community#add_thread_to_category method
 
