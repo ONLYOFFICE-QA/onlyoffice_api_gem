@@ -3,7 +3,7 @@
 ## 0.3.10
 * Add any error >= 400 handling
 
-## 0.39
+## 0.3.9
 * Add method Files#update_file_history for version finilization
 * Fix Community#add_thread_to_category method
 
