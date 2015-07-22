@@ -1,7 +1,7 @@
 # Change log
 
-## master (unreleased)
-* Add 500 error handler
+## 0.3.10
+* Add any error >= 400 handling
 
 ## 0.39
 * Add method Files#update_file_history for version finilization
