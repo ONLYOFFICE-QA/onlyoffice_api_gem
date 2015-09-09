@@ -10,6 +10,14 @@ module Teamlab
       @request.get
     end
 
+    def get_sso_settings
+      @request.get(%w(SSO))
+    end
+
+    def get_ldap_settings
+      @request.get(%w(LDAP))
+    end
+
     def get_logo
       @request.get(%w(logo))
     end
@@ -28,6 +36,10 @@ module Teamlab
 
     def get_ip_restrictions
       @request.get(%w(iprestrictions))
+    end
+
+    def get_white_label_sizes
+      @request.get(%w(whitelabel sizes))
     end
 
     def get_admin_security(product_id, user_id)
