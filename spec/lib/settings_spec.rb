@@ -28,6 +28,18 @@ describe '[Settings]' do
     end
   end
 
+  describe '#get_sso_settings' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_sso_settings }
+    end
+  end
+
+  describe '#get_ldap_settings' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_ldap_settings }
+    end
+  end
+
   describe '#get_logo' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_logo }
@@ -43,6 +55,12 @@ describe '[Settings]' do
   describe '#get_version' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_version }
+    end
+  end
+
+  describe '#get_white_label_sizes' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_white_label_sizes }
     end
   end
 
