@@ -1,5 +1,8 @@
 # Change log
 
+## master (unreleased)
+* Fix a lot of tests. But not all
+
 ## 0.3.10
 * Add any error >= 400 handling
 
