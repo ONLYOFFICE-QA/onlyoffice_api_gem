@@ -2,6 +2,7 @@
 
 ## master (unreleased)
 * Fix a lot of tests. But not all
+* Add get_sso_settings, get_ldap_settings, get_white_label_sizes methods in Settings
 
 ## 0.3.10
 * Add any error >= 400 handling
