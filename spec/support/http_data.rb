@@ -59,7 +59,7 @@ SETTINGS_FOR_TALK = { enabled: true }
 #region Files
 FILE_FOR_OPERATIONS_VERSION = 1
 FILES_SHARE_TYPES = %w(None ReadWrite Read Restrict)
-FILE_FOR_UPLOAD = "#{File.dirname(__FILE__)}/../../spec/lib/data/6 sınıf AAAAd.docx"
+FILE_FOR_UPLOAD = "#{File.dirname(__FILE__)}/../../spec/lib/data/docx_file.docx"
 #endregion
 
 #region Projects
