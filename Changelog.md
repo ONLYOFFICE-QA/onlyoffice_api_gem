@@ -1,5 +1,8 @@
 # Change log
 
+## 0.3.12
+* Add support of Files#document_server_info.
+
 ## 0.3.11
 * Fix a lot of tests. But not all
 * Add get_sso_settings, get_ldap_settings, get_white_label_sizes methods in Settings
