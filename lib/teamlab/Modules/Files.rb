@@ -231,5 +231,8 @@ module Teamlab
       @request.put([file_id.to_s, 'sharedlink'], share: share)
     end
 
+    def document_server_info
+      @request.get(%w(docservice))
+    end
   end
 end
