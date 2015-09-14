@@ -1,5 +1,8 @@
 # Change log
 
+## unreleased (master
+* Add empty gemtime dependencies, to remove warning during `gem build`
+
 ## 0.3.12
 * Add support of Files#document_server_info.
 
