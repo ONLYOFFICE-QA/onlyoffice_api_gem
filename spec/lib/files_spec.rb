@@ -316,4 +316,10 @@ describe '[Files]' do
       let(:command) { :clear_recycle_bin }
     end
   end
+
+  describe '#document_server_info' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :document_server_info }
+    end
+  end
 end
