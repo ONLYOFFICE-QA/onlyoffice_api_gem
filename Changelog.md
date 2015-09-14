@@ -1,6 +1,6 @@
 # Change log
 
-## unreleased (master
+## unreleased (master)
 * Add empty gemtime dependencies, to remove warning during `gem build`
 
 ## 0.3.12
