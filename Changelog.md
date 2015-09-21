@@ -1,6 +1,7 @@
 # Change log
 
 ## unreleased (master)
+* add link_account, unlink_account in people
 * Add empty gemtime dependencies, to remove warning during `gem build`
 
 ## 0.3.12
