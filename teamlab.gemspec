@@ -18,11 +18,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'httparty'
-  spec.add_dependency 'activesupport'
-  spec.add_dependency 'rspec'
-  spec.add_dependency 'httmultiparty'
+  spec.add_dependency 'httparty', '~> 0'
+  spec.add_dependency 'activesupport', '~> 0'
+  spec.add_dependency 'rspec', '~> 0'
+  spec.add_dependency 'httmultiparty', '~> 0'
 
   spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rake", '~> 0'
 end
