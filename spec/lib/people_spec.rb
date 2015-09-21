@@ -134,6 +134,13 @@ describe '[People]' do
     end
   end
 
+  describe '#link_account' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :link_account }
+      let(:args) { [USER_THIRD_PARTIES_PROFILES.sample] }
+    end
+  end
+
   describe '#delete_photo' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_photo }
@@ -159,6 +166,13 @@ describe '[People]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_user }
       let(:args) { [DATA_COLLECTOR[:new_user_ids].pop] }
+    end
+  end
+
+  describe '#unlink_account' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :unlink_account }
+      let(:args) { [USER_THIRD_PARTIES_PROVIDERS.sample] }
     end
   end
 end
