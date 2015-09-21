@@ -1,5 +1,8 @@
 # Change log
 
+## master (unreleased)
+* add link_account, unlink_account in people
+
 ## 0.3.12
 * Add support of Files#document_server_info.
 
