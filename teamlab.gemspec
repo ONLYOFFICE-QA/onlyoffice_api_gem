@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'httparty', '~> 0.11.0'
-  spec.add_runtime_dependency 'activesupport', '~> 3.0'
+  spec.add_runtime_dependency 'activesupport', '~> 4'
   spec.add_runtime_dependency 'rspec', '~> 3.3.0'
   spec.add_runtime_dependency 'httmultiparty', '~> 0.3.16'
 
