@@ -5,7 +5,7 @@ module Teamlab
     attr_reader :body, :error, :code, :success
 
     def initialize(http_response)
-      if http_response.is_a?(String)
+      if http_response.is_a?(String) && http_response.code < 400
         @body = {:'response' => http_response.to_s}
         @success = true
         @code = 201

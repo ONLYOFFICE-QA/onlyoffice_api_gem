@@ -133,6 +133,8 @@ module Teamlab
 
     def delete_account(email)
       @request.delete(['accounts', email.to_s])
+    rescue
+      @request.delete(['accounts'], {email: email.to_s}) # for version 8.7
     end
 
     #endregion
