@@ -352,7 +352,7 @@ module Teamlab
     end
 
     def update_task_status(task_id, status)
-      @request.post(['task', task_id.to_s, 'status'], status: status)
+      @request.put(['task', task_id.to_s, 'status'], status: status)
     end
 
     def update_task_milestone(task_id, milestone_id)

@@ -1,7 +1,10 @@
 # Change log
 
-## unreleased (master)
-* add link_account, unlink_account in people
+## 0.3.13
+* Fix delete_account in mail
+* Fix if response == String
+* Fix type request update_task_status in projects
+* Add link_account, unlink_account in people
 * Add empty gemtime dependencies, to remove warning during `gem build`
 
 ## 0.3.12
