@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'httparty', '~> 0.11.0'
+  spec.add_runtime_dependency 'httparty', '~> 0.13'
   spec.add_runtime_dependency 'activesupport', '~> 4'
   spec.add_runtime_dependency 'rspec', '~> 3.3.0'
   spec.add_runtime_dependency 'httmultiparty', '~> 0.3.16'
