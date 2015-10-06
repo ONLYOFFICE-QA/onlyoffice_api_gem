@@ -1,5 +1,8 @@
 # Change log
 
+## 0.3.13.1 & 0.3.13.2
+* Fix dependency of httparty
+
 ## 0.3.13
 * Fix delete_account in mail
 * Fix if response == String
