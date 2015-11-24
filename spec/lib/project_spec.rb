@@ -220,6 +220,13 @@ describe '[Project]' do
     end
   end
 
+  describe '#update_message_status' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_message_status }
+      let(:args) { [random_id(:discussion), PROJECT_DISCUSSION_STATUSES] }
+    end
+  end
+
   describe '#subscribe_to_message_action' do
     it_should_behave_like 'an api request' do
       let(:command) { :subscribe_to_message_action }
