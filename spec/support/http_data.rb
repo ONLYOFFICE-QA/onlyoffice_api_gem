@@ -74,6 +74,7 @@ PROJECT_TASK_LINK_TYPES = %w(Start End EndStart)
 PROJECT_SECURITY_RIGHTS = %w(None Messages Tasks Files Milestone Contacts)
 PROJECT_TASKS_STATUSES = %w(open closed)
 PROJECT_TASK_TIME_STATUSES = %w(NotChargeable NotBilled Billed )
+PROJECT_DISCUSSION_STATUSES = %w(Open, Archived)
 
 BASECAMP_URL = "https://basecamp.com/2452154"
 BASECAMP_LOGIN = ""
