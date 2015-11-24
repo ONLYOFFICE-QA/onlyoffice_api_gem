@@ -51,6 +51,10 @@ module Teamlab
       @request.put(['message', message_id.to_s], { projectid: project_id, title: title, content: content }.merge(options))
     end
 
+    def update_message_status(message_id, status)
+      @request.put(['message', message_id.to_s, 'status'], { status: status })
+    end
+
     def subscribe_to_message_action(message_id) #есть тест
       @request.put(['message', message_id.to_s, 'subscribe'])
     end
