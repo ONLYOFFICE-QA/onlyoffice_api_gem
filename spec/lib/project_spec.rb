@@ -223,7 +223,7 @@ describe '[Project]' do
   describe '#update_message_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_message_status }
-      let(:args) { [random_id(:discussion), PROJECT_DISCUSSION_STATUSES] }
+      let(:args) { [random_id(:discussion), PROJECT_DISCUSSION_STATUSES.sample] }
     end
   end
 
