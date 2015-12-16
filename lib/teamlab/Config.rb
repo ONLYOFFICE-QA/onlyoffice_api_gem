@@ -8,7 +8,9 @@ module Teamlab
   def self.configure(&block)
     @config ||= Config.new
     yield @config if block_given?
-    @config.token = Teamlab::Request.new('authentication').post('', {:userName => @config.username, :password => @config.password}).body['response']['token']
+    auth_response = Teamlab::Request.new('authentication').post('', {:userName => @config.username, :password => @config.password}).body
+    fail "Cannot get response token for #{auth_response}" if auth_response['response'].nil? || auth_response['response']['token'].nil?
+    @config.token = auth_response['response']['token']
     @config.headers = { 'authorization' => @config.token}
   end
 

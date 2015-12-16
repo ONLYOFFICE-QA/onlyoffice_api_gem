@@ -1,5 +1,8 @@
 # Change log
 
+## 0.3.15
+* Show more detailed information about response, if auth response not containing token
+
 ## 0.3.13.1 & 0.3.13.2
 * Fix dependency of httparty
 
