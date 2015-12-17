@@ -102,10 +102,9 @@ describe '[Settings]' do
   end
 
   describe '#set_access' do
-    it_should_behave_like 'an api request', :pending do
-      pending 'http://bugzserver/show_bug.cgi?id=23764'
+    it_should_behave_like 'an api request' do
       let(:command) { :set_access }
-      let(:args) { [[random_settings_entity_id, random_bool]] }
+      let(:args) { [random_settings_entity_id, random_bool] }
     end
   end
 
