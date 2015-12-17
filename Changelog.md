@@ -1,5 +1,8 @@
 # Change log
 
+## 0.3.16
+* change method Settings#set_access
+
 ## 0.3.15
 * Show more detailed information about response, if auth response not containing token
 
