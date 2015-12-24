@@ -40,8 +40,8 @@ end
 # region People
 USER_STATUSES = %w(Active Terminated LeaveOfAbsence Default All)
 USER_CONTACTS = [
-    { type: 'skype', value: random_word },
-    { type: 'email', value: random_email }
+  { type: 'skype', value: random_word },
+  { type: 'email', value: random_email }
 ]
 USER_TYPES = %w(All User Visitor)
 PATH_TO_IMAGE = 'http://ic.pics.livejournal.com/scryp/14761862/5478/5478_original.jpg'
