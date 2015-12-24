@@ -44,7 +44,7 @@ module Teamlab
       @request.post(%w(calendarurl), { iCalUrl: ical_url, name: name }.merge(options))
     end
 
-#============== TODO: OPTIONAL VARIABLES
+    #============== TODO: OPTIONAL VARIABLES
 
     def add_event(calendar_id, name, options = {})
       @request.post([calendar_id.to_s, 'event'], { name: name }.merge(options))
@@ -54,13 +54,13 @@ module Teamlab
       @request.post([calendar_id.to_s, 'import'], somefile: File.new(file))
     end
 
-#============== TODO: OPTIONAL VARIABLES
+    #============== TODO: OPTIONAL VARIABLES
 
     def update_calendar(calendar_id, name, time_zone, options = {})
       @request.put([calendar_id.to_s], { name: name, timeZone: time_zone }.merge(options))
     end
 
-#============== TODO: OPTIONAL VARIABLES
+    #============== TODO: OPTIONAL VARIABLES
 
     def update_calendar_user_view(calendar_id, name, time_zone, options = {})
       @request.put([calendar_id.to_s, 'view'], { name: name, timeZone: time_zone }.merge(options))
@@ -70,7 +70,7 @@ module Teamlab
       @request.put(%w(subscriptions manage), states: states)
     end
 
-#============== TODO: OPTIONAL VARIABLES
+    #============== TODO: OPTIONAL VARIABLES
 
     def update_event(calendar_id, event_id, name, options = {})
       @request.put([calendar_id.to_s, event_id.to_s], { name: name }.merge(options))
@@ -84,7 +84,7 @@ module Teamlab
       @request.delete(['events', event_id.to_s])
     end
 
-#============== TODO: OPTIONAL VARIABLES
+    #============== TODO: OPTIONAL VARIABLES
 
     def remove_event(event_id, options = {})
       @request.delete(['events', event_id.to_s, 'custom'], options)

@@ -156,7 +156,7 @@ module Teamlab
       @request.get(['forum', '@search', query.to_s])
     end
 
-#==================================== TODO: ERROR
+    #==================================== TODO: ERROR
 
     def add_thread_to_category(category_id, category_name, thread_name, description)
       @request.post(%w(forum), categoryId: category_id, categoryName: category_name.to_s, threadName: thread_name, threadDescription: description)
