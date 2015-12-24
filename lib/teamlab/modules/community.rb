@@ -211,7 +211,7 @@ module Teamlab
     end
 
     def create_page(name, body)
-      @request.post(%w(wiki), { name: name.to_s, body: body.to_s })
+      @request.post(%w(wiki), name: name.to_s, body: body.to_s)
     end
 
     def upload_files(file)
@@ -223,7 +223,7 @@ module Teamlab
     end
 
     def update_wiki_page(name, body)
-      @request.put(['wiki', name.to_s], { body: body.to_s })
+      @request.put(['wiki', name.to_s], body: body.to_s)
     end
 
     def update_wiki_page_comment(comment_id, body)

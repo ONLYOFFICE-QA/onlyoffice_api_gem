@@ -13,7 +13,7 @@ module Teamlab
     end
 
     def search_people(query)
-      @request.get(['search'], { query: query })
+      @request.get(['search'], query: query)
     end
 
     def filter_people(filters)
@@ -33,11 +33,11 @@ module Teamlab
     end
 
     def remind_password(user_id, email)
-      @request.get([user_id, 'password'], { email: email })
+      @request.get([user_id, 'password'], email: email)
     end
 
     def search_with_status(status, query)
-      @request.get(['status', status.to_s, 'search'], { query: query.to_s })
+      @request.get(['status', status.to_s, 'search'], query: query.to_s)
     end
 
     def add_user(is_visitor, email, firstname, lastname, options = {})
@@ -53,11 +53,11 @@ module Teamlab
     end
 
     def send_invite(*user_ids)
-      @request.put(['invite'], { userIds: user_ids.flatten })
+      @request.put(['invite'], userIds: user_ids.flatten)
     end
 
     def delete(*user_ids)
-      @request.put(['delete'], { userIds: user_ids.flatten })
+      @request.put(['delete'], userIds: user_ids.flatten)
     end
 
     def update_user(user_id, is_visitor, email, firstname, lastname, options = {})
@@ -65,23 +65,23 @@ module Teamlab
     end
 
     def change_people_type(type, user_ids)
-      @request.put(['type', type.to_s], { userIds: user_ids })
+      @request.put(['type', type.to_s], userIds: user_ids)
     end
 
     def update_photo(user_id, path)
-      @request.put([user_id.to_s, 'photo'], { files: path })
+      @request.put([user_id.to_s, 'photo'], files: path)
     end
 
     def change_people_status(status, user_ids)
-      @request.put(['status', status], { userIds: user_ids })
+      @request.put(['status', status], userIds: user_ids)
     end
 
     def add_contacts(contacts, user_id)
-      @request.put([user_id, 'contacts'], { contacts: contacts })
+      @request.put([user_id, 'contacts'], contacts: contacts)
     end
 
     def link_account(profile)
-      @request.put([%w(thirdparty linkaccount)], { serializedProfile: profile })
+      @request.put([%w(thirdparty linkaccount)], serializedProfile: profile)
     end
 
     def delete_user(user_id)
@@ -93,11 +93,11 @@ module Teamlab
     end
 
     def delete_contacts(user_id, contacts)
-      @request.delete([user_id, 'contacts'], { contacts: contacts })
+      @request.delete([user_id, 'contacts'], contacts: contacts)
     end
 
     def unlink_account(provider)
-      @request.delete([%w(thirdparty unlinkaccount)], { provider: provider })
+      @request.delete([%w(thirdparty unlinkaccount)], provider: provider)
     end
   end
 end

@@ -71,11 +71,11 @@ module Teamlab
     end
 
     def update_opportunity_stage_color(stage_id, color)
-      @request.put(['opportunity', 'stage', stage_id.to_s, 'color'], { color: color })
+      @request.put(['opportunity', 'stage', stage_id.to_s, 'color'], color: color)
     end
 
     def set_rights_to_opportunity(opportunity_id, is_private, access_list)
-      @request.put(['opportunity', opportunity_id.to_s, 'access'], { isPrivate: is_private, accessList: access_list })
+      @request.put(['opportunity', opportunity_id.to_s, 'access'], isPrivate: is_private, accessList: access_list)
     end
 
     def update_opportunity_to_stage(opportunity_id, stage_id)
@@ -207,7 +207,7 @@ module Teamlab
     end
 
     def add_contact_tag_to_group(entity_type, entity_id, tag)
-      @request.post([entity_type.to_s, entity_id.to_s, 'tag', 'group'], { tagName: tag })
+      @request.post([entity_type.to_s, entity_id.to_s, 'tag', 'group'], tagName: tag)
     end
 
     def add_deal_to_contact(contact_id, opportunity_id)
@@ -269,7 +269,7 @@ module Teamlab
     end
 
     def update_invoice_patch_status(status, invoice_ids)
-      @request.put(['invoice', 'status', status.to_s], { invoiceids: invoice_ids })
+      @request.put(['invoice', 'status', status.to_s], invoiceids: invoice_ids)
     end
 
     def update_contact_status_color(status_id, color)
@@ -281,7 +281,7 @@ module Teamlab
     end
 
     def update_contact_status_by_id(contact_id, contact_status_id)
-      @request.put(['contact', contact_id, 'status'], { contactStatusid: contact_status_id })
+      @request.put(['contact', contact_id, 'status'], contactStatusid: contact_status_id)
     end
 
     def update_invoice_line(invoice_line_id, invoice_id, options = {})
@@ -291,7 +291,7 @@ module Teamlab
     #=========================================== TODO: MULTIPART-FORM DATA =====================================================
 
     def change_contact_photo(contact_id, photo)
-      @request.put(['contact', contact_id.to_s, 'changephoto'], { photo: photo })
+      @request.put(['contact', contact_id.to_s, 'changephoto'], photo: photo)
     end
 
     def update_person_and_its_company_status(person_id, contact_status_id)
@@ -359,7 +359,7 @@ module Teamlab
     end
 
     def update_history_categories_order(*titles)
-      @request.put(%w(history category reorder), { titles: titles.flatten })
+      @request.put(%w(history category reorder), titles: titles.flatten)
     end
 
     def update_history_category_icon(id, icon_name)
@@ -547,7 +547,7 @@ module Teamlab
     end
 
     def delete_person_from_company(company_id, person_id)
-      @request.delete(['contact', 'company', company_id.to_s, 'person'], { personId: person_id })
+      @request.delete(['contact', 'company', company_id.to_s, 'person'], personId: person_id)
     end
 
     def delete_contact_address(contact_id, information_id)
@@ -759,7 +759,7 @@ module Teamlab
     end
 
     def update_user_fields_order(entity_type, *field_ids)
-      @request.put([entity_type.to_s, 'customfield', 'reorder'], { fieldIds: field_ids.flatten })
+      @request.put([entity_type.to_s, 'customfield', 'reorder'], fieldIds: field_ids.flatten)
     end
 
     def delete_user_field(entity_type, field_id)

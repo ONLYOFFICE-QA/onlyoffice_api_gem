@@ -27,7 +27,7 @@ module Teamlab
     end
 
     def set_message_crm_status(emails, *user_ids)
-      @request.post(%w(messages update_crm), { emails: emails, userIds: user_ids.flatten })
+      @request.post(%w(messages update_crm), emails: emails, userIds: user_ids.flatten)
     end
 
     def attach_teamlab_document(message_id, file_id, options = {})
@@ -35,7 +35,7 @@ module Teamlab
     end
 
     def set_message_status(status, *ids)
-      @request.put(%w(messages mark), { status: status, ids: ids.flatten })
+      @request.put(%w(messages mark), status: status, ids: ids.flatten)
     end
 
     def move_messages_to_folder(folder_id, *message_ids)
@@ -115,7 +115,7 @@ module Teamlab
     end
 
     def create_account_by_email(email, password)
-      @request.post(%w(accounts simple), { email: email, password: password })
+      @request.post(%w(accounts simple), email: email, password: password)
     end
 
     def update_account(name, email, password, options = {})
@@ -133,7 +133,7 @@ module Teamlab
     def delete_account(email)
       @request.delete(['accounts', email.to_s])
     rescue
-      @request.delete(['accounts'], { email: email.to_s }) # for version 8.7
+      @request.delete(['accounts'], email: email.to_s) # for version 8.7
     end
 
     # endregion

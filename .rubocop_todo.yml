@@ -88,19 +88,6 @@ Style/AsciiComments:
     - 'lib/teamlab/modules/people.rb'
     - 'lib/teamlab/modules/project.rb'
 
-# Offense count: 34
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/BracesAroundHashParameters:
-  Exclude:
-    - 'lib/teamlab/config.rb'
-    - 'lib/teamlab/modules/community.rb'
-    - 'lib/teamlab/modules/crm.rb'
-    - 'lib/teamlab/modules/group.rb'
-    - 'lib/teamlab/modules/mail.rb'
-    - 'lib/teamlab/modules/people.rb'
-    - 'lib/teamlab/modules/project.rb'
-
 # Offense count: 16
 # Configuration parameters: Exclude.
 Style/Documentation:

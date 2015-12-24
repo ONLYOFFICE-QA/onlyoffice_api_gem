@@ -52,7 +52,7 @@ module Teamlab
     end
 
     def update_message_status(message_id, status)
-      @request.put(['message', message_id.to_s, 'status'], { status: status })
+      @request.put(['message', message_id.to_s, 'status'], status: status)
     end
 
     def subscribe_to_message_action(message_id) # есть тест
@@ -344,7 +344,7 @@ module Teamlab
     end
 
     def create_subtask(task_id, responsible_id, title)
-      @request.post(['task', task_id.to_s], { responsible: responsible_id, title: title })
+      @request.post(['task', task_id.to_s], responsible: responsible_id, title: title)
     end
 
     def add_task(project_id, title, options = {})
