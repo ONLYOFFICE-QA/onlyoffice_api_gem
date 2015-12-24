@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'teamlab'
   spec.version       = Teamlab::VERSION
   spec.authors       = %w(rzagudaev shockwavenn DaftTrick)
-  spec.email         = ["rzagudaev@gmail.com", 'shockwavenn@gmail.com', 'nazarov90@gmail.com']
+  spec.email         = ['rzagudaev@gmail.com', 'shockwavenn@gmail.com', 'nazarov90@gmail.com']
   spec.description   = 'Ruby Framework to interact with OnlyOffice\\TeamLab API 2.0'
   spec.summary       = 'Ruby gem for OnlyOffice\\TeamLab'
   spec.homepage      = 'https://github.com/onlyoffice-testing-robot/GemTeamlab'

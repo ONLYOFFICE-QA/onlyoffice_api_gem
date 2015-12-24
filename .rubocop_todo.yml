@@ -294,7 +294,7 @@ Style/SpaceBeforeComma:
 Style/SpaceInsideBlockBraces:
   Enabled: false
 
-# Offense count: 24
+# Offense count: 24 
 # Cop supports --auto-correct.
 Style/SpaceInsideBrackets:
   Exclude:
@@ -319,9 +319,3 @@ Style/SpaceInsideParens:
 Style/SpecialGlobalVars:
   Exclude:
     - 'teamlab.gemspec'
-
-# Offense count: 5
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/StringLiterals:
-  Enabled: false
