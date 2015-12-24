@@ -12,7 +12,7 @@ shared_examples_for 'an api request' do |*flags|
       DATA_COLLECTOR[data_param] ||= []
       response = [@response.body['response']].flatten
       response.each do |cur_response|
-        DATA_COLLECTOR[data_param] << param_names.inject(cur_response) { |resp, param| resp[param] }
+        DATA_COLLECTOR[data_param] << param_names.inject(cur_response) { |a, e| a[e] }
       end
     end
   end
