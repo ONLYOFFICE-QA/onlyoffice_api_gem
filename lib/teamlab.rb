@@ -7,6 +7,7 @@ require_relative 'teamlab/Modules/Group'
 require_relative 'teamlab/Modules/Settings'
 require_relative 'teamlab/Modules/Files'
 require_relative 'teamlab/Modules/Project'
+require_relative 'teamlab/Modules/Portals'
 require_relative 'teamlab/Modules/Crm'
 require_relative 'teamlab/Modules/Community'
 require_relative 'teamlab/Modules/Calendar'
@@ -32,6 +33,10 @@ module Teamlab
 
   def self.project
     @project ||= Teamlab::Project.new
+  end
+
+  def self.portal
+    @project ||= Teamlab::Portal.new
   end
 
   def self.crm
