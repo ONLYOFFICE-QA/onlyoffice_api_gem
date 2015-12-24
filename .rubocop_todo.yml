@@ -22,13 +22,6 @@ Lint/StringConversionInInterpolation:
   Exclude:
     - 'lib/teamlab/request.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowUnusedKeywordArguments, IgnoreEmptyMethods.
-Lint/UnusedMethodArgument:
-  Exclude:
-    - 'lib/teamlab/config.rb'
-
 # Offense count: 4
 Metrics/AbcSize:
   Max: 24
