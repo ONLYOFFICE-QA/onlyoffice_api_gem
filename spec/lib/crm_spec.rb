@@ -244,7 +244,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_contact_info }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i+=1], info_type = CONTACT_INFO_TYPES.sample, random_word, random_info_category(info_type)] }
+      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i += 1], info_type = CONTACT_INFO_TYPES.sample, random_word, random_info_category(info_type)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :contact_info_ids }
       let(:param_names) { %w(id) }
@@ -263,7 +263,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_opportunity_contact }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:opportunity_ids].last, DATA_COLLECTOR[:new_contact_ids][i+=1]] }
+      let(:args) { [DATA_COLLECTOR[:opportunity_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
     end
   end
 
@@ -784,7 +784,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_persons_to_company }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i+=1]] }
+      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
     end
   end
 
@@ -849,7 +849,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_contact_address }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i+=1], random_info_category('Address'), random_word] }
+      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i += 1], random_info_category('Address'), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :contact_address_ids }
       let(:param_names) { %w() }
@@ -1245,7 +1245,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_opportunity_contact }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:opportunity_ids].last, DATA_COLLECTOR[:new_contact_ids][i+=1]] }
+      let(:args) { [DATA_COLLECTOR[:opportunity_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
     end
   end
 
@@ -1319,7 +1319,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_person_from_company }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i+=1]] }
+      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
     end
   end
 
@@ -1328,7 +1328,7 @@ describe '[CRM]' do
       pending 'http://bugzserver/show_bug.cgi?id=24028'
       let(:command) { :delete_contact_address }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i+=1], DATA_COLLECTOR[:contact_address_ids].shift] }
+      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i += 1], DATA_COLLECTOR[:contact_address_ids].shift] }
     end
   end
 
@@ -1350,7 +1350,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_contact_info }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i+=1], DATA_COLLECTOR[:contact_info_ids][i]] }
+      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i += 1], DATA_COLLECTOR[:contact_info_ids][i]] }
     end
   end
 
