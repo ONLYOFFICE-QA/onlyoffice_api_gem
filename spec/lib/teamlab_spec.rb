@@ -75,8 +75,6 @@ describe Teamlab do
     end
   end
 
-
-
   describe 'Cleaning enviroment' do
     describe '#delete_file' do
       it_should_behave_like 'an api request' do

@@ -131,12 +131,6 @@ Style/Documentation:
     - 'lib/teamlab/response.rb'
     - 'lib/teamlab/version.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/EmptyLines:
-  Exclude:
-    - 'spec/lib/teamlab_spec.rb'
-
 # Offense count: 1
 # Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist.
 Style/PredicateName:
