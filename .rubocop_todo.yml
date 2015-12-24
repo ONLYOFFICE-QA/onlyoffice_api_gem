@@ -371,9 +371,3 @@ Style/TrailingWhitespace:
 Style/UnneededCapitalW:
   Exclude:
     - 'lib/teamlab/Modules/People.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/UnneededPercentQ:
-  Exclude:
-    - 'teamlab.gemspec'
