@@ -219,7 +219,7 @@ describe '[Files]' do
   describe '#delete' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete }
-      let(:args) { [ folderIds: [], fileids: [] ] }
+      let(:args) { [folderIds: [], fileids: []] }
     end
   end
 
@@ -238,7 +238,7 @@ describe '[Files]' do
   describe '#finish_operations' do
     it_should_behave_like 'an api request' do
       let(:command) { :finish_operations }
-      let(:args) { [ folderIds: [random_id(:new_folder)], fileids: [random_id(:new_file)] ] }
+      let(:args) { [folderIds: [random_id(:new_folder)], fileids: [random_id(:new_file)]] }
     end
   end
 
@@ -273,14 +273,14 @@ describe '[Files]' do
   describe '#remove_file_sharing_rights' do
     it_should_behave_like 'an api request' do
       let(:command) { :remove_file_sharing_rights }
-      let(:args) { [ random_id(:new_file), [random_id(:user)] ] }
+      let(:args) { [random_id(:new_file), [random_id(:user)]] }
     end
   end
 
   describe '#remove_folder_sharing_rights' do
     it_should_behave_like 'an api request' do
       let(:command) { :remove_folder_sharing_rights }
-      let(:args) { [ random_id(:new_folder), [random_id(:user)] ] }
+      let(:args) { [random_id(:new_folder), [random_id(:user)]] }
     end
   end
 

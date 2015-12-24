@@ -11,7 +11,7 @@ module Teamlab
     end
 
     def get_group(group_id)
-      @request.get([ group_id.to_s ])
+      @request.get([group_id.to_s])
     end
 
     def add_group(manager, name, members = [])

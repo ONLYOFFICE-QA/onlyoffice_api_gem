@@ -888,28 +888,28 @@ describe '[CRM]' do
   describe '#set_contact_access_rights' do
     it_should_behave_like 'an api request' do
       let(:command) { :set_contact_access_rights }
-      let(:args) { [ random_id(:new_contact) ] }
+      let(:args) { [random_id(:new_contact)] }
     end
   end
 
   describe '#update_company' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_company }
-      let(:args) { [ random_id(:company), random_word ] }
+      let(:args) { [random_id(:company), random_word] }
     end
   end
 
   describe '#update_contact_info' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_info }
-      let(:args) { [ random_id(:contact_info), random_id(:new_contact), random_word ] }
+      let(:args) { [random_id(:contact_info), random_id(:new_contact), random_word] }
     end
   end
 
   describe '#change_contact_photo_by_url' do
     it_should_behave_like 'an api request' do
       let(:command) { :change_contact_photo_by_url }
-      let(:args) { [ random_id(:new_contact), IMAGE_URL ] }
+      let(:args) { [random_id(:new_contact), IMAGE_URL] }
     end
   end
 
@@ -917,7 +917,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       pending('http://bugzserver/show_bug.cgi?id=24002')
       let(:command) { :update_contact_address }
-      let(:args) { [ random_id(:new_contact), random_id(:contact_address), random_word ] }
+      let(:args) { [random_id(:new_contact), random_id(:contact_address), random_word] }
     end
   end
 
@@ -1319,7 +1319,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_person_from_company }
       i = -1
-      let(:args) { [ DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i+=1]] }
+      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i+=1]] }
     end
   end
 
@@ -1328,14 +1328,14 @@ describe '[CRM]' do
       pending 'http://bugzserver/show_bug.cgi?id=24028'
       let(:command) { :delete_contact_address }
       i = -1
-      let(:args) { [ DATA_COLLECTOR[:new_contact_ids][i+=1], DATA_COLLECTOR[:contact_address_ids].shift ] }
+      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i+=1], DATA_COLLECTOR[:contact_address_ids].shift] }
     end
   end
 
   describe '#remove_contact_from_project' do
     it_should_behave_like 'an api request' do
       let(:command) { :remove_contact_from_project }
-      let(:args) { [ random_id(:new_contact), random_id(:project)] }
+      let(:args) { [random_id(:new_contact), random_id(:project)] }
     end
   end
 

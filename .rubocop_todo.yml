@@ -293,11 +293,3 @@ Style/SpaceBeforeComma:
 # Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
 Style/SpaceInsideBlockBraces:
   Enabled: false
-
-# Offense count: 24
-# Cop supports --auto-correct.
-Style/SpaceInsideBrackets:
-  Exclude:
-    - 'lib/teamlab/Modules/Group.rb'
-    - 'spec/lib/crm_spec.rb'
-    - 'spec/lib/files_spec.rb'
