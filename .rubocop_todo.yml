@@ -74,13 +74,6 @@ Style/AccessorMethodName:
     - 'lib/teamlab/modules/project.rb'
     - 'lib/teamlab/modules/settings.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle, SupportedLastArgumentHashStyles.
-Style/AlignHash:
-  Exclude:
-    - 'lib/teamlab/modules/project.rb'
-
 # Offense count: 16
 # Configuration parameters: Exclude.
 Style/Documentation:

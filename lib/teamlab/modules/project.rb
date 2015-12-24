@@ -12,7 +12,7 @@ module Teamlab
 
     def add_importing_url_to_queue(company_url, username, password, import_closed, disable_notifications, import_users_as_collaborators, projects = [])
       @request.post(%w(import), url: company_url, userName: username, password: password, importClosed: import_closed,
-      disableNotifications: disable_notifications, importUsersAsCollaborators: import_users_as_collaborators, projects: projects)
+                                disableNotifications: disable_notifications, importUsersAsCollaborators: import_users_as_collaborators, projects: projects)
     end
 
     def get_projects_for_import(url, username, password)
