@@ -99,7 +99,7 @@ module Teamlab
     end
 
     def unlink_account(provider)
-      @request.delete([%W(thirdparty unlinkaccount)], { provider: provider})
+      @request.delete([%w(thirdparty unlinkaccount)], { provider: provider})
     end
   end
 end

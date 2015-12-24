@@ -365,9 +365,3 @@ Style/TrailingComma:
 Style/TrailingWhitespace:
   Exclude:
     - 'lib/teamlab/Response.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/UnneededCapitalW:
-  Exclude:
-    - 'lib/teamlab/Modules/People.rb'
