@@ -1,7 +1,6 @@
 require_relative '../spec_helper'
 
 describe '[Mail]' do
-
   let(:teamlab_module) { :mail }
 
   before :all do

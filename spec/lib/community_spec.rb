@@ -1,7 +1,6 @@
 require_relative '../spec_helper'
 
 describe '[Community]' do
-
   let(:teamlab_module) { :community }
 
   before :all do

@@ -18,7 +18,6 @@ shared_examples_for 'an api request' do |*flags|
   end
 
   context 'Successful api request' do
-
     it 'returns Teamlab::Response object' do
       expect(@response).to be_instance_of(Teamlab::Response)
     end

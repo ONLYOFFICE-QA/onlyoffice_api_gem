@@ -1,7 +1,6 @@
 require_relative '../spec_helper'
 
 describe '[Calendar]' do
-
   let(:teamlab_module) { :calendar }
 
   before :all do

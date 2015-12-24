@@ -1,7 +1,6 @@
 require_relative '../spec_helper'
 
 describe '[Project]' do
-
   before :all do
     Teamlab.configure do |config|
       config.server = SERVER
@@ -803,5 +802,4 @@ describe '[Project]' do
       let(:args) { [DATA_COLLECTOR[:project_template_ids].pop] }
     end
   end
-
 end
