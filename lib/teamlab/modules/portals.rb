@@ -1,5 +1,4 @@
 module Teamlab
-
   class Portal
     def initialize
       @request = Teamlab::Request.new('portal')

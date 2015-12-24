@@ -14,7 +14,6 @@ require_relative 'teamlab/Modules/Calendar'
 require_relative 'teamlab/Modules/Mail'
 
 module Teamlab
-
   def self.people
     @people ||= Teamlab::People.new
   end

@@ -164,18 +164,6 @@ Style/EmptyLinesAroundClassBody:
     - 'lib/teamlab/modules/settings.rb'
     - 'lib/teamlab/response.rb'
 
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/EmptyLinesAroundModuleBody:
-  Exclude:
-    - 'lib/teamlab.rb'
-    - 'lib/teamlab/modules/group.rb'
-    - 'lib/teamlab/modules/people.rb'
-    - 'lib/teamlab/modules/portals.rb'
-    - 'lib/teamlab/modules/settings.rb'
-    - 'lib/teamlab/response.rb'
-
 # Offense count: 1
 # Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist.
 Style/PredicateName:

@@ -1,5 +1,4 @@
 module Teamlab
-
   class People
 
     def initialize

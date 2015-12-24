@@ -1,5 +1,4 @@
 module Teamlab
-
   class Settings
 
     def initialize
