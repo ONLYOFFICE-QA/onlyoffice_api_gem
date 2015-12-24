@@ -63,7 +63,7 @@ module Teamlab
     end
 
     def update_user(user_id, is_visitor, email, firstname, lastname, options = {})
-      @request.put([user_id.to_s], { isVisitor: is_visitor, email: email, firstname: firstname, lastname: lastname}.merge(options) )
+      @request.put([user_id.to_s], { isVisitor: is_visitor, email: email, firstname: firstname, lastname: lastname}.merge(options))
     end
 
     def change_people_type(type, user_ids)
