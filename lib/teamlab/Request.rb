@@ -6,7 +6,7 @@ require_relative 'Response'
 
 module Teamlab
   class Request
-    #include HTTParty
+    # include HTTParty
     include HTTMultiParty
 
     def initialize(api_additive)

@@ -178,7 +178,7 @@ describe '[CRM]' do
     end
   end
 
-  #describe '#create_task_group' do
+  # describe '#create_task_group' do
   #  it_should_behave_like 'an api request' do
   #    let(:command) { :create_task_group }
   #    let(:args) { [random_word] }
@@ -186,7 +186,7 @@ describe '[CRM]' do
   #    let(:data_param) { :task_group_ids }
   #    let(:param_names) { %w(id) }
   #  end
-  #end
+  # end
 
   describe '#update_history_category' do
     it_should_behave_like 'an api request' do
@@ -632,12 +632,12 @@ describe '[CRM]' do
     end
   end
 
-  #describe '#change_contact_photo' do
+  # describe '#change_contact_photo' do
   #  it_should_behave_like 'an api request' do
   #    let(:command) { :change_contact_photo }
   #    let(:args) { [random_id(:new_contact), 'path_to_image'] }
   #  end
-  #end
+  # end
 
   describe '#update_person_and_its_company_status' do
     it_should_behave_like 'an api request' do
@@ -713,7 +713,7 @@ describe '[CRM]' do
 
   describe '#get_contact_upcoming_tasks' do
     it_should_behave_like 'an api request' do
-      #pending 'http://bugzserver/show_bug.cgi?id=23925'
+      # pending 'http://bugzserver/show_bug.cgi?id=23925'
       let(:command) { :get_contact_upcoming_tasks }
       let(:args) { [random_id(:new_contact)] }
     end

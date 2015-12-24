@@ -24,9 +24,9 @@ describe '[Files]' do
   describe '#get_my_files' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_my_files }
-      #let(:add_data_to_collector) { true }
-      #let(:data_param) {:my_documents_ids}
-      #let(:param_names) {%w(current id)}
+      # let(:add_data_to_collector) { true }
+      # let(:data_param) {:my_documents_ids}
+      # let(:param_names) {%w(current id)}
     end
   end
 

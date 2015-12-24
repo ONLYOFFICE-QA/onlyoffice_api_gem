@@ -5,7 +5,7 @@ module Teamlab
       @request = Teamlab::Request.new('crm')
     end
 
-    #region Opportunity
+    # region Opportunity
     def get_all_opportunity_stages
       @request.get(%w(opportunity stage))
     end
@@ -38,11 +38,11 @@ module Teamlab
       @request.get(['settings', 'currency', currency.to_s, 'summarytable'])
     end
 
-    def create_opportunity(stage_id, title, responsible_id, options = {}) #есть тест
+    def create_opportunity(stage_id, title, responsible_id, options = {}) # есть тест
       @request.post(%w(opportunity), { stageId: stage_id, title: title, responsibleid: responsible_id }.merge(options))
     end
 
-    def create_opportunity_stage(title, color, options = {}) #есть тест
+    def create_opportunity_stage(title, color, options = {}) # есть тест
       @request.post(%w(opportunity stage), { title: title, color: color }.merge(options))
     end
 
@@ -103,9 +103,9 @@ module Teamlab
       @request.delete(['opportunity', opportunity_id.to_s, 'contact', contact_id.to_s])
     end
 
-    #endregion
+    # endregion
 
-    #region General
+    # region General
 
     def get_invoice_taxes
       @request.get(%w(invoice tax))
@@ -559,7 +559,7 @@ module Teamlab
       @request.delete(['contact', contact_id.to_s, 'project', project_id.to_s])
     end
 
-    #region Files
+    # region Files
 
     def get_root_folder_id
       @request.get(%w(files root))

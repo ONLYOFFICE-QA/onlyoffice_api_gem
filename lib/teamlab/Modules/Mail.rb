@@ -5,7 +5,7 @@ module Teamlab
       @request = Teamlab::Request.new('mail')
     end
 
-    #region Messages
+    # region Messages
 
     def get_filtered_messages(page, options = {})
       @request.get(%w(messages), { page: page }.merge(options))
@@ -75,15 +75,15 @@ module Teamlab
       @request.delete(['messages', message_id.to_s, 'attachments', attachment_id.to_s])
     end
 
-    #endregion
+    # endregion
 
-    #region HelpCenter
+    # region HelpCenter
 
     def get_html_of_help_center
       @request.get(%w(helpcenter))
     end
 
-    #endregion
+    # endregion
 
     def get_meail_signature(mailbox_id)
       @request.get(['signature', mailbox_id.to_s])
@@ -93,7 +93,7 @@ module Teamlab
       @request.post(['signature', 'update', mailbox_id.to_s], { html: html }.merge(options))
     end
 
-    #region Accounts
+    # region Accounts
 
     def get_account_list
       @request.get(%w(accounts))
@@ -137,9 +137,9 @@ module Teamlab
       @request.delete(['accounts'], { email: email.to_s }) # for version 8.7
     end
 
-    #endregion
+    # endregion
 
-    #region Alerts
+    # region Alerts
 
     def get_alerts_list
       @request.get('alert')
@@ -149,9 +149,9 @@ module Teamlab
       @request.delete(['alert', id.to_s])
     end
 
-    #endregion
+    # endregion
 
-    #region Contacts
+    # region Contacts
 
     def get_contact_list_for_auto_complete(term)
       @request.get(%w(contacts), term: term)
@@ -161,9 +161,9 @@ module Teamlab
       @request.get(%w(crm linked entities), messageId: message_id)
     end
 
-    #endregion
+    # endregion
 
-    #region Conversations
+    # region Conversations
 
     def get_filtered_conversations(options = {})
       @request.get(%w(conversations), options)
@@ -213,9 +213,9 @@ module Teamlab
       @request.put(['conversations', 'tag', tag_id.to_s, 'unset'], messages: conversation_ids.flatten)
     end
 
-    #endregion
+    # endregion
 
-    #region Folders
+    # region Folders
 
     def get_folders(options = {})
       @request.get(%w(folders), options)
@@ -229,17 +229,17 @@ module Teamlab
       @request.get(['folders', folder_id.to_s, 'messages'])
     end
 
-    #endregion
+    # endregion
 
-    #region GUID
+    # region GUID
 
     def generate_custom_guid
       @request.get(%w(random_guid))
     end
 
-    #endregion
+    # endregion
 
-    #region IMAGES
+    # region IMAGES
 
     def get_trusted_addresses
       @request.get(%w(display_messages addresses))
@@ -253,9 +253,9 @@ module Teamlab
       @request.delete(%w(display_messages addresses), addres: address)
     end
 
-    #endregion
+    # endregion
 
-    #region Tags
+    # region Tags
 
     def get_tag_list
       @request.get(%w(tags))
@@ -281,6 +281,6 @@ module Teamlab
       @request.delete(['tags', id.to_s])
     end
 
-    #endregion
+    # endregion
   end
 end

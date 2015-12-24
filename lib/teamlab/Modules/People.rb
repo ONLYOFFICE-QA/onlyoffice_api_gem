@@ -47,7 +47,7 @@ module Teamlab
     end
 
     def active(options = {})
-      @request.post(['active'], options)          #требуется запиливание
+      @request.post(['active'], options)          # требуется запиливание
     end
 
     def update_contacts(user_id, contacts = {})
