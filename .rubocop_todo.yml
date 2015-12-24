@@ -377,9 +377,3 @@ Style/UnneededCapitalW:
 Style/UnneededPercentQ:
   Exclude:
     - 'teamlab.gemspec'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: WordRegex.
-Style/WordArray:
-  MinSize: 3
