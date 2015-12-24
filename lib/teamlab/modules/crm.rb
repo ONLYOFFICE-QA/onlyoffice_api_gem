@@ -37,11 +37,11 @@ module Teamlab
       @request.get(['settings', 'currency', currency.to_s, 'summarytable'])
     end
 
-    def create_opportunity(stage_id, title, responsible_id, options = {}) # есть тест
+    def create_opportunity(stage_id, title, responsible_id, options = {})
       @request.post(%w(opportunity), { stageId: stage_id, title: title, responsibleid: responsible_id }.merge(options))
     end
 
-    def create_opportunity_stage(title, color, options = {}) # есть тест
+    def create_opportunity_stage(title, color, options = {})
       @request.post(%w(opportunity stage), { title: title, color: color }.merge(options))
     end
 

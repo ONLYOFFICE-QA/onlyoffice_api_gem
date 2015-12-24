@@ -81,13 +81,6 @@ Style/AlignHash:
   Exclude:
     - 'lib/teamlab/modules/project.rb'
 
-# Offense count: 22
-Style/AsciiComments:
-  Exclude:
-    - 'lib/teamlab/modules/crm.rb'
-    - 'lib/teamlab/modules/people.rb'
-    - 'lib/teamlab/modules/project.rb'
-
 # Offense count: 16
 # Configuration parameters: Exclude.
 Style/Documentation:
