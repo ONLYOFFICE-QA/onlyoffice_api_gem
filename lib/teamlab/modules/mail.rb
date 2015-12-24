@@ -1,6 +1,5 @@
 module Teamlab
   class Mail
-
     def initialize
       @request = Teamlab::Request.new('mail')
     end

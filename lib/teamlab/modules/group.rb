@@ -1,6 +1,5 @@
 module Teamlab
   class Group
-
     def initialize
       @request = Teamlab::Request.new('group')
     end

@@ -1,6 +1,5 @@
 module Teamlab
   class People
-
     def initialize
       @request = Teamlab::Request.new('people')
     end

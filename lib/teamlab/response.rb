@@ -1,6 +1,5 @@
 module Teamlab
   class Response
-
     attr_reader :body, :error, :code, :success
 
     def initialize(http_response)

@@ -149,21 +149,6 @@ Style/EmptyLinesAroundBlockBody:
     - 'spec/lib/project_spec.rb'
     - 'spec/spec_helper.rb'
 
-# Offense count: 9
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/EmptyLinesAroundClassBody:
-  Exclude:
-    - 'lib/teamlab/modules/calendar.rb'
-    - 'lib/teamlab/modules/community.rb'
-    - 'lib/teamlab/modules/crm.rb'
-    - 'lib/teamlab/modules/files.rb'
-    - 'lib/teamlab/modules/group.rb'
-    - 'lib/teamlab/modules/mail.rb'
-    - 'lib/teamlab/modules/people.rb'
-    - 'lib/teamlab/modules/settings.rb'
-    - 'lib/teamlab/response.rb'
-
 # Offense count: 1
 # Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist.
 Style/PredicateName:

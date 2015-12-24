@@ -1,6 +1,5 @@
 module Teamlab
   class Crm
-
     def initialize
       @request = Teamlab::Request.new('crm')
     end

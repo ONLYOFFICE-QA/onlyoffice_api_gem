@@ -1,6 +1,5 @@
 module Teamlab
   class Files
-
     def initialize
       @request = Teamlab::Request.new('files')
     end

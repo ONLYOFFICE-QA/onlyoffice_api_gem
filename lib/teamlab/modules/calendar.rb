@@ -1,6 +1,5 @@
 module Teamlab
   class Calendar
-
     def initialize
       @request = Teamlab::Request.new('calendar')
     end

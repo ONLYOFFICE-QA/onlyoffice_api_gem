@@ -1,6 +1,5 @@
 module Teamlab
   class Settings
-
     def initialize
       @request = Teamlab::Request.new('settings')
     end

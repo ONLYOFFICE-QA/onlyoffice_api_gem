@@ -241,6 +241,5 @@ module Teamlab
     def delete_wiki_page_comment(id)
       @request.delete(['wiki', 'comment', id.to_s])
     end
-
   end
 end
