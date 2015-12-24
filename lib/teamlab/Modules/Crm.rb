@@ -55,7 +55,7 @@ module Teamlab
     end
 
     def update_opportunity_stage(id, title, color, options = {})
-      @request.put(['opportunity', 'stage', id.to_s], { title: title, color: color,  }.merge(options))
+      @request.put(['opportunity', 'stage', id.to_s], { title: title, color: color }.merge(options))
     end
 
     def update_opportunity_stages_order(options = {})
