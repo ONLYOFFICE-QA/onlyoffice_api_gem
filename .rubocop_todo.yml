@@ -281,9 +281,3 @@ Style/SpaceAfterColon:
 Style/SpaceAroundOperators:
   Exclude:
     - 'spec/lib/crm_spec.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/SpaceBeforeComma:
-  Exclude:
-    - 'lib/teamlab/Modules/People.rb'

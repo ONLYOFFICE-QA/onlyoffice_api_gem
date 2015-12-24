@@ -43,7 +43,7 @@ module Teamlab
     end
 
     def add_user(is_visitor, email, firstname, lastname, options = {})
-      @request.post(nil , { isVisitor: is_visitor, email: email, firstname: firstname, lastname: lastname }.merge(options))
+      @request.post(nil, { isVisitor: is_visitor, email: email, firstname: firstname, lastname: lastname }.merge(options))
     end
 
     def active(options = {})
