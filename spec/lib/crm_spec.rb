@@ -253,7 +253,6 @@ describe '[CRM]' do
 
   describe '#quick_person_list_creation' do
     it_should_behave_like 'an api request' do
-      pending ('http://bugzserver/show_bug.cgi?id=23997')
       let(:command) { :quick_person_list_creation }
       let(:args) { [[[random_word, random_word], [random_word, random_word]]] }
     end
