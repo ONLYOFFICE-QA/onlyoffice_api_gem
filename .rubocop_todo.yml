@@ -176,14 +176,6 @@ Style/EmptyLinesAroundModuleBody:
     - 'lib/teamlab/modules/settings.rb'
     - 'lib/teamlab/response.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment.
-Style/ExtraSpacing:
-  Exclude:
-    - 'lib/teamlab/modules/crm.rb'
-    - 'lib/teamlab/modules/people.rb'
-
 # Offense count: 1
 # Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist.
 Style/PredicateName:
