@@ -35,7 +35,7 @@ describe '[Community]' do
   describe '#add_bookmark' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_bookmark }
-      let(:args) { [SOME_URL, random_word, {tags: [random_word(4), random_word(4), random_word(4)].join(', ')}] }
+      let(:args) { [SOME_URL, random_word, { tags: [random_word(4), random_word(4), random_word(4)].join(', ') }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :bookmark_ids }
       let(:param_names) { %w(id) }
@@ -65,7 +65,7 @@ describe '[Community]' do
   describe '#create_poll' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_event }
-      let(:args) { [random_word, random_word, {type: 'Poll'}] }
+      let(:args) { [random_word, random_word, { type: 'Poll' }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :poll_ids }
       let(:param_names) { %w(id) }
@@ -138,7 +138,7 @@ describe '[Community]' do
   describe '#update_post' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_post }
-      let(:args) { [random_id(:community_post), random_word, random_word, {tags: [random_word(4), random_word(4), random_word(4)].join(',')}] }
+      let(:args) { [random_id(:community_post), random_word, random_word, { tags: [random_word(4), random_word(4), random_word(4)].join(',') }] }
     end
   end
 

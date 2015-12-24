@@ -39,11 +39,11 @@ module Teamlab
     end
 
     def search_with_status(status, query)
-      @request.get(['status', status.to_s, 'search'], {query: query.to_s})
+      @request.get(['status', status.to_s, 'search'], { query: query.to_s })
     end
 
     def add_user(is_visitor, email, firstname, lastname, options = {})
-      @request.post(nil , { isVisitor: is_visitor, email: email, firstname: firstname, lastname: lastname}.merge(options))
+      @request.post(nil , { isVisitor: is_visitor, email: email, firstname: firstname, lastname: lastname }.merge(options))
     end
 
     def active(options = {})
@@ -63,7 +63,7 @@ module Teamlab
     end
 
     def update_user(user_id, is_visitor, email, firstname, lastname, options = {})
-      @request.put([user_id.to_s], { isVisitor: is_visitor, email: email, firstname: firstname, lastname: lastname}.merge(options))
+      @request.put([user_id.to_s], { isVisitor: is_visitor, email: email, firstname: firstname, lastname: lastname }.merge(options))
     end
 
     def change_people_type(type, user_ids)
@@ -99,7 +99,7 @@ module Teamlab
     end
 
     def unlink_account(provider)
-      @request.delete([%w(thirdparty unlinkaccount)], { provider: provider})
+      @request.delete([%w(thirdparty unlinkaccount)], { provider: provider })
     end
   end
 end

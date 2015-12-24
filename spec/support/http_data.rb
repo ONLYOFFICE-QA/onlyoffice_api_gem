@@ -40,8 +40,8 @@ end
 #region People
 USER_STATUSES = %w(Active Terminated LeaveOfAbsence Default All)
 USER_CONTACTS = [
-    {type: 'skype', value: random_word},
-    {type: 'email', value: random_email}
+    { type: 'skype', value: random_word },
+    { type: 'email', value: random_email }
 ]
 USER_TYPES = %w(All User Visitor)
 PATH_TO_IMAGE = 'http://ic.pics.livejournal.com/scryp/14761862/5478/5478_original.jpg'
@@ -58,7 +58,7 @@ SETTINGS_ENTITY_IDS = %w(1e044602-43b5-4d79-82f3-fd6208a11960 6743007c-6f95-4d20
 SETTINGS_TEST_USER = '27cd9da5-4f97-4335-ac45-55dd05d96d89'
 SETTINGS_TALK_MODULE_ID = 'bf88953e-3c43-4850-a3fb-b1e43ad53a3e'
 SETTINGS_VERSION = 2
-SETTINGS_FOR_TALK = {enabled: true}
+SETTINGS_FOR_TALK = { enabled: true }
 #endregion
 
 #region Files

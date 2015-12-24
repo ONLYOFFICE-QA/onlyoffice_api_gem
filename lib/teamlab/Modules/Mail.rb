@@ -8,7 +8,7 @@ module Teamlab
     #region Messages
 
     def get_filtered_messages(page, options = {})
-      @request.get(%w(messages), {page: page}.merge(options))
+      @request.get(%w(messages), { page: page }.merge(options))
     end
 
     def get_message(id, options = {})
@@ -28,15 +28,15 @@ module Teamlab
     end
 
     def set_message_crm_status(emails, *user_ids)
-      @request.post(%w(messages update_crm), {emails: emails, userIds: user_ids.flatten})
+      @request.post(%w(messages update_crm), { emails: emails, userIds: user_ids.flatten })
     end
 
     def attach_teamlab_document(message_id, file_id, options = {})
-      @request.post(['messages', message_id.to_s, 'document'], {fileId: file_id}.merge(options))
+      @request.post(['messages', message_id.to_s, 'document'], { fileId: file_id }.merge(options))
     end
 
     def set_message_status(status, *ids)
-      @request.put(%w(messages mark), {status: status, ids: ids.flatten})
+      @request.put(%w(messages mark), { status: status, ids: ids.flatten })
     end
 
     def move_messages_to_folder(folder_id, *message_ids)
@@ -44,11 +44,11 @@ module Teamlab
     end
 
     def send_message(id, options = {})
-      @request.put(%w(messages send), {id: id}.merge(options))
+      @request.put(%w(messages send), { id: id }.merge(options))
     end
 
     def save_message(id, options = {})
-      @request.put(%w(messages save), {id: id}.merge(options))
+      @request.put(%w(messages save), { id: id }.merge(options))
     end
 
     def remove_messages(*ids)
@@ -90,7 +90,7 @@ module Teamlab
     end
 
     def update_signature(mailbox_id, html, options = {})
-      @request.post(['signature', 'update', mailbox_id.to_s], {html: html}.merge(options))
+      @request.post(['signature', 'update', mailbox_id.to_s], { html: html }.merge(options))
     end
 
     #region Accounts
@@ -108,19 +108,19 @@ module Teamlab
     end
 
     def create_account_with_custom_mail_service(name, email, account, password, options = {})
-      @request.post(%w(accounts), {name: name, email: email, account: account, password: password}.merge(options))
+      @request.post(%w(accounts), { name: name, email: email, account: account, password: password }.merge(options))
     end
 
     def create_oauth_account(email, token, options = {})
-      @request.post(%w(accounts oauth), {email: email, token: token}.merge(options))
+      @request.post(%w(accounts oauth), { email: email, token: token }.merge(options))
     end
 
     def create_account_by_email(email, password)
-      @request.post(%w(accounts simple), {email: email, password: password})
+      @request.post(%w(accounts simple), { email: email, password: password })
     end
 
     def update_account(name, email, password, options = {})
-      @request.put(%w(accounts), {name: name, email: email, password: password}.merge(options))
+      @request.put(%w(accounts), { name: name, email: email, password: password }.merge(options))
     end
 
     def set_account_state(email, state)
@@ -134,7 +134,7 @@ module Teamlab
     def delete_account(email)
       @request.delete(['accounts', email.to_s])
     rescue
-      @request.delete(['accounts'], {email: email.to_s}) # for version 8.7
+      @request.delete(['accounts'], { email: email.to_s }) # for version 8.7
     end
 
     #endregion
@@ -262,11 +262,11 @@ module Teamlab
     end
 
     def create_tag(name, options = {})
-      @request.post(%w(tags), {name: name}.merge(options))
+      @request.post(%w(tags), { name: name }.merge(options))
     end
 
     def update_tag(id, name, options = {})
-      @request.put(['tags', id.to_s], {name: name}.merge(options))
+      @request.put(['tags', id.to_s], { name: name }.merge(options))
     end
 
     def set_tag_to_messages(id, *message_ids)

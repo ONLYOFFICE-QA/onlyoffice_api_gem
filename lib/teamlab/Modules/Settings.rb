@@ -71,7 +71,7 @@ module Teamlab
     end
 
     def set_access(id, enabled = true)
-      @request.put(%w(security access), items:[{key: id, value: enabled}])
+      @request.put(%w(security access), items:[{ key: id, value: enabled }])
     end
 
     def set_product_admin(product_id, user_id, administrator = true)

@@ -15,7 +15,7 @@ describe '[Mail]' do
   describe '#create_tag' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_tag }
-      let(:args) { [random_word(4), {style: rand(15)}] }
+      let(:args) { [random_word(4), { style: rand(15) }] }
     end
   end
 

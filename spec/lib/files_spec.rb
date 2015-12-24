@@ -205,14 +205,14 @@ describe '[Files]' do
   describe '#move_files' do
     it_should_behave_like 'an api request' do
       let(:command) { :move_files }
-      let(:args) { [random_id(:new_folder), { fileids: DATA_COLLECTOR[:new_file_ids].sample(rand(1..4)), overwrite: random_bool}] }
+      let(:args) { [random_id(:new_folder), { fileids: DATA_COLLECTOR[:new_file_ids].sample(rand(1..4)), overwrite: random_bool }] }
     end
   end
 
   describe '#copy_to_folder' do
     it_should_behave_like 'an api request' do
       let(:command) { :copy_to_folder }
-      let(:args) { [random_id(:new_folder), { fileids: DATA_COLLECTOR[:new_file_ids].sample(rand(1..4)), overwrite: random_bool}] }
+      let(:args) { [random_id(:new_folder), { fileids: DATA_COLLECTOR[:new_file_ids].sample(rand(1..4)), overwrite: random_bool }] }
     end
   end
 

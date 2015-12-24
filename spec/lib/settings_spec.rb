@@ -97,7 +97,7 @@ describe '[Settings]' do
   describe '#set_security' do
     it_should_behave_like 'an api request' do
       let(:command) { :set_security }
-      let(:args) { [random_settings_entity_id, {enabled: random_bool}] }
+      let(:args) { [random_settings_entity_id, { enabled: random_bool }] }
     end
   end
 

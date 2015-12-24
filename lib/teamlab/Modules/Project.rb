@@ -204,7 +204,7 @@ module Teamlab
     end
 
     def create_project(title, description, responsible_id, tags, private, options = {})
-      @request.post('', { title: title, description: description, responsibleid: responsible_id, tags: tags, private: private}.merge(options))
+      @request.post('', { title: title, description: description, responsibleid: responsible_id, tags: tags, private: private }.merge(options))
     end
 
     def create_template(title, options = {})
@@ -212,7 +212,7 @@ module Teamlab
     end
 
     def add_milestone(project_id, title, deadline, responsible_id, options = {})
-      @request.post([project_id.to_s, 'milestone'], {title: title, deadline: deadline, responsible: responsible_id}.merge(options))
+      @request.post([project_id.to_s, 'milestone'], { title: title, deadline: deadline, responsible: responsible_id }.merge(options))
     end
 
     def update_project_tags(id, tags)
@@ -270,7 +270,7 @@ module Teamlab
     end
 
     def update_project_task(task_id, title, options = {})
-      @request.put(['task', task_id.to_s], {title: title.to_s}.merge(options))
+      @request.put(['task', task_id.to_s], { title: title.to_s }.merge(options))
     end
 
     #region Team

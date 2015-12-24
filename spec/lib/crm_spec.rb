@@ -509,7 +509,7 @@ describe '[CRM]' do
   describe '#set_is_portal_configured' do
     it_should_behave_like 'an api request' do
       let(:command) { :set_is_portal_configured }
-      let(:args) { [{configured: random_bool}] }
+      let(:args) { [{ configured: random_bool }] }
     end
   end
 
@@ -547,7 +547,7 @@ describe '[CRM]' do
   describe '#update_contact_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_status }
-      let(:args) { [random_id(:contact_status), random_word, {color: COLORS_NAMES.sample}] }
+      let(:args) { [random_id(:contact_status), random_word, { color: COLORS_NAMES.sample }] }
     end
   end
 
@@ -1094,7 +1094,7 @@ describe '[CRM]' do
   describe '#set_case_access_rights' do
     it_should_behave_like 'an api request' do
       let(:command) { :set_case_access_rights }
-      let(:args) { [random_id(:crm_case), {isPrivate: random_bool}] }
+      let(:args) { [random_id(:crm_case), { isPrivate: random_bool }] }
     end
   end
 
@@ -1108,7 +1108,7 @@ describe '[CRM]' do
   describe '#set_case_access_rights_by_filter' do
     it_should_behave_like 'an api request' do
       let(:command) { :set_case_access_rights_by_filter }
-      let(:args) { [{contactId: random_id(:new_contact), isPrivate: random_bool}] }
+      let(:args) { [{ contactId: random_id(:new_contact), isPrivate: random_bool }] }
     end
   end
 
@@ -1268,7 +1268,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       pending 'http://bugzserver/show_bug.cgi?id=23902'
       let(:command) { :delete_batch_contacts_by_filter }
-      let(:args) { [{tags: [random_word(4)]}] }
+      let(:args) { [{ tags: [random_word(4)] }] }
     end
   end
 

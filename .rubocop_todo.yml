@@ -301,9 +301,3 @@ Style/SpaceInsideBrackets:
     - 'lib/teamlab/Modules/Group.rb'
     - 'spec/lib/crm_spec.rb'
     - 'spec/lib/files_spec.rb'
-
-# Offense count: 225
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces, SupportedStyles.
-Style/SpaceInsideHashLiteralBraces:
-  Enabled: false
