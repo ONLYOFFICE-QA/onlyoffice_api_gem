@@ -36,7 +36,7 @@ module Teamlab
   end
 
   def self.portal
-    @project ||= Teamlab::Portal.new
+    @portal ||= Teamlab::Portal.new
   end
 
   def self.crm
