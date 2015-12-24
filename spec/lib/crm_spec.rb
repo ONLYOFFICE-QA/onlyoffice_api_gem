@@ -488,7 +488,7 @@ describe '[CRM]' do
   describe '#add_tag_to_batch_contacts' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_tag_to_batch_contacts }
-      let(:args) { [(1..rand(1..4)).map {random_word(rand(3..6))}] }
+      let(:args) { [(1..rand(1..4)).map { random_word(rand(3..6)) }] }
     end
   end
 

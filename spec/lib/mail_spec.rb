@@ -36,7 +36,7 @@ describe '[Mail]' do
   describe '#get_message' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_message }
-      let(:args) {message_id}
+      let(:args) { message_id }
     end
   end
 

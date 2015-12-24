@@ -287,9 +287,3 @@ Style/SpaceAroundOperators:
 Style/SpaceBeforeComma:
   Exclude:
     - 'lib/teamlab/Modules/People.rb'
-
-# Offense count: 28
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
-Style/SpaceInsideBlockBraces:
-  Enabled: false

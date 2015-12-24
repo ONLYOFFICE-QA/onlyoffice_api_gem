@@ -33,8 +33,8 @@ describe '[Group]' do
       let(:command) { :add_group }
       let(:args) { [random_id(:user), random_word, DATA_COLLECTOR[:user_ids]] }
       let(:add_data_to_collector) { true }
-      let(:data_param) {:group_ids}
-      let(:param_names) {%w(id)}
+      let(:data_param) { :group_ids }
+      let(:param_names) { %w(id) }
     end
   end
 

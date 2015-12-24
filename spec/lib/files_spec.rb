@@ -34,8 +34,8 @@ describe '[Files]' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_trash }
       let(:add_data_to_collector) { true }
-      let(:data_param) {:trash_documents_ids}
-      let(:param_names) {%w(current id)}
+      let(:data_param) { :trash_documents_ids }
+      let(:param_names) { %w(current id) }
     end
   end
 
@@ -43,8 +43,8 @@ describe '[Files]' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_shared_docs }
       let(:add_data_to_collector) { true }
-      let(:data_param) {:shared_documents_ids}
-      let(:param_names) {%w(current id)}
+      let(:data_param) { :shared_documents_ids }
+      let(:param_names) { %w(current id) }
     end
   end
 
@@ -52,8 +52,8 @@ describe '[Files]' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_common_docs }
       let(:add_data_to_collector) { true }
-      let(:data_param) {:common_documents_ids}
-      let(:param_names) {%w(current id)}
+      let(:data_param) { :common_documents_ids }
+      let(:param_names) { %w(current id) }
     end
   end
 
@@ -62,8 +62,8 @@ describe '[Files]' do
       let(:command) { :new_folder }
       let(:args) { [random_id(:my_documents), random_word] }
       let(:add_data_to_collector) { true }
-      let(:data_param) {:new_folder_ids}
-      let(:param_names) {%w(current id)}
+      let(:data_param) { :new_folder_ids }
+      let(:param_names) { %w(current id) }
     end
   end
 
@@ -93,8 +93,8 @@ describe '[Files]' do
       let(:command) { :create_file }
       let(:args) { [random_id(:new_folder), random_word] }
       let(:add_data_to_collector) { true }
-      let(:data_param) {:new_file_ids}
-      let(:param_names) {%w(id)}
+      let(:data_param) { :new_file_ids }
+      let(:param_names) { %w(id) }
     end
   end
 
