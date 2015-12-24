@@ -6,7 +6,7 @@ module Teamlab
 
     def initialize(http_response)
       if http_response.is_a?(String) && http_response.code < 400
-        @body = { :response => http_response.to_s }
+        @body = { response: http_response.to_s }
         @success = true
         @code = 201
       else
