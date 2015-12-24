@@ -359,9 +359,3 @@ Style/TrailingBlankLines:
 Style/TrailingComma:
   Exclude:
     - 'lib/teamlab/Modules/Crm.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/TrailingWhitespace:
-  Exclude:
-    - 'lib/teamlab/Response.rb'
