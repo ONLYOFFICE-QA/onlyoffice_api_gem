@@ -2,7 +2,7 @@ require 'net/http'
 require 'json'
 require 'httparty'
 require 'httmultiparty'
-require_relative 'Response'
+require_relative 'response'
 
 module Teamlab
   class Request

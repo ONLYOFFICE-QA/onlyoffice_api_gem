@@ -1,6 +1,6 @@
 # encoding: utf-8
 require 'active_support/configurable'
-require_relative 'Request'
+require_relative 'request'
 
 module Teamlab
   attr_reader :config

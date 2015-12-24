@@ -14,20 +14,20 @@ Lint/ParenthesesAsGroupedExpression:
 # Offense count: 1
 Lint/RescueException:
   Exclude:
-    - 'lib/teamlab/Request.rb'
+    - 'lib/teamlab/request.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Lint/StringConversionInInterpolation:
   Exclude:
-    - 'lib/teamlab/Request.rb'
+    - 'lib/teamlab/request.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AllowUnusedKeywordArguments, IgnoreEmptyMethods.
 Lint/UnusedMethodArgument:
   Exclude:
-    - 'lib/teamlab/Config.rb'
+    - 'lib/teamlab/config.rb'
 
 # Offense count: 4
 Metrics/AbcSize:
@@ -64,50 +64,50 @@ Metrics/PerceivedComplexity:
 # Offense count: 66
 Style/AccessorMethodName:
   Exclude:
-    - 'lib/teamlab/Modules/Calendar.rb'
-    - 'lib/teamlab/Modules/Community.rb'
-    - 'lib/teamlab/Modules/Crm.rb'
-    - 'lib/teamlab/Modules/Files.rb'
-    - 'lib/teamlab/Modules/Group.rb'
-    - 'lib/teamlab/Modules/Mail.rb'
-    - 'lib/teamlab/Modules/People.rb'
-    - 'lib/teamlab/Modules/Project.rb'
-    - 'lib/teamlab/Modules/Settings.rb'
+    - 'lib/teamlab/modules/calendar.rb'
+    - 'lib/teamlab/modules/community.rb'
+    - 'lib/teamlab/modules/crm.rb'
+    - 'lib/teamlab/modules/files.rb'
+    - 'lib/teamlab/modules/group.rb'
+    - 'lib/teamlab/modules/mail.rb'
+    - 'lib/teamlab/modules/people.rb'
+    - 'lib/teamlab/modules/project.rb'
+    - 'lib/teamlab/modules/settings.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle, SupportedLastArgumentHashStyles.
 Style/AlignHash:
   Exclude:
-    - 'lib/teamlab/Modules/Project.rb'
+    - 'lib/teamlab/modules/project.rb'
 
 # Offense count: 22
 Style/AsciiComments:
   Exclude:
-    - 'lib/teamlab/Modules/Crm.rb'
-    - 'lib/teamlab/Modules/People.rb'
-    - 'lib/teamlab/Modules/Project.rb'
+    - 'lib/teamlab/modules/crm.rb'
+    - 'lib/teamlab/modules/people.rb'
+    - 'lib/teamlab/modules/project.rb'
 
 # Offense count: 34
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/BracesAroundHashParameters:
   Exclude:
-    - 'lib/teamlab/Config.rb'
-    - 'lib/teamlab/Modules/Community.rb'
-    - 'lib/teamlab/Modules/Crm.rb'
-    - 'lib/teamlab/Modules/Group.rb'
-    - 'lib/teamlab/Modules/Mail.rb'
-    - 'lib/teamlab/Modules/People.rb'
-    - 'lib/teamlab/Modules/Project.rb'
+    - 'lib/teamlab/config.rb'
+    - 'lib/teamlab/modules/community.rb'
+    - 'lib/teamlab/modules/crm.rb'
+    - 'lib/teamlab/modules/group.rb'
+    - 'lib/teamlab/modules/mail.rb'
+    - 'lib/teamlab/modules/people.rb'
+    - 'lib/teamlab/modules/project.rb'
 
 # Offense count: 15
 # Cop supports --auto-correct.
 Style/CommentIndentation:
   Exclude:
-    - 'lib/teamlab/Modules/Calendar.rb'
-    - 'lib/teamlab/Modules/Community.rb'
-    - 'lib/teamlab/Modules/Crm.rb'
+    - 'lib/teamlab/modules/calendar.rb'
+    - 'lib/teamlab/modules/community.rb'
+    - 'lib/teamlab/modules/crm.rb'
 
 # Offense count: 16
 # Configuration parameters: Exclude.
@@ -116,33 +116,33 @@ Style/Documentation:
     - 'spec/**/*'
     - 'test/**/*'
     - 'lib/teamlab.rb'
-    - 'lib/teamlab/Config.rb'
-    - 'lib/teamlab/Modules/Calendar.rb'
-    - 'lib/teamlab/Modules/Community.rb'
-    - 'lib/teamlab/Modules/Crm.rb'
-    - 'lib/teamlab/Modules/Files.rb'
-    - 'lib/teamlab/Modules/Group.rb'
-    - 'lib/teamlab/Modules/Mail.rb'
-    - 'lib/teamlab/Modules/People.rb'
-    - 'lib/teamlab/Modules/Portals.rb'
-    - 'lib/teamlab/Modules/Project.rb'
-    - 'lib/teamlab/Modules/Settings.rb'
-    - 'lib/teamlab/Request.rb'
-    - 'lib/teamlab/Response.rb'
+    - 'lib/teamlab/config.rb'
+    - 'lib/teamlab/modules/calendar.rb'
+    - 'lib/teamlab/modules/community.rb'
+    - 'lib/teamlab/modules/crm.rb'
+    - 'lib/teamlab/modules/files.rb'
+    - 'lib/teamlab/modules/group.rb'
+    - 'lib/teamlab/modules/mail.rb'
+    - 'lib/teamlab/modules/people.rb'
+    - 'lib/teamlab/modules/portals.rb'
+    - 'lib/teamlab/modules/project.rb'
+    - 'lib/teamlab/modules/settings.rb'
+    - 'lib/teamlab/request.rb'
+    - 'lib/teamlab/response.rb'
     - 'lib/teamlab/version.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/EmptyLines:
   Exclude:
-    - 'spec/lib/Teamlab_spec.rb'
+    - 'spec/lib/teamlab_spec.rb'
 
 # Offense count: 8
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/EmptyLinesAroundBlockBody:
   Exclude:
-    - 'spec/lib/Teamlab_spec.rb'
+    - 'spec/lib/teamlab_spec.rb'
     - 'spec/lib/calendar_spec.rb'
     - 'spec/lib/community_spec.rb'
     - 'spec/lib/mail_spec.rb'
@@ -154,15 +154,15 @@ Style/EmptyLinesAroundBlockBody:
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/EmptyLinesAroundClassBody:
   Exclude:
-    - 'lib/teamlab/Modules/Calendar.rb'
-    - 'lib/teamlab/Modules/Community.rb'
-    - 'lib/teamlab/Modules/Crm.rb'
-    - 'lib/teamlab/Modules/Files.rb'
-    - 'lib/teamlab/Modules/Group.rb'
-    - 'lib/teamlab/Modules/Mail.rb'
-    - 'lib/teamlab/Modules/People.rb'
-    - 'lib/teamlab/Modules/Settings.rb'
-    - 'lib/teamlab/Response.rb'
+    - 'lib/teamlab/modules/calendar.rb'
+    - 'lib/teamlab/modules/community.rb'
+    - 'lib/teamlab/modules/crm.rb'
+    - 'lib/teamlab/modules/files.rb'
+    - 'lib/teamlab/modules/group.rb'
+    - 'lib/teamlab/modules/mail.rb'
+    - 'lib/teamlab/modules/people.rb'
+    - 'lib/teamlab/modules/settings.rb'
+    - 'lib/teamlab/response.rb'
 
 # Offense count: 6
 # Cop supports --auto-correct.
@@ -170,41 +170,22 @@ Style/EmptyLinesAroundClassBody:
 Style/EmptyLinesAroundModuleBody:
   Exclude:
     - 'lib/teamlab.rb'
-    - 'lib/teamlab/Modules/Group.rb'
-    - 'lib/teamlab/Modules/People.rb'
-    - 'lib/teamlab/Modules/Portals.rb'
-    - 'lib/teamlab/Modules/Settings.rb'
-    - 'lib/teamlab/Response.rb'
+    - 'lib/teamlab/modules/group.rb'
+    - 'lib/teamlab/modules/people.rb'
+    - 'lib/teamlab/modules/portals.rb'
+    - 'lib/teamlab/modules/settings.rb'
+    - 'lib/teamlab/response.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AllowForAlignment.
 Style/ExtraSpacing:
   Exclude:
-    - 'lib/teamlab/Modules/Crm.rb'
-    - 'lib/teamlab/Modules/People.rb'
-
-# Offense count: 14
-# Configuration parameters: Exclude.
-Style/FileName:
-  Exclude:
-    - 'lib/teamlab/Config.rb'
-    - 'lib/teamlab/Modules/Calendar.rb'
-    - 'lib/teamlab/Modules/Community.rb'
-    - 'lib/teamlab/Modules/Crm.rb'
-    - 'lib/teamlab/Modules/Files.rb'
-    - 'lib/teamlab/Modules/Group.rb'
-    - 'lib/teamlab/Modules/Mail.rb'
-    - 'lib/teamlab/Modules/People.rb'
-    - 'lib/teamlab/Modules/Portals.rb'
-    - 'lib/teamlab/Modules/Project.rb'
-    - 'lib/teamlab/Modules/Settings.rb'
-    - 'lib/teamlab/Request.rb'
-    - 'lib/teamlab/Response.rb'
-    - 'spec/lib/Teamlab_spec.rb'
+    - 'lib/teamlab/modules/crm.rb'
+    - 'lib/teamlab/modules/people.rb'
 
 # Offense count: 1
 # Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist.
 Style/PredicateName:
   Exclude:
-    - 'lib/teamlab/Modules/Mail.rb'
+    - 'lib/teamlab/modules/mail.rb'
