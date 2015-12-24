@@ -325,9 +325,3 @@ Style/SpecialGlobalVars:
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/StringLiterals:
   Enabled: false
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/SymbolLiteral:
-  Exclude:
-    - 'lib/teamlab/Response.rb'
