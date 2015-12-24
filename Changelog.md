@@ -1,5 +1,8 @@
 # Change log
 
+## 0.4.0
+* Add portal submodule with `Portal#invite_user_url` and `Portal#invite_visitor_url` methods
+
 ## 0.3.16
 * change method Settings#set_access
 
