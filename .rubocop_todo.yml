@@ -331,24 +331,3 @@ Style/StringLiterals:
 Style/SymbolLiteral:
   Exclude:
     - 'lib/teamlab/Response.rb'
-
-# Offense count: 15
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/TrailingBlankLines:
-  Exclude:
-    - 'Gemfile'
-    - 'lib/teamlab.rb'
-    - 'lib/teamlab/Config.rb'
-    - 'lib/teamlab/Modules/Calendar.rb'
-    - 'lib/teamlab/Modules/Community.rb'
-    - 'lib/teamlab/Modules/Crm.rb'
-    - 'lib/teamlab/Modules/Group.rb'
-    - 'lib/teamlab/Modules/Mail.rb'
-    - 'lib/teamlab/Modules/People.rb'
-    - 'lib/teamlab/Modules/Project.rb'
-    - 'lib/teamlab/Request.rb'
-    - 'lib/teamlab/Response.rb'
-    - 'spec/lib/Teamlab_spec.rb'
-    - 'spec/support/http_data.rb'
-    - 'teamlab.gemspec'
