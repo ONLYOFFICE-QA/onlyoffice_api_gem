@@ -268,9 +268,3 @@ Style/SignalException:
 Style/SingleLineBlockParams:
   Exclude:
     - 'spec/spec_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/SpaceAfterColon:
-  Exclude:
-    - 'lib/teamlab/Modules/Settings.rb'
