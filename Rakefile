@@ -8,3 +8,4 @@ task :test do
   RSpec::Core::RakeTask.new(:spec)
   Rake::Task['spec'].execute
 end
+task default: [:test]
