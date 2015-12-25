@@ -1,11 +1,10 @@
 module Teamlab
   class Crm
-
     def initialize
       @request = Teamlab::Request.new('crm')
     end
 
-    #region Opportunity
+    # region Opportunity
     def get_all_opportunity_stages
       @request.get(%w(opportunity stage))
     end
@@ -38,11 +37,11 @@ module Teamlab
       @request.get(['settings', 'currency', currency.to_s, 'summarytable'])
     end
 
-    def create_opportunity(stage_id, title, responsible_id, options = {}) #есть тест
-      @request.post(%w(opportunity), {stageId: stage_id, title: title, responsibleid: responsible_id}.merge(options))
+    def create_opportunity(stage_id, title, responsible_id, options = {})
+      @request.post(%w(opportunity), { stageId: stage_id, title: title, responsibleid: responsible_id }.merge(options))
     end
 
-    def create_opportunity_stage(title, color, options = {}) #есть тест
+    def create_opportunity_stage(title, color, options = {})
       @request.post(%w(opportunity stage), { title: title, color: color }.merge(options))
     end
 
@@ -55,7 +54,7 @@ module Teamlab
     end
 
     def update_opportunity_stage(id, title, color, options = {})
-      @request.put(['opportunity', 'stage', id.to_s], { title: title, color: color,  }.merge(options))
+      @request.put(['opportunity', 'stage', id.to_s], { title: title, color: color }.merge(options))
     end
 
     def update_opportunity_stages_order(options = {})
@@ -72,11 +71,11 @@ module Teamlab
     end
 
     def update_opportunity_stage_color(stage_id, color)
-      @request.put(['opportunity', 'stage', stage_id.to_s, 'color'], { color: color })
+      @request.put(['opportunity', 'stage', stage_id.to_s, 'color'], color: color)
     end
 
     def set_rights_to_opportunity(opportunity_id, is_private, access_list)
-      @request.put(['opportunity', opportunity_id.to_s, 'access'], { isPrivate: is_private, accessList: access_list })
+      @request.put(['opportunity', opportunity_id.to_s, 'access'], isPrivate: is_private, accessList: access_list)
     end
 
     def update_opportunity_to_stage(opportunity_id, stage_id)
@@ -103,9 +102,9 @@ module Teamlab
       @request.delete(['opportunity', opportunity_id.to_s, 'contact', contact_id.to_s])
     end
 
-    #endregion
+    # endregion
 
-    #region General
+    # region General
 
     def get_invoice_taxes
       @request.get(%w(invoice tax))
@@ -160,55 +159,55 @@ module Teamlab
     end
 
     def create_task(title, deadline, responsible_id, category_id, options = {})
-      @request.post(%w(task), {title: title, deadline: deadline, responsibleId: responsible_id, categoryId: category_id}.merge(options))
+      @request.post(%w(task), { title: title, deadline: deadline, responsibleId: responsible_id, categoryId: category_id }.merge(options))
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def create_invoice(options = {})
       @request.post(%w(invoice), options)
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def create_invoice_line(invoice_id, options = {})
-      @request.post(%w(invoiceline), {invoiceId: invoice_id}.merge(options))
+      @request.post(%w(invoiceline), { invoiceId: invoice_id }.merge(options))
     end
 
     def create_invoice_item(title, description, price, stock_keeping_unit, options = {})
-      @request.post(%w(invoiceitem), {title: title, description: description, price: price, sku: stock_keeping_unit.to_s}.merge(options))
+      @request.post(%w(invoiceitem), { title: title, description: description, price: price, sku: stock_keeping_unit.to_s }.merge(options))
     end
 
     def create_invoice_tax(name, description, options = {})
-      @request.post(%w(invoice tax), {name: name, description: description}.merge(options))
+      @request.post(%w(invoice tax), { name: name, description: description }.merge(options))
     end
 
     def create_contact_type(title, options = {})
-      @request.post(%w(contact type), {title: title}.merge(options))
+      @request.post(%w(contact type), { title: title }.merge(options))
     end
 
     def create_contact_status(title, color, options = {})
-      @request.post(%w(contact status), {title: title, color: color}.merge(options))
+      @request.post(%w(contact status), { title: title, color: color }.merge(options))
     end
 
     def create_person(first_name, last_name, options = {})
-      @request.post(%w(contact person), {firstName: first_name, lastName: last_name}.merge(options))
+      @request.post(%w(contact person), { firstName: first_name, lastName: last_name }.merge(options))
     end
 
     def create_company(company_name, managers, options = {})
-      @request.post(%w(contact company), {companyName: company_name, managerList: managers}.merge(options))
+      @request.post(%w(contact company), { companyName: company_name, managerList: managers }.merge(options))
     end
 
     def create_task_group(title, options = {})
-      @request.post(%w(contact task group), {title: title}.merge(options))
+      @request.post(%w(contact task group), { title: title }.merge(options))
     end
 
     def add_tag_to_batch_contacts(tags, options = {})
-      @request.post(%w(contact filter taglist), {tags: tags}.merge(options))
+      @request.post(%w(contact filter taglist), { tags: tags }.merge(options))
     end
 
     def add_contact_tag_to_group(entity_type, entity_id, tag)
-      @request.post([entity_type.to_s, entity_id.to_s, 'tag', 'group'], {tagName: tag})
+      @request.post([entity_type.to_s, entity_id.to_s, 'tag', 'group'], tagName: tag)
     end
 
     def add_deal_to_contact(contact_id, opportunity_id)
@@ -220,26 +219,26 @@ module Teamlab
     end
 
     def update_task(task_id, title, deadline, category_id, options = {})
-      @request.put(['task', task_id.to_s], {title: title, deadline: deadline, categoryid: category_id}.merge(options))
+      @request.put(['task', task_id.to_s], { title: title, deadline: deadline, categoryid: category_id }.merge(options))
     end
 
     def update_invoice_item(id, title, description, price, stock_keeping_unit, options = {})
-      @request.put(['invoiceitem', id.to_s], {title: title, description: description, price: price, sku: stock_keeping_unit.to_s}.merge(options))
+      @request.put(['invoiceitem', id.to_s], { title: title, description: description, price: price, sku: stock_keeping_unit.to_s }.merge(options))
     end
 
     def update_invoice_tax(id, name, options = {})
-      @request.put(['invoice', 'tax', id.to_s], {name: name}.merge(options))
+      @request.put(['invoice', 'tax', id.to_s], { name: name }.merge(options))
     end
 
     def update_contact_type(id, title, options = {})
-      @request.put(['contact', 'type', id.to_s], {title: title}.merge(options))
+      @request.put(['contact', 'type', id.to_s], { title: title }.merge(options))
     end
 
     def update_contact_status(id, title, options = {})
-      @request.put(['contact', 'status', id.to_s], {title: title.to_s}.merge(options))
+      @request.put(['contact', 'status', id.to_s], { title: title.to_s }.merge(options))
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def update_invoice(id, options = {})
       @request.put(['invoice', id.to_s], options)
@@ -270,7 +269,7 @@ module Teamlab
     end
 
     def update_invoice_patch_status(status, invoice_ids)
-      @request.put(['invoice', 'status', status.to_s], {invoiceids: invoice_ids})
+      @request.put(['invoice', 'status', status.to_s], invoiceids: invoice_ids)
     end
 
     def update_contact_status_color(status_id, color)
@@ -278,21 +277,21 @@ module Teamlab
     end
 
     def update_person(id, first_name, last_name, options = {})
-      @request.put(['contact', 'person', id.to_s], {firstName: first_name, lastName: last_name}.merge(options))
+      @request.put(['contact', 'person', id.to_s], { firstName: first_name, lastName: last_name }.merge(options))
     end
 
     def update_contact_status_by_id(contact_id, contact_status_id)
-      @request.put(['contact', contact_id, 'status'], {contactStatusid: contact_status_id})
+      @request.put(['contact', contact_id, 'status'], contactStatusid: contact_status_id)
     end
 
     def update_invoice_line(invoice_line_id, invoice_id, options = {})
-      @request.put(['invoiceline', invoice_line_id], {invoiceId: invoice_id}.merge(options))
+      @request.put(['invoiceline', invoice_line_id], { invoiceId: invoice_id }.merge(options))
     end
 
-#=========================================== TODO: MULTIPART-FORM DATA =====================================================
+    #=========================================== TODO: MULTIPART-FORM DATA =====================================================
 
     def change_contact_photo(contact_id, photo)
-      @request.put(['contact', contact_id.to_s, 'changephoto'], {photo: photo})
+      @request.put(['contact', contact_id.to_s, 'changephoto'], photo: photo)
     end
 
     def update_person_and_its_company_status(person_id, contact_status_id)
@@ -348,19 +347,19 @@ module Teamlab
     end
 
     def create_event(contact_id, content, category_id, options = {})
-      @request.post(%w(history), {contactId: contact_id, content: content, categoryId: category_id}.merge(options))
+      @request.post(%w(history), { contactId: contact_id, content: content, categoryId: category_id }.merge(options))
     end
 
     def create_history_category(title, image_name, options = {})
-      @request.post(%w(history category), {title: title.to_s, imageName: image_name.to_s}.merge(options))
+      @request.post(%w(history category), { title: title.to_s, imageName: image_name.to_s }.merge(options))
     end
 
     def update_history_category(id, title, options = {})
-      @request.put(['history', 'category', id.to_s], {title: title}.merge(options))
+      @request.put(['history', 'category', id.to_s], { title: title }.merge(options))
     end
 
     def update_history_categories_order(*titles)
-      @request.put(%w(history category reorder), {titles: titles.flatten})
+      @request.put(%w(history category reorder), titles: titles.flatten)
     end
 
     def update_history_category_icon(id, icon_name)
@@ -392,7 +391,7 @@ module Teamlab
     end
 
     def create_task_category(title, image_name, options = {})
-      @request.post(%w(task category), {title: title.to_s, imageName: image_name.to_s}.merge(options))
+      @request.post(%w(task category), { title: title.to_s, imageName: image_name.to_s }.merge(options))
     end
 
     def get_contact_upcoming_tasks(*contact_ids)
@@ -492,7 +491,7 @@ module Teamlab
     end
 
     def add_contact_address(contact_id, category, address, options = {})
-      @request.post(['contact', contact_id.to_s, 'data', 'address', category.to_s], {address: address.to_s}.merge(options))
+      @request.post(['contact', contact_id.to_s, 'data', 'address', category.to_s], { address: address.to_s }.merge(options))
     end
 
     def delete_contact_group(*contact_ids)
@@ -508,7 +507,7 @@ module Teamlab
     end
 
     def set_contacts_access_rights(contact_ids, options = {})
-      @request.put(%w(contact access), {contactId: contact_ids}.merge(options))
+      @request.put(%w(contact access), { contactId: contact_ids }.merge(options))
     end
 
     def update_contact_types_order(*titles)
@@ -520,11 +519,11 @@ module Teamlab
     end
 
     def update_company(company_id, company_name, options = {})
-      @request.put(['contact', 'company', company_id.to_s], {companyName: company_name.to_s}.merge(options))
+      @request.put(['contact', 'company', company_id.to_s], { companyName: company_name.to_s }.merge(options))
     end
 
     def update_contact_info(information_id, contact_id, data, options = {})
-      @request.put(['contact', contact_id.to_s, 'data', information_id.to_s], {data: data}.merge(options))
+      @request.put(['contact', contact_id.to_s, 'data', information_id.to_s], { data: data }.merge(options))
     end
 
     def change_contact_photo_by_url(contact_id, photo_url)
@@ -532,7 +531,7 @@ module Teamlab
     end
 
     def update_contact_address(contact_id, information_id, address, options = {})
-      @request.put(['contact', contact_id.to_s, 'data', 'address', information_id.to_s], {address: address}.merge(options))
+      @request.put(['contact', contact_id.to_s, 'data', 'address', information_id.to_s], { address: address }.merge(options))
     end
 
     def delete_contact(id)
@@ -548,7 +547,7 @@ module Teamlab
     end
 
     def delete_person_from_company(company_id, person_id)
-      @request.delete(['contact', 'company', company_id.to_s, 'person'], {personId: person_id})
+      @request.delete(['contact', 'company', company_id.to_s, 'person'], personId: person_id)
     end
 
     def delete_contact_address(contact_id, information_id)
@@ -559,7 +558,7 @@ module Teamlab
       @request.delete(['contact', contact_id.to_s, 'project', project_id.to_s])
     end
 
-    #region Files
+    # region Files
 
     def get_root_folder_id
       @request.get(%w(files root))
@@ -601,22 +600,22 @@ module Teamlab
       @request.post([entity_type.to_s, 'tag'], tagName: tag_name)
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def add_tag_to_case_group_by_filter(tag_name, options = {})
-      @request.post(%w(case filter taglist), {tagName: tag_name}.merge(options))
+      @request.post(%w(case filter taglist), { tagName: tag_name }.merge(options))
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def add_tag_group_to_entity(entity_type, entity_id, tag_name)
       @request.post([entity_type.to_s, 'taglist'], entityId: entity_id, tagName: tag_name)
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def add_tag_to_opportunity_group(tag_name, options = {})
-      @request.post(%w(opportunity filter taglist), {tagName: tag_name}.merge(options))
+      @request.post(%w(opportunity filter taglist), { tagName: tag_name }.merge(options))
     end
 
     def add_tag(entity_type, entity_id, tag_name)
@@ -655,20 +654,20 @@ module Teamlab
       @request.post([entity_type.to_s, 'tasktemplatecontainer'], title: title)
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def create_task_template(container_id, title, options = {})
-      @request.post(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], {title: title}.merge(options))
+      @request.post(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], { title: title }.merge(options))
     end
 
     def update_task_template_container(container_id, title)
       @request.put(['tasktemplatecontainer', container_id.to_s], title: title)
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def update_task_template(container_id, task_template_id, title, options = {})
-      @request.put(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], {id: task_template_id.to_s, title: title}.merge(options))
+      @request.put(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], { id: task_template_id.to_s, title: title }.merge(options))
     end
 
     def delete_task_template_container(container_id)
@@ -692,7 +691,7 @@ module Teamlab
     end
 
     def create_case(title, options = {})
-      @request.post(%w(case), {title: title}.merge(options))
+      @request.post(%w(case), { title: title }.merge(options))
     end
 
     def add_case_contact(case_id, contact_id)
@@ -700,11 +699,11 @@ module Teamlab
     end
 
     def set_case_access_rights(case_ids, options = {})
-      @request.put(%w(case access), {caseId: case_ids}.merge(options))
+      @request.put(%w(case access), { caseId: case_ids }.merge(options))
     end
 
     def update_case(case_id, title, options = {})
-      @request.put(['case', case_id.to_s], {title: title}.merge(options))
+      @request.put(['case', case_id.to_s], { title: title }.merge(options))
     end
 
     def set_case_access_rights_by_filter(options = {})
@@ -748,7 +747,7 @@ module Teamlab
     end
 
     def create_user_field(entity_type, label, field_type, options = {})
-      @request.post([entity_type.to_s, 'customfield'], {fieldType: field_type, label: label}.merge(options))
+      @request.post([entity_type.to_s, 'customfield'], { fieldType: field_type, label: label }.merge(options))
     end
 
     def set_user_field_value(entity_type, entity_id, field_id, field_value)
@@ -756,11 +755,11 @@ module Teamlab
     end
 
     def update_selected_user_field(entity_type, user_field_id, label, field_type, options = {})
-      @request.put([entity_type.to_s, 'customfield', user_field_id.to_s], {fieldType: field_type, label: label}.merge(options))
+      @request.put([entity_type.to_s, 'customfield', user_field_id.to_s], { fieldType: field_type, label: label }.merge(options))
     end
 
     def update_user_fields_order(entity_type, *field_ids)
-      @request.put([entity_type.to_s, 'customfield', 'reorder'], {fieldIds: field_ids.flatten})
+      @request.put([entity_type.to_s, 'customfield', 'reorder'], fieldIds: field_ids.flatten)
     end
 
     def delete_user_field(entity_type, field_id)

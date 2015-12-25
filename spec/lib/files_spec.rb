@@ -24,9 +24,9 @@ describe '[Files]' do
   describe '#get_my_files' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_my_files }
-      #let(:add_data_to_collector) { true }
-      #let(:data_param) {:my_documents_ids}
-      #let(:param_names) {%w(current id)}
+      # let(:add_data_to_collector) { true }
+      # let(:data_param) {:my_documents_ids}
+      # let(:param_names) {%w(current id)}
     end
   end
 
@@ -34,8 +34,8 @@ describe '[Files]' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_trash }
       let(:add_data_to_collector) { true }
-      let(:data_param) {:trash_documents_ids}
-      let(:param_names) {%w(current id)}
+      let(:data_param) { :trash_documents_ids }
+      let(:param_names) { %w(current id) }
     end
   end
 
@@ -43,8 +43,8 @@ describe '[Files]' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_shared_docs }
       let(:add_data_to_collector) { true }
-      let(:data_param) {:shared_documents_ids}
-      let(:param_names) {%w(current id)}
+      let(:data_param) { :shared_documents_ids }
+      let(:param_names) { %w(current id) }
     end
   end
 
@@ -52,8 +52,8 @@ describe '[Files]' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_common_docs }
       let(:add_data_to_collector) { true }
-      let(:data_param) {:common_documents_ids}
-      let(:param_names) {%w(current id)}
+      let(:data_param) { :common_documents_ids }
+      let(:param_names) { %w(current id) }
     end
   end
 
@@ -62,8 +62,8 @@ describe '[Files]' do
       let(:command) { :new_folder }
       let(:args) { [random_id(:my_documents), random_word] }
       let(:add_data_to_collector) { true }
-      let(:data_param) {:new_folder_ids}
-      let(:param_names) {%w(current id)}
+      let(:data_param) { :new_folder_ids }
+      let(:param_names) { %w(current id) }
     end
   end
 
@@ -93,8 +93,8 @@ describe '[Files]' do
       let(:command) { :create_file }
       let(:args) { [random_id(:new_folder), random_word] }
       let(:add_data_to_collector) { true }
-      let(:data_param) {:new_file_ids}
-      let(:param_names) {%w(id)}
+      let(:data_param) { :new_file_ids }
+      let(:param_names) { %w(id) }
     end
   end
 
@@ -205,21 +205,21 @@ describe '[Files]' do
   describe '#move_files' do
     it_should_behave_like 'an api request' do
       let(:command) { :move_files }
-      let(:args) { [random_id(:new_folder), { fileids: DATA_COLLECTOR[:new_file_ids].sample(rand(1..4)), overwrite: random_bool}] }
+      let(:args) { [random_id(:new_folder), { fileids: DATA_COLLECTOR[:new_file_ids].sample(rand(1..4)), overwrite: random_bool }] }
     end
   end
 
   describe '#copy_to_folder' do
     it_should_behave_like 'an api request' do
       let(:command) { :copy_to_folder }
-      let(:args) { [random_id(:new_folder), { fileids: DATA_COLLECTOR[:new_file_ids].sample(rand(1..4)), overwrite: random_bool}] }
+      let(:args) { [random_id(:new_folder), { fileids: DATA_COLLECTOR[:new_file_ids].sample(rand(1..4)), overwrite: random_bool }] }
     end
   end
 
   describe '#delete' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete }
-      let(:args) { [ folderIds: [], fileids: [] ] }
+      let(:args) { [folderIds: [], fileids: []] }
     end
   end
 
@@ -238,7 +238,7 @@ describe '[Files]' do
   describe '#finish_operations' do
     it_should_behave_like 'an api request' do
       let(:command) { :finish_operations }
-      let(:args) { [ folderIds: [random_id(:new_folder)], fileids: [random_id(:new_file)] ] }
+      let(:args) { [folderIds: [random_id(:new_folder)], fileids: [random_id(:new_file)]] }
     end
   end
 
@@ -273,14 +273,14 @@ describe '[Files]' do
   describe '#remove_file_sharing_rights' do
     it_should_behave_like 'an api request' do
       let(:command) { :remove_file_sharing_rights }
-      let(:args) { [ random_id(:new_file), [random_id(:user)] ] }
+      let(:args) { [random_id(:new_file), [random_id(:user)]] }
     end
   end
 
   describe '#remove_folder_sharing_rights' do
     it_should_behave_like 'an api request' do
       let(:command) { :remove_folder_sharing_rights }
-      let(:args) { [ random_id(:new_folder), [random_id(:user)] ] }
+      let(:args) { [random_id(:new_folder), [random_id(:user)]] }
     end
   end
 

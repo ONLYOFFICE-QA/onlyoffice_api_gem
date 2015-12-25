@@ -1,7 +1,6 @@
 require_relative '../spec_helper'
 
 describe Teamlab do
-
   before :all do
     Teamlab.configure do |config|
       config.server = SERVER
@@ -76,10 +75,7 @@ describe Teamlab do
     end
   end
 
-
-
   describe 'Cleaning enviroment' do
-
     describe '#delete_file' do
       it_should_behave_like 'an api request' do
         let(:teamlab_module) { :files }
