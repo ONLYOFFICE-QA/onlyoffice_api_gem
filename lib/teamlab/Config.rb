@@ -1,17 +1,15 @@
 # encoding: utf-8
 require 'active_support/configurable'
-require_relative 'request'
+require_relative 'Request'
 
 module Teamlab
   attr_reader :config
 
-  def self.configure(&_block)
+  def self.configure(&block)
     @config ||= Config.new
     yield @config if block_given?
-    auth_response = Teamlab::Request.new('authentication').post('', userName: @config.username, password: @config.password).body
-    fail "Cannot get response token for #{auth_response}" if auth_response['response'].nil? || auth_response['response']['token'].nil?
-    @config.token = auth_response['response']['token']
-    @config.headers = { 'authorization' => @config.token }
+    @config.token = Teamlab::Request.new('authentication').post('', {:userName => @config.username, :password => @config.password}).body['response']['token']
+    @config.headers = { 'authorization' => @config.token}
   end
 
   def self.config

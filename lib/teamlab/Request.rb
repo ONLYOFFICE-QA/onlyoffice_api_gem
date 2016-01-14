@@ -2,11 +2,11 @@ require 'net/http'
 require 'json'
 require 'httparty'
 require 'httmultiparty'
-require_relative 'response'
+require_relative 'Response'
 
 module Teamlab
   class Request
-    # include HTTParty
+    #include HTTParty
     include HTTMultiParty
 
     def initialize(api_additive)
@@ -42,9 +42,9 @@ module Teamlab
         retry if attempts < 3
         raise "Can't #{type} to #{url} because of TimeoutError: #{timeout_exception}"
       rescue Exception => e
-        raise e
+        fail e
       end
-      fail "Error #{response.code}: #{response.error}" unless response.success
+      fail "Error #{response.code}: #{response.error.to_s}" unless response.success
       response
     end
 

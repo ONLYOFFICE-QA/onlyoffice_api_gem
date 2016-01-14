@@ -1,6 +1,7 @@
 require_relative '../spec_helper'
 
 describe '[Calendar]' do
+
   let(:teamlab_module) { :calendar }
 
   before :all do
@@ -46,7 +47,7 @@ describe '[Calendar]' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_event }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], random_word, { description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false }] }
+      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], random_word, {description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false}] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :event_ids }
       let(:param_names) { %w(objectId) }
@@ -118,7 +119,7 @@ describe '[Calendar]' do
   describe '#update_calendar_user_view' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_calendar_user_view }
-      let(:args) { [random_id(:calendar), random_word, TIME_ZONES.sample, { textColor: 'red', backgroundColor: 'blue' }] }
+      let(:args) { [random_id(:calendar), random_word, TIME_ZONES.sample, {textColor: 'red', backgroundColor: 'blue'}] }
     end
   end
 

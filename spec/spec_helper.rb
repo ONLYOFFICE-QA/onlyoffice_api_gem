@@ -12,12 +12,13 @@ shared_examples_for 'an api request' do |*flags|
       DATA_COLLECTOR[data_param] ||= []
       response = [@response.body['response']].flatten
       response.each do |cur_response|
-        DATA_COLLECTOR[data_param] << param_names.inject(cur_response) { |a, e| a[e] }
+        DATA_COLLECTOR[data_param] << param_names.inject(cur_response) { |resp, param| resp[param] }
       end
     end
   end
 
   context 'Successful api request' do
+
     it 'returns Teamlab::Response object' do
       expect(@response).to be_instance_of(Teamlab::Response)
     end
