@@ -77,9 +77,8 @@ describe '[CRM]' do
 
   describe '#create_invoice' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23886'
       let(:command) { :create_invoice }
-      let(:args) { [] }
+      let(:args) { [random_word, DUE_DATE, random_id(:user), DUE_DATE, LANGUAGE.sample, CURRENCY.sample, rand(1000), random_word, random_id(:invoice_line)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_ids }
       let(:param_names) { %w(id) }
@@ -109,7 +108,6 @@ describe '[CRM]' do
 
   describe '#create_invoice_line' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23886, http://bugzserver/show_bug.cgi?id=23888'
       let(:command) { :create_invoice_line }
       let(:args) { [random_id(:invoice)] }
       let(:add_data_to_collector) { true }
@@ -533,6 +531,20 @@ describe '[CRM]' do
     end
   end
 
+ describe '#update_organisation_company_name' do
+   it_should_behave_like 'an api request' do
+     let(:command) { :update_organisation_company_name }
+     let(:args) { [random_word] }
+   end
+ end
+
+  describe '#update_organisation_address' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_organisation_address }
+      let(:args) { [random_word] }
+    end
+  end
+
   describe '#update_contact_type' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_type }
@@ -561,6 +573,19 @@ describe '[CRM]' do
   describe '#update_crm_contact_tag_setting' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_crm_contact_tag_setting }
+    end
+  end
+
+  describe '#update_crm_currency' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_crm_currency }
+      let(:args) { [CURRENCY.sample] }
+    end
+  end
+
+  describe '#save_smtp_settings' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :save_smtp_settings }
     end
   end
 
