@@ -43,7 +43,7 @@ module Teamlab
     end
 
     def create_opportunity_stage(title, color, options = {}) #есть тест
-      @request.post(%w(opportunity stage), { title: title, color: color }.merge(options))
+      @request.post(%w(opportunity stage), {title: title, color: color}.merge(options))
     end
 
     def add_opportunity_contact(opportunity_id, contact_id)
@@ -55,7 +55,7 @@ module Teamlab
     end
 
     def update_opportunity_stage(id, title, color, options = {})
-      @request.put(['opportunity', 'stage', id.to_s], { title: title, color: color,  }.merge(options))
+      @request.put(['opportunity', 'stage', id.to_s], {title: title, color: color, }.merge(options))
     end
 
     def update_opportunity_stages_order(options = {})
@@ -67,16 +67,16 @@ module Teamlab
     end
 
     def update_opportunity(opportunity_id, contact_id, title, responsible_id, stage_id, options = {})
-      @request.put(['opportunity', opportunity_id.to_s], { contactId: contact_id, title: title, responsibleid: responsible_id,
-                                                           stageid: stage_id }.merge(options))
+      @request.put(['opportunity', opportunity_id.to_s], {contactId: contact_id, title: title, responsibleid: responsible_id,
+                                                          stageid: stage_id}.merge(options))
     end
 
     def update_opportunity_stage_color(stage_id, color)
-      @request.put(['opportunity', 'stage', stage_id.to_s, 'color'], { color: color })
+      @request.put(['opportunity', 'stage', stage_id.to_s, 'color'], {color: color})
     end
 
     def set_rights_to_opportunity(opportunity_id, is_private, access_list)
-      @request.put(['opportunity', opportunity_id.to_s, 'access'], { isPrivate: is_private, accessList: access_list })
+      @request.put(['opportunity', opportunity_id.to_s, 'access'], {isPrivate: is_private, accessList: access_list})
     end
 
     def update_opportunity_to_stage(opportunity_id, stage_id)
@@ -163,13 +163,11 @@ module Teamlab
       @request.post(%w(task), {title: title, deadline: deadline, responsibleId: responsible_id, categoryId: category_id}.merge(options))
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
-
-    def create_invoice(options = {})
-      @request.post(%w(invoice), options)
+    def create_invoice(number, issue_date, client_id, due_date, language, currency, exchange_rate, terms, invoice_line, options)
+      @request.post(%w(invoice), {number: number, issueDate: issue_date, contactId: client_id, dueDate: due_date,
+                                  language: language, currency: currency, exchangeRate: exchange_rate, terms: terms,
+                                  invoiceLines: invoice_line}.merge(options))
     end
-
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def create_invoice_line(invoice_id, options = {})
       @request.post(%w(invoiceline), {invoiceId: invoice_id}.merge(options))
@@ -219,6 +217,14 @@ module Teamlab
       @request.put(%w(settings), options)
     end
 
+    def save_smtp_settings(options = {})
+      @request.put(%w(settings smtp), options)
+    end
+
+    def update_crm_currency(currency)
+      @request.put(%w(settings currency), {currency: currency})
+    end
+
     def update_task(task_id, title, deadline, category_id, options = {})
       @request.put(['task', task_id.to_s], {title: title, deadline: deadline, categoryid: category_id}.merge(options))
     end
@@ -239,7 +245,7 @@ module Teamlab
       @request.put(['contact', 'status', id.to_s], {title: title.to_s}.merge(options))
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def update_invoice(id, options = {})
       @request.put(['invoice', id.to_s], options)
@@ -255,6 +261,14 @@ module Teamlab
 
     def set_access_to_batch_contact(options = {})
       @request.put(%w(contact filter access), options)
+    end
+
+    def update_organisation_company_name(title)
+      @request.put(%w(settings organisation base), {companyName: title})
+    end
+
+    def update_organisation_address(text)
+      @request.put(%w(settings organisation address), {companyAddress: text})
     end
 
     def update_statuses_contact_order(options = {})
@@ -289,7 +303,7 @@ module Teamlab
       @request.put(['invoiceline', invoice_line_id], {invoiceId: invoice_id}.merge(options))
     end
 
-#=========================================== TODO: MULTIPART-FORM DATA =====================================================
+    #=========================================== TODO: MULTIPART-FORM DATA =====================================================
 
     def change_contact_photo(contact_id, photo)
       @request.put(['contact', contact_id.to_s, 'changephoto'], {photo: photo})
@@ -400,7 +414,7 @@ module Teamlab
     end
 
     def update_task_category(category_id, title, options = {})
-      @request.put(['task', 'category', category_id.to_s], { title: title }.merge(options))
+      @request.put(['task', 'category', category_id.to_s], {title: title}.merge(options))
     end
 
     def close_task(task_id)
@@ -476,7 +490,7 @@ module Teamlab
     end
 
     def add_contact_info(contact_id, infotype, data, category, options = {})
-      @request.post(['contact', contact_id.to_s, 'data'], { infoType: infotype, data: data, category: category }.merge(options))
+      @request.post(['contact', contact_id.to_s, 'data'], {infoType: infotype, data: data, category: category}.merge(options))
     end
 
     def link_contact_list_with_project(project_id, *contact_ids)
@@ -601,19 +615,19 @@ module Teamlab
       @request.post([entity_type.to_s, 'tag'], tagName: tag_name)
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def add_tag_to_case_group_by_filter(tag_name, options = {})
       @request.post(%w(case filter taglist), {tagName: tag_name}.merge(options))
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def add_tag_group_to_entity(entity_type, entity_id, tag_name)
       @request.post([entity_type.to_s, 'taglist'], entityId: entity_id, tagName: tag_name)
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def add_tag_to_opportunity_group(tag_name, options = {})
       @request.post(%w(opportunity filter taglist), {tagName: tag_name}.merge(options))
@@ -655,7 +669,7 @@ module Teamlab
       @request.post([entity_type.to_s, 'tasktemplatecontainer'], title: title)
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def create_task_template(container_id, title, options = {})
       @request.post(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], {title: title}.merge(options))
@@ -665,7 +679,7 @@ module Teamlab
       @request.put(['tasktemplatecontainer', container_id.to_s], title: title)
     end
 
-#=========================================== TODO: OPTIONAL VARIABLES =====================================================
+    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def update_task_template(container_id, task_template_id, title, options = {})
       @request.put(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], {id: task_template_id.to_s, title: title}.merge(options))

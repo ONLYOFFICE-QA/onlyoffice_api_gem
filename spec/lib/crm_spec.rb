@@ -77,9 +77,8 @@ describe '[CRM]' do
 
   describe '#create_invoice' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23886'
       let(:command) { :create_invoice }
-      let(:args) { [] }
+      let(:args) { [random_word, DUE_DATE, random_id(:user), DUE_DATE, LANGUAGE.sample, CURRENCY.sample, rand(1000), random_word, random_id(:invoice_line)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_ids }
       let(:param_names) { %w(id) }
@@ -109,7 +108,6 @@ describe '[CRM]' do
 
   describe '#create_invoice_line' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23886, http://bugzserver/show_bug.cgi?id=23888'
       let(:command) { :create_invoice_line }
       let(:args) { [random_id(:invoice)] }
       let(:add_data_to_collector) { true }
@@ -290,7 +288,7 @@ describe '[CRM]' do
   describe '#create_case' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_case }
-      let(:args) { [random_word, { members: DATA_COLLECTOR[:new_contact_ids] }] }
+      let(:args) { [random_word, {members: DATA_COLLECTOR[:new_contact_ids]}] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_case_ids }
       let(:param_names) { %w(id) }
@@ -488,7 +486,7 @@ describe '[CRM]' do
   describe '#add_tag_to_batch_contacts' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_tag_to_batch_contacts }
-      let(:args) { [(1..rand(1..4)).map {random_word(rand(3..6))}] }
+      let(:args) { [(1..rand(1..4)).map { random_word(rand(3..6)) }] }
     end
   end
 
@@ -534,6 +532,20 @@ describe '[CRM]' do
     end
   end
 
+  describe '#update_organisation_company_name' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_organisation_company_name }
+      let(:args) { [random_word] }
+    end
+  end
+
+  describe '#update_organisation_address' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_organisation_address }
+      let(:args) { [random_word] }
+    end
+  end
+
   describe '#update_contact_type' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_type }
@@ -562,6 +574,19 @@ describe '[CRM]' do
   describe '#update_crm_contact_tag_setting' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_crm_contact_tag_setting }
+    end
+  end
+
+  describe '#update_crm_currency' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_crm_currency }
+      let(:args) { [CURRENCY.sample] }
+    end
+  end
+
+  describe '#save_smtp_settings' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :save_smtp_settings }
     end
   end
 
@@ -888,28 +913,28 @@ describe '[CRM]' do
   describe '#set_contact_access_rights' do
     it_should_behave_like 'an api request' do
       let(:command) { :set_contact_access_rights }
-      let(:args) { [ random_id(:new_contact) ] }
+      let(:args) { [random_id(:new_contact)] }
     end
   end
 
   describe '#update_company' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_company }
-      let(:args) { [ random_id(:company), random_word ] }
+      let(:args) { [random_id(:company), random_word] }
     end
   end
 
   describe '#update_contact_info' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_info }
-      let(:args) { [ random_id(:contact_info), random_id(:new_contact), random_word ] }
+      let(:args) { [random_id(:contact_info), random_id(:new_contact), random_word] }
     end
   end
 
   describe '#change_contact_photo_by_url' do
     it_should_behave_like 'an api request' do
       let(:command) { :change_contact_photo_by_url }
-      let(:args) { [ random_id(:new_contact), IMAGE_URL ] }
+      let(:args) { [random_id(:new_contact), IMAGE_URL] }
     end
   end
 
@@ -917,7 +942,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       pending('http://bugzserver/show_bug.cgi?id=24002')
       let(:command) { :update_contact_address }
-      let(:args) { [ random_id(:new_contact), random_id(:contact_address), random_word ] }
+      let(:args) { [random_id(:new_contact), random_id(:contact_address), random_word] }
     end
   end
 
@@ -1207,7 +1232,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_case_group }
       i = -1
-      let(:args) { [{ contactId: DATA_COLLECTOR[:new_contact_ids][i += 1] }] }
+      let(:args) { [{contactId: DATA_COLLECTOR[:new_contact_ids][i += 1]}] }
     end
   end
 
@@ -1319,7 +1344,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_person_from_company }
       i = -1
-      let(:args) { [ DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i+=1]] }
+      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i+=1]] }
     end
   end
 
@@ -1328,14 +1353,14 @@ describe '[CRM]' do
       pending 'http://bugzserver/show_bug.cgi?id=24028'
       let(:command) { :delete_contact_address }
       i = -1
-      let(:args) { [ DATA_COLLECTOR[:new_contact_ids][i+=1], DATA_COLLECTOR[:contact_address_ids].shift ] }
+      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i+=1], DATA_COLLECTOR[:contact_address_ids].shift] }
     end
   end
 
   describe '#remove_contact_from_project' do
     it_should_behave_like 'an api request' do
       let(:command) { :remove_contact_from_project }
-      let(:args) { [ random_id(:new_contact), random_id(:project)] }
+      let(:args) { [random_id(:new_contact), random_id(:project)] }
     end
   end
 
