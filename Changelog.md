@@ -4,7 +4,6 @@
 * Add crm methods: save_smtp_settings, update_crm_currency, update_organisation_company_name, update_organisation_address
 * Change method create_invoice
 
-
 ## 0.4.0
 * Add portal submodule with `Portal#invite_user_url` and `Portal#invite_visitor_url` methods
 * Add rubocop support in project. Fix a lot of minor problems, should have no impact on existing working code
