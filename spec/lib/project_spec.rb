@@ -1,7 +1,6 @@
 require_relative '../spec_helper'
 
 describe '[Project]' do
-
   before :all do
     Teamlab.configure do |config|
       config.server = SERVER
@@ -78,7 +77,7 @@ describe '[Project]' do
   describe '#create_project' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_project }
-      let(:args) { [random_word, random_word, random_id(:user), random_word(3), random_bool, {participants: DATA_COLLECTOR[:user_ids]}] }
+      let(:args) { [random_word, random_word, random_id(:user), random_word(3), random_bool, { participants: DATA_COLLECTOR[:user_ids] }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :new_project_ids }
       let(:param_names) { %w(id) }
@@ -195,7 +194,7 @@ describe '[Project]' do
   describe '#get_message_by_filter' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_message_by_filter }
-      let(:args) { [{projectId: random_id(:new_project)}] }
+      let(:args) { [{ projectId: random_id(:new_project) }] }
     end
   end
 
@@ -461,7 +460,7 @@ describe '[Project]' do
   describe '#update_project' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_project }
-      let(:args) { [random_id(:new_project), random_word, random_id(:user), {private: random_bool, notify: random_bool}] }
+      let(:args) { [random_id(:new_project), random_word, random_id(:user), { private: random_bool, notify: random_bool }] }
     end
   end
 
@@ -503,7 +502,7 @@ describe '[Project]' do
   describe '#update_project_team' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_project_team }
-      let(:args) { [random_id(:new_project), DATA_COLLECTOR[:user_ids].sample(rand(2..4)), {notify: random_bool}] }
+      let(:args) { [random_id(:new_project), DATA_COLLECTOR[:user_ids].sample(rand(2..4)), { notify: random_bool }] }
     end
   end
 
@@ -530,7 +529,7 @@ describe '[Project]' do
   describe '#get_task_by_filter' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_task_by_filter }
-      let(:args) { [{participant: random_id(:user)}] }
+      let(:args) { [{ participant: random_id(:user) }] }
     end
   end
 
@@ -655,7 +654,7 @@ describe '[Project]' do
   describe '#get_milestones_by_filter' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_milestones_by_filter }
-      let(:args) { [{projectid: random_id(:new_project)}] }
+      let(:args) { [{ projectid: random_id(:new_project) }] }
     end
   end
 
@@ -803,5 +802,4 @@ describe '[Project]' do
       let(:args) { [DATA_COLLECTOR[:project_template_ids].pop] }
     end
   end
-
 end

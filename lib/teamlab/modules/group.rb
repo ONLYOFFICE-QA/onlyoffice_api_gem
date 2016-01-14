@@ -1,7 +1,5 @@
 module Teamlab
-
   class Group
-
     def initialize
       @request = Teamlab::Request.new('group')
     end
@@ -11,15 +9,15 @@ module Teamlab
     end
 
     def get_group(group_id)
-      @request.get([ group_id.to_s ])
+      @request.get([group_id.to_s])
     end
 
     def add_group(manager, name, members = [])
-      @request.post([''], { groupManager: manager, groupName: name, members: members})
+      @request.post([''], groupManager: manager, groupName: name, members: members)
     end
 
     def replace_members(group_id, members)
-      @request.post([group_id.to_s, 'members'], { members: members})
+      @request.post([group_id.to_s, 'members'], members: members)
     end
 
     def update_group(group_id, options = {})
@@ -27,11 +25,11 @@ module Teamlab
     end
 
     def add_group_users(group_id, members = [])
-      @request.put([group_id.to_s, 'members'], {members: members})
+      @request.put([group_id.to_s, 'members'], members: members)
     end
 
     def set_group_manager(group_id, user_id)
-      @request.put([group_id.to_s, 'manager'], {userid: user_id})
+      @request.put([group_id.to_s, 'manager'], userid: user_id)
     end
 
     def move_group_members(group_id, new_group_id)

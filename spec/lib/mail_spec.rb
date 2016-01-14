@@ -1,7 +1,6 @@
 require_relative '../spec_helper'
 
 describe '[Mail]' do
-
   let(:teamlab_module) { :mail }
 
   before :all do
@@ -15,7 +14,7 @@ describe '[Mail]' do
   describe '#create_tag' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_tag }
-      let(:args) { [random_word(4), {style: rand(15)}] }
+      let(:args) { [random_word(4), { style: rand(15) }] }
     end
   end
 
@@ -36,7 +35,7 @@ describe '[Mail]' do
   describe '#get_message' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_message }
-      let(:args) {message_id}
+      let(:args) { message_id }
     end
   end
 

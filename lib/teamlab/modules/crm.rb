@@ -245,7 +245,7 @@ module Teamlab
       @request.put(['contact', 'status', id.to_s], {title: title.to_s}.merge(options))
     end
 
-    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
+#=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def update_invoice(id, options = {})
       @request.put(['invoice', id.to_s], options)

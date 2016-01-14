@@ -1,19 +1,19 @@
 require_relative 'teamlab/version'
-require_relative 'teamlab/Config'
-require_relative 'teamlab/Request'
-require_relative 'teamlab/Response'
-require_relative 'teamlab/Modules/People'
-require_relative 'teamlab/Modules/Group'
-require_relative 'teamlab/Modules/Settings'
-require_relative 'teamlab/Modules/Files'
-require_relative 'teamlab/Modules/Project'
-require_relative 'teamlab/Modules/Crm'
-require_relative 'teamlab/Modules/Community'
-require_relative 'teamlab/Modules/Calendar'
-require_relative 'teamlab/Modules/Mail'
+require_relative 'teamlab/config'
+require_relative 'teamlab/request'
+require_relative 'teamlab/response'
+require_relative 'teamlab/modules/people'
+require_relative 'teamlab/modules/group'
+require_relative 'teamlab/modules/settings'
+require_relative 'teamlab/modules/files'
+require_relative 'teamlab/modules/project'
+require_relative 'teamlab/modules/portals'
+require_relative 'teamlab/modules/crm'
+require_relative 'teamlab/modules/community'
+require_relative 'teamlab/modules/calendar'
+require_relative 'teamlab/modules/mail'
 
 module Teamlab
-
   def self.people
     @people ||= Teamlab::People.new
   end
@@ -32,6 +32,10 @@ module Teamlab
 
   def self.project
     @project ||= Teamlab::Project.new
+  end
+
+  def self.portal
+    @portal ||= Teamlab::Portal.new
   end
 
   def self.crm

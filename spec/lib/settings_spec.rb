@@ -36,7 +36,7 @@ describe '[Settings]' do
 
   describe '#get_ldap_settings' do
     it_should_behave_like 'an api request', :pending do
-    pending 'only for self-hosted, error 500 when running on saas portal'
+      pending 'only for self-hosted, error 500 when running on saas portal'
       let(:command) { :get_ldap_settings }
     end
   end
@@ -97,15 +97,14 @@ describe '[Settings]' do
   describe '#set_security' do
     it_should_behave_like 'an api request' do
       let(:command) { :set_security }
-      let(:args) { [random_settings_entity_id, {enabled: random_bool}] }
+      let(:args) { [random_settings_entity_id, { enabled: random_bool }] }
     end
   end
 
   describe '#set_access' do
-    it_should_behave_like 'an api request', :pending do
-      pending 'http://bugzserver/show_bug.cgi?id=23764'
+    it_should_behave_like 'an api request' do
       let(:command) { :set_access }
-      let(:args) { [[random_settings_entity_id, random_bool]] }
+      let(:args) { [random_settings_entity_id, random_bool] }
     end
   end
 

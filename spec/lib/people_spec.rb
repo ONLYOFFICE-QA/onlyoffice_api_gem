@@ -33,7 +33,7 @@ describe '[People]' do
   describe '#filter' do
     it_should_behave_like 'an api request' do
       let(:command) { :filter_people }
-      let(:args) { [{activationStatus: 1}] }
+      let(:args) { [{ activationStatus: 1 }] }
     end
   end
 
@@ -109,7 +109,7 @@ describe '[People]' do
   describe '#update_user' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_user }
-      let(:args) { [random_id(:new_user), random_bool, random_email, random_word, random_word, {comment: random_word}] }
+      let(:args) { [random_id(:new_user), random_bool, random_email, random_word, random_word, { comment: random_word }] }
     end
   end
 

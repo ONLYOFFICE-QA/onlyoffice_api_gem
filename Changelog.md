@@ -1,5 +1,18 @@
 # Change log
 
+## 0.4.0
+* Add portal submodule with `Portal#invite_user_url` and `Portal#invite_visitor_url` methods
+* Add rubocop support in project. Fix a lot of minor problems, should have no impact on existing working code
+
+## 0.3.16
+* change method Settings#set_access
+
+## 0.3.15
+* Show more detailed information about response, if auth response not containing token
+
+## 0.3.14
+* add method Project#update_message_status 
+
 ## 0.3.13.1 & 0.3.13.2
 * Fix dependency of httparty
 
