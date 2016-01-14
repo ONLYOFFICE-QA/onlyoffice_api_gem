@@ -1,10 +1,11 @@
 module Teamlab
   class Files
+
     def initialize
       @request = Teamlab::Request.new('files')
     end
 
-    # region File Creation
+    #region File Creation
 
     def create_txt_in_my_docs(title, content)
       @request.post(%w(@my text), title: title.to_s, content: content.to_s)
@@ -34,9 +35,9 @@ module Teamlab
       @request.post([folder_id.to_s, 'file'], title: title.to_s)
     end
 
-    # endregion
+    #endregion
 
-    # region File operations
+    #region File operations
 
     def get_file_operations_list
       @request.get(%w(fileops))
@@ -83,9 +84,9 @@ module Teamlab
       @request.put(['file', file_id.to_s, 'checkconversion'], start: start)
     end
 
-    # endregion
+    #endregion
 
-    # region Files
+    #region Files
 
     def get_file_info(file_id)
       @request.get(['file', file_id.to_s])
@@ -107,9 +108,9 @@ module Teamlab
       @request.delete(['file', file_id.to_s])
     end
 
-    # endregion
+    #endregion
 
-    # region Folders
+    #region Folders
 
     def get_my_docs
       @request.get(['@my'])
@@ -156,9 +157,9 @@ module Teamlab
       @request.delete(['folder', folder_id.to_s])
     end
 
-    # endregion
+    #endregion
 
-    # region Sharing
+    #region Sharing
 
     def get_file_sharing(file_id)
       @request.get(['file', file_id.to_s, 'share'])
@@ -180,9 +181,9 @@ module Teamlab
       @request.delete(['share'], options)
     end
 
-    # endregion
+    #endregion
 
-    # region Third-Party Integration
+    #region Third-Party Integration
 
     def get_third_party
       @request.get(%w(thirdparty))
@@ -196,9 +197,9 @@ module Teamlab
       @request.delete(['thirdparty', provider_id.to_s])
     end
 
-    # endregion
+    #endregion
 
-    # region Uploads
+    #region Uploads
 
     def upload_to_my_docs(file)
       @request.post(%w(@my upload), somefile: File.new(file))
@@ -220,7 +221,7 @@ module Teamlab
       @request.post([folder_id.to_s, 'upload', 'create_session'], fileName: filename, fileSize: file_size)
     end
 
-    # endregion
+    #endregion
 
     def search(query)
       @request.get(['@search', query.to_s])

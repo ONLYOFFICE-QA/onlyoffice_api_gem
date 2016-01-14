@@ -1,5 +1,7 @@
 module Teamlab
+
   class Settings
+
     def initialize
       @request = Teamlab::Request.new('settings')
     end
@@ -69,7 +71,7 @@ module Teamlab
     end
 
     def set_access(id, enabled = true)
-      @request.put(%w(security access), items: [{ key: id, value: enabled }])
+      @request.put(%w(access), items: [id, enabled])
     end
 
     def set_product_admin(product_id, user_id, administrator = true)

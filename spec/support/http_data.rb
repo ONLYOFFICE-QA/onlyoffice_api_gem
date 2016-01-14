@@ -88,8 +88,11 @@ INVOICE_STATUSES = %w(Draft Sent Rejected Paid Overdue Archived)
 CONTACT_INFO_TYPES = %w(Phone Email Website Skype Twitter LinkedIn Facebook LiveJournal MySpace GMail Blogger Yahoo MSN ICQ Jabber AIM)
 ENTITY_TYPES = %w(opportunity company contact)
 USER_FIELDS = %w(TextField TextArea SelectBox CheckBox Heading Date)
-IMAGE_URL = 'http://thebooksmugglers.com/wp-content/uploads/2009/02/image002-200x300.jpg' # 'http://www.soulscode.com/wp-content/uploads/2011/02/doll-200x300.jpg'
-# endregion
+IMAGE_URL = 'http://thebooksmugglers.com/wp-content/uploads/2009/02/image002-200x300.jpg' #'http://www.soulscode.com/wp-content/uploads/2011/02/doll-200x300.jpg'
+DUE_DATE = '2020-04-10T08:00:00.0000000+03:00'
+LANGUAGE = %w(az-Latn-AZ cs-CZ de-DE el-GR en-GB en-US es-ES fi-FI fr-FR it-IT ja-JP ko-KR lv-LV pl-PL pt-BR pt-PT ru-RU sl-SI tr-TR uk-UA vi-VN zh-CN)
+CURRENCY = %w(AUD CAD CHF EUR GBP JPY USD AMD ARS AZN BDT BGN BRL BYR CLP CNY COP CRC CUP CZK DKK DOP DZD GEL HKD HRK HUF IDR ILS INR KRW KWD KZT LTL LVL MAD MDL MGA MUR MXN MYR NGN NOK NZD PHP PKR PLN RUB SAR SEK SGD THB TRY TTD UAH UZS VEF VND XAF XOF ZAR)
+#endregion
 
 #region Community
 SOME_URL = 'www.teamlab.info'

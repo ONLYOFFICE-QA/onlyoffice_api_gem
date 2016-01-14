@@ -37,15 +37,15 @@ module Teamlab
     end
 
     def create_post(title, content, options = {})
-      @request.post(%w(blog), { title: title, content: content }.merge(options))
+      @request.post(%w(blog), {title: title, content: content}.merge(options))
     end
 
     def add_comment(post_id, content, options = {})
-      @request.post(['blog', post_id.to_s, 'comment'], { content: content }.merge(options))
+      @request.post(['blog', post_id.to_s, 'comment'], {content: content}.merge(options))
     end
 
     def update_post(post_id, title, content, options = {})
-      @request.put(['blog', post_id.to_s], { title: title, content: content }.merge(options))
+      @request.put(['blog', post_id.to_s], {title: title, content: content}.merge(options))
     end
 
     def delete_post(post_id)
@@ -93,11 +93,11 @@ module Teamlab
     end
 
     def add_bookmark(url, title, options = {})
-      @request.post(%w(bookmark), { url: url, title: title }.merge(options))
+      @request.post(%w(bookmark), {url: url, title: title}.merge(options))
     end
 
     def add_comment_to_bookmark(bookmark_id, content, options = {})
-      @request.post(['bookmark', bookmark_id.to_s, 'comment'], { content: content }.merge(options))
+      @request.post(['bookmark', bookmark_id.to_s, 'comment'], {content: content}.merge(options))
     end
 
     def get_all_events
@@ -121,7 +121,7 @@ module Teamlab
     end
 
     def create_event(title, content, options = {})
-      @request.post(%w(event), { title: title, content: content }.merge(options))
+      @request.post(%w(event), {title: title, content: content}.merge(options))
     end
 
     def vote_for_event(event_id, *variants)
@@ -129,11 +129,11 @@ module Teamlab
     end
 
     def add_comment_to_event(event_id, content, options = {})
-      @request.post(['event', event_id.to_s, 'comment'], { content: content }.merge(options))
+      @request.post(['event', event_id.to_s, 'comment'], {content: content}.merge(options))
     end
 
     def update_event(event_id, title, content, options = {})
-      @request.put(['event', event_id.to_s], { title: title, content: content }.merge(options))
+      @request.put(['event', event_id.to_s], {title: title, content: content}.merge(options))
     end
 
     def get_forums
@@ -156,22 +156,22 @@ module Teamlab
       @request.get(['forum', '@search', query.to_s])
     end
 
-    #==================================== TODO: ERROR
+#==================================== TODO: ERROR
 
     def add_thread_to_category(category_id, category_name, thread_name, description)
       @request.post(%w(forum), categoryId: category_id, categoryName: category_name.to_s, threadName: thread_name, threadDescription: description)
     end
 
     def add_topic_to_thread(thread_id, subject, content, options = {})
-      @request.post(['forum', thread_id], { subject: subject, content: content }.merge(options))
+      @request.post(['forum', thread_id], {subject: subject, content: content}.merge(options))
     end
 
     def add_post_to_topic(topic_id, subject, content, options = {})
-      @request.post(['forum', 'topic', topic_id.to_s], { subject: subject, content: content }.merge(options))
+      @request.post(['forum', 'topic', topic_id.to_s], {subject: subject, content: content}.merge(options))
     end
 
     def update_topic_in_thread(topic_id, subject, options = {})
-      @request.put(['forum', 'topic', topic_id.to_s], { subject: subject }.merge(options))
+      @request.put(['forum', 'topic', topic_id.to_s], {subject: subject}.merge(options))
     end
 
     def update_post_in_topic(topic_id, post_id, options = {})
@@ -211,7 +211,7 @@ module Teamlab
     end
 
     def create_page(name, body)
-      @request.post(%w(wiki), name: name.to_s, body: body.to_s)
+      @request.post(%w(wiki), {name: name.to_s, body: body.to_s})
     end
 
     def upload_files(file)
@@ -219,11 +219,11 @@ module Teamlab
     end
 
     def create_wiki_page_comment(page_name, content, options = {})
-      @request.post(['wiki', page_name.to_s, 'comment'], { content: content.to_s }.merge(options))
+      @request.post(['wiki', page_name.to_s, 'comment'], {content: content.to_s}.merge(options))
     end
 
     def update_wiki_page(name, body)
-      @request.put(['wiki', name.to_s], body: body.to_s)
+      @request.put(['wiki', name.to_s], {body: body.to_s})
     end
 
     def update_wiki_page_comment(comment_id, body)
@@ -241,5 +241,6 @@ module Teamlab
     def delete_wiki_page_comment(id)
       @request.delete(['wiki', 'comment', id.to_s])
     end
+
   end
 end
