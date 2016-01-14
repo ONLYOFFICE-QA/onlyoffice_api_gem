@@ -162,13 +162,11 @@ module Teamlab
       @request.post(%w(task), { title: title, deadline: deadline, responsibleId: responsible_id, categoryId: category_id }.merge(options))
     end
 
-    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
-
-    def create_invoice(options = {})
-      @request.post(%w(invoice), options)
+    def create_invoice(number, issue_date, client_id, due_date, language, currency, exchange_rate, terms, invoice_line, options)
+      @request.post(%w(invoice), {number: number, issueDate: issue_date, contactId: client_id, dueDate: due_date,
+                                  language: language, currency: currency, exchangeRate: exchange_rate, terms: terms,
+                                  invoiceLines: invoice_line}.merge(options))
     end
-
-    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def create_invoice_line(invoice_id, options = {})
       @request.post(%w(invoiceline), { invoiceId: invoice_id }.merge(options))
@@ -218,6 +216,14 @@ module Teamlab
       @request.put(%w(settings), options)
     end
 
+    def save_smtp_settings(options = {})
+      @request.put(%w(settings smtp), options)
+    end
+
+    def update_crm_currency(currency)
+      @request.put(%w(settings currency), {currency: currency})
+    end
+
     def update_task(task_id, title, deadline, category_id, options = {})
       @request.put(['task', task_id.to_s], { title: title, deadline: deadline, categoryid: category_id }.merge(options))
     end
@@ -254,6 +260,14 @@ module Teamlab
 
     def set_access_to_batch_contact(options = {})
       @request.put(%w(contact filter access), options)
+    end
+
+    def update_organisation_company_name(title)
+      @request.put(%w(settings organisation base), {companyName: title})
+    end
+
+    def update_organisation_address(text)
+      @request.put(%w(settings organisation address), {companyAddress: text})
     end
 
     def update_statuses_contact_order(options = {})
