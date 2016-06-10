@@ -33,7 +33,7 @@ module Teamlab
 
     def request(type, args)
       command, opts = parse_args(args, type)
-      url = generate_request_url(command)
+      url = URI.encode(generate_request_url(command))
       attempts = 0
       begin
         response = Teamlab::Response.new(HTTMultiParty.send(type, url, opts))
