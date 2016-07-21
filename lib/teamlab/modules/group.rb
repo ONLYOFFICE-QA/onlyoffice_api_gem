@@ -13,7 +13,7 @@ module Teamlab
     end
 
     def add_group(manager, name, members = [])
-      @request.post([''], groupManager: manager, groupName: name, members: members)
+      @request.post('', groupManager: manager, groupName: name, members: members)
     end
 
     def replace_members(group_id, members)

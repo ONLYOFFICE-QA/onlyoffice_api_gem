@@ -1,5 +1,9 @@
 # Change log
 
+## 0.5.1
+* Fix error bad URI(is not URI?)
+* Fix url for method Group#add_group
+
 ## 0.5.0
 * Add crm methods: save_smtp_settings, update_crm_currency, update_organisation_company_name, update_organisation_address
 * Change method create_invoice
