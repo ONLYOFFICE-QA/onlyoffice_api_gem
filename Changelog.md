@@ -1,5 +1,13 @@
 # Change log
 
+## master (unreleased)
+### New features
+* Support of keepConvertStatus for insert methods (from OnlyOffice > 8.9.1)
+* File - Insert methods now support setting default file name
+
+### Fixes
+* File checkconversion method
+
 ## 0.5.1
 * Fix error bad URI(is not URI?)
 * Fix url for method Group#add_group

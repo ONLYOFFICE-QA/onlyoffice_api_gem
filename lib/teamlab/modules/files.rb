@@ -47,7 +47,7 @@ module Teamlab
     end
 
     def check_conversion_status(fileid)
-      @request.get(['fileops', fileid.to_s, 'checkconversion'])
+      @request.get(['file', fileid.to_s, 'checkconversion'])
     end
 
     def move_to_folder(dest_folder_id, options = {})
@@ -204,16 +204,24 @@ module Teamlab
       @request.post(%w(@my upload), somefile: File.new(file))
     end
 
+    def insert_to_my_docs(file, title: File.basename(file), keep_convert_status: false)
+      @request.post(%w(@my insert), file: File.new(file), title: title, keepConvertStatus: keep_convert_status)
+    end
+
     def upload_to_common_docs(file)
       @request.post(%w(@common upload), somefile: File.new(file))
+    end
+
+    def insert_to_common_docs(file, title: File.basename(file), keep_convert_status: false)
+      @request.post(%w(@common insert), file: File.new(file), title: title, keepConvertStatus: keep_convert_status)
     end
 
     def upload_to_folder(folder_id, file)
       @request.post([folder_id.to_s, 'upload'], somefile: File.new(file))
     end
 
-    def insert_file(folder_id, file, title)
-      @request.post([folder_id.to_s, 'insert'], somefile: File.new(file), title: title)
+    def insert_file(folder_id, file, title: File.basename(file), keep_convert_status: false)
+      @request.post([folder_id.to_s, 'insert'], file: File.new(file), title: title, keepConvertStatus: keep_convert_status)
     end
 
     def chunked_upload(folder_id, filename, file_size)
