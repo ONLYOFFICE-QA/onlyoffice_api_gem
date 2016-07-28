@@ -204,8 +204,16 @@ module Teamlab
       @request.post(%w(@my upload), somefile: File.new(file))
     end
 
+    def insert_to_my_docs(file, title: File.basename(file), keep_convert_status: false)
+      @request.post(%w(@my insert), file: File.new(file), title: title, keepConvertStatus: keep_convert_status)
+    end
+
     def upload_to_common_docs(file)
       @request.post(%w(@common upload), somefile: File.new(file))
+    end
+
+    def insert_to_common_docs(file, title: File.basename(file), keep_convert_status: false)
+      @request.post(%w(@common insert), file: File.new(file), title: title, keepConvertStatus: keep_convert_status)
     end
 
     def upload_to_folder(folder_id, file)
@@ -213,7 +221,7 @@ module Teamlab
     end
 
     def insert_file(folder_id, file, title: File.basename(file), keep_convert_status: false)
-      @request.post([folder_id.to_s, 'insert'], somefile: File.new(file), title: title, keepConvertStatus: keep_convert_status)
+      @request.post([folder_id.to_s, 'insert'], file: File.new(file), title: title, keepConvertStatus: keep_convert_status)
     end
 
     def chunked_upload(folder_id, filename, file_size)
