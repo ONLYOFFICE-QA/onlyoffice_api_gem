@@ -47,7 +47,7 @@ module Teamlab
     end
 
     def check_conversion_status(fileid)
-      @request.get(['fileops', fileid.to_s, 'checkconversion'])
+      @request.get(['file', fileid.to_s, 'checkconversion'])
     end
 
     def move_to_folder(dest_folder_id, options = {})
