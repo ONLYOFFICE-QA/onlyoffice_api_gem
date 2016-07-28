@@ -212,8 +212,8 @@ module Teamlab
       @request.post([folder_id.to_s, 'upload'], somefile: File.new(file))
     end
 
-    def insert_file(folder_id, file, title)
-      @request.post([folder_id.to_s, 'insert'], somefile: File.new(file), title: title)
+    def insert_file(folder_id, file, title: File.basename(file), keep_convert_status: false)
+      @request.post([folder_id.to_s, 'insert'], somefile: File.new(file), title: title, keepConvertStatus: keep_convert_status)
     end
 
     def chunked_upload(folder_id, filename, file_size)
