@@ -1,6 +1,6 @@
-# Teamlab
+# ONLYOFFICE
 
-Ruby Framework to interact with TeamLab API 2.0
+Ruby Framework to interact with ONLYOFFICE API
 
 ## Installation
 
@@ -42,4 +42,4 @@ and then call methods you need:
 
 ## Documentation
 
-Please read TeamLab API [documentation](https://api.onlyoffice.com/) for more information about API methods
+Please read ONLYOFFICE API [documentation](https://api.onlyoffice.com/) for more information about API methods
