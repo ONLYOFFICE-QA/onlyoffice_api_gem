@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'teamlab/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'teamlab'
-  spec.version       = Teamlab::VERSION
-  spec.authors       = %w(rzagudaev shockwavenn DaftTrick)
+  spec.name          = 'onlyoffice_api'
+  spec.version       = OnlyOfficeApi::VERSION
+  spec.authors       = %w(ONLYOFFICE rzagudaev shockwavenn DaftTrick)
   spec.email         = ['rzagudaev@gmail.com', 'shockwavenn@gmail.com', 'nazarov90@gmail.com']
-  spec.description   = 'Ruby Framework to interact with OnlyOffice\\TeamLab API 2.0'
-  spec.summary       = 'Ruby gem for OnlyOffice\\TeamLab'
-  spec.homepage      = 'https://github.com/onlyoffice-testing-robot/GemTeamlab'
-  spec.license       = 'MIT'
+  spec.description   = 'Ruby Framework to interact with OnlyOffice API 2.0'
+  spec.summary       = 'Ruby gem for OnlyOffice'
+  spec.homepage      = 'https://github.com/ONLYOFFICE/onlyoffice_api_gem'
+  spec.license       = 'AGPL-3.0'
 
   spec.files         = `git ls-files`.split($RS)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }

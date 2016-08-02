@@ -1,9 +1,10 @@
 # Change log
 
-## master (unreleased)
+## 0.6
 ### New features
 * Support of keepConvertStatus for insert methods (from OnlyOffice > 8.9.1)
 * File - Insert methods now support setting default file name
+* Rename this gem from `teamlab` to `onlyoffice_api`
 
 ### Fixes
 * File checkconversion method
