@@ -1,4 +1,5 @@
 # ONLYOFFICE
+Moved to [onlyoffice](https://github.com/ONLYOFFICE/onlyoffice_api_gem).
 
 Ruby Framework to interact with ONLYOFFICE API
 

@@ -25,4 +25,9 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 1.3'
   spec.add_development_dependency 'rake', '~> 10.1'
+  spec.post_install_message = <<-MESSAGE
+!    The 'teamlab' gem has been deprecated and has been replaced by 'onlyoffice_api'.
+!    See: https://rubygems.org/gems/onlyoffice_api
+!    And: https://github.com/onlyoffice/onlyoffice_api_gem
+  MESSAGE
 end
