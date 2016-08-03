@@ -1,4 +1,4 @@
-# ONLYOFFICE
+# ONLYOFFICE API gem
 
 Ruby Framework to interact with ONLYOFFICE API
 
