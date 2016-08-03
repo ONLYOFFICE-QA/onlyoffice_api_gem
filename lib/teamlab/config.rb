@@ -6,6 +6,7 @@ module Teamlab
   attr_reader :config
 
   def self.configure(&_block)
+    warn '[DEPRECATION] This gem has been renamed to `onlyoffice_api` and will no longer be supported. Please switch to `onlyoffice_api` gem as soon as possible.'
     @config ||= Config.new
     yield @config if block_given?
     auth_response = Teamlab::Request.new('authentication').post('', userName: @config.username, password: @config.password).body
