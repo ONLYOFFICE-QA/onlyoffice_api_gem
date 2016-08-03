@@ -6,7 +6,7 @@ Ruby Framework to interact with ONLYOFFICE API
 
 Add this line to your application's Gemfile:
 
-    gem 'teamlab'
+    gem 'onlyoffice_api'
 
 And then execute:
 
@@ -14,21 +14,21 @@ And then execute:
 
 Or install it yourself as:
 
-    gem install teamlab
+    gem install onlyoffice_api
 
 ## Usage
 
 First of all, you should configure your enviroment by commands
 
-    Teamlab.configure do |config|
-      config.server = 'example.teamlab.com'
+    OnlyOfficeApi.configure do |config|
+      config.server = 'https://example.onlyoffice.com'
       config.username = 'foo'
       config.password = 'bar'
     end
 
 and then call methods you need:
 
-    Teamlab.people.get_people
+    OnlyOfficeApi.people.get_people
 
 
 ## Contributing

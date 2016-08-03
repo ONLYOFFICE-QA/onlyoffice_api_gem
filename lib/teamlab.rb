@@ -54,3 +54,5 @@ module Teamlab
     @mail ||= Teamlab::Mail.new
   end
 end
+
+OnlyOfficeApi = Teamlab
