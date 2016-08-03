@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = %w(ONLYOFFICE rzagudaev shockwavenn DaftTrick)
   spec.email         = ['rzagudaev@gmail.com', 'shockwavenn@gmail.com', 'nazarov90@gmail.com']
   spec.description   = 'Ruby Framework to interact with OnlyOffice API 2.0'
-  spec.summary       = 'Ruby gem for OnlyOffice'
+  spec.summary       = 'Ruby gem for OnlyOffice. Formerly known as `teamlab`.'
   spec.homepage      = 'https://github.com/ONLYOFFICE/onlyoffice_api_gem'
   spec.license       = 'AGPL-3.0'
 
