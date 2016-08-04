@@ -43,3 +43,15 @@ and then call methods you need:
 ## Documentation
 
 Please read ONLYOFFICE API [documentation](https://api.onlyoffice.com/) for more information about API methods
+
+## Project Information
+
+Official website: [http://www.onlyoffice.org](http://onlyoffice.org "http://www.onlyoffice.org")
+
+Code repository: [https://github.com/ONLYOFFICE/onlyoffice_api_gem](https://github.com/ONLYOFFICE/onlyoffice_api_gem "https://github.com/ONLYOFFICE/onlyoffice_api_gem")
+
+SaaS version: [http://www.onlyoffice.com](http://www.onlyoffice.com "http://www.onlyoffice.com")
+
+## License
+
+onlyoffice_api_gem is released under an GNU AGPL v3.0 license. See the LICENSE file for more information.
