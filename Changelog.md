@@ -1,5 +1,8 @@
 # Change log
 
+## master (unreleased)
+* [#34](https://github.com/ONLYOFFICE/onlyoffice_api_gem/pull/34): Allow empty array to be used as param in get requests.
+
 ## 0.6
 ### New features
 * Support of keepConvertStatus for insert methods (from OnlyOffice > 8.9.1)

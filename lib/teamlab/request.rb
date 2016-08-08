@@ -44,7 +44,7 @@ module Teamlab
       rescue Exception => e
         raise e
       end
-      fail "Error #{response.code}: #{response.error}" unless response.success
+      raise "Error #{response.code}: #{response.error}" unless response.success
       response
     end
 
@@ -56,6 +56,7 @@ module Teamlab
       command = args.first.instance_of?(Array) ? '/' + args.shift.join('/') : args.shift.to_s
       opts = {}
       opts[:body] = args.last.instance_of?(Hash) ? args.pop : {}
+      remove_empty_array(opts, type)
       opts[:headers] = Teamlab.config.headers
       if opts[:body].key?(:somefile)
         opts[:query] = opts.delete(:body)
@@ -63,6 +64,11 @@ module Teamlab
       end
       opts[:query] = opts.delete(:body) if type == :get
       [command, opts]
+    end
+
+    def remove_empty_array(opts, type)
+      return if type == :get
+      opts[:body].delete_if { |_key, value| value == [] }
     end
   end
 end
