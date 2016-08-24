@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require 'spec_helper'
 
 describe '[Calendar]' do
   let(:teamlab_module) { :calendar }
@@ -50,6 +50,33 @@ describe '[Calendar]' do
       let(:add_data_to_collector) { true }
       let(:data_param) { :event_ids }
       let(:param_names) { %w(objectId) }
+    end
+  end
+
+  describe '#add_icsevent' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :add_icsevent }
+      i = -1
+      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], File.open(EVENT_ICS).read, { repeatType: '', alertType: '-1' }] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :event_uids }
+      let(:param_names) { %w(uniqueId) }
+    end
+  end
+
+  describe '#get_event_history_by_id' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_event_history_by_id }
+      i = -1
+      let(:args) { [DATA_COLLECTOR[:event_ids][i += 1]] }
+    end
+  end
+
+  describe '#get_event_history_by_uid' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_event_history_by_uid }
+      i = -1
+      let(:args) { [DATA_COLLECTOR[:event_uids][i += 1]] }
     end
   end
 
@@ -108,6 +135,13 @@ describe '[Calendar]' do
     end
   end
 
+  describe '#import_events' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :import_events }
+      let(:args) { [random_id(:calendar), EVENT_ICS] }
+    end
+  end
+
   describe '#update_calendar' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_calendar }
@@ -133,7 +167,15 @@ describe '[Calendar]' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_event }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], DATA_COLLECTOR[:event_ids][i], random_word] }
+      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], DATA_COLLECTOR[:event_ids][i], random_word, { description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false }] }
+    end
+  end
+
+  describe '#update_icsevent' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_icsevent }
+      i = -1
+      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], DATA_COLLECTOR[:event_ids][i], File.open(EVENT_ICS).read] }
     end
   end
 
@@ -147,11 +189,16 @@ describe '[Calendar]' do
   describe '#remove_event' do
     it_should_behave_like 'an api request' do
       let(:command) { :remove_event }
-      let(:args) { [random_id(:event)] }
+      let(:args) { [DATA_COLLECTOR[:event_ids].pop] }
     end
   end
 
   describe '#delete_event_series' do
+    before do
+      event = Teamlab.calendar.add_event(DATA_COLLECTOR[:calendar_ids].last, random_word, description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false)
+      DATA_COLLECTOR[:event_ids] << event.body['response'].first['objectId']
+    end
+
     it_should_behave_like 'an api request' do
       let(:command) { :delete_event_series }
       let(:args) { [DATA_COLLECTOR[:event_ids].pop] }
@@ -168,7 +215,7 @@ describe '[Calendar]' do
   after :all do
     all_calendars = Teamlab.calendar.get_calendars_and_subscriptions(DateTime.new(2010).strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s, DateTime.now.strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s).body['response']
     all_calendars.each do |current_calendar|
-      Teamlab.calendar.delete_calendar(current_calendar['objectId'])
+      Teamlab.calendar.delete_calendar(current_calendar['objectId']) if current_calendar['isEditable'] || current_calendar['isiCalStream']
     end
   end
 end

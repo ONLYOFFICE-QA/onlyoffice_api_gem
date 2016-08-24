@@ -1,6 +1,7 @@
 # Change log
 
 ## master (unreleased)
+* [#36](https://github.com/ONLYOFFICE/onlyoffice_api_gem/pull/36): Refactoring Response class. Add new calendar methods.
 * [#34](https://github.com/ONLYOFFICE/onlyoffice_api_gem/pull/34), [#35](https://github.com/ONLYOFFICE/onlyoffice_api_gem/pull/35):
  Ignore empty arrays as request params.
 
