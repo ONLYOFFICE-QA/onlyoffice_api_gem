@@ -1,6 +1,6 @@
 require 'rspec'
+require 'onlyoffice_api'
 require_relative 'support/http_data'
-require_relative '../lib/teamlab'
 
 shared_examples_for 'an api request' do |*flags|
   before { pending } if flags.include?(:pending)
