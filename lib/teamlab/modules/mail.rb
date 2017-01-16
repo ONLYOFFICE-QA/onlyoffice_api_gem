@@ -225,7 +225,7 @@ module Teamlab
     end
 
     def remove_all_messages_from_folder(folder_id)
-      @request.get(['folders', folder_id.to_s, 'messages'])
+      @request.delete(['folders', folder_id.to_s, 'messages'])
     end
 
     # endregion
