@@ -114,4 +114,13 @@ describe '[Settings]' do
       let(:args) { [random_settings_entity_id, random_id(:user)] }
     end
   end
+
+  # wouldn't work with master, only 9.0
+  # in order to test manually use: https://nctautotest-446955501-smoke-feed-spec.teamlab.info
+  describe '#update_timezone_and_language' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_timezone_and_language }
+      let(:args) { [SETTINGS_TIMEZONE, LANGUAGE.sample] }
+    end
+  end
 end
