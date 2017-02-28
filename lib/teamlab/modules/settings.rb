@@ -79,5 +79,9 @@ module Teamlab
     def update_ip_restrictions(enable)
       @request.put(%w(iprestrictions settings), enable: enable)
     end
+
+    def update_timezone_and_language(timezone, language)
+      @request.put(%w(timeandlanguage), lng: language, timeZoneId: timezone)
+    end
   end
 end

@@ -59,6 +59,7 @@ SETTINGS_TEST_USER = '27cd9da5-4f97-4335-ac45-55dd05d96d89'.freeze
 SETTINGS_TALK_MODULE_ID = 'bf88953e-3c43-4850-a3fb-b1e43ad53a3e'.freeze
 SETTINGS_VERSION = 2
 SETTINGS_FOR_TALK = { enabled: true }.freeze
+SETTINGS_TIMEZONE = 'Central Brazilian Standard Time'.freeze
 # endregion
 
 # region Files
