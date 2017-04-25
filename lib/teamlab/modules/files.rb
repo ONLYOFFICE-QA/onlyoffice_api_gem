@@ -241,5 +241,9 @@ module Teamlab
     def document_server_info
       @request.get(%w(docservice))
     end
+
+    def check_overwrite(set_value = true)
+      @request.put(%w(updateifexist), set: set_value)
+    end
   end
 end
