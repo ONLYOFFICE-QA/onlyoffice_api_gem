@@ -83,5 +83,9 @@ module Teamlab
     def update_timezone_and_language(timezone, language)
       @request.put(%w(timeandlanguage), lng: language, timeZoneId: timezone)
     end
+
+    def update_default_portal_page(portal_page_id)
+      @request.put(%w(defaultpage), defaultProductID: portal_page_id)
+    end
   end
 end

@@ -123,4 +123,11 @@ describe '[Settings]' do
       let(:args) { [SETTINGS_TIMEZONE, LANGUAGE.sample] }
     end
   end
+
+  describe '#change_portal_default_page_to_default_page' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_default_portal_page }
+      let(:args) { [SETTINGS_PORTAL_DEFAULT_PAGE_MODULE_CHOICE] }
+    end
+  end
 end
