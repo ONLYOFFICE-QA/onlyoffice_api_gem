@@ -322,4 +322,11 @@ describe '[Files]' do
       let(:command) { :document_server_info }
     end
   end
+
+  describe '#check_overwrite' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :check_overwrite}
+      let(:args) { ['true'] }
+    end
+  end
 end
