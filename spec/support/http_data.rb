@@ -60,6 +60,7 @@ SETTINGS_TALK_MODULE_ID = 'bf88953e-3c43-4850-a3fb-b1e43ad53a3e'.freeze
 SETTINGS_VERSION = 2
 SETTINGS_FOR_TALK = { enabled: true }.freeze
 SETTINGS_TIMEZONE = 'Central Brazilian Standard Time'.freeze
+SETTINGS_PORTAL_DEFAULT_PAGE_MODULE_CHOICE = '00000000-0000-0000-0000-000000000000'.freeze
 # endregion
 
 # region Files
