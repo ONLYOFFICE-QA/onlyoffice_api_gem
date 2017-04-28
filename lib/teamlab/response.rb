@@ -21,7 +21,13 @@ module Teamlab
       "#{http_response.request.http_method} #{http_response.request.path}\nbody: "\
       "#{JSON.pretty_generate(http_response.request.options[:body])}"\
       "\n\nresponse:\n"\
-      "#{JSON.pretty_generate(http_response.parsed_response)}"
+      "#{prettify_response(http_response.parsed_response)}"
+    end
+
+    def prettify_response(msg)
+      JSON.pretty_generate(msg)
+    rescue Encoding::UndefinedConversionError
+      msg.force_encoding(Encoding::UTF_8)
     end
   end
 end
