@@ -83,8 +83,9 @@ module Teamlab
     end
 
     def delete_opportunity_group(*opportunity_ids)
-      @request.delete(%w(opportunity), opportunityids: opportunity_ids.flatten)
+      @request.put(%w(opportunity), opportunityids: opportunity_ids.flatten)
     end
+    alias delete_opportunities_bulk delete_opportunity_group
 
     def delete_opportunity_group_by_filter(options = {})
       @request.delete(%w(opportunity filter), options)
@@ -317,12 +318,14 @@ module Teamlab
     end
 
     def delete_batch_invoices(*invoice_ids)
-      @request.delete(%w(invoice), [invoiceids: invoice_ids.flatten])
+      @request.delete(%w(invoice), invoiceids: invoice_ids.flatten)
     end
+    alias delete_invoices_bulk delete_batch_invoices
 
     def delete_batch_items(*ids)
       @request.delete(%w(invoiceitem), ids: ids.flatten)
     end
+    alias delete_invoice_items_bulk delete_batch_items
 
     def delete_batch_contacts_by_filter(options = {})
       @request.delete(%w(contact filter), options)
@@ -511,6 +514,7 @@ module Teamlab
     def delete_contact_group(*contact_ids)
       @request.put(%w(contact), contactids: contact_ids.flatten)
     end
+    alias delete_contacts_bulk delete_contact_group
 
     def group_contact_info_update(*items)
       @request.put(%w(contact data), items: items.flatten)
@@ -583,7 +587,7 @@ module Teamlab
     end
 
     def associate_file_with_entity(entity_type, entity_id, *fileids)
-      @request.post([entity_type, entity_id, 'files'], files: fileids.flatten)
+      @request.post([entity_type, entity_id, 'files'], fileids: fileids.flatten)
     end
 
     def create_txt(entity_type, entity_id, title, content)
@@ -737,8 +741,9 @@ module Teamlab
     end
 
     def delete_case_group(*case_ids)
-      @request.delete(%w(case), caseIds: case_ids.flatten)
+      @request.put(%w(case), caseIds: case_ids.flatten)
     end
+    alias delete_cases_bulk delete_case_group
 
     def delete_case_group_by_filter(options = {})
       @request.delete(%w(case filter), options)
@@ -778,6 +783,38 @@ module Teamlab
 
     def delete_user_field(entity_type, field_id)
       @request.delete([entity_type.to_s, 'customfield', field_id.to_s])
+    end
+
+    def update_crm_entity_creation_date(entity_name, entity_id, date = '2007-01-01')
+      id_field = "#{entity_name}id".to_sym
+      options = {}
+      options[id_field] = entity_id.to_s
+      options[:creationDate] = date.to_s
+      @request.put([entity_name.to_s, entity_id.to_s, 'creationdate'], options)
+    end
+
+    def update_crm_entity_modification_date(entity_name, entity_id, date = '2007-01-01')
+      id_field = "#{entity_name}id".to_sym
+      options = {}
+      options[id_field] = entity_id.to_s
+      options[:lastModifedDate] = date.to_s
+      @request.put([entity_name.to_s, entity_id.to_s, 'lastmodifeddate'], options)
+    end
+
+    def get_all_currency_rates
+      @request.get(%w(currency rates), {})
+    end
+
+    def set_currency_rate(from = 'EUR', to = 'USD', rate = '1.0')
+      @request.post(['currency', 'rates'], { fromCurrency: from, toCurrency: to, rate: rate })
+    end
+
+    def get_currency_rate_by_id(id)
+      @request.get(['currency', 'rates', id.to_s], {})
+    end
+
+    def delete_currency_rate_by_id(id)
+      @request.delete(['currency', 'rates', id.to_s], {})
     end
   end
 end

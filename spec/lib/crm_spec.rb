@@ -1275,16 +1275,16 @@ describe '[CRM]' do
 
   describe '#delete_batch_invoices' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23886'
+      # pending 'http://bugzserver/show_bug.cgi?id=23886'
       let(:command) { :delete_batch_invoices }
-      let(:args) { [[DATA_COLLECTOR[:invoice_ids].pop]] }
+      let(:args) { [DATA_COLLECTOR[:invoice_ids].pop, DATA_COLLECTOR[:invoice_ids].pop] }
     end
   end
 
   describe '#delete_batch_items' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_batch_items }
-      let(:args) { [[DATA_COLLECTOR[:invoice_item_ids].pop]] }
+      let(:args) { [DATA_COLLECTOR[:invoice_item_ids].pop, DATA_COLLECTOR[:invoice_item_ids].pop] }
     end
   end
 
@@ -1458,6 +1458,50 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_opportunity_stage }
       let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].pop] }
+    end
+  end
+
+  describe '#update_crm_entity_creation_date' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_crm_entity_creation_date }
+      let(:args) { ['contact', random_id(:new_contact)] }
+    end
+  end
+
+  describe '#update_crm_entity_modification_date' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_crm_entity_modification_date }
+      let(:args) { ['contact', random_id(:new_contact)] }
+    end
+  end
+
+  describe '#get_all_currency_rates' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_all_currency_rates }
+    end
+  end
+
+  describe '#set_currency_rate' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :set_currency_rate }
+      let(:args) { [CURRENCY.sample, CURRENCY.sample, rand(1.00..10.00)] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :new_currency_rate_ids }
+      let(:param_names) { %w(id) }
+    end
+  end
+
+  describe '#get_currency_rate_by_id' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_currency_rate_by_id }
+      let(:args) { [random_id(:new_currency_rate)] }
+    end
+  end
+
+  describe '#delete_currency_rate_by_id' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_currency_rate_by_id }
+      let(:args) { [DATA_COLLECTOR[:new_currency_rate_ids].pop] }
     end
   end
 end
