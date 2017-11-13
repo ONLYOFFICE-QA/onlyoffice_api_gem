@@ -53,8 +53,16 @@ USER_THIRD_PARTIES_PROFILES = %w(_Y6rPoq7louElDtnlBdKUqpqz4j5vps35UYBvFloIL3dI-h
 # endregion
 
 # regions Settings
-SETTINGS_ENTITY_IDS = %w(1e044602-43b5-4d79-82f3-fd6208a11960 6743007c-6f95-4d20-8c88-a8601ce5e76d ea942538-e68e-4907-9394-035336ee0ba8
-                         f4d98afd-d336-4332-8778-3c6945c81ea0 2a923037-8b2d-487b-9a22-5ac0918acf3f bf88953e-3c43-4850-a3fb-b1e43ad53a3e 32d24cb5-7ece-4606-9c94-19216ba42086).freeze
+SETTINGS_ENTITY_IDS = ['1e044602-43b5-4d79-82f3-fd6208a11960',
+                       '6743007c-6f95-4d20-8c88-a8601ce5e76d',
+                       'ea942538-e68e-4907-9394-035336ee0ba8',
+                       'ea942538-e68e-4907-9394-035336ee0ba8',
+                       'f4d98afd-d336-4332-8778-3c6945c81ea0',
+                       '2a923037-8b2d-487b-9a22-5ac0918acf3f',
+                       'bf88953e-3c43-4850-a3fb-b1e43ad53a3e',
+                       '32d24cb5-7ece-4606-9c94-19216ba42086',
+                       Teamlab::Settings::GLOBAL_ADMIN_ID]
+
 SETTINGS_TEST_USER = '27cd9da5-4f97-4335-ac45-55dd05d96d89'.freeze
 SETTINGS_TALK_MODULE_ID = 'bf88953e-3c43-4850-a3fb-b1e43ad53a3e'.freeze
 SETTINGS_VERSION = 2

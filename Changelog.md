@@ -5,6 +5,7 @@
 * [#34](https://github.com/ONLYOFFICE/onlyoffice_api_gem/pull/34), [#35](https://github.com/ONLYOFFICE/onlyoffice_api_gem/pull/35):
  Ignore empty arrays as request params.
 * Add feed methods: new_feeds_count, filter_feed, read_feed
+* Add `GLOBAL_ADMIN_ID` constant to `Settings`
 
 ## 0.6
 ### New features
