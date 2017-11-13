@@ -1,5 +1,8 @@
 module Teamlab
   class Settings
+    # @return [String] id of global admin of portal
+    GLOBAL_ADMIN_ID = '00000000-0000-0000-0000-000000000000'.freeze
+
     def initialize
       @request = Teamlab::Request.new('settings')
     end
