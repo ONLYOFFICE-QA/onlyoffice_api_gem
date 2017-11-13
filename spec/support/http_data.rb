@@ -2,7 +2,7 @@ SERVER = 'https://nctautotest-rubygem-test.onlyoffice.com'.freeze
 USERNAME = 'teamlab.ruby@gmail.com'.freeze
 PASSWORD = '123456'.freeze
 
-DATA_COLLECTOR = {}.freeze
+DATA_COLLECTOR = {}
 
 def args
   []
