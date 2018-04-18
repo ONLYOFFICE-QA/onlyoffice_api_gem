@@ -22,6 +22,8 @@ module Teamlab
     include ActiveSupport::Configurable
 
     config_accessor :server, :api_path, :api_additive, :username, :password, :token, :headers
+    # @return [Net::HTTP::Proxy] connection proxy
+    config_accessor  :proxy
 
     def initialize
       default_configuration
