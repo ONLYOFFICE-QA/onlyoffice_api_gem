@@ -58,16 +58,24 @@ module Teamlab
       opts[:body] = args.last.instance_of?(Hash) ? args.pop : {}
       opts[:body].delete_if { |_key, value| value == [] }
       opts[:headers] = Teamlab.config.headers
-      opts[:http_proxyaddr] ||= Teamlab.config.proxy.proxy_address
-      opts[:http_proxyport] ||= Teamlab.config.proxy.proxy_port
-      opts[:http_proxyuser] ||= Teamlab.config.proxy.proxy_user
-      opts[:http_proxypass] ||= Teamlab.config.proxy.proxy_pass
+      opts = init_proxy(opts)
       if opts[:body].key?(:somefile)
         opts[:query] = opts.delete(:body)
         opts[:detect_mime_type] = true
       end
       opts[:query] = opts.delete(:body) if type == :get
       [command, opts]
+    end
+
+    # @param opts [Hash] options to init
+    # @return [Hash] options
+    def init_proxy(opts)
+      return opts unless Teamlab.config.proxy
+      opts[:http_proxyaddr] ||= Teamlab.config.proxy.proxy_address
+      opts[:http_proxyport] ||= Teamlab.config.proxy.proxy_port
+      opts[:http_proxyuser] ||= Teamlab.config.proxy.proxy_user
+      opts[:http_proxypass] ||= Teamlab.config.proxy.proxy_pass
+      opts
     end
   end
 end
