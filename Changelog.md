@@ -6,6 +6,7 @@
  Ignore empty arrays as request params.
 * Add feed methods: new_feeds_count, filter_feed, read_feed
 * Add `GLOBAL_ADMIN_ID` constant to `Settings`
+* Add support of `Teamlab.configure#proxy` - `Net::HTTP::Proxy` object
 
 ## 0.6
 ### New features

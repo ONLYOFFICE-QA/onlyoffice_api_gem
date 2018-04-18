@@ -24,6 +24,7 @@ First of all, you should configure your enviroment by commands
       config.server = 'https://example.onlyoffice.com'
       config.username = 'foo'
       config.password = 'bar'
+      config.proxy = Net::HTTP::Proxy('127.0.0.1', 8123)
     end
 
 and then call methods you need:
