@@ -205,7 +205,7 @@ module Teamlab
     end
 
     # @param create_new_if_exists [Boolean] create new file if same name file already exists
-    def insert_to_my_docs(file, title: File.basename(file), keep_convert_status: false, create_new_if_exists: false)
+    def insert_to_my_docs(file, title: File.basename(file), keep_convert_status: false, create_new_if_exists: nil)
       @request.post(%w(@my insert),
                     file: File.new(file),
                     title: title,
