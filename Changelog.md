@@ -7,6 +7,7 @@
 * Add feed methods: new_feeds_count, filter_feed, read_feed
 * Add `GLOBAL_ADMIN_ID` constant to `Settings`
 * Add support of `Teamlab.configure#proxy` - `Net::HTTP::Proxy` object
+* Add `create_new_if_exists` option to `Files#insert_to_my_docs` 
 
 ## 0.6
 ### New features
