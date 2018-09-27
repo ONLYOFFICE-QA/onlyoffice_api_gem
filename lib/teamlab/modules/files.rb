@@ -204,8 +204,13 @@ module Teamlab
       @request.post(%w(@my upload), somefile: File.new(file))
     end
 
-    def insert_to_my_docs(file, title: File.basename(file), keep_convert_status: false)
-      @request.post(%w(@my insert), file: File.new(file), title: title, keepConvertStatus: keep_convert_status)
+    # @param create_new_if_exists [Boolean] create new file if same name file already exists
+    def insert_to_my_docs(file, title: File.basename(file), keep_convert_status: false, create_new_if_exists: false)
+      @request.post(%w(@my insert),
+                    file: File.new(file),
+                    title: title,
+                    keepConvertStatus: keep_convert_status,
+                    createNewIfExist: create_new_if_exists)
     end
 
     def upload_to_common_docs(file)
