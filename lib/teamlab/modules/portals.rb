@@ -5,11 +5,11 @@ module Teamlab
     end
 
     def invite_user_url
-      @request.get(%w(users invite user))
+      @request.get(%w[users invite user])
     end
 
     def invite_visitor_url
-      @request.get(%w(users invite visitor))
+      @request.get(%w[users invite visitor])
     end
   end
 end

@@ -7,19 +7,19 @@ module Teamlab
     # region File Creation
 
     def create_txt_in_my_docs(title, content)
-      @request.post(%w(@my text), title: title.to_s, content: content.to_s)
+      @request.post(%w[@my text], title: title.to_s, content: content.to_s)
     end
 
     def create_html_in_my_docs(title, content)
-      @request.post(%w(@my html), title: title.to_s, content: content.to_s)
+      @request.post(%w[@my html], title: title.to_s, content: content.to_s)
     end
 
     def create_txt_in_common_docs(title, content)
-      @request.post(%w(@common text), title: title.to_s, content: content.to_s)
+      @request.post(%w[@common text], title: title.to_s, content: content.to_s)
     end
 
     def create_html_in_common_docs(title, content)
-      @request.post(%w(common html), title: title.to_s, content: content.to_s)
+      @request.post(%w[common html], title: title.to_s, content: content.to_s)
     end
 
     def create_txt(folder_id, title, content)
@@ -39,11 +39,11 @@ module Teamlab
     # region File operations
 
     def get_file_operations_list
-      @request.get(%w(fileops))
+      @request.get(%w[fileops])
     end
 
     def check_conflict(options = {})
-      @request.get(%w(fileops move), options)
+      @request.get(%w[fileops move], options)
     end
 
     def check_conversion_status(fileid)
@@ -51,32 +51,32 @@ module Teamlab
     end
 
     def move_to_folder(dest_folder_id, options = {})
-      @request.put(%w(fileops move), { destFolderId: dest_folder_id }.merge(options))
+      @request.put(%w[fileops move], { destFolderId: dest_folder_id }.merge(options))
     end
     alias move_files move_to_folder
 
     def copy_to_folder(dest_folder_id, options = {})
-      @request.put(%w(fileops copy), { destFolderId: dest_folder_id }.merge(options))
+      @request.put(%w[fileops copy], { destFolderId: dest_folder_id }.merge(options))
     end
 
     def delete(options = {})
-      @request.put(%w(fileops delete), options)
+      @request.put(%w[fileops delete], options)
     end
 
     def finish_all
-      @request.put(%w(fileops terminate))
+      @request.put(%w[fileops terminate])
     end
 
     def mark_as_read
-      @request.put(%w(fileops markasread))
+      @request.put(%w[fileops markasread])
     end
 
     def clear_recycle_bin
-      @request.put(%w(fileops emptytrash))
+      @request.put(%w[fileops emptytrash])
     end
 
     def finish_operations(options = {})
-      @request.put(%w(fileops bulkdownload), options)
+      @request.put(%w[fileops bulkdownload], options)
     end
 
     def start_conversion(file_id, start)
@@ -185,11 +185,11 @@ module Teamlab
     # region Third-Party Integration
 
     def get_third_party
-      @request.get(%w(thirdparty))
+      @request.get(%w[thirdparty])
     end
 
     def save_third_party(options = {})
-      @request.post(%w(thirdparty), options)
+      @request.post(%w[thirdparty], options)
     end
 
     def remove_third_party_account(provider_id)
@@ -201,12 +201,12 @@ module Teamlab
     # region Uploads
 
     def upload_to_my_docs(file)
-      @request.post(%w(@my upload), somefile: File.new(file))
+      @request.post(%w[@my upload], somefile: File.new(file))
     end
 
     # @param create_new_if_exists [Boolean] create new file if same name file already exists
     def insert_to_my_docs(file, title: File.basename(file), keep_convert_status: false, create_new_if_exists: nil)
-      @request.post(%w(@my insert),
+      @request.post(%w[@my insert],
                     file: File.new(file),
                     title: title,
                     keepConvertStatus: keep_convert_status,
@@ -214,11 +214,11 @@ module Teamlab
     end
 
     def upload_to_common_docs(file)
-      @request.post(%w(@common upload), somefile: File.new(file))
+      @request.post(%w[@common upload], somefile: File.new(file))
     end
 
     def insert_to_common_docs(file, title: File.basename(file), keep_convert_status: false)
-      @request.post(%w(@common insert), file: File.new(file), title: title, keepConvertStatus: keep_convert_status)
+      @request.post(%w[@common insert], file: File.new(file), title: title, keepConvertStatus: keep_convert_status)
     end
 
     def upload_to_folder(folder_id, file)
@@ -244,11 +244,11 @@ module Teamlab
     end
 
     def document_server_info
-      @request.get(%w(docservice))
+      @request.get(%w[docservice])
     end
 
     def check_overwrite(set_value = true)
-      @request.put(%w(updateifexist), set: set_value)
+      @request.put(%w[updateifexist], set: set_value)
     end
   end
 end

@@ -101,12 +101,6 @@ Style/MutableConstant:
     - 'lib/teamlab/version.rb'
     - 'spec/support/http_data.rb'
 
-# Offense count: 303
-# Cop supports --auto-correct.
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Enabled: false
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.

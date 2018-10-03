@@ -6,19 +6,19 @@ module Teamlab
 
     # region Opportunity
     def get_all_opportunity_stages
-      @request.get(%w(opportunity stage))
+      @request.get(%w[opportunity stage])
     end
 
     def get_currency_list
-      @request.get(%w(settings currency))
+      @request.get(%w[settings currency])
     end
 
     def get_opportunity_list(options = {})
-      @request.get(%w(opportunity filter), options)
+      @request.get(%w[opportunity filter], options)
     end
 
     def get_result_of_convertation(options = {})
-      @request.get(%w(settings currency convert), options)
+      @request.get(%w[settings currency convert], options)
     end
 
     def get_opportunity_stage(stage_id)
@@ -38,11 +38,11 @@ module Teamlab
     end
 
     def create_opportunity(stage_id, title, responsible_id, options = {})
-      @request.post(%w(opportunity), { stageId: stage_id, title: title, responsibleid: responsible_id }.merge(options))
+      @request.post(%w[opportunity], { stageId: stage_id, title: title, responsibleid: responsible_id }.merge(options))
     end
 
     def create_opportunity_stage(title, color, options = {})
-      @request.post(%w(opportunity stage), { title: title, color: color }.merge(options))
+      @request.post(%w[opportunity stage], { title: title, color: color }.merge(options))
     end
 
     def add_opportunity_contact(opportunity_id, contact_id)
@@ -50,7 +50,7 @@ module Teamlab
     end
 
     def set_opportunity_access_rights(opportunity_ids, is_private, *users)
-      @request.put(%w(opportunity access), opportunityid: opportunity_ids.to_a.flatten, isPrivate: is_private, accessList: users.flatten)
+      @request.put(%w[opportunity access], opportunityid: opportunity_ids.to_a.flatten, isPrivate: is_private, accessList: users.flatten)
     end
 
     def update_opportunity_stage(id, title, color, options = {})
@@ -58,11 +58,11 @@ module Teamlab
     end
 
     def update_opportunity_stages_order(options = {})
-      @request.put(%w(opportunity stage reorder), options)
+      @request.put(%w[opportunity stage reorder], options)
     end
 
     def set_opportunity_access_rights_for_users(options = {})
-      @request.put(%w(opportunity filter access), options)
+      @request.put(%w[opportunity filter access], options)
     end
 
     def update_opportunity(opportunity_id, contact_id, title, responsible_id, stage_id, options = {})
@@ -83,12 +83,12 @@ module Teamlab
     end
 
     def delete_opportunity_group(*opportunity_ids)
-      @request.put(%w(opportunity), opportunityids: opportunity_ids.flatten)
+      @request.put(%w[opportunity], opportunityids: opportunity_ids.flatten)
     end
     alias delete_opportunities_bulk delete_opportunity_group
 
     def delete_opportunity_group_by_filter(options = {})
-      @request.delete(%w(opportunity filter), options)
+      @request.delete(%w[opportunity filter], options)
     end
 
     def delete_opportunity_stage(stage_id)
@@ -108,39 +108,39 @@ module Teamlab
     # region General
 
     def get_invoice_taxes
-      @request.get(%w(invoice tax))
+      @request.get(%w[invoice tax])
     end
 
     def get_contacts_for_mail(*contact_ids)
-      @request.get(%w(contact mail), contactids: contact_ids.flatten)
+      @request.get(%w[contact mail], contactids: contact_ids.flatten)
     end
 
     def get_cases_by_prefix(contact_id, prefix)
-      @request.get(%w(case byprefix), contactId: contact_id, prefix: prefix)
+      @request.get(%w[case byprefix], contactId: contact_id, prefix: prefix)
     end
 
     def get_contact_statuses
-      @request.get(%w(contact status))
+      @request.get(%w[contact status])
     end
 
     def get_invoice_sample
-      @request.get(%w(invoice sample))
+      @request.get(%w[invoice sample])
     end
 
     def get_invoices_by_filter(options = {})
-      @request.get(%w(invoice filter), options)
+      @request.get(%w[invoice filter], options)
     end
 
     def get_contacts_by_filter(options = {})
-      @request.get(%w(contact filter), options)
+      @request.get(%w[contact filter], options)
     end
 
     def get_settings
-      @request.get(%w(invoice settings))
+      @request.get(%w[invoice settings])
     end
 
     def get_invoice_items_by_filter(options = {})
-      @request.get(%w(invoiceitem filter), options)
+      @request.get(%w[invoiceitem filter], options)
     end
 
     def get_invoice_by_id(id)
@@ -148,7 +148,7 @@ module Teamlab
     end
 
     def get_simple_contacts(options = {})
-      @request.get(%w(contact simple filter), options)
+      @request.get(%w[contact simple filter], options)
     end
 
     def get_contact_status_by_id(contact_status_id)
@@ -160,49 +160,49 @@ module Teamlab
     end
 
     def create_task(title, deadline, responsible_id, category_id, options = {})
-      @request.post(%w(task), { title: title, deadline: deadline, responsibleId: responsible_id, categoryId: category_id }.merge(options))
+      @request.post(%w[task], { title: title, deadline: deadline, responsibleId: responsible_id, categoryId: category_id }.merge(options))
     end
 
     def create_invoice(number, issue_date, client_id, due_date, language, currency, exchange_rate, terms, invoice_line, options)
-      @request.post(%w(invoice), { number: number, issueDate: issue_date, contactId: client_id, dueDate: due_date,
+      @request.post(%w[invoice], { number: number, issueDate: issue_date, contactId: client_id, dueDate: due_date,
                                    language: language, currency: currency, exchangeRate: exchange_rate, terms: terms,
                                    invoiceLines: invoice_line }.merge(options))
     end
 
     def create_invoice_line(invoice_id, options = {})
-      @request.post(%w(invoiceline), { invoiceId: invoice_id }.merge(options))
+      @request.post(%w[invoiceline], { invoiceId: invoice_id }.merge(options))
     end
 
     def create_invoice_item(title, description, price, stock_keeping_unit, options = {})
-      @request.post(%w(invoiceitem), { title: title, description: description, price: price, sku: stock_keeping_unit.to_s }.merge(options))
+      @request.post(%w[invoiceitem], { title: title, description: description, price: price, sku: stock_keeping_unit.to_s }.merge(options))
     end
 
     def create_invoice_tax(name, description, options = {})
-      @request.post(%w(invoice tax), { name: name, description: description }.merge(options))
+      @request.post(%w[invoice tax], { name: name, description: description }.merge(options))
     end
 
     def create_contact_type(title, options = {})
-      @request.post(%w(contact type), { title: title }.merge(options))
+      @request.post(%w[contact type], { title: title }.merge(options))
     end
 
     def create_contact_status(title, color, options = {})
-      @request.post(%w(contact status), { title: title, color: color }.merge(options))
+      @request.post(%w[contact status], { title: title, color: color }.merge(options))
     end
 
     def create_person(first_name, last_name, options = {})
-      @request.post(%w(contact person), { firstName: first_name, lastName: last_name }.merge(options))
+      @request.post(%w[contact person], { firstName: first_name, lastName: last_name }.merge(options))
     end
 
     def create_company(company_name, managers, options = {})
-      @request.post(%w(contact company), { companyName: company_name, managerList: managers }.merge(options))
+      @request.post(%w[contact company], { companyName: company_name, managerList: managers }.merge(options))
     end
 
     def create_task_group(title, options = {})
-      @request.post(%w(contact task group), { title: title }.merge(options))
+      @request.post(%w[contact task group], { title: title }.merge(options))
     end
 
     def add_tag_to_batch_contacts(tags, options = {})
-      @request.post(%w(contact filter taglist), { tags: tags }.merge(options))
+      @request.post(%w[contact filter taglist], { tags: tags }.merge(options))
     end
 
     def add_contact_tag_to_group(entity_type, entity_id, tag)
@@ -214,15 +214,15 @@ module Teamlab
     end
 
     def set_is_portal_configured(options = {})
-      @request.put(%w(settings), options)
+      @request.put(%w[settings], options)
     end
 
     def save_smtp_settings(options = {})
-      @request.put(%w(settings smtp), options)
+      @request.put(%w[settings smtp], options)
     end
 
     def update_crm_currency(currency)
-      @request.put(%w(settings currency), currency: currency)
+      @request.put(%w[settings currency], currency: currency)
     end
 
     def update_task(task_id, title, deadline, category_id, options = {})
@@ -252,35 +252,35 @@ module Teamlab
     end
 
     def update_crm_contact_tag_setting(options = {})
-      @request.put(%w(contact tag settings), options)
+      @request.put(%w[contact tag settings], options)
     end
 
     def save_number_settings(options = {})
-      @request.put(%w(invoice settings name), options)
+      @request.put(%w[invoice settings name], options)
     end
 
     def set_access_to_batch_contact(options = {})
-      @request.put(%w(contact filter access), options)
+      @request.put(%w[contact filter access], options)
     end
 
     def update_organisation_company_name(title)
-      @request.put(%w(settings organisation base), companyName: title)
+      @request.put(%w[settings organisation base], companyName: title)
     end
 
     def update_organisation_address(text)
-      @request.put(%w(settings organisation address), companyAddress: text)
+      @request.put(%w[settings organisation address], companyAddress: text)
     end
 
     def update_statuses_contact_order(options = {})
-      @request.put(%w(contact status reorder), options)
+      @request.put(%w[contact status reorder], options)
     end
 
     def save_terms_settings(options = {})
-      @request.put(%w(invoice settings terms), options)
+      @request.put(%w[invoice settings terms], options)
     end
 
     def update_crm_contact_status_settings(options = {})
-      @request.put(%w(contact status settings), options)
+      @request.put(%w[contact status settings], options)
     end
 
     def update_invoice_patch_status(status, invoice_ids)
@@ -318,17 +318,17 @@ module Teamlab
     end
 
     def delete_batch_invoices(*invoice_ids)
-      @request.delete(%w(invoice), invoiceids: invoice_ids.flatten)
+      @request.delete(%w[invoice], invoiceids: invoice_ids.flatten)
     end
     alias delete_invoices_bulk delete_batch_invoices
 
     def delete_batch_items(*ids)
-      @request.delete(%w(invoiceitem), ids: ids.flatten)
+      @request.delete(%w[invoiceitem], ids: ids.flatten)
     end
     alias delete_invoice_items_bulk delete_batch_items
 
     def delete_batch_contacts_by_filter(options = {})
-      @request.delete(%w(contact filter), options)
+      @request.delete(%w[contact filter], options)
     end
 
     def delete_invoice_item(id)
@@ -356,19 +356,19 @@ module Teamlab
     end
 
     def get_event_list_by_filter(options = {})
-      @request.get(%w(history filter), options)
+      @request.get(%w[history filter], options)
     end
 
     def get_all_history_categories
-      @request.get(%w(history category))
+      @request.get(%w[history category])
     end
 
     def create_event(contact_id, content, category_id, options = {})
-      @request.post(%w(history), { contactId: contact_id, content: content, categoryId: category_id }.merge(options))
+      @request.post(%w[history], { contactId: contact_id, content: content, categoryId: category_id }.merge(options))
     end
 
     def create_history_category(title, image_name, options = {})
-      @request.post(%w(history category), { title: title.to_s, imageName: image_name.to_s }.merge(options))
+      @request.post(%w[history category], { title: title.to_s, imageName: image_name.to_s }.merge(options))
     end
 
     def update_history_category(id, title, options = {})
@@ -376,7 +376,7 @@ module Teamlab
     end
 
     def update_history_categories_order(*titles)
-      @request.put(%w(history category reorder), titles: titles.flatten)
+      @request.put(%w[history category reorder], titles: titles.flatten)
     end
 
     def update_history_category_icon(id, icon_name)
@@ -392,11 +392,11 @@ module Teamlab
     end
 
     def get_task_list_by_filter(options = {})
-      @request.get(%w(task filter), options)
+      @request.get(%w[task filter], options)
     end
 
     def get_all_task_categories
-      @request.get(%w(task category))
+      @request.get(%w[task category])
     end
 
     def get_task_by_id(task_id)
@@ -408,11 +408,11 @@ module Teamlab
     end
 
     def create_task_category(title, image_name, options = {})
-      @request.post(%w(task category), { title: title.to_s, imageName: image_name.to_s }.merge(options))
+      @request.post(%w[task category], { title: title.to_s, imageName: image_name.to_s }.merge(options))
     end
 
     def get_contact_upcoming_tasks(*contact_ids)
-      @request.post(%w(contact task near), contactid: contact_ids.flatten)
+      @request.post(%w[contact task near], contactid: contact_ids.flatten)
     end
 
     def update_task_category(category_id, title, options = {})
@@ -428,7 +428,7 @@ module Teamlab
     end
 
     def update_task_categories_order(*titles)
-      @request.put(%w(task category reorder), titles: titles.flatten)
+      @request.put(%w[task category reorder], titles: titles.flatten)
     end
 
     def update_task_category_icon(id, image_name)
@@ -444,7 +444,7 @@ module Teamlab
     end
 
     def get_all_contact_types
-      @request.get(%w(contact type))
+      @request.get(%w[contact type])
     end
 
     def get_contact_by_id(id)
@@ -452,7 +452,7 @@ module Teamlab
     end
 
     def get_all_contact_info_types
-      @request.get(%w(contact data infotype))
+      @request.get(%w[contact data infotype])
     end
 
     def get_contacts_by_project_id(id)
@@ -480,15 +480,15 @@ module Teamlab
     end
 
     def group_contact_info(*items)
-      @request.post(%w(contact data), items: items.flatten)
+      @request.post(%w[contact data], items: items.flatten)
     end
 
     def quick_person_list_creation(data)
-      @request.post(%w(contact person quick), data: data)
+      @request.post(%w[contact person quick], data: data)
     end
 
     def quick_company_list_creation(*names)
-      @request.post(%w(contact company quick), companyName: names.flatten)
+      @request.post(%w[contact company quick], companyName: names.flatten)
     end
 
     def add_contact_info(contact_id, infotype, data, category, options = {})
@@ -512,24 +512,24 @@ module Teamlab
     end
 
     def delete_contact_group(*contact_ids)
-      @request.put(%w(contact), contactids: contact_ids.flatten)
+      @request.put(%w[contact], contactids: contact_ids.flatten)
     end
     alias delete_contacts_bulk delete_contact_group
 
     def group_contact_info_update(*items)
-      @request.put(%w(contact data), items: items.flatten)
+      @request.put(%w[contact data], items: items.flatten)
     end
 
     def merge_contacts(from_contact_id, to_contact_id)
-      @request.put(%w(contact merge), fromcontactid: from_contact_id, tocontactid: to_contact_id)
+      @request.put(%w[contact merge], fromcontactid: from_contact_id, tocontactid: to_contact_id)
     end
 
     def set_contacts_access_rights(contact_ids, options = {})
-      @request.put(%w(contact access), { contactId: contact_ids }.merge(options))
+      @request.put(%w[contact access], { contactId: contact_ids }.merge(options))
     end
 
     def update_contact_types_order(*titles)
-      @request.put(%w(contact type reorder), titles: titles.flatten)
+      @request.put(%w[contact type reorder], titles: titles.flatten)
     end
 
     def set_contact_access_rights(contact_id, options = {})
@@ -579,7 +579,7 @@ module Teamlab
     # region Files
 
     def get_root_folder_id
-      @request.get(%w(files root))
+      @request.get(%w[files root])
     end
 
     def get_file_list(entity_type, entity_id)
@@ -621,7 +621,7 @@ module Teamlab
     #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def add_tag_to_case_group_by_filter(tag_name, options = {})
-      @request.post(%w(case filter taglist), { tagName: tag_name }.merge(options))
+      @request.post(%w[case filter taglist], { tagName: tag_name }.merge(options))
     end
 
     #=========================================== TODO: OPTIONAL VARIABLES =====================================================
@@ -633,7 +633,7 @@ module Teamlab
     #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
     def add_tag_to_opportunity_group(tag_name, options = {})
-      @request.post(%w(opportunity filter taglist), { tagName: tag_name }.merge(options))
+      @request.post(%w[opportunity filter taglist], { tagName: tag_name }.merge(options))
     end
 
     def add_tag(entity_type, entity_id, tag_name)
@@ -697,7 +697,7 @@ module Teamlab
     end
 
     def get_case_list(options = {})
-      @request.get(%w(case filter), options)
+      @request.get(%w[case filter], options)
     end
 
     def get_case_by_id(id)
@@ -709,7 +709,7 @@ module Teamlab
     end
 
     def create_case(title, options = {})
-      @request.post(%w(case), { title: title }.merge(options))
+      @request.post(%w[case], { title: title }.merge(options))
     end
 
     def add_case_contact(case_id, contact_id)
@@ -717,7 +717,7 @@ module Teamlab
     end
 
     def set_case_access_rights(case_ids, options = {})
-      @request.put(%w(case access), { caseId: case_ids }.merge(options))
+      @request.put(%w[case access], { caseId: case_ids }.merge(options))
     end
 
     def update_case(case_id, title, options = {})
@@ -725,7 +725,7 @@ module Teamlab
     end
 
     def set_case_access_rights_by_filter(options = {})
-      @request.put(%w(case filter access), options)
+      @request.put(%w[case filter access], options)
     end
 
     def resume_case(case_id)
@@ -741,12 +741,12 @@ module Teamlab
     end
 
     def delete_case_group(*case_ids)
-      @request.put(%w(case), caseIds: case_ids.flatten)
+      @request.put(%w[case], caseIds: case_ids.flatten)
     end
     alias delete_cases_bulk delete_case_group
 
     def delete_case_group_by_filter(options = {})
-      @request.delete(%w(case filter), options)
+      @request.delete(%w[case filter], options)
     end
 
     def delete_case(case_id)
@@ -802,7 +802,7 @@ module Teamlab
     end
 
     def get_all_currency_rates
-      @request.get(%w(currency rates), {})
+      @request.get(%w[currency rates], {})
     end
 
     def set_currency_rate(from = 'EUR', to = 'USD', rate = '1.0')

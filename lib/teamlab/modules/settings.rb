@@ -12,43 +12,43 @@ module Teamlab
     end
 
     def get_sso_settings
-      @request.get(%w(SSO))
+      @request.get(%w[SSO])
     end
 
     def get_ldap_settings
-      @request.get(%w(LDAP))
+      @request.get(%w[LDAP])
     end
 
     def get_logo
-      @request.get(%w(logo))
+      @request.get(%w[logo])
     end
 
     def get_usage_quota
-      @request.get(%w(quota))
+      @request.get(%w[quota])
     end
 
     def get_version
-      @request.get(%w(version))
+      @request.get(%w[version])
     end
 
     def get_version_build
-      @request.get(%w(version build))
+      @request.get(%w[version build])
     end
 
     def get_security(ids = [])
-      @request.get(%w(security), ids: ids)
+      @request.get(%w[security], ids: ids)
     end
 
     def get_ip_restrictions
-      @request.get(%w(iprestrictions))
+      @request.get(%w[iprestrictions])
     end
 
     def get_white_label_sizes
-      @request.get(%w(whitelabel sizes))
+      @request.get(%w[whitelabel sizes])
     end
 
     def get_admin_security(product_id, user_id)
-      @request.get(%w(security administrator), productid: product_id, userid: user_id)
+      @request.get(%w[security administrator], productid: product_id, userid: user_id)
     end
 
     def get_product_admin(product_id)
@@ -56,43 +56,43 @@ module Teamlab
     end
 
     def sms_settings(enable)
-      @request.put(%w(sms), enable: enable)
+      @request.put(%w[sms], enable: enable)
     end
 
     def update_tips(show)
-      @request.put(%w(tips), show: show)
+      @request.put(%w[tips], show: show)
     end
 
     def set_version(version_id)
-      @request.put(%w(version), versionId: version_id)
+      @request.put(%w[version], versionId: version_id)
     end
 
     def set_security(id, options = {})
-      @request.put(%w(security), { id: id }.merge(options))
+      @request.put(%w[security], { id: id }.merge(options))
     end
 
     def save_ip_restrictions(ips)
-      @request.put(%w(iprestrictions), ips: ips)
+      @request.put(%w[iprestrictions], ips: ips)
     end
 
     def set_access(id, enabled = true)
-      @request.put(%w(security access), items: [{ key: id, value: enabled }])
+      @request.put(%w[security access], items: [{ key: id, value: enabled }])
     end
 
     def set_product_admin(product_id, user_id, administrator = true)
-      @request.put(%w(security administrator), productid: product_id, userid: user_id, administrator: administrator)
+      @request.put(%w[security administrator], productid: product_id, userid: user_id, administrator: administrator)
     end
 
     def update_ip_restrictions(enable)
-      @request.put(%w(iprestrictions settings), enable: enable)
+      @request.put(%w[iprestrictions settings], enable: enable)
     end
 
     def update_timezone_and_language(timezone, language)
-      @request.put(%w(timeandlanguage), lng: language, timeZoneId: timezone)
+      @request.put(%w[timeandlanguage], lng: language, timeZoneId: timezone)
     end
 
     def update_default_portal_page(portal_page_id)
-      @request.put(%w(defaultpage), defaultProductID: portal_page_id)
+      @request.put(%w[defaultpage], defaultProductID: portal_page_id)
     end
   end
 end

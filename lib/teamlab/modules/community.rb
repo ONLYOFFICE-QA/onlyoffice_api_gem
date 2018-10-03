@@ -5,15 +5,15 @@ module Teamlab
     end
 
     def get_all_posts
-      @request.get(%w(blog))
+      @request.get(%w[blog])
     end
 
     def get_blog_tags
-      @request.get(%w(blog tag))
+      @request.get(%w[blog tag])
     end
 
     def get_my_posts
-      @request.get(%w(blog @self))
+      @request.get(%w[blog @self])
     end
 
     def get_post(post_id)
@@ -37,7 +37,7 @@ module Teamlab
     end
 
     def create_post(title, content, options = {})
-      @request.post(%w(blog), { title: title, content: content }.merge(options))
+      @request.post(%w[blog], { title: title, content: content }.merge(options))
     end
 
     def add_comment(post_id, content, options = {})
@@ -53,11 +53,11 @@ module Teamlab
     end
 
     def get_all_bookmarks
-      @request.get(%w(bookmark))
+      @request.get(%w[bookmark])
     end
 
     def get_all_bookmark_tags
-      @request.get(%w(bookmark tag))
+      @request.get(%w[bookmark tag])
     end
 
     def get_bookmark(id)
@@ -65,14 +65,14 @@ module Teamlab
     end
 
     def get_bookmarks_added_by_me
-      @request.get(%w(bookmark @self))
+      @request.get(%w[bookmark @self])
     end
 
     def get_my_favourite_bookmarks
-      @request.get(%w(bookmark @favs))
+      @request.get(%w[bookmark @favs])
     end
 
-    %w(day week month year).each do |e|
+    %w[day week month year].each do |e|
       define_method("get_top_of_#{e}_bookmarks") { @request.get(['bookmark', 'top', e.to_s]) }
     end
 
@@ -81,7 +81,7 @@ module Teamlab
     end
 
     def get_recently_added_bookmarks
-      @request.get(%w(bookmark top recent))
+      @request.get(%w[bookmark top recent])
     end
 
     def get_bookmark_comments(bookmark_id)
@@ -93,7 +93,7 @@ module Teamlab
     end
 
     def add_bookmark(url, title, options = {})
-      @request.post(%w(bookmark), { url: url, title: title }.merge(options))
+      @request.post(%w[bookmark], { url: url, title: title }.merge(options))
     end
 
     def add_comment_to_bookmark(bookmark_id, content, options = {})
@@ -101,11 +101,11 @@ module Teamlab
     end
 
     def get_all_events
-      @request.get(%w(event))
+      @request.get(%w[event])
     end
 
     def get_my_events
-      @request.get(%w(event @self))
+      @request.get(%w[event @self])
     end
 
     def get_event(id)
@@ -121,7 +121,7 @@ module Teamlab
     end
 
     def create_event(title, content, options = {})
-      @request.post(%w(event), { title: title, content: content }.merge(options))
+      @request.post(%w[event], { title: title, content: content }.merge(options))
     end
 
     def vote_for_event(event_id, *variants)
@@ -137,7 +137,7 @@ module Teamlab
     end
 
     def get_forums
-      @request.get(%w(forum))
+      @request.get(%w[forum])
     end
 
     def get_thread_topics(id)
@@ -145,7 +145,7 @@ module Teamlab
     end
 
     def get_last_updated_topics
-      @request.get(%w(forum topic recent))
+      @request.get(%w[forum topic recent])
     end
 
     def get_posts(topic_id)
@@ -159,7 +159,7 @@ module Teamlab
     #==================================== TODO: ERROR
 
     def add_thread_to_category(category_id, category_name, thread_name, description)
-      @request.post(%w(forum), categoryId: category_id, categoryName: category_name.to_s, threadName: thread_name, threadDescription: description)
+      @request.post(%w[forum], categoryId: category_id, categoryName: category_name.to_s, threadName: thread_name, threadDescription: description)
     end
 
     def add_topic_to_thread(thread_id, subject, content, options = {})
@@ -183,7 +183,7 @@ module Teamlab
     end
 
     def get_wiki_pages
-      @request.get(%w(wiki))
+      @request.get(%w[wiki])
     end
 
     def get_wiki_page(name, options = {})
@@ -211,11 +211,11 @@ module Teamlab
     end
 
     def create_page(name, body)
-      @request.post(%w(wiki), name: name.to_s, body: body.to_s)
+      @request.post(%w[wiki], name: name.to_s, body: body.to_s)
     end
 
     def upload_files(file)
-      @request.post(%w(wiki file), somefile: File.new(file))
+      @request.post(%w[wiki file], somefile: File.new(file))
     end
 
     def create_wiki_page_comment(page_name, content, options = {})

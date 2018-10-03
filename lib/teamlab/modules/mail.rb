@@ -7,7 +7,7 @@ module Teamlab
     # region Messages
 
     def get_filtered_messages(page, options = {})
-      @request.get(%w(messages), { page: page }.merge(options))
+      @request.get(%w[messages], { page: page }.merge(options))
     end
 
     def get_message(id, options = {})
@@ -15,11 +15,11 @@ module Teamlab
     end
 
     def get_message_template
-      @request.get(%w(messages template))
+      @request.get(%w[messages template])
     end
 
     def get_message_modify_date
-      @request.get(%w(messages modify_date))
+      @request.get(%w[messages modify_date])
     end
 
     def get_previous_or_next_message_id(id, direction, options = {})
@@ -27,7 +27,7 @@ module Teamlab
     end
 
     def set_message_crm_status(emails, *user_ids)
-      @request.post(%w(messages update_crm), emails: emails, userIds: user_ids.flatten)
+      @request.post(%w[messages update_crm], emails: emails, userIds: user_ids.flatten)
     end
 
     def attach_teamlab_document(message_id, file_id, options = {})
@@ -35,39 +35,39 @@ module Teamlab
     end
 
     def set_message_status(status, *ids)
-      @request.put(%w(messages mark), status: status, ids: ids.flatten)
+      @request.put(%w[messages mark], status: status, ids: ids.flatten)
     end
 
     def move_messages_to_folder(folder_id, *message_ids)
-      @request.put(%w(,essages move), folderId: folder_id, ids: message_ids.flatten)
+      @request.put(%w[,essages move], folderId: folder_id, ids: message_ids.flatten)
     end
 
     def send_message(id, options = {})
-      @request.put(%w(messages send), { id: id }.merge(options))
+      @request.put(%w[messages send], { id: id }.merge(options))
     end
 
     def save_message(id, options = {})
-      @request.put(%w(messages save), { id: id }.merge(options))
+      @request.put(%w[messages save], { id: id }.merge(options))
     end
 
     def remove_messages(*ids)
-      @request.put(%w(messages remove), ids: ids.flatten)
+      @request.put(%w[messages remove], ids: ids.flatten)
     end
 
     def restore_message_to_folders
-      @request.put(%w(messages restore))
+      @request.put(%w[messages restore])
     end
 
     def export_mail_to_crm_relations_history(message_id, *crm_contact_ids)
-      @request.put(%w(messages crm export), messageId: message_id, crmContactIds: crm_contact_ids.flatten)
+      @request.put(%w[messages crm export], messageId: message_id, crmContactIds: crm_contact_ids.flatten)
     end
 
     def export_attachments_to_my_docs(attachment_id)
-      @request.put(%w(attachment mydocuments export), attachmentId: attachment_id)
+      @request.put(%w[attachment mydocuments export], attachmentId: attachment_id)
     end
 
     def export_all_message_attachments_to_my_docs(message_id)
-      @request.put(%w(attachments mydocuments export), messageId: message_id)
+      @request.put(%w[attachments mydocuments export], messageId: message_id)
     end
 
     def delete_attachment_from_message(message_id, attachment_id)
@@ -79,7 +79,7 @@ module Teamlab
     # region HelpCenter
 
     def get_html_of_help_center
-      @request.get(%w(helpcenter))
+      @request.get(%w[helpcenter])
     end
 
     # endregion
@@ -95,7 +95,7 @@ module Teamlab
     # region Accounts
 
     def get_account_list
-      @request.get(%w(accounts))
+      @request.get(%w[accounts])
     end
 
     def get_account_by_email(email)
@@ -107,19 +107,19 @@ module Teamlab
     end
 
     def create_account_with_custom_mail_service(name, email, account, password, options = {})
-      @request.post(%w(accounts), { name: name, email: email, account: account, password: password }.merge(options))
+      @request.post(%w[accounts], { name: name, email: email, account: account, password: password }.merge(options))
     end
 
     def create_oauth_account(email, token, options = {})
-      @request.post(%w(accounts oauth), { email: email, token: token }.merge(options))
+      @request.post(%w[accounts oauth], { email: email, token: token }.merge(options))
     end
 
     def create_account_by_email(email, password)
-      @request.post(%w(accounts simple), email: email, password: password)
+      @request.post(%w[accounts simple], email: email, password: password)
     end
 
     def update_account(name, email, password, options = {})
-      @request.put(%w(accounts), { name: name, email: email, password: password }.merge(options))
+      @request.put(%w[accounts], { name: name, email: email, password: password }.merge(options))
     end
 
     def set_account_state(email, state)
@@ -153,11 +153,11 @@ module Teamlab
     # region Contacts
 
     def get_contact_list_for_auto_complete(term)
-      @request.get(%w(contacts), term: term)
+      @request.get(%w[contacts], term: term)
     end
 
     def get_crm_linked_entities(message_id)
-      @request.get(%w(crm linked entities), messageId: message_id)
+      @request.get(%w[crm linked entities], messageId: message_id)
     end
 
     # endregion
@@ -165,7 +165,7 @@ module Teamlab
     # region Conversations
 
     def get_filtered_conversations(options = {})
-      @request.get(%w(conversations), options)
+      @request.get(%w[conversations], options)
     end
 
     def get_messages_linked_into_one_chain(message_id, load_all_content)
@@ -177,31 +177,31 @@ module Teamlab
     end
 
     def is_chain_crm_linked_by_message(message_id)
-      @request.get(%w(conversations link crm status), messageId: message_id)
+      @request.get(%w[conversations link crm status], messageId: message_id)
     end
 
     def move_conversations_to_folder(folder_id, *message_ids)
-      @request.put(%w(conversations move), folderId: folder_id, ids: message_ids.flatten)
+      @request.put(%w[conversations move], folderId: folder_id, ids: message_ids.flatten)
     end
 
     def set_conversations_status(status, *ids)
-      @request.put(%w(conversations mark), status: status, ids: ids.flatten)
+      @request.put(%w[conversations mark], status: status, ids: ids.flatten)
     end
 
     def remove_conversations(*ids)
-      @request.put(%w(conversations remove), ids: ids.flatten)
+      @request.put(%w[conversations remove], ids: ids.flatten)
     end
 
     def restore_conversations_to_folders(*ids)
-      @request.put(%w(conversations restore), ids: ids.flatten)
+      @request.put(%w[conversations restore], ids: ids.flatten)
     end
 
     def mark_conversation_as_crm_linked(message_id, *crm_contact_ids)
-      @request.put(%w(conversations crm mark), messageId: message_id, crmContactIds: crm_contact_ids.flatten)
+      @request.put(%w[conversations crm mark], messageId: message_id, crmContactIds: crm_contact_ids.flatten)
     end
 
     def unmark_conversation_link_with_crm(message_id, *crm_contact_ids)
-      @request.put(%w(conversations crm unmark), messageId: message_id, crmContactIds: crm_contact_ids.flatten)
+      @request.put(%w[conversations crm unmark], messageId: message_id, crmContactIds: crm_contact_ids.flatten)
     end
 
     def add_tag_to_conversations(tag_id, *conversation_ids)
@@ -217,7 +217,7 @@ module Teamlab
     # region Folders
 
     def get_folders(options = {})
-      @request.get(%w(folders), options)
+      @request.get(%w[folders], options)
     end
 
     def get_folder_change_date(folder_id)
@@ -233,7 +233,7 @@ module Teamlab
     # region GUID
 
     def generate_custom_guid
-      @request.get(%w(random_guid))
+      @request.get(%w[random_guid])
     end
 
     # endregion
@@ -241,15 +241,15 @@ module Teamlab
     # region IMAGES
 
     def get_trusted_addresses
-      @request.get(%w(display_messages addresses))
+      @request.get(%w[display_messages addresses])
     end
 
     def add_trusted_address(address)
-      @request.post(%w(display_messages addresses), addres: address)
+      @request.post(%w[display_messages addresses], addres: address)
     end
 
     def remove_from_trusted_addresses(address)
-      @request.delete(%w(display_messages addresses), addres: address)
+      @request.delete(%w[display_messages addresses], addres: address)
     end
 
     # endregion
@@ -257,11 +257,11 @@ module Teamlab
     # region Tags
 
     def get_tag_list
-      @request.get(%w(tags))
+      @request.get(%w[tags])
     end
 
     def create_tag(name, options = {})
-      @request.post(%w(tags), { name: name }.merge(options))
+      @request.post(%w[tags], { name: name }.merge(options))
     end
 
     def update_tag(id, name, options = {})

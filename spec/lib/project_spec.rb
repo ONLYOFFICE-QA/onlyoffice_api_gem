@@ -18,7 +18,7 @@ describe '[Project]' do
       let(:args) { [false, random_email, random_word.capitalize, random_word.capitalize] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :user_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -29,7 +29,7 @@ describe '[Project]' do
       let(:args) { [random_word, random_word, random_id(:user), random_word(3), random_bool] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :project_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -39,7 +39,7 @@ describe '[Project]' do
       let(:command) { :get_my_files }
       let(:add_data_to_collector) { true }
       let(:data_param) { :my_documents_ids }
-      let(:param_names) { %w(current id) }
+      let(:param_names) { %w[current id] }
     end
   end
 
@@ -50,7 +50,7 @@ describe '[Project]' do
       let(:args) { [random_id(:my_documents), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :file_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -80,7 +80,7 @@ describe '[Project]' do
       let(:args) { [random_word, random_word, random_id(:user), random_word(3), random_bool, { participants: DATA_COLLECTOR[:user_ids] }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :new_project_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -90,7 +90,7 @@ describe '[Project]' do
       let(:args) { [random_id(:new_project), random_word, random_word, DATA_COLLECTOR[:user_ids].join(',')] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :discussion_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -100,7 +100,7 @@ describe '[Project]' do
       let(:args) { [random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :project_template_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -110,7 +110,7 @@ describe '[Project]' do
       let(:args) { [random_id(:new_project), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :project_task_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -127,7 +127,7 @@ describe '[Project]' do
       let(:args) { [DATA_COLLECTOR[:project_task_ids].last, random_id(:user), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :project_subtask_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -137,7 +137,7 @@ describe '[Project]' do
       let(:args) { [random_id(:project_task), Time.now.strftime('%Y-%m-%-d'), random_id(:user), DATA_COLLECTOR[:new_project_ids].last] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :project_task_time_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -161,7 +161,7 @@ describe '[Project]' do
       let(:args) { [random_id(:new_project), random_word, DateTime.commercial(2015).to_s, random_id(:user)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :project_milestone_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -171,7 +171,7 @@ describe '[Project]' do
       let(:args) { [random_id(:project_task), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :comment_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -181,7 +181,7 @@ describe '[Project]' do
       let(:args) { [random_id(:project_task), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :comment_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -288,7 +288,7 @@ describe '[Project]' do
       let(:args) { [random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :report_template_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
