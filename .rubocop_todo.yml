@@ -101,14 +101,6 @@ Style/MutableConstant:
     - 'lib/teamlab/version.rb'
     - 'spec/support/http_data.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, MinSize, WordRegex.
-# SupportedStyles: percent, brackets
-Style/WordArray:
-  Exclude:
-    - 'lib/teamlab/modules/crm.rb'
-
 # Offense count: 288
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
