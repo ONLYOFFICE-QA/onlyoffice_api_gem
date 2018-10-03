@@ -53,7 +53,7 @@ module Teamlab
     def move_to_folder(dest_folder_id, options = {})
       @request.put(%w(fileops move), { destFolderId: dest_folder_id }.merge(options))
     end
-    alias_method :move_files, :move_to_folder
+    alias move_files move_to_folder
 
     def copy_to_folder(dest_folder_id, options = {})
       @request.put(%w(fileops copy), { destFolderId: dest_folder_id }.merge(options))
@@ -114,7 +114,7 @@ module Teamlab
     def get_my_docs
       @request.get(['@my'])
     end
-    alias_method :get_my_files, :get_my_docs
+    alias get_my_files get_my_docs
 
     def get_shared_docs
       @request.get(['@share'])
