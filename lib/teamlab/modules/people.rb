@@ -81,7 +81,7 @@ module Teamlab
     end
 
     def link_account(profile)
-      @request.put([%w(thirdparty linkaccount)], serializedProfile: profile)
+      @request.put([%w[thirdparty linkaccount]], serializedProfile: profile)
     end
 
     def delete_user(user_id)
@@ -97,7 +97,7 @@ module Teamlab
     end
 
     def unlink_account(provider)
-      @request.delete([%w(thirdparty unlinkaccount)], provider: provider)
+      @request.delete([%w[thirdparty unlinkaccount]], provider: provider)
     end
   end
 end

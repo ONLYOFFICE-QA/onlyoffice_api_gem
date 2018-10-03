@@ -18,7 +18,7 @@ describe '[CRM]' do
       let(:args) { [false, random_email, random_word.capitalize, random_word.capitalize] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :user_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -29,7 +29,7 @@ describe '[CRM]' do
       let(:args) { [random_word.capitalize, COLORS_NAMES.sample] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :opportunity_stage_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -40,7 +40,7 @@ describe '[CRM]' do
       let(:args) { [random_word.capitalize, random_word.capitalize] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :new_contact_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -51,7 +51,7 @@ describe '[CRM]' do
       let(:args) { [random_word.capitalize, random_word.capitalize] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :new_contact_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -61,7 +61,7 @@ describe '[CRM]' do
       let(:args) { [random_id(:opportunity_stage), random_word, random_id(:user)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :opportunity_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -71,7 +71,7 @@ describe '[CRM]' do
       let(:args) { [random_id(:opportunity_stage), random_word, random_id(:user)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :opportunity_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -81,7 +81,7 @@ describe '[CRM]' do
       let(:args) { [random_word, DUE_DATE, random_id(:user), DUE_DATE, LANGUAGE.sample, CURRENCY.sample, rand(1000), random_word, random_id(:invoice_line)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -92,7 +92,7 @@ describe '[CRM]' do
       let(:args) { [] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -102,7 +102,7 @@ describe '[CRM]' do
       let(:args) { [random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_history_category_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -112,7 +112,7 @@ describe '[CRM]' do
       let(:args) { [random_id(:invoice)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_line_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -122,7 +122,7 @@ describe '[CRM]' do
       let(:args) { [random_word, random_word, rand, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_item_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -132,7 +132,7 @@ describe '[CRM]' do
       let(:args) { [random_word, random_word, rand, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_item_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -142,7 +142,7 @@ describe '[CRM]' do
       let(:args) { [random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_tax_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -152,7 +152,7 @@ describe '[CRM]' do
       let(:args) { [random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :contact_type_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -162,7 +162,7 @@ describe '[CRM]' do
       let(:args) { [random_word, COLORS_NAMES.sample] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :contact_status_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -172,7 +172,7 @@ describe '[CRM]' do
       let(:args) { [random_word, [random_id(:user)]] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :company_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -193,7 +193,7 @@ describe '[CRM]' do
       let(:args) { [DATA_COLLECTOR[:crm_history_category_ids][i += 1], random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :history_category_titles }
-      let(:param_names) { %w(title) }
+      let(:param_names) { %w[title] }
     end
   end
 
@@ -203,7 +203,7 @@ describe '[CRM]' do
       let(:args) { [random_id(:new_contact), random_word, random_id(:crm_history_category)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_event_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -213,7 +213,7 @@ describe '[CRM]' do
       let(:args) { [random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_task_category_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -224,7 +224,7 @@ describe '[CRM]' do
       let(:args) { [DATA_COLLECTOR[:crm_task_category_ids][i += 1], random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_task_category_titles }
-      let(:param_names) { %w(title) }
+      let(:param_names) { %w[title] }
     end
   end
 
@@ -234,7 +234,7 @@ describe '[CRM]' do
       let(:args) { [random_word, DateTime.commercial(2015).to_s, random_id(:user), random_id(:crm_task_category)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_task_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -245,7 +245,7 @@ describe '[CRM]' do
       let(:args) { [DATA_COLLECTOR[:new_contact_ids][i += 1], info_type = CONTACT_INFO_TYPES.sample, random_word, random_info_category(info_type)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :contact_info_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -270,7 +270,7 @@ describe '[CRM]' do
       let(:args) { [ENTITY_TYPES.sample.sub('company', 'contact'), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :task_template_container_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -280,7 +280,7 @@ describe '[CRM]' do
       let(:args) { [DATA_COLLECTOR[:task_template_container_ids].last, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :task_template_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -290,7 +290,7 @@ describe '[CRM]' do
       let(:args) { [random_word, { members: DATA_COLLECTOR[:new_contact_ids] }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_case_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -300,7 +300,7 @@ describe '[CRM]' do
       let(:args) { [random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_case_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -310,7 +310,7 @@ describe '[CRM]' do
       let(:args) { [random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_case_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -320,7 +320,7 @@ describe '[CRM]' do
       let(:args) { [ENTITY_TYPES.last, random_word, rand(6)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :user_field_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -531,12 +531,12 @@ describe '[CRM]' do
     end
   end
 
- describe '#update_organisation_company_name' do
-   it_should_behave_like 'an api request' do
-     let(:command) { :update_organisation_company_name }
-     let(:args) { [random_word] }
-   end
- end
+  describe '#update_organisation_company_name' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_organisation_company_name }
+      let(:args) { [random_word] }
+    end
+  end
 
   describe '#update_organisation_address' do
     it_should_behave_like 'an api request' do
@@ -551,7 +551,7 @@ describe '[CRM]' do
       let(:args) { [random_id(:contact_type), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :contact_types_titles }
-      let(:param_names) { %w(title) }
+      let(:param_names) { %w[title] }
     end
   end
 
@@ -876,7 +876,7 @@ describe '[CRM]' do
       let(:args) { [DATA_COLLECTOR[:new_contact_ids][i += 1], random_info_category('Address'), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :contact_address_ids }
-      let(:param_names) { %w() }
+      let(:param_names) { %w[] }
     end
   end
 
@@ -964,7 +964,7 @@ describe '[CRM]' do
       let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_file_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -988,7 +988,7 @@ describe '[CRM]' do
       let(:args) { [ENTITY_TYPES.last, random_word(4)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_tag_ids }
-      let(:param_names) { %w() }
+      let(:param_names) { %w[] }
     end
   end
 
@@ -1054,7 +1054,7 @@ describe '[CRM]' do
       let(:args) { [random_id(:task_template_container), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :task_template_container_title_ids }
-      let(:param_names) { %w(title) }
+      let(:param_names) { %w[title] }
     end
   end
 
@@ -1187,7 +1187,7 @@ describe '[CRM]' do
       let(:args) { [ENTITY_TYPES.last, DATA_COLLECTOR[:user_field_ids][i += 1], random_word, rand(6)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :user_field_title_ids }
-      let(:param_names) { %w(label) }
+      let(:param_names) { %w[label] }
     end
   end
 
@@ -1487,7 +1487,7 @@ describe '[CRM]' do
       let(:args) { [CURRENCY.sample, CURRENCY.sample, rand(1.00..10.00)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :new_currency_rate_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 

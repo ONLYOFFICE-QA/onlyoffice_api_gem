@@ -17,7 +17,7 @@ describe Teamlab do
         let(:args) { [false, random_email, random_word.capitalize, random_word.capitalize] }
         let(:add_data_to_collector) { true }
         let(:data_param) { :user_ids }
-        let(:param_names) { %w(id) }
+        let(:param_names) { %w[id] }
       end
     end
 
@@ -27,7 +27,7 @@ describe Teamlab do
         let(:command) { :get_self }
         let(:add_data_to_collector) { true }
         let(:data_param) { :self_username }
-        let(:param_names) { %w(userName) }
+        let(:param_names) { %w[userName] }
       end
     end
 
@@ -37,7 +37,7 @@ describe Teamlab do
         let(:command) { :get_my_files }
         let(:add_data_to_collector) { true }
         let(:data_param) { :my_documents_ids }
-        let(:param_names) { %w(current id) }
+        let(:param_names) { %w[current id] }
       end
     end
 
@@ -48,7 +48,7 @@ describe Teamlab do
         let(:args) { [random_id(:my_documents), random_word] }
         let(:add_data_to_collector) { true }
         let(:data_param) { :file_ids }
-        let(:param_names) { %w(id) }
+        let(:param_names) { %w[id] }
       end
     end
 
@@ -59,7 +59,7 @@ describe Teamlab do
         let(:args) { [random_word.capitalize, random_word.capitalize] }
         let(:add_data_to_collector) { true }
         let(:data_param) { :contact_ids }
-        let(:param_names) { %w(id) }
+        let(:param_names) { %w[id] }
       end
     end
 
@@ -70,7 +70,7 @@ describe Teamlab do
         let(:args) { [random_word, random_word, random_id(:user), random_word(3), random_bool] }
         let(:add_data_to_collector) { true }
         let(:data_param) { :project_ids }
-        let(:param_names) { %w(id) }
+        let(:param_names) { %w[id] }
       end
     end
   end

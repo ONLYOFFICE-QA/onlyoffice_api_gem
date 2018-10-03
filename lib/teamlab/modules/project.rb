@@ -11,12 +11,12 @@ module Teamlab
     end
 
     def add_importing_url_to_queue(company_url, username, password, import_closed, disable_notifications, import_users_as_collaborators, projects = [])
-      @request.post(%w(import), url: company_url, userName: username, password: password, importClosed: import_closed,
+      @request.post(%w[import], url: company_url, userName: username, password: password, importClosed: import_closed,
                                 disableNotifications: disable_notifications, importUsersAsCollaborators: import_users_as_collaborators, projects: projects)
     end
 
     def get_projects_for_import(url, username, password)
-      @request.post(%w(import projects), url: url, userName: username, password: password)
+      @request.post(%w[import projects], url: url, userName: username, password: password)
     end
 
     # endregion
@@ -28,7 +28,7 @@ module Teamlab
     end
 
     def get_message_by_filter(options = {})
-      @request.get(%w(message filter), options)
+      @request.get(%w[message filter], options)
     end
 
     def get_messages(project_id)
@@ -254,7 +254,7 @@ module Teamlab
     end
 
     def get_simple_task_by_filter(project_id, options = {})
-      @request.get(%w(task filter simple), { projectid: project_id }.merge(options))
+      @request.get(%w[task filter simple], { projectid: project_id }.merge(options))
     end
 
     def add_link(parent_task_id, dependence_task_id, link_type)
@@ -280,7 +280,7 @@ module Teamlab
     end
 
     def get_projects_teams(*project_ids)
-      @request.post(%w(team), ids: project_ids.flatten)
+      @request.post(%w[team], ids: project_ids.flatten)
     end
 
     def add_to_team(project_id, user_id)
@@ -304,11 +304,11 @@ module Teamlab
     # region Tasks
 
     def get_my_tasks
-      @request.get(%w(task @self))
+      @request.get(%w[task @self])
     end
 
     def get_task_by_filter(options = {})
-      @request.get(%w(task filter), options)
+      @request.get(%w[task filter], options)
     end
 
     def get_task(id)
@@ -400,7 +400,7 @@ module Teamlab
     # region Tags
 
     def get_project_tags
-      @request.get(%w(tag))
+      @request.get(%w[tag])
     end
 
     def get_project_by_tag(tag)
@@ -408,17 +408,17 @@ module Teamlab
     end
 
     def get_tags_by_name(tag_name)
-      @request.get(%w(tag search), tagName: tag_name)
+      @request.get(%w[tag search], tagName: tag_name)
     end
 
     # endregion
 
     def get_upcoming_milestones
-      @request.get(%w(milestone))
+      @request.get(%w[milestone])
     end
 
     def get_overdue_milestones
-      @request.get(%w(milestone late))
+      @request.get(%w[milestone late])
     end
 
     def get_milestone(id)
@@ -426,7 +426,7 @@ module Teamlab
     end
 
     def get_milestones_by_filter(options = {})
-      @request.get(%w(milestone filter), options)
+      @request.get(%w[milestone filter], options)
     end
 
     def get_milestone_tasks(id)
@@ -454,11 +454,11 @@ module Teamlab
     end
 
     def get_time_spent_by_filter(options = {})
-      @request.get(%w(time filter), options)
+      @request.get(%w[time filter], options)
     end
 
     def get_total_time_spent_by_filter(options = {})
-      @request.get(%w(time filter total), options)
+      @request.get(%w[time filter total], options)
     end
 
     def get_time_spent(task_id)
@@ -474,11 +474,11 @@ module Teamlab
     end
 
     def update_time_status_of_payment(time_ids, status)
-      @request.put(%w(time times status), timeids: time_ids, status: status)
+      @request.put(%w[time times status], timeids: time_ids, status: status)
     end
 
     def delete_time_spents(*time_ids)
-      @request.delete(%w(time times remove), timeIds: time_ids.flatten)
+      @request.delete(%w[time times remove], timeIds: time_ids.flatten)
     end
   end
 end

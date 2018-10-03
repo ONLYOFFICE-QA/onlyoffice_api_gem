@@ -17,7 +17,7 @@ describe '[Files]' do
       let(:command) { :get_my_files }
       let(:add_data_to_collector) { true }
       let(:data_param) { :my_documents_ids }
-      let(:param_names) { %w(current id) }
+      let(:param_names) { %w[current id] }
     end
   end
 
@@ -35,7 +35,7 @@ describe '[Files]' do
       let(:command) { :get_trash }
       let(:add_data_to_collector) { true }
       let(:data_param) { :trash_documents_ids }
-      let(:param_names) { %w(current id) }
+      let(:param_names) { %w[current id] }
     end
   end
 
@@ -44,7 +44,7 @@ describe '[Files]' do
       let(:command) { :get_shared_docs }
       let(:add_data_to_collector) { true }
       let(:data_param) { :shared_documents_ids }
-      let(:param_names) { %w(current id) }
+      let(:param_names) { %w[current id] }
     end
   end
 
@@ -53,7 +53,7 @@ describe '[Files]' do
       let(:command) { :get_common_docs }
       let(:add_data_to_collector) { true }
       let(:data_param) { :common_documents_ids }
-      let(:param_names) { %w(current id) }
+      let(:param_names) { %w[current id] }
     end
   end
 
@@ -63,7 +63,7 @@ describe '[Files]' do
       let(:args) { [random_id(:my_documents), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :new_folder_ids }
-      let(:param_names) { %w(current id) }
+      let(:param_names) { %w[current id] }
     end
   end
 
@@ -94,7 +94,7 @@ describe '[Files]' do
       let(:args) { [random_id(:new_folder), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :new_file_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -325,7 +325,7 @@ describe '[Files]' do
 
   describe '#check_overwrite' do
     it_should_behave_like 'an api request' do
-      let(:command) { :check_overwrite}
+      let(:command) { :check_overwrite }
       let(:args) { ['true'] }
     end
   end

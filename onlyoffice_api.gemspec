@@ -1,12 +1,11 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'teamlab/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'onlyoffice_api'
   spec.version       = Teamlab::VERSION
-  spec.authors       = %w(ONLYOFFICE rzagudaev shockwavenn DaftTrick)
+  spec.authors       = %w[ONLYOFFICE rzagudaev shockwavenn DaftTrick]
   spec.email         = ['rzagudaev@gmail.com', 'shockwavenn@gmail.com', 'nazarov90@gmail.com']
   spec.description   = 'Ruby Framework to interact with OnlyOffice API 2.0'
   spec.summary       = 'Ruby gem for OnlyOffice. Formerly known as `teamlab`.'
@@ -18,10 +17,10 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'httparty', '~> 0.15.7'
   spec.add_runtime_dependency 'activesupport', '~> 4'
-  spec.add_runtime_dependency 'rspec', '~> 3.3'
   spec.add_runtime_dependency 'httmultiparty', '~> 0.3.16'
+  spec.add_runtime_dependency 'httparty', '~> 0.15.7'
+  spec.add_runtime_dependency 'rspec', '~> 3.3'
 
   spec.add_development_dependency 'bundler', '~> 1.3'
   spec.add_development_dependency 'rake', '~> 10.1'

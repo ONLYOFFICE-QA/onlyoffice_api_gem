@@ -18,7 +18,7 @@ describe '[Group]' do
       let(:args) { [false, random_email, random_word.capitalize, random_word.capitalize] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :user_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -34,7 +34,7 @@ describe '[Group]' do
       let(:args) { [random_id(:user), random_word, DATA_COLLECTOR[:user_ids]] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :group_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 

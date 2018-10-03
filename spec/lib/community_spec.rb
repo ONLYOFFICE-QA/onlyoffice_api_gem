@@ -17,7 +17,7 @@ describe '[Community]' do
       let(:args) { [random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :community_post_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -27,7 +27,7 @@ describe '[Community]' do
       let(:args) { [random_id(:community_post), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :community_post_comment_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -37,7 +37,7 @@ describe '[Community]' do
       let(:args) { [SOME_URL, random_word, { tags: [random_word(4), random_word(4), random_word(4)].join(', ') }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :bookmark_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -47,7 +47,7 @@ describe '[Community]' do
       let(:args) { [random_id(:bookmark), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :bookmark_comment_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -57,7 +57,7 @@ describe '[Community]' do
       let(:args) { [random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :event_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -67,7 +67,7 @@ describe '[Community]' do
       let(:args) { [random_word, random_word, { type: 'Poll' }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :poll_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -78,7 +78,7 @@ describe '[Community]' do
       let(:args) { [-1, random_word, random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :thread_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -89,7 +89,7 @@ describe '[Community]' do
       let(:args) { [random_id(:thread), random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :thread_topic_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -100,7 +100,7 @@ describe '[Community]' do
       let(:args) { [DATA_COLLECTOR[:thread_topic_ids].last, random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :topic_post_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -110,7 +110,7 @@ describe '[Community]' do
       let(:args) { [random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :wiki_page_name_ids }
-      let(:param_names) { %w(name) }
+      let(:param_names) { %w[name] }
     end
   end
 
@@ -120,7 +120,7 @@ describe '[Community]' do
       let(:args) { [random_id(:wiki_page_name), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :wiki_page_comment_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -130,7 +130,7 @@ describe '[Community]' do
       let(:args) { [random_id(:wiki_pages_name), FILES_TO_UPLOAD] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :wiki_page_file_name_ids }
-      let(:param_names) { %w(name) }
+      let(:param_names) { %w[name] }
     end
   end
 

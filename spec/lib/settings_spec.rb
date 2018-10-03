@@ -18,7 +18,7 @@ describe '[Settings]' do
       let(:args) { [false, random_email, random_word.capitalize, random_word.capitalize] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :user_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 

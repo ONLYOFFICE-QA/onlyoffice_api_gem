@@ -5,7 +5,7 @@ module Teamlab
     end
 
     def get_default_access
-      @request.get(%w(sharing))
+      @request.get(%w[sharing])
     end
 
     def get_calendar(id)
@@ -13,7 +13,7 @@ module Teamlab
     end
 
     def get_subscription_list
-      @request.get(%w(subscriptions))
+      @request.get(%w[subscriptions])
     end
 
     def get_icalc_link(calendar_id)
@@ -49,7 +49,7 @@ module Teamlab
     end
 
     def create_calendar_by_ical_link(ical_url, name, options = {})
-      @request.post(%w(calendarurl), { iCalUrl: ical_url, name: name }.merge(options))
+      @request.post(%w[calendarurl], { iCalUrl: ical_url, name: name }.merge(options))
     end
 
     def add_event(calendar_id, name, options = {})
@@ -77,7 +77,7 @@ module Teamlab
     end
 
     def manage_subscriptions(states)
-      @request.put(%w(subscriptions manage), states: states)
+      @request.put(%w[subscriptions manage], states: states)
     end
 
     def update_event(calendar_id, event_id, name, options = {})

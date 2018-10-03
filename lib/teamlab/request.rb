@@ -45,6 +45,7 @@ module Teamlab
         raise e
       end
       raise "Error #{response.code}: #{response.error}" unless response.success
+
       response
     end
 
@@ -71,6 +72,7 @@ module Teamlab
     # @return [Hash] options
     def init_proxy(opts)
       return opts unless Teamlab.config.proxy
+
       opts[:http_proxyaddr] ||= Teamlab.config.proxy.proxy_address
       opts[:http_proxyport] ||= Teamlab.config.proxy.proxy_port
       opts[:http_proxyuser] ||= Teamlab.config.proxy.proxy_user

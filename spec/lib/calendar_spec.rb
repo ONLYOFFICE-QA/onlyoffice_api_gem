@@ -17,7 +17,7 @@ describe '[Calendar]' do
       let(:args) { [random_word, TIME_ZONES.sample] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :calendar_ids }
-      let(:param_names) { %w(objectId) }
+      let(:param_names) { %w[objectId] }
     end
   end
 
@@ -28,7 +28,7 @@ describe '[Calendar]' do
       let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1]] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :ical_link_ids }
-      let(:param_names) { %w() }
+      let(:param_names) { %w[] }
     end
   end
 
@@ -38,7 +38,7 @@ describe '[Calendar]' do
       let(:args) { [CALENDAR_WEB_URL, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :calendar_ids }
-      let(:param_names) { %w(objectId) }
+      let(:param_names) { %w[objectId] }
     end
   end
 
@@ -49,7 +49,7 @@ describe '[Calendar]' do
       let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], random_word, { description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :event_ids }
-      let(:param_names) { %w(objectId) }
+      let(:param_names) { %w[objectId] }
     end
   end
 
@@ -60,7 +60,7 @@ describe '[Calendar]' do
       let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], File.open(EVENT_ICS).read, { repeatType: '', alertType: '-1' }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :event_uids }
-      let(:param_names) { %w(uniqueId) }
+      let(:param_names) { %w[uniqueId] }
     end
   end
 

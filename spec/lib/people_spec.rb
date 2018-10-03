@@ -43,7 +43,7 @@ describe '[People]' do
       let(:args) { [random_bool, random_email, random_word.capitalize, random_word.capitalize] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :new_user_ids }
-      let(:param_names) { %w(id) }
+      let(:param_names) { %w[id] }
     end
   end
 
@@ -53,7 +53,7 @@ describe '[People]' do
       let(:args) { [random_id(:new_user)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :emails }
-      let(:param_names) { %w(email) }
+      let(:param_names) { %w[email] }
     end
   end
 

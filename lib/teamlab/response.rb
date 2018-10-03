@@ -11,6 +11,7 @@ module Teamlab
       else
         raise TimeoutError, 'Portal is warming up' if http_response.parsed_response.include?('portal is being warmed')
         raise "Error #{@code}\n#{err_msg}" if @code >= 400
+
         @body = http_response.respond_to?(:parsed_response) && http_response.parsed_response.key?('result') ? http_response.parsed_response['result'] : http_response.to_hash
         @error = @body['error']['message'] if @body.key?('error') && @body['error'].key?('message')
       end
