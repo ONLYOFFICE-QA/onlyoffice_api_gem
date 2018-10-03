@@ -164,9 +164,9 @@ module Teamlab
     end
 
     def create_invoice(number, issue_date, client_id, due_date, language, currency, exchange_rate, terms, invoice_line, options)
-      @request.post(%w(invoice), {number: number, issueDate: issue_date, contactId: client_id, dueDate: due_date,
-                                  language: language, currency: currency, exchangeRate: exchange_rate, terms: terms,
-                                  invoiceLines: invoice_line}.merge(options))
+      @request.post(%w(invoice), { number: number, issueDate: issue_date, contactId: client_id, dueDate: due_date,
+                                   language: language, currency: currency, exchangeRate: exchange_rate, terms: terms,
+                                   invoiceLines: invoice_line }.merge(options))
     end
 
     def create_invoice_line(invoice_id, options = {})
@@ -222,7 +222,7 @@ module Teamlab
     end
 
     def update_crm_currency(currency)
-      @request.put(%w(settings currency), {currency: currency})
+      @request.put(%w(settings currency), { currency: currency })
     end
 
     def update_task(task_id, title, deadline, category_id, options = {})
@@ -264,11 +264,11 @@ module Teamlab
     end
 
     def update_organisation_company_name(title)
-      @request.put(%w(settings organisation base), {companyName: title})
+      @request.put(%w(settings organisation base), { companyName: title })
     end
 
     def update_organisation_address(text)
-      @request.put(%w(settings organisation address), {companyAddress: text})
+      @request.put(%w(settings organisation address), { companyAddress: text })
     end
 
     def update_statuses_contact_order(options = {})
