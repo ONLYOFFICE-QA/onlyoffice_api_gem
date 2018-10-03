@@ -222,7 +222,7 @@ module Teamlab
     end
 
     def update_crm_currency(currency)
-      @request.put(%w(settings currency), { currency: currency })
+      @request.put(%w(settings currency), currency: currency)
     end
 
     def update_task(task_id, title, deadline, category_id, options = {})
@@ -264,11 +264,11 @@ module Teamlab
     end
 
     def update_organisation_company_name(title)
-      @request.put(%w(settings organisation base), { companyName: title })
+      @request.put(%w(settings organisation base), companyName: title)
     end
 
     def update_organisation_address(text)
-      @request.put(%w(settings organisation address), { companyAddress: text })
+      @request.put(%w(settings organisation address), companyAddress: text)
     end
 
     def update_statuses_contact_order(options = {})
@@ -806,7 +806,7 @@ module Teamlab
     end
 
     def set_currency_rate(from = 'EUR', to = 'USD', rate = '1.0')
-      @request.post(['currency', 'rates'], { fromCurrency: from, toCurrency: to, rate: rate })
+      @request.post(['currency', 'rates'], fromCurrency: from, toCurrency: to, rate: rate)
     end
 
     def get_currency_rate_by_id(id)
