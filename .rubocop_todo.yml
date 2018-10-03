@@ -94,13 +94,6 @@ Style/Documentation:
     - 'lib/teamlab/request.rb'
     - 'lib/teamlab/response.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-Style/ExpandPathArguments:
-  Exclude:
-    - 'onlyoffice_api.gemspec'
-    - 'spec/support/http_data.rb'
-
 # Offense count: 4
 # Cop supports --auto-correct.
 Style/MutableConstant:
