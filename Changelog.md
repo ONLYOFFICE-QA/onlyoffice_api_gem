@@ -8,6 +8,7 @@
 * Add `GLOBAL_ADMIN_ID` constant to `Settings`
 * Add support of `Teamlab.configure#proxy` - `Net::HTTP::Proxy` object
 * Add `create_new_if_exists` option to `Files#insert_to_my_docs` 
+* Add `Settings#get_version_build` request
 
 ## 0.6
 ### New features
