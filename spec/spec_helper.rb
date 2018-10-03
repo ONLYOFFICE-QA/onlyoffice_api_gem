@@ -1,3 +1,10 @@
+if ENV['CI'] == 'true'
+  require 'simplecov'
+  SimpleCov.start
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end
+
 require 'rspec'
 require 'onlyoffice_api'
 require_relative 'support/http_data'
