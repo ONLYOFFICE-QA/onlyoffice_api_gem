@@ -531,12 +531,12 @@ describe '[CRM]' do
     end
   end
 
- describe '#update_organisation_company_name' do
-   it_should_behave_like 'an api request' do
-     let(:command) { :update_organisation_company_name }
-     let(:args) { [random_word] }
-   end
- end
+  describe '#update_organisation_company_name' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_organisation_company_name }
+      let(:args) { [random_word] }
+    end
+  end
 
   describe '#update_organisation_address' do
     it_should_behave_like 'an api request' do
