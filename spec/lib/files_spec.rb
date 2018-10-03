@@ -325,7 +325,7 @@ describe '[Files]' do
 
   describe '#check_overwrite' do
     it_should_behave_like 'an api request' do
-      let(:command) { :check_overwrite}
+      let(:command) { :check_overwrite }
       let(:args) { ['true'] }
     end
   end
