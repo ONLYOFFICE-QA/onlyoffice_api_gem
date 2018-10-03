@@ -59,6 +59,12 @@ describe '[Settings]' do
     end
   end
 
+  describe '#get_version_build' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_version_build }
+    end
+  end
+
   describe '#get_white_label_sizes' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_white_label_sizes }

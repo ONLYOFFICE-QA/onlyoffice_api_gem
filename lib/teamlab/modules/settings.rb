@@ -31,6 +31,10 @@ module Teamlab
       @request.get(%w(version))
     end
 
+    def get_version_build
+      @request.get(%w(version build))
+    end
+
     def get_security(ids = [])
       @request.get(%w(security), ids: ids)
     end
