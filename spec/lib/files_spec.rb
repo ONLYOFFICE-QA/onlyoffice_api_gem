@@ -63,7 +63,7 @@ describe '[Files]' do
       let(:args) { [random_id(:my_documents), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :new_folder_ids }
-      let(:param_names) { %w[current id] }
+      let(:param_names) { %w[id] }
     end
   end
 
