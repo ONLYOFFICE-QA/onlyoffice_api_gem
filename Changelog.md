@@ -9,6 +9,7 @@
 * Add support of `Teamlab.configure#proxy` - `Net::HTTP::Proxy` object
 * Add `create_new_if_exists` option to `Files#insert_to_my_docs` 
 * Add `Settings#get_version_build` request
+* `Crm#create_opportunity` set requred argument `bidCurrencyAbbr`
 
 ## 0.6
 ### New features
