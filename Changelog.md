@@ -1,6 +1,9 @@
 # Change log
 
 ## master (unreleased)
+
+### New features
+
 * [#36](https://github.com/ONLYOFFICE/onlyoffice_api_gem/pull/36): Refactoring Response class. Add new calendar methods.
 * [#34](https://github.com/ONLYOFFICE/onlyoffice_api_gem/pull/34), [#35](https://github.com/ONLYOFFICE/onlyoffice_api_gem/pull/35):
  Ignore empty arrays as request params.
@@ -9,6 +12,9 @@
 * Add support of `Teamlab.configure#proxy` - `Net::HTTP::Proxy` object
 * Add `create_new_if_exists` option to `Files#insert_to_my_docs` 
 * Add `Settings#get_version_build` request
+
+### Fixes
+
 * `Crm#create_opportunity` set requred argument `bidCurrencyAbbr`
 
 ## 0.6
