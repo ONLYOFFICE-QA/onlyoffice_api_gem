@@ -16,6 +16,7 @@
 ### Fixes
 
 * `Crm#create_opportunity` set requred argument `bidCurrencyAbbr`
+* Remove non-existing method `Crm#group_contact_info`, `Crm#group_contact_info_update`
 
 ## 0.6
 ### New features
