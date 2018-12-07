@@ -25,7 +25,10 @@ def add_data_to_collector
 end
 
 def random_id(param)
-  DATA_COLLECTOR["#{param}_ids".to_sym].sample
+  data_name = "#{param}_ids".to_sym
+  raise "No data for `#{data_name}` is found in DATA_COLLECTOR" unless DATA_COLLECTOR.key?(data_name)
+
+  DATA_COLLECTOR[data_name].sample
 end
 
 def random_settings_entity_id
