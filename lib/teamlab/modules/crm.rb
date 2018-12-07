@@ -38,6 +38,7 @@ module Teamlab
     end
 
     def create_opportunity(stage_id, title, responsible_id, options = {})
+      options[:bidCurrencyAbbr] ||= 'USD'
       @request.post(%w[opportunity], { stageId: stage_id, title: title, responsibleid: responsible_id }.merge(options))
     end
 
