@@ -735,7 +735,6 @@ describe '[CRM]' do
 
   describe '#get_contact_upcoming_tasks' do
     it_should_behave_like 'an api request' do
-      # pending 'http://bugzserver/show_bug.cgi?id=23925'
       let(:command) { :get_contact_upcoming_tasks }
       let(:args) { [random_id(:new_contact)] }
     end
