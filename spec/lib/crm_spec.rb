@@ -385,7 +385,6 @@ describe '[CRM]' do
 
   describe '#update_opportunity_stage' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23884'
       let(:command) { :update_opportunity_stage }
       let(:args) { [random_id(:opportunity_stage), random_word, COLORS_NAMES.sample] }
     end
