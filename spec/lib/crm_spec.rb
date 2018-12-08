@@ -371,9 +371,8 @@ describe '[CRM]' do
 
   describe '#get_summary_table' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23883'
       let(:command) { :get_summary_table }
-      let(:args) { [random_word] }
+      let(:args) { [CURRENCY.sample] }
     end
   end
 
