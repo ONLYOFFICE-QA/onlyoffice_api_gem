@@ -918,14 +918,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#update_contact_address' do
-    it_should_behave_like 'an api request' do
-      pending('http://bugzserver/show_bug.cgi?id=24002')
-      let(:command) { :update_contact_address }
-      let(:args) { [random_id(:new_contact), random_id(:contact_address), random_word] }
-    end
-  end
-
   describe '#get_root_folder_id' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_root_folder_id }
