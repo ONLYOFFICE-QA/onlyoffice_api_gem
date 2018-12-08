@@ -854,14 +854,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#group_contact_info' do
-    it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23988'
-      let(:command) { :group_contact_info }
-      let(:args) { [[random_id(:new_contact), CONTACT_INFO_TYPES.sample]] }
-    end
-  end
-
   describe '#quick_company_list_creation' do
     it_should_behave_like 'an api request' do
       let(:command) { :quick_company_list_creation }
@@ -877,14 +869,6 @@ describe '[CRM]' do
       let(:add_data_to_collector) { true }
       let(:data_param) { :contact_address_ids }
       let(:param_names) { %w[] }
-    end
-  end
-
-  describe '#group_contact_info_update' do
-    it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23988'
-      let(:command) { :group_contact_info_update }
-      let(:args) { [[random_id(:new_contact), CONTACT_INFO_TYPES.sample]] }
     end
   end
 

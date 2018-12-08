@@ -480,10 +480,6 @@ module Teamlab
       @request.get(['contact', contact_id.to_s, 'data', info_type.to_s])
     end
 
-    def group_contact_info(*items)
-      @request.post(%w[contact data], items: items.flatten)
-    end
-
     def quick_person_list_creation(data)
       @request.post(%w[contact person quick], data: data)
     end
@@ -516,10 +512,6 @@ module Teamlab
       @request.put(%w[contact], contactids: contact_ids.flatten)
     end
     alias delete_contacts_bulk delete_contact_group
-
-    def group_contact_info_update(*items)
-      @request.put(%w[contact data], items: items.flatten)
-    end
 
     def merge_contacts(from_contact_id, to_contact_id)
       @request.put(%w[contact merge], fromcontactid: from_contact_id, tocontactid: to_contact_id)
