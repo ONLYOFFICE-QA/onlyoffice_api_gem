@@ -1248,7 +1248,6 @@ describe '[CRM]' do
 
   describe '#delete_batch_invoices' do
     it_should_behave_like 'an api request' do
-      # pending 'http://bugzserver/show_bug.cgi?id=23886'
       let(:command) { :delete_batch_invoices }
       let(:args) { [DATA_COLLECTOR[:invoice_ids].pop, DATA_COLLECTOR[:invoice_ids].pop] }
     end
