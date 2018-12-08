@@ -34,7 +34,7 @@ module Teamlab
     end
 
     def get_summary_table(currency)
-      @request.get(['settings', 'currency', currency.to_s, 'summarytable'])
+      @request.get(%w[settings currency summarytable], currency: currency)
     end
 
     def create_opportunity(stage_id, title, responsible_id, options = {})
