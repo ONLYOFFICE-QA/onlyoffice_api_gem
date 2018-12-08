@@ -1262,7 +1262,6 @@ describe '[CRM]' do
 
   describe '#delete_batch_contacts_by_filter' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23902'
       let(:command) { :delete_batch_contacts_by_filter }
       let(:args) { [{ tags: [random_word(4)] }] }
     end
