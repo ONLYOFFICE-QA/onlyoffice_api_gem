@@ -541,10 +541,6 @@ module Teamlab
       @request.put(['contact', contact_id.to_s, 'changephotobyurl'], photourl: photo_url)
     end
 
-    def update_contact_address(contact_id, information_id, address, options = {})
-      @request.put(['contact', contact_id.to_s, 'data', 'address', information_id.to_s], { address: address }.merge(options))
-    end
-
     def delete_contact(id)
       @request.delete(['contact', id.to_s])
     end

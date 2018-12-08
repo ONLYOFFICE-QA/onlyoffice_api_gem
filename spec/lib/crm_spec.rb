@@ -385,7 +385,6 @@ describe '[CRM]' do
 
   describe '#update_opportunity_stage' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23884'
       let(:command) { :update_opportunity_stage }
       let(:args) { [random_id(:opportunity_stage), random_word, COLORS_NAMES.sample] }
     end
@@ -736,7 +735,6 @@ describe '[CRM]' do
 
   describe '#get_contact_upcoming_tasks' do
     it_should_behave_like 'an api request' do
-      # pending 'http://bugzserver/show_bug.cgi?id=23925'
       let(:command) { :get_contact_upcoming_tasks }
       let(:args) { [random_id(:new_contact)] }
     end
@@ -917,14 +915,6 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :change_contact_photo_by_url }
       let(:args) { [random_id(:new_contact), IMAGE_URL] }
-    end
-  end
-
-  describe '#update_contact_address' do
-    it_should_behave_like 'an api request' do
-      pending('http://bugzserver/show_bug.cgi?id=24002')
-      let(:command) { :update_contact_address }
-      let(:args) { [random_id(:new_contact), random_id(:contact_address), random_word] }
     end
   end
 
@@ -1258,7 +1248,6 @@ describe '[CRM]' do
 
   describe '#delete_batch_invoices' do
     it_should_behave_like 'an api request' do
-      # pending 'http://bugzserver/show_bug.cgi?id=23886'
       let(:command) { :delete_batch_invoices }
       let(:args) { [DATA_COLLECTOR[:invoice_ids].pop, DATA_COLLECTOR[:invoice_ids].pop] }
     end
@@ -1273,7 +1262,6 @@ describe '[CRM]' do
 
   describe '#delete_batch_contacts_by_filter' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23902'
       let(:command) { :delete_batch_contacts_by_filter }
       let(:args) { [{ tags: [random_word(4)] }] }
     end
