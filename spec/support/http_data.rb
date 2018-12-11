@@ -27,6 +27,7 @@ end
 def random_id(param)
   data_name = "#{param}_ids".to_sym
   raise "No data for `#{data_name}` is found in DATA_COLLECTOR" unless DATA_COLLECTOR.key?(data_name)
+  raise "Data DATA_COLLECTOR['#{param}'] is empty!" if DATA_COLLECTOR[data_name].empty?
 
   DATA_COLLECTOR[data_name].sample
 end
