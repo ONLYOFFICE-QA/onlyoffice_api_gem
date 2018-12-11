@@ -733,13 +733,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#get_contact_upcoming_tasks' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_contact_upcoming_tasks }
-      let(:args) { [random_id(:new_contact)] }
-    end
-  end
-
   describe '#close_task' do
     it_should_behave_like 'an api request' do
       let(:command) { :close_task }
