@@ -32,10 +32,6 @@ module Teamlab
       @request.get(['@search', query])
     end
 
-    def remind_password(user_id, email)
-      @request.get([user_id, 'password'], email: email)
-    end
-
     def search_with_status(status, query)
       @request.get(['status', status.to_s, 'search'], query: query.to_s)
     end

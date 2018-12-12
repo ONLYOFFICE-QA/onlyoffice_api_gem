@@ -20,6 +20,7 @@
 * Fix `Crm#get_summary_table` request
 * Fix `Settings#get_sso_settings` request
 * Remove non-existing method `Crm#update_contact_address`
+* Remove non-existing method `People#remind_password`
 
 ## 0.6
 ### New features
