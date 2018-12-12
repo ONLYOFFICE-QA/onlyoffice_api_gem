@@ -19,6 +19,7 @@
 * Remove non-existing method `Crm#group_contact_info`, `Crm#group_contact_info_update`
 * Fix `Crm#get_summary_table` request
 * Fix `Settings#get_sso_settings` request
+* Remove non-existing method `Crm#add_contact_address`
 * Remove non-existing method `Crm#update_contact_address`
 * Remove non-existing method `People#remind_password`
 

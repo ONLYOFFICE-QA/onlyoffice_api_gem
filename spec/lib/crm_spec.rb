@@ -851,17 +851,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#add_contact_address' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :add_contact_address }
-      i = -1
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i += 1], random_info_category('Address'), random_word] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :contact_address_ids }
-      let(:param_names) { %w[] }
-    end
-  end
-
   describe '#merge_contacts' do
     it_should_behave_like 'an api request' do
       let(:command) { :merge_contacts }
