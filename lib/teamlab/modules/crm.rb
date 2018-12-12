@@ -412,10 +412,6 @@ module Teamlab
       @request.post(%w[task category], { title: title.to_s, imageName: image_name.to_s }.merge(options))
     end
 
-    def get_contact_upcoming_tasks(*contact_ids)
-      @request.post(%w[contact task near], contactid: contact_ids.flatten)
-    end
-
     def update_task_category(category_id, title, options = {})
       @request.put(['task', 'category', category_id.to_s], { title: title }.merge(options))
     end
