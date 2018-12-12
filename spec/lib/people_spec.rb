@@ -1,14 +1,6 @@
 require_relative '../spec_helper'
 
 describe '[People]' do
-  before :all do
-    Teamlab.configure do |config|
-      config.server = SERVER
-      config.username = USERNAME
-      config.password = PASSWORD
-    end
-  end
-
   let(:teamlab_module) { :people }
 
   describe '#get_people' do

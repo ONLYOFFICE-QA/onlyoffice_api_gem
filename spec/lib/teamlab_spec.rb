@@ -1,14 +1,6 @@
 require_relative '../spec_helper'
 
 describe Teamlab do
-  before :all do
-    Teamlab.configure do |config|
-      config.server = SERVER
-      config.username = USERNAME
-      config.password = PASSWORD
-    end
-  end
-
   describe 'Preparing enviroment' do
     describe '#add_user' do
       it_should_behave_like 'an api request' do

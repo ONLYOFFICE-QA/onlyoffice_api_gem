@@ -3,14 +3,6 @@ require_relative '../spec_helper'
 describe '[Mail]' do
   let(:teamlab_module) { :mail }
 
-  before :all do
-    Teamlab.configure do |config|
-      config.server = SERVER
-      config.username = USERNAME
-      config.password = PASSWORD
-    end
-  end
-
   describe '#create_tag' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_tag }

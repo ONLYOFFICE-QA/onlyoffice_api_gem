@@ -9,6 +9,16 @@ require 'rspec'
 require 'onlyoffice_api'
 require_relative 'support/http_data'
 
+def configure_test_portal
+  Teamlab.configure do |config|
+    config.server = SERVER
+    config.username = USERNAME
+    config.password = PASSWORD
+  end
+end
+
+RSpec.configure { |c| c.before(:all) { configure_test_portal } }
+
 shared_examples_for 'an api request' do |*flags|
   before { pending } if flags.include?(:pending)
   before do

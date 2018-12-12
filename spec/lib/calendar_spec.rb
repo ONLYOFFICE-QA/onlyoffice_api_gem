@@ -3,14 +3,6 @@ require 'spec_helper'
 describe '[Calendar]' do
   let(:teamlab_module) { :calendar }
 
-  before :all do
-    Teamlab.configure do |config|
-      config.server = SERVER
-      config.username = USERNAME
-      config.password = PASSWORD
-    end
-  end
-
   describe '#create_calendar' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_calendar }
