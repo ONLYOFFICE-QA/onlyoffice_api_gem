@@ -12,7 +12,7 @@ module Teamlab
     end
 
     def get_sso_settings
-      @request.get(%w[SSO])
+      @request.get(%w[ssov2])
     end
 
     def get_ldap_settings
