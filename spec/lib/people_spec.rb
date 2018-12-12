@@ -71,13 +71,6 @@ describe '[People]' do
     end
   end
 
-  describe '#remind_password' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :remind_password }
-      let(:args) { [DATA_COLLECTOR[:new_user_ids].first, DATA_COLLECTOR[:emails].pop] }
-    end
-  end
-
   describe '#search_with_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :search_with_status }
