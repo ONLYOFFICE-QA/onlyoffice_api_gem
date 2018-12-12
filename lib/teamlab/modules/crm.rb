@@ -500,10 +500,6 @@ module Teamlab
       @request.post(['contact', contact_id.to_s, 'project', project_id.to_s])
     end
 
-    def add_contact_address(contact_id, category, address, options = {})
-      @request.post(['contact', contact_id.to_s, 'data', 'address', category.to_s], { address: address.to_s }.merge(options))
-    end
-
     def delete_contact_group(*contact_ids)
       @request.put(%w[contact], contactids: contact_ids.flatten)
     end
