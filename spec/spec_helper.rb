@@ -7,6 +7,7 @@ end
 
 require 'rspec'
 require 'onlyoffice_api'
+require_relative 'spec_helper/portal_cleanup'
 require_relative 'support/http_data'
 
 def configure_test_portal
@@ -15,9 +16,14 @@ def configure_test_portal
     config.username = USERNAME
     config.password = PASSWORD
   end
+
+  reset_portal
 end
 
-RSpec.configure { |c| c.before(:all) { configure_test_portal } }
+RSpec.configure do |c|
+  c.include PortalCleanup
+  c.before(:all) { configure_test_portal }
+end
 
 shared_examples_for 'an api request' do |*flags|
   before { pending } if flags.include?(:pending)
