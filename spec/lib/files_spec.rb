@@ -1,14 +1,6 @@
 require_relative '../spec_helper'
 
 describe '[Files]' do
-  before :all do
-    Teamlab.configure do |config|
-      config.server = SERVER
-      config.username = USERNAME
-      config.password = PASSWORD
-    end
-  end
-
   let(:teamlab_module) { :files }
 
   describe '#get_my_files' do
