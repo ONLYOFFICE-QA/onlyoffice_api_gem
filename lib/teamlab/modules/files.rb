@@ -19,7 +19,7 @@ module Teamlab
     end
 
     def create_html_in_common_docs(title, content)
-      @request.post(%w[common html], title: title.to_s, content: content.to_s)
+      @request.post(%w[@common html], title: title.to_s, content: content.to_s)
     end
 
     def create_txt(folder_id, title, content)
