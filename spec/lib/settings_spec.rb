@@ -21,7 +21,8 @@ describe '[Settings]' do
   end
 
   describe '#get_sso_settings' do
-    it_should_behave_like 'an api request' do
+    it_should_behave_like 'an api request', :pending do
+      pending 'only for self-hosted, error 500 when running on saas portal'
       let(:command) { :get_sso_settings }
     end
   end
