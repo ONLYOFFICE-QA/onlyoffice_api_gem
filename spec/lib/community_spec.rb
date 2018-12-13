@@ -119,7 +119,7 @@ describe '[Community]' do
   describe '#upload_files' do
     it_should_behave_like 'an api request' do
       let(:command) { :upload_files }
-      let(:args) { [random_id(:wiki_pages_name), FILES_TO_UPLOAD] }
+      let(:args) { [FILE_FOR_UPLOAD] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :wiki_page_file_name_ids }
       let(:param_names) { %w[name] }
