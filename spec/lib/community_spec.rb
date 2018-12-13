@@ -65,7 +65,6 @@ describe '[Community]' do
 
   describe '#add_thread_to_category' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24054'
       let(:command) { :add_thread_to_category }
       let(:args) { [-1, random_word, random_word, random_word] }
       let(:add_data_to_collector) { true }
@@ -76,7 +75,6 @@ describe '[Community]' do
 
   describe '#add_topic_to_thread' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24054'
       let(:command) { :add_topic_to_thread }
       let(:args) { [random_id(:thread), random_word, random_word] }
       let(:add_data_to_collector) { true }
@@ -87,7 +85,6 @@ describe '[Community]' do
 
   describe '#add_post_to_topic' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24054'
       let(:command) { :add_post_to_topic }
       let(:args) { [DATA_COLLECTOR[:thread_topic_ids].last, random_word, random_word] }
       let(:add_data_to_collector) { true }
@@ -323,7 +320,6 @@ describe '[Community]' do
 
   describe '#get_thread_topics' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24054'
       let(:command) { :get_thread_topics }
       let(:args) { [random_id(:thread)] }
     end
@@ -337,7 +333,6 @@ describe '[Community]' do
 
   describe '#get_posts' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24054'
       let(:command) { :get_posts }
       let(:args) { [random_id(:thread_topic)] }
     end
@@ -352,15 +347,13 @@ describe '[Community]' do
 
   describe '#update_topic_in_thread' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24054'
       let(:command) { :update_topic_in_thread }
-      let(:args) { [random_id(:thread_topic), random_word, random_word] }
+      let(:args) { [random_id(:thread_topic), random_word] }
     end
   end
 
   describe '#update_post_in_topic' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24054'
       let(:command) { :update_post_in_topic }
       let(:args) { [DATA_COLLECTOR[:thread_topic_ids].last, random_id(:topic_post)] }
     end
@@ -437,7 +430,6 @@ describe '[Community]' do
 
   describe '#delete_post_in_topic' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24054'
       let(:command) { :delete_post_in_topic }
       let(:args) { [DATA_COLLECTOR[:thread_topic_ids].last, DATA_COLLECTOR[:topic_post_ids].pop] }
     end
