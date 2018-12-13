@@ -227,7 +227,7 @@ module Teamlab
     end
 
     def update_wiki_page_comment(comment_id, body)
-      @request.put(['wiki', 'comment', comment_id.to_s], body: body)
+      @request.put(['wiki', 'comment', comment_id.to_s], content: body)
     end
 
     def delete_wiki_page(name)
