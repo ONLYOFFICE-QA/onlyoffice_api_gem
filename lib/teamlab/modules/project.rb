@@ -184,7 +184,7 @@ module Teamlab
     end
 
     def get_template(template_id)
-      @request.get([template_id.to_s])
+      @request.get(['template', template_id.to_s])
     end
 
     def get_milestones(project_id)
