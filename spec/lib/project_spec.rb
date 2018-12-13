@@ -358,7 +358,6 @@ describe '[Project]' do
 
   describe '#get_template' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23875'
       let(:command) { :get_template }
       let(:args) { [random_id(:project_template)] }
     end
