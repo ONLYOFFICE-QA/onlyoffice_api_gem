@@ -3,6 +3,16 @@ require_relative '../spec_helper'
 describe '[Community]' do
   let(:teamlab_module) { :community }
 
+  describe '#get_self' do
+    it_should_behave_like 'an api request' do
+      let(:teamlab_module) { :people }
+      let(:command) { :get_self }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :self_username }
+      let(:param_names) { %w[userName] }
+    end
+  end
+
   describe '#create_project' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_post }
