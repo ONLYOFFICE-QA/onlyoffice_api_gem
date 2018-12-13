@@ -170,7 +170,7 @@ describe '[Project]' do
   describe '#add_message_comment' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_message_comment }
-      let(:args) { [random_id(:project_task), random_word] }
+      let(:args) { [random_id(:discussion), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :comment_ids }
       let(:param_names) { %w[id] }
