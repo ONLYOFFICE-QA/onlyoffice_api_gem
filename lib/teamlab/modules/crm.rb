@@ -655,8 +655,9 @@ module Teamlab
 
     #=========================================== TODO: OPTIONAL VARIABLES =====================================================
 
-    def create_task_template(container_id, title, options = {})
-      @request.post(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], { title: title }.merge(options))
+    def create_task_template(container_id, title, category_id, options = {})
+      @request.post(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'],
+                    { title: title, categoryid: category_id }.merge(options))
     end
 
     def update_task_template_container(container_id, title)

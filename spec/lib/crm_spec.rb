@@ -258,7 +258,7 @@ describe '[CRM]' do
   describe '#create_task_template' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_task_template }
-      let(:args) { [DATA_COLLECTOR[:task_template_container_ids].last, random_word] }
+      let(:args) { [DATA_COLLECTOR[:task_template_container_ids].last, random_word, random_id(:crm_task_category)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :task_template_ids }
       let(:param_names) { %w[id] }
