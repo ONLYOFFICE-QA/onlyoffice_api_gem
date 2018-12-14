@@ -28,6 +28,7 @@ end
 
 shared_examples_for 'an api request' do |*flags|
   before { pending } if flags.include?(:pending)
+  before { skip } if flags.include?(:skip)
   before do
     if RequestHelper.current_responce.nil?
       @module = Teamlab.send(teamlab_module)
