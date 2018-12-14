@@ -100,7 +100,7 @@ describe '[CRM]' do
   describe '#create_invoice_line' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_invoice_line }
-      let(:args) { [random_id(:invoice)] }
+      let(:args) { [random_id(:invoice), random_id(:invoice_item)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_line_ids }
       let(:param_names) { %w[id] }

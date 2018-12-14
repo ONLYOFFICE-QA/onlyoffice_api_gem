@@ -170,8 +170,8 @@ module Teamlab
                                    invoiceLines: invoice_line }.merge(options))
     end
 
-    def create_invoice_line(invoice_id, options = {})
-      @request.post(%w[invoiceline], { invoiceId: invoice_id }.merge(options))
+    def create_invoice_line(invoice_id, invoice_item_id, options = {})
+      @request.post(%w[invoiceline], { invoiceId: invoice_id, invoiceItemId: invoice_item_id }.merge(options))
     end
 
     def create_invoice_item(title, description, price, stock_keeping_unit, options = {})
