@@ -783,7 +783,7 @@ describe '[CRM]' do
   describe '#link_contact_with_project' do
     it_should_behave_like 'an api request' do
       let(:command) { :link_contact_with_project }
-      let(:args) { [random_id(:project), random_id(:new_contact)] }
+      let(:args) { [random_id(:new_contact), random_id(:project)] }
     end
   end
 
