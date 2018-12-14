@@ -18,6 +18,7 @@
 * `Crm#create_opportunity` set requred argument `bidCurrencyAbbr`
 * Remove non-existing method `Crm#group_contact_info`, `Crm#group_contact_info_update`
 * Fix `Crm#get_summary_table` request
+* Fix `Crm#create_invoice_line` request
 * Fix `Settings#get_sso_settings` request
 * Fix `Community#update_wiki_page_comment` request
 * Fix `Files#create_html_in_common_docs` request
