@@ -998,7 +998,7 @@ describe '[CRM]' do
   describe '#get_task_template_container' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_task_template_container }
-      let(:args) { [ENTITY_TYPES.sample.sub('company', 'contact'), random_id(:task_template_container_title)] }
+      let(:args) { [random_id(:task_template_container)] }
     end
   end
 
