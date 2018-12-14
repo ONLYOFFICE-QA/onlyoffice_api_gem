@@ -67,21 +67,20 @@ describe '[CRM]' do
     end
   end
 
-  describe '#create_invoice' do
+  describe '#create_invoice_item' do
     it_should_behave_like 'an api request' do
-      let(:command) { :create_invoice }
-      let(:args) { [random_word, DUE_DATE, random_id(:user), DUE_DATE, LANGUAGE.sample, CURRENCY.sample, rand(1000), random_word, random_id(:invoice_line)] }
+      let(:command) { :create_invoice_item }
+      let(:args) { [random_word, random_word, rand, random_word] }
       let(:add_data_to_collector) { true }
-      let(:data_param) { :invoice_ids }
+      let(:data_param) { :invoice_item_ids }
       let(:param_names) { %w[id] }
     end
   end
 
-  describe '#create_invoice_for_batch' do
+  describe '#create_invoice' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23886'
       let(:command) { :create_invoice }
-      let(:args) { [] }
+      let(:args) { [random_word, DUE_DATE, random_id(:new_contact), DUE_DATE, LANGUAGE.sample, CURRENCY.sample, rand(1000), random_word, { invoiceItemID: random_id(:invoice_item) }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_ids }
       let(:param_names) { %w[id] }
@@ -104,16 +103,6 @@ describe '[CRM]' do
       let(:args) { [random_id(:invoice)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_line_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
-  describe '#create_invoice_item' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :create_invoice_item }
-      let(:args) { [random_word, random_word, rand, random_word] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :invoice_item_ids }
       let(:param_names) { %w[id] }
     end
   end

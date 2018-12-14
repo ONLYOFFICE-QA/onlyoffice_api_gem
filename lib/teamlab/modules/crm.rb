@@ -164,7 +164,7 @@ module Teamlab
       @request.post(%w[task], { title: title, deadline: deadline, responsibleId: responsible_id, categoryId: category_id }.merge(options))
     end
 
-    def create_invoice(number, issue_date, client_id, due_date, language, currency, exchange_rate, terms, invoice_line, options)
+    def create_invoice(number, issue_date, client_id, due_date, language, currency, exchange_rate, terms, invoice_line, options = {})
       @request.post(%w[invoice], { number: number, issueDate: issue_date, contactId: client_id, dueDate: due_date,
                                    language: language, currency: currency, exchangeRate: exchange_rate, terms: terms,
                                    invoiceLines: invoice_line }.merge(options))
