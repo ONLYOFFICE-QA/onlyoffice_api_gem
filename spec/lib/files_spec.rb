@@ -275,15 +275,15 @@ describe '[Files]' do
 
   describe '#remove_file_sharing_rights' do
     it_should_behave_like 'an api request' do
-      let(:command) { :remove_file_sharing_rights }
-      let(:args) { [random_id(:new_file), [random_id(:user)]] }
+      let(:command) { :removes_sharing_rights }
+      let(:args) { [fileIds: [random_id(:new_file)]] }
     end
   end
 
   describe '#remove_folder_sharing_rights' do
     it_should_behave_like 'an api request' do
-      let(:command) { :remove_folder_sharing_rights }
-      let(:args) { [random_id(:new_folder), [random_id(:user)]] }
+      let(:command) { :removes_sharing_rights }
+      let(:args) { [folderIds: [random_id(:new_folder)]] }
     end
   end
 
