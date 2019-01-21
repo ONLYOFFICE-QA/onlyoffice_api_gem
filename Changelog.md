@@ -13,6 +13,7 @@
 * Add `create_new_if_exists` option to `Files#insert_to_my_docs` 
 * Add `Settings#get_version_build` request
 * Add `Mail#always_display_images` and `Mail#set_always_display_images` 
+* Add `Crm#get_invoice_item_by_id` request
 
 ### Fixes
 

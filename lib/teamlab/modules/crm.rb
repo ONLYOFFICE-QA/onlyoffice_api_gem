@@ -1,5 +1,8 @@
+require_relative 'crm/crm_invoices'
 module Teamlab
   class Crm
+    include CrmInvoices
+
     def initialize
       @request = Teamlab::Request.new('crm')
     end
