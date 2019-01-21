@@ -3,6 +3,17 @@ require_relative '../spec_helper'
 describe '[Files]' do
   let(:teamlab_module) { :files }
 
+  describe '#add_user' do
+    it_should_behave_like 'an api request' do
+      let(:teamlab_module) { :people }
+      let(:command) { :add_user }
+      let(:args) { [false, random_email, random_word.capitalize, random_word.capitalize] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :user_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
   describe '#get_my_files' do
     it_should_behave_like 'an api request' do
       let(:teamlab_module) { :files }
