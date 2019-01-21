@@ -37,14 +37,14 @@ module Teamlab
       attempts = 0
       begin
         response = Teamlab::Response.new(HTTMultiParty.send(type, url, opts))
-      rescue TimeoutError => timeout_exception
+      rescue Timeout::Error => timeout_exception
         attempts += 1
         retry if attempts < 3
         raise "Can't #{type} to #{url} because of TimeoutError: #{timeout_exception}"
-      rescue Exception => e
+      rescue StandardError => e
         raise e
       end
-      raise "Error #{response.code}: #{response.error}" unless response.success
+      raise("Error #{response.code}: #{response.error}") unless response.success
 
       response
     end
