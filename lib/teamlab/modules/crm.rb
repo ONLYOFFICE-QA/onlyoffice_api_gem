@@ -349,7 +349,7 @@ module Teamlab
     end
 
     def delete_contact_status(contact_status_id)
-      @request.delete('contact', 'status', contact_status_id)
+      @request.delete(['contact', 'status', contact_status_id])
     end
 
     def delete_deal_from_contact(contact_id, opportunity_id)

@@ -25,6 +25,7 @@
 * Fix `Community#update_wiki_page_comment` request
 * Fix `Files#create_html_in_common_docs` request
 * Fix `Project#get_template` request
+* Fix `Crm#delete_contact_status` request
 * Remove non-existing method `Crm#add_contact_address`
 * Remove non-existing method `Crm#update_contact_address`
 * Remove non-existing method `People#remind_password`
