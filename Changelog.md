@@ -12,6 +12,7 @@
 * Add support of `Teamlab.configure#proxy` - `Net::HTTP::Proxy` object
 * Add `create_new_if_exists` option to `Files#insert_to_my_docs` 
 * Add `Settings#get_version_build` request
+* Add `Mail#always_display_images` and `Mail#set_always_display_images` 
 
 ### Fixes
 
