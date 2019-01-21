@@ -88,6 +88,13 @@ describe '[CRM]' do
     end
   end
 
+  describe '#get_invoice_item_by_id' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_invoice_item_by_id }
+      let(:args) { [random_id(:invoice_item)] }
+    end
+  end
+
   describe '#create_invoice' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_invoice }
