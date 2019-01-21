@@ -14,6 +14,7 @@
 * Add `Settings#get_version_build` request
 * Add `Mail#always_display_images` and `Mail#set_always_display_images` 
 * Add `Crm#get_invoice_item_by_id` request
+* Remove usage of `httmultiparty`
 
 ### Fixes
 

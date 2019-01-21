@@ -1,13 +1,11 @@
 require 'net/http'
 require 'json'
 require 'httparty'
-require 'httmultiparty'
 require_relative 'response'
 
 module Teamlab
   class Request
-    # include HTTParty
-    include HTTMultiParty
+    include HTTParty
 
     def initialize(api_additive)
       @api_additive = api_additive.to_s
@@ -36,7 +34,7 @@ module Teamlab
       url = URI.encode(generate_request_url(command))
       attempts = 0
       begin
-        response = Teamlab::Response.new(HTTMultiParty.send(type, url, opts))
+        response = Teamlab::Response.new(HTTParty.send(type, url, opts))
       rescue Timeout::Error => timeout_exception
         attempts += 1
         retry if attempts < 3
@@ -60,10 +58,6 @@ module Teamlab
       opts[:body].delete_if { |_key, value| value == [] }
       opts[:headers] = Teamlab.config.headers
       opts = init_proxy(opts)
-      if opts[:body].key?(:somefile)
-        opts[:query] = opts.delete(:body)
-        opts[:detect_mime_type] = true
-      end
       opts[:query] = opts.delete(:body) if type == :get
       [command, opts]
     end
