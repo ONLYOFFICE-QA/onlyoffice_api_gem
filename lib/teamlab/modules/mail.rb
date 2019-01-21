@@ -1,5 +1,8 @@
+require_relative 'mail/mail_settings'
 module Teamlab
   class Mail
+    include MailSettings
+
     def initialize
       @request = Teamlab::Request.new('mail')
     end
