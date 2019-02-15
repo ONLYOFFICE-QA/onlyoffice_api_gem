@@ -726,7 +726,7 @@ module Teamlab
     end
 
     def delete_case_group(*case_ids)
-      @request.put(%w[case], caseIds: case_ids.flatten)
+      @request.put(%w[case], casesids: case_ids.flatten)
     end
     alias delete_cases_bulk delete_case_group
 
