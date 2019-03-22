@@ -786,4 +786,10 @@ describe '[Project]' do
       let(:args) { [DATA_COLLECTOR[:project_template_ids].pop] }
     end
   end
+
+  describe '#projects_settings' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :projects_settings }
+    end
+  end
 end

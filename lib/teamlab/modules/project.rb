@@ -1,5 +1,8 @@
+require_relative 'projects/projects_settings'
 module Teamlab
   class Project
+    include ProjectsSettings
+
     def initialize
       @request = Teamlab::Request.new('project')
     end
