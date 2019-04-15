@@ -37,6 +37,7 @@
 ### Refactor
 
 * Move development dependencies to `Gemfile`
+* Remove dependency of `activesupport`
 
 ## 0.6
 ### New features
