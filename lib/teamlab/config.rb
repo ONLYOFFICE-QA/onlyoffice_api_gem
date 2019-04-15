@@ -1,4 +1,3 @@
-require 'active_support/configurable'
 require_relative 'request'
 
 module Teamlab
@@ -19,22 +18,20 @@ module Teamlab
   end
 
   class Config
-    include ActiveSupport::Configurable
-
-    config_accessor :server, :api_path, :api_additive, :username, :password, :token, :headers
+    attr_accessor :server, :api_path, :api_additive, :username, :password, :token, :headers
     # @return [Net::HTTP::Proxy] connection proxy
-    config_accessor :proxy
+    attr_accessor :proxy
 
     def initialize
       default_configuration
     end
 
     def default_configuration
-      self.server = 'https://teamlab.com'
-      self.api_path = '/api/2.0/'
-      self.api_additive = ''
-      self.username = 'user'
-      self.password = 'password'
+      @server = 'https://teamlab.com'
+      @api_path = '/api/2.0/'
+      @api_additive = ''
+      @username = 'user'
+      @password = 'password'
     end
   end
 end
