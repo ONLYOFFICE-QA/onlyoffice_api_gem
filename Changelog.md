@@ -34,6 +34,10 @@
 * Remove non-existing method `Crm#update_contact_address`
 * Remove non-existing method `People#remind_password`
 
+### Refactor
+
+* Move development dependencies to `Gemfile`
+
 ## 0.6
 ### New features
 * Support of keepConvertStatus for insert methods (from OnlyOffice > 8.9.1)

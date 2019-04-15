@@ -5,7 +5,10 @@ gemspec
 
 group :test do
   gem 'codecov', require: false
+  gem 'rake'
 end
 
-gem 'overcommit'
-gem 'rubocop', require: false
+group :development do
+  gem 'overcommit', require: false
+  gem 'rubocop', require: false
+end
