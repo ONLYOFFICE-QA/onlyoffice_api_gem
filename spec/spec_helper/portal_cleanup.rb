@@ -3,6 +3,7 @@ module PortalCleanup
   def reset_portal
     reset_modules
     remove_users
+    remove_blog_posts
     remove_bookmarks
   end
 
@@ -21,6 +22,14 @@ module PortalCleanup
 
       Teamlab.people.change_people_status('2', [user['id']])
       Teamlab.people.delete_user(user['id'])
+    end
+  end
+
+  # @return [Void] Remove all blog posts on portal
+  def remove_blog_posts
+    bookmarks = Teamlab.community.get_all_posts.body['response']
+    bookmarks.each do |bookmark|
+      Teamlab.community.delete_post(bookmark['id'])
     end
   end
 
