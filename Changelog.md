@@ -15,6 +15,7 @@
 * Add `Mail#always_display_images` and `Mail#set_always_display_images` 
 * Add `Crm#get_invoice_item_by_id` request
 * Add `Project#projects_settings` request
+* Add `Community#delete_bookmark`
 * Remove usage of `httmultiparty`
 
 ### Fixes

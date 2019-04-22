@@ -3,6 +3,7 @@ module PortalCleanup
   def reset_portal
     reset_modules
     remove_users
+    remove_bookmarks
   end
 
   # @return [Void] Set all modules to true
@@ -20,6 +21,14 @@ module PortalCleanup
 
       Teamlab.people.change_people_status('2', [user['id']])
       Teamlab.people.delete_user(user['id'])
+    end
+  end
+
+  # @return [Void] Remove all bookmarks on portal
+  def remove_bookmarks
+    bookmarks = Teamlab.community.get_all_bookmarks.body['response']
+    bookmarks.each do |bookmark|
+      Teamlab.community.delete_bookmark(bookmark['id'])
     end
   end
 end
