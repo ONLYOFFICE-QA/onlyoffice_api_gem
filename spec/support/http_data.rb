@@ -1,4 +1,4 @@
-SERVER = 'https://nctautotest-594591526-community-blogs-spec.teamlab.info'.freeze
+SERVER = 'https://nctautotest-rubygem-test.onlyoffice.com'.freeze
 USERNAME = 'teamlab.ruby@gmail.com'.freeze
 PASSWORD = '123456'.freeze
 
