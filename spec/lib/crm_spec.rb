@@ -206,17 +206,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#add_contact_info' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :add_contact_info }
-      i = -1
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i += 1], info_type = CONTACT_INFO_TYPES.sample, random_word, random_info_category(info_type)] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :contact_info_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
   describe '#quick_person_list_creation' do
     it_should_behave_like 'an api request' do
       let(:command) { :quick_person_list_creation }
