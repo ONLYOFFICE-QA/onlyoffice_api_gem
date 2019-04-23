@@ -16,7 +16,7 @@
 * Add `Crm#get_invoice_item_by_id` request
 * Add `Project#projects_settings` request
 * Add `Community#delete_bookmark`
-* Add `Community#delete_post`, `Community#delete_topic`
+* Add `Community#delete_forum_post`, `Community#delete_forum_topic`
 * Remove usage of `httmultiparty`
 
 ### Fixes
