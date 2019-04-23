@@ -181,14 +181,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#delete_contact_status' do
-    it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23915'
-      let(:command) { :delete_contact_status }
-      let(:args) { [DATA_COLLECTOR[:contact_status_ids].pop] }
-    end
-  end
-
   describe '#delete_deal_from_contact' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_deal_from_contact }
@@ -354,6 +346,13 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_contact }
       let(:args) { [DATA_COLLECTOR[:new_contact_ids].pop] }
+    end
+  end
+
+  describe '#delete_contact_status' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_contact_status }
+      let(:args) { [DATA_COLLECTOR[:contact_status_ids].pop] }
     end
   end
 end
