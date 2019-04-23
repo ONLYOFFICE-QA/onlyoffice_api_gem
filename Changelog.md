@@ -43,6 +43,7 @@
 
 * Move development dependencies to `Gemfile`
 * Remove dependency of `activesupport`
+* Remove deprecated `Crm#delete_contact_address`
 
 ## 0.6
 ### New features

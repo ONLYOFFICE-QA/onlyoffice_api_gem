@@ -346,14 +346,6 @@ describe '[CRM]' do
       let(:args) { [random_id(:new_contact), IMAGE_URL] }
     end
   end
-  describe '#delete_contact_address' do
-    it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=24028'
-      let(:command) { :delete_contact_address }
-      i = -1
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i += 1], DATA_COLLECTOR[:contact_address_ids].shift] }
-    end
-  end
 
   describe '#remove_contact_from_project' do
     it_should_behave_like 'an api request' do

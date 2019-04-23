@@ -214,10 +214,6 @@ module Teamlab
       @request.delete(['contact', 'company', company_id.to_s, 'person'], personId: person_id)
     end
 
-    def delete_contact_address(contact_id, information_id)
-      @request.delete(['contact', contact_id.to_s, 'data', 'address', information_id.to_s])
-    end
-
     def remove_contact_from_project(contact_id, project_id)
       @request.delete(['contact', contact_id.to_s, 'project', project_id.to_s])
     end
