@@ -41,8 +41,16 @@ module Teamlab
       @request.put(['forum', 'topic', topic_id.to_s, post_id.to_s], options)
     end
 
-    def delete_post_in_topic(topic_id, post_id)
-      @request.delete(['forum', 'topic', topic_id.to_s, post_id.to_s])
+    # @param post_id [Integer] post to delete
+    # @return [Teamlab::Response] result of delete
+    def delete_post(post_id)
+      @request.delete(['forum', 'post', post_id.to_s])
+    end
+
+    # @param topic_id [Integer] topic to delete
+    # @return [Teamlab::Response] result of delete
+    def delete_topic(topic_id)
+      @request.delete(['forum', 'topic', topic_id.to_s])
     end
   end
 end

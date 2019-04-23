@@ -16,6 +16,7 @@
 * Add `Crm#get_invoice_item_by_id` request
 * Add `Project#projects_settings` request
 * Add `Community#delete_bookmark`
+* Add `Community#delete_post`, `Community#delete_topic`
 * Remove usage of `httmultiparty`
 
 ### Fixes
@@ -34,6 +35,7 @@
 * Remove non-existing method `Crm#add_contact_address`
 * Remove non-existing method `Crm#update_contact_address`
 * Remove non-existing method `People#remind_password`
+* Remove non-existing method `Community#delete_post_in_topic`
 
 ### Refactor
 

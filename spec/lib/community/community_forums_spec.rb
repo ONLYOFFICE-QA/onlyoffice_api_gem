@@ -80,10 +80,17 @@ describe '[Community]' do
     end
   end
 
-  describe '#delete_post_in_topic' do
+  describe '#delete_post' do
     it_should_behave_like 'an api request' do
-      let(:command) { :delete_post_in_topic }
-      let(:args) { [DATA_COLLECTOR[:thread_topic_ids].last, DATA_COLLECTOR[:topic_post_ids].pop] }
+      let(:command) { :delete_post }
+      let(:args) { [DATA_COLLECTOR[:topic_post_ids].last] }
+    end
+  end
+
+  describe '#delete_topic' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_topic }
+      let(:args) { [DATA_COLLECTOR[:thread_topic_ids].pop] }
     end
   end
 end
