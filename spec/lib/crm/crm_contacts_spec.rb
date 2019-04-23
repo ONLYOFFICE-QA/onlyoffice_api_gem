@@ -34,6 +34,16 @@ describe '[CRM]' do
     end
   end
 
+  describe '#create_contact_status' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :create_contact_status }
+      let(:args) { [random_word, COLORS_NAMES.sample] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :contact_status_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
   describe '#create_person' do
     it_should_behave_like 'an api request' do
       let(:teamlab_module) { :crm }
@@ -158,7 +168,7 @@ describe '[CRM]' do
   describe '#update_contact_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_status }
-      let(:args) { [random_id(:contact_status), random_word, { color: COLORS_NAMES.sample }] }
+      let(:args) { [DATA_COLLECTOR[:contact_status_ids].first, random_word, { color: COLORS_NAMES.sample }] }
     end
   end
 
@@ -189,7 +199,7 @@ describe '[CRM]' do
   describe '#update_contact_status_color' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_status_color }
-      let(:args) { [random_id(:contact_status), COLORS_NAMES.sample] }
+      let(:args) { [DATA_COLLECTOR[:contact_status_ids].first, COLORS_NAMES.sample] }
     end
   end
 
@@ -203,7 +213,7 @@ describe '[CRM]' do
   describe '#update_contact_status_by_id' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_status_by_id }
-      let(:args) { [random_id(:new_contact), random_id(:contact_status)] }
+      let(:args) { [random_id(:new_contact), DATA_COLLECTOR[:contact_status_ids].first] }
     end
   end
 
@@ -217,14 +227,14 @@ describe '[CRM]' do
   describe '#update_person_and_its_company_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_person_and_its_company_status }
-      let(:args) { [random_id(:new_contact), random_id(:contact_status)] }
+      let(:args) { [random_id(:new_contact), DATA_COLLECTOR[:contact_status_ids].first] }
     end
   end
 
   describe '#update_company_and_participants_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_company_and_participants_status }
-      let(:args) { [random_id(:company), random_id(:contact_status)] }
+      let(:args) { [random_id(:company), DATA_COLLECTOR[:contact_status_ids].first] }
     end
   end
 
@@ -320,7 +330,7 @@ describe '[CRM]' do
   describe '#merge_contacts' do
     it_should_behave_like 'an api request' do
       let(:command) { :merge_contacts }
-      let(:args) { [random_id(:new_contact), random_id(:new_contact)] }
+      let(:args) { [DATA_COLLECTOR[:new_contact_ids].pop, random_id(:new_contact)] }
     end
   end
 
@@ -351,6 +361,7 @@ describe '[CRM]' do
       let(:args) { [random_id(:contact_info), random_id(:new_contact), random_word] }
     end
   end
+
   describe '#change_contact_photo_by_url' do
     it_should_behave_like 'an api request' do
       let(:command) { :change_contact_photo_by_url }
