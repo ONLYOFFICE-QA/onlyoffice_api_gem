@@ -22,7 +22,7 @@ module Teamlab
     end
 
     def delete_file(id)
-      @request.post(['files', id.to_s])
+      @request.delete(['files', id.to_s])
     end
   end
 end

@@ -72,7 +72,7 @@ describe '[CRM]' do
   describe '#create_txt' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_txt }
-      let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym), random_word] }
+      let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym), random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :file_ids }
       let(:param_names) { %w[id] }
@@ -89,7 +89,7 @@ describe '[CRM]' do
   describe '#associate_file_with_entity' do
     it_should_behave_like 'an api request' do
       let(:command) { :associate_file_with_entity }
-      let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym), DATA_COLLECTOR[:file_ids].sample(rand(1..4))] }
+      let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym), DATA_COLLECTOR[:file_ids].sample] }
     end
   end
 
