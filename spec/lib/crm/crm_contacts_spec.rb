@@ -45,6 +45,17 @@ describe '[CRM]' do
     end
   end
 
+  describe '#create_person' do
+    it_should_behave_like 'an api request' do
+      let(:teamlab_module) { :crm }
+      let(:command) { :create_person }
+      let(:args) { [random_word.capitalize, random_word.capitalize] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :new_contact_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
   describe '#add_contact_info' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_contact_info }
