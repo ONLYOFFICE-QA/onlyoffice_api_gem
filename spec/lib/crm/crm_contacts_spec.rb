@@ -66,6 +66,17 @@ describe '[CRM]' do
     end
   end
 
+  describe '#create_project' do
+    it_should_behave_like 'an api request' do
+      let(:teamlab_module) { :project }
+      let(:command) { :create_project }
+      let(:args) { [random_word, random_word, random_id(:user), random_word(3), random_bool] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :project_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
   describe '#get_contacts_for_mail' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_contacts_for_mail }
