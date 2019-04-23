@@ -299,12 +299,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#get_curreny_list' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_currency_list }
-    end
-  end
-
   describe '#get_opportunity_list' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_opportunity_list }
@@ -335,13 +329,6 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_all_opportunity_contacts }
       let(:args) { [random_id(:opportunity)] }
-    end
-  end
-
-  describe '#get_summary_table' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_summary_table }
-      let(:args) { [CURRENCY.sample] }
     end
   end
 
@@ -463,13 +450,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#set_is_portal_configured' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :set_is_portal_configured }
-      let(:args) { [{ configured: random_bool }] }
-    end
-  end
-
   describe '#update_task' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_task }
@@ -534,13 +514,6 @@ describe '[CRM]' do
   describe '#update_crm_contact_tag_setting' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_crm_contact_tag_setting }
-    end
-  end
-
-  describe '#update_crm_currency' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_crm_currency }
-      let(:args) { [CURRENCY.sample] }
     end
   end
 
@@ -1286,36 +1259,6 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_crm_entity_modification_date }
       let(:args) { ['contact', random_id(:new_contact)] }
-    end
-  end
-
-  describe '#get_all_currency_rates' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_all_currency_rates }
-    end
-  end
-
-  describe '#set_currency_rate' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :set_currency_rate }
-      let(:args) { [CURRENCY.sample, CURRENCY.sample, rand(1.00..10.00)] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :new_currency_rate_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
-  describe '#get_currency_rate_by_id' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_currency_rate_by_id }
-      let(:args) { [random_id(:new_currency_rate)] }
-    end
-  end
-
-  describe '#delete_currency_rate_by_id' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_currency_rate_by_id }
-      let(:args) { [DATA_COLLECTOR[:new_currency_rate_ids].pop] }
     end
   end
 end
