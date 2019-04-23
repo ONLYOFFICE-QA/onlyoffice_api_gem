@@ -568,43 +568,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#get_root_folder_id' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_root_folder_id }
-    end
-  end
-
-  describe '#associate_file_with_entity' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :associate_file_with_entity }
-      let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym), DATA_COLLECTOR[:file_ids].sample(rand(1..4))] }
-    end
-  end
-
-  describe '#create_txt' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :create_txt }
-      let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym), random_word] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :crm_file_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
-  describe '#get_file_list' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_file_list }
-      let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym)] }
-    end
-  end
-
-  describe '#upload_file' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :upload_file }
-      let(:args) { [entity = ENTITY_TYPES.sample, random_id(entity.to_sym), FILE_FOR_UPLOAD] }
-    end
-  end
-
   describe '#create_tag' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_tag }
@@ -841,13 +804,6 @@ describe '[CRM]' do
       let(:command) { :delete_person_from_company }
       i = -1
       let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
-    end
-  end
-
-  describe '#delete_file' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_file }
-      let(:args) { [DATA_COLLECTOR[:crm_file_ids].pop] }
     end
   end
 
