@@ -116,6 +116,7 @@ EVENT_TYPES = %w[None News Order Advert AllNews Poll All].freeze
 # region Calendar
 TIME_ZONES = %w[UTC].freeze
 CALENDAR_TO_UPLOAD = File.expand_path('../lib/data/basic.ics', __dir__)
+IMAGE_FILE = File.expand_path('../lib/data/contact_photo.jpg', __dir__)
 EVENT_ICS = File.expand_path('../lib/data/event.ics', __dir__)
 CALENDAR_WEB_URL = 'https://raw.githubusercontent.com/ONLYOFFICE/onlyoffice_api_gem/master/spec/lib/data/basic.ics'.freeze
 # endregion

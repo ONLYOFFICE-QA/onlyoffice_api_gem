@@ -33,6 +33,7 @@
 * Fix `Crm#delete_contact_status` request
 * Fix `Crm#delete_case_group` request
 * Fix `Crm#set_rights_to_case` request
+* Fix `Crm#change_contact_photo` request
 * Remove non-existing method `Crm#add_contact_address`
 * Remove non-existing method `Crm#update_contact_address`
 * Remove non-existing method `People#remind_password`

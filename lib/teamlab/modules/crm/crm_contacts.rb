@@ -82,7 +82,7 @@ module Teamlab
     end
 
     def change_contact_photo(contact_id, photo)
-      @request.put(['contact', contact_id.to_s, 'changephoto'], photo: photo)
+      @request.put(['contact', contact_id.to_s, 'changephoto'], photo: File.new(photo))
     end
 
     def update_person_and_its_company_status(person_id, contact_status_id)

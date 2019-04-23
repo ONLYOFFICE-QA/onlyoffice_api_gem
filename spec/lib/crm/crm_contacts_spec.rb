@@ -156,7 +156,7 @@ describe '[CRM]' do
   describe '#change_contact_photo' do
     it_should_behave_like 'an api request' do
       let(:command) { :change_contact_photo }
-      let(:args) { [random_id(:new_contact), 'path_to_image'] }
+      let(:args) { [random_id(:new_contact), IMAGE_FILE] }
     end
   end
 
