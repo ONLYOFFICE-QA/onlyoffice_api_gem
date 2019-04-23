@@ -40,7 +40,7 @@ describe '[Calendar]' do
       i = -1
       let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], random_word, { description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false }] }
       let(:add_data_to_collector) { true }
-      let(:data_param) { :event_ids }
+      let(:data_param) { :calendar_event_ids }
       let(:param_names) { %w[objectId] }
     end
   end
@@ -51,7 +51,7 @@ describe '[Calendar]' do
       i = -1
       let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], File.open(EVENT_ICS).read, { repeatType: '', alertType: '-1' }] }
       let(:add_data_to_collector) { true }
-      let(:data_param) { :event_uids }
+      let(:data_param) { :calendar_event_uids }
       let(:param_names) { %w[uniqueId] }
     end
   end
@@ -60,7 +60,7 @@ describe '[Calendar]' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_event_history_by_id }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:event_ids][i += 1]] }
+      let(:args) { [DATA_COLLECTOR[:calendar_event_ids][i += 1]] }
     end
   end
 
@@ -68,7 +68,7 @@ describe '[Calendar]' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_event_history_by_uid }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:event_uids][i += 1]] }
+      let(:args) { [DATA_COLLECTOR[:calendar_event_uids][i += 1]] }
     end
   end
 
@@ -159,7 +159,7 @@ describe '[Calendar]' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_event }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], DATA_COLLECTOR[:event_ids][i], random_word, { description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false }] }
+      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], DATA_COLLECTOR[:calendar_event_ids][i], random_word, { description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false }] }
     end
   end
 
@@ -167,33 +167,33 @@ describe '[Calendar]' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_icsevent }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], DATA_COLLECTOR[:event_ids][i], File.open(EVENT_ICS).read] }
+      let(:args) { [DATA_COLLECTOR[:calendar_ids][i += 1], DATA_COLLECTOR[:calendar_event_ids][i], File.open(EVENT_ICS).read] }
     end
   end
 
   describe '#unsubscribe_from_event' do
     it_should_behave_like 'an api request' do
       let(:command) { :unsubscribe_from_event }
-      let(:args) { [DATA_COLLECTOR[:event_ids][-1]] }
+      let(:args) { [DATA_COLLECTOR[:calendar_event_ids][-1]] }
     end
   end
 
   describe '#remove_event' do
     it_should_behave_like 'an api request' do
       let(:command) { :remove_event }
-      let(:args) { [DATA_COLLECTOR[:event_ids].pop] }
+      let(:args) { [DATA_COLLECTOR[:calendar_event_ids].pop] }
     end
   end
 
   describe '#delete_event_series' do
     before do
       event = Teamlab.calendar.add_event(DATA_COLLECTOR[:calendar_ids].last, random_word, description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false)
-      DATA_COLLECTOR[:event_ids] << event.body['response'].first['objectId']
+      DATA_COLLECTOR[:calendar_event_ids] << event.body['response'].first['objectId']
     end
 
     it_should_behave_like 'an api request' do
       let(:command) { :delete_event_series }
-      let(:args) { [DATA_COLLECTOR[:event_ids].pop] }
+      let(:args) { [DATA_COLLECTOR[:calendar_event_ids].pop] }
     end
   end
 

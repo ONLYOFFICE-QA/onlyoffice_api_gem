@@ -8,7 +8,7 @@ describe '[Community]' do
       let(:command) { :create_event }
       let(:args) { [random_word, random_word, { type: 'News' }] }
       let(:add_data_to_collector) { true }
-      let(:data_param) { :event_ids }
+      let(:data_param) { :community_event_ids }
       let(:param_names) { %w[id] }
     end
   end
@@ -26,7 +26,7 @@ describe '[Community]' do
   describe '#update_event' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_event }
-      let(:args) { [random_id(:event), random_word, random_word] }
+      let(:args) { [random_id(:community_event), random_word, random_word] }
     end
   end
 
@@ -45,7 +45,7 @@ describe '[Community]' do
   describe '#get_event' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_event }
-      let(:args) { [random_id(:event)] }
+      let(:args) { [random_id(:community_event)] }
     end
   end
 
@@ -66,7 +66,7 @@ describe '[Community]' do
   describe '#add_comment_to_event' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_comment_to_event }
-      let(:args) { [random_id(:event), random_word] }
+      let(:args) { [random_id(:community_event), random_word] }
     end
   end
 end
