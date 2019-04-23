@@ -1,8 +1,10 @@
 require_relative 'crm/crm_cases'
+require_relative 'crm/crm_common'
 require_relative 'crm/crm_invoices'
 module Teamlab
   class Crm
     include CrmCases
+    include CrmCommon
     include CrmInvoices
 
     def initialize
@@ -14,16 +16,8 @@ module Teamlab
       @request.get(%w[opportunity stage])
     end
 
-    def get_currency_list
-      @request.get(%w[settings currency])
-    end
-
     def get_opportunity_list(options = {})
       @request.get(%w[opportunity filter], options)
-    end
-
-    def get_result_of_convertation(options = {})
-      @request.get(%w[settings currency convert], options)
     end
 
     def get_opportunity_stage(stage_id)
@@ -36,10 +30,6 @@ module Teamlab
 
     def get_all_opportunity_contacts(opportunity_id)
       @request.get(['opportunity', opportunity_id.to_s, 'contact'])
-    end
-
-    def get_summary_table(currency)
-      @request.get(%w[settings currency summarytable], currency: currency)
     end
 
     def create_opportunity(stage_id, title, responsible_id, options = {})
@@ -215,16 +205,8 @@ module Teamlab
       @request.post(['contact', contact_id.to_s, 'opportunity', opportunity_id.to_s])
     end
 
-    def set_is_portal_configured(options = {})
-      @request.put(%w[settings], options)
-    end
-
     def save_smtp_settings(options = {})
       @request.put(%w[settings smtp], options)
-    end
-
-    def update_crm_currency(currency)
-      @request.put(%w[settings currency], currency: currency)
     end
 
     def update_task(task_id, title, deadline, category_id, options = {})
@@ -721,22 +703,6 @@ module Teamlab
       options[id_field] = entity_id.to_s
       options[:lastModifedDate] = date.to_s
       @request.put([entity_name.to_s, entity_id.to_s, 'lastmodifeddate'], options)
-    end
-
-    def get_all_currency_rates
-      @request.get(%w[currency rates], {})
-    end
-
-    def set_currency_rate(from = 'EUR', to = 'USD', rate = '1.0')
-      @request.post(%w[currency rates], fromCurrency: from, toCurrency: to, rate: rate)
-    end
-
-    def get_currency_rate_by_id(id)
-      @request.get(['currency', 'rates', id.to_s], {})
-    end
-
-    def delete_currency_rate_by_id(id)
-      @request.delete(['currency', 'rates', id.to_s], {})
     end
   end
 end
