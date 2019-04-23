@@ -36,11 +36,5 @@ module Teamlab
     def update_event(event_id, title, content, options = {})
       @request.put(['event', event_id.to_s], { title: title, content: content }.merge(options))
     end
-
-    # @param bookmark_id [Intger] bookmark to delete
-    # @return [Teamlab::Response] result of delete
-    def delete_event(bookmark_id)
-      @request.delete(['event', bookmark_id.to_s])
-    end
   end
 end
