@@ -133,11 +133,10 @@ describe '[CRM]' do
     end
   end
 
-  describe '#update_invoice_patch_status' do
+  describe '#update_invoice_group_status' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23886'
-      let(:command) { :update_invoice_patch_status }
-      let(:args) { [INVOICE_STATUSES.sample, DATA_COLLECTOR[:invoice_ids].sample(rand(1..3))] }
+      let(:command) { :update_invoice_group_status }
+      let(:args) { [INVOICE_STATUSES.sample, [DATA_COLLECTOR[:invoice_ids].sample]] }
     end
   end
 

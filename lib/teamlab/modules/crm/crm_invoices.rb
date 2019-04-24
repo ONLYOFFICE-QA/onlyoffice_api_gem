@@ -68,7 +68,11 @@ module Teamlab
       @request.put(%w[invoice settings terms], options)
     end
 
-    def update_invoice_patch_status(status, invoice_ids)
+    # Updates the status of invoices with the IDs specified in the request
+    # @param status [String] status to set
+    # @param invoice_ids [Array<Integer>] list of status to set
+    # @return [Teamlab::Response] result of update
+    def update_invoice_group_status(status, invoice_ids)
       @request.put(['invoice', 'status', status.to_s], invoiceids: invoice_ids)
     end
 
