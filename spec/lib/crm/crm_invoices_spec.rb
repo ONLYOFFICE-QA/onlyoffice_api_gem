@@ -64,7 +64,7 @@ describe '[CRM]' do
   describe '#create_invoice_line' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_invoice_line }
-      let(:args) { [random_id(:invoice), DATA_COLLECTOR[:invoice_item_ids].first] }
+      let(:args) { [DATA_COLLECTOR[:invoice_ids].first, DATA_COLLECTOR[:invoice_item_ids].first] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :invoice_line_ids }
       let(:param_names) { %w[id] }
@@ -146,7 +146,7 @@ describe '[CRM]' do
   describe '#update_invoice_line' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_invoice_line }
-      let(:args) { [random_id(:invoice_line), random_id(:invoice), invoiceItemId: DATA_COLLECTOR[:invoice_item_ids].first] }
+      let(:args) { [random_id(:invoice_line), DATA_COLLECTOR[:invoice_ids].first, invoiceItemId: DATA_COLLECTOR[:invoice_item_ids].first] }
     end
   end
 
