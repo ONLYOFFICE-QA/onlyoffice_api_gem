@@ -118,9 +118,18 @@ describe '[CRM]' do
 
   describe '#update_invoice' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23886'
       let(:command) { :update_invoice }
-      let(:args) { [random_id(:invoice)] }
+      let(:args) do
+        [random_id(:invoice),
+         issueDate: DUE_DATE,
+         dueDate: DUE_DATE,
+         contactId: random_id(:new_contact),
+         language: LANGUAGE.sample,
+         currency: CURRENCY.sample,
+         exchangeRate: rand(1000),
+         terms: random_word,
+         invoiceLines: [{ invoiceItemID: random_id(:invoice_item) }]]
+      end
     end
   end
 

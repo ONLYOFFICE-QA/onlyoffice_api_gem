@@ -56,6 +56,7 @@ module Teamlab
     end
 
     def update_invoice(id, options = {})
+      options[:id] = id
       @request.put(['invoice', id.to_s], options)
     end
 
