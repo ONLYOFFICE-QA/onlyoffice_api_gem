@@ -154,7 +154,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_invoice }
       let(:args) do
-        [random_id(:invoice),
+        [DATA_COLLECTOR[:invoice_ids].first,
          issueDate: DUE_DATE,
          dueDate: DUE_DATE,
          contactId: random_id(:new_contact),
