@@ -150,23 +150,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#update_invoice' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_invoice }
-      let(:args) do
-        [DATA_COLLECTOR[:invoice_ids].first,
-         issueDate: DUE_DATE,
-         dueDate: DUE_DATE,
-         contactId: random_id(:new_contact),
-         language: LANGUAGE.sample,
-         currency: CURRENCY.sample,
-         exchangeRate: rand(1000),
-         terms: random_word,
-         invoiceLines: [{ invoiceItemID: DATA_COLLECTOR[:invoice_item_ids].first }]]
-      end
-    end
-  end
-
   describe '#delete_invoice_item' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_invoice_item }
@@ -185,6 +168,23 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_invoice_line }
       let(:args) { [DATA_COLLECTOR[:invoice_line_ids].pop] }
+    end
+  end
+
+  describe '#update_invoice' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_invoice }
+      let(:args) do
+        [DATA_COLLECTOR[:invoice_ids].first,
+         issueDate: DUE_DATE,
+         dueDate: DUE_DATE,
+         contactId: random_id(:new_contact),
+         language: LANGUAGE.sample,
+         currency: CURRENCY.sample,
+         exchangeRate: rand(1000),
+         terms: random_word,
+         invoiceLines: [{ invoiceItemID: DATA_COLLECTOR[:invoice_item_ids].first }]]
+      end
     end
   end
 

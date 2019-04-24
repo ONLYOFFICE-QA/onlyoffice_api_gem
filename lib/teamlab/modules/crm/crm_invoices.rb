@@ -105,7 +105,7 @@ module Teamlab
     end
 
     def delete_invoice_line(id)
-      @request.delete(['invoiceline', id.to_s])
+      @request.delete(['invoiceline', id.to_s], id: id)
     end
 
     # @param invoice_item_id [Integer] id of invoice
