@@ -140,11 +140,11 @@ describe '[CRM]' do
     end
   end
 
-  describe '#update_invoice_line' do
+  describe '#update_invoice_line', :pending do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23886, http://bugzserver/show_bug.cgi?id=23888'
+      pending('https://bugzilla.onlyoffice.com/show_bug.cgi?id=41400')
       let(:command) { :update_invoice_line }
-      let(:args) { [random_id(:invoice_line), random_id(:invoice)] }
+      let(:args) { [random_id(:invoice_line), random_id(:invoice), invoiceItemId: random_id(:invoice_item)] }
     end
   end
 

@@ -77,7 +77,9 @@ module Teamlab
     end
 
     def update_invoice_line(invoice_line_id, invoice_id, options = {})
-      @request.put(['invoiceline', invoice_line_id], { invoiceId: invoice_id }.merge(options))
+      options[:id] = invoice_line_id
+      options[:invoiceId] = invoice_id
+      @request.put(['invoiceline', invoice_line_id], options)
     end
 
     def delete_batch_invoices(*invoice_ids)
