@@ -116,6 +116,20 @@ describe '[CRM]' do
     end
   end
 
+  describe '#update_invoice_group_status' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_invoice_group_status }
+      let(:args) { [INVOICE_STATUSES.sample, [DATA_COLLECTOR[:invoice_ids].sample]] }
+    end
+  end
+
+  describe '#update_invoice_line' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_invoice_line }
+      let(:args) { [random_id(:invoice_line), random_id(:invoice), invoiceItemId: random_id(:invoice_item)] }
+    end
+  end
+
   describe '#update_invoice' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_invoice }
@@ -130,21 +144,6 @@ describe '[CRM]' do
          terms: random_word,
          invoiceLines: [{ invoiceItemID: random_id(:invoice_item) }]]
       end
-    end
-  end
-
-  describe '#update_invoice_group_status' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_invoice_group_status }
-      let(:args) { [INVOICE_STATUSES.sample, [DATA_COLLECTOR[:invoice_ids].sample]] }
-    end
-  end
-
-  describe '#update_invoice_line', :pending do
-    it_should_behave_like 'an api request' do
-      pending('https://bugzilla.onlyoffice.com/show_bug.cgi?id=41400')
-      let(:command) { :update_invoice_line }
-      let(:args) { [random_id(:invoice_line), random_id(:invoice), invoiceItemId: random_id(:invoice_item)] }
     end
   end
 
@@ -164,7 +163,6 @@ describe '[CRM]' do
 
   describe '#delete_invoice_line' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23886, http://bugzserver/show_bug.cgi?id=23888'
       let(:command) { :delete_invoice_line }
       let(:args) { [DATA_COLLECTOR[:invoice_line_ids].pop] }
     end
