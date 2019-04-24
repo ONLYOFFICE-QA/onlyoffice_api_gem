@@ -51,6 +51,16 @@ describe '[CRM]' do
     end
   end
 
+  describe '#create_invoice' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :create_invoice }
+      let(:args) { [random_word, DUE_DATE, random_id(:new_contact), DUE_DATE, LANGUAGE.sample, CURRENCY.sample, rand(1000), random_word, { invoiceItemID: DATA_COLLECTOR[:invoice_item_ids].first }] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :invoice_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
   describe '#create_invoice_line' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_invoice_line }
@@ -188,7 +198,7 @@ describe '[CRM]' do
   describe '#delete_batch_invoices' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_batch_invoices }
-      let(:args) { [DATA_COLLECTOR[:invoice_ids].pop, DATA_COLLECTOR[:invoice_ids].pop] }
+      let(:args) { [DATA_COLLECTOR[:invoice_ids].pop] }
     end
   end
 
