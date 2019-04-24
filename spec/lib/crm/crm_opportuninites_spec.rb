@@ -36,10 +36,21 @@ describe '[CRM]' do
     end
   end
 
+  describe '#create_opportunity_stage' do
+    it_should_behave_like 'an api request' do
+      let(:teamlab_module) { :crm }
+      let(:command) { :create_opportunity_stage }
+      let(:args) { [random_word.capitalize, COLORS_NAMES.sample] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :opportunity_stage_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
   describe '#create_opportunity' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_opportunity }
-      let(:args) { [random_id(:opportunity_stage), random_word, random_id(:user)] }
+      let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].last, random_word, random_id(:user)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :opportunity_ids }
       let(:param_names) { %w[id] }
@@ -49,7 +60,7 @@ describe '[CRM]' do
   describe '#create_opportunity_for_group' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_opportunity }
-      let(:args) { [random_id(:opportunity_stage), random_word, random_id(:user)] }
+      let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].last, random_word, random_id(:user)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :opportunity_ids }
       let(:param_names) { %w[id] }
@@ -107,7 +118,7 @@ describe '[CRM]' do
   describe '#update_opportunity_stage' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_opportunity_stage }
-      let(:args) { [random_id(:opportunity_stage), random_word, COLORS_NAMES.sample] }
+      let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].first, random_word, COLORS_NAMES.sample] }
     end
   end
 
@@ -127,7 +138,7 @@ describe '[CRM]' do
   describe '#update_opportunity_to_stage' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_opportunity_to_stage }
-      let(:args) { [random_id(:opportunity), random_id(:opportunity_stage)] }
+      let(:args) { [random_id(:opportunity), DATA_COLLECTOR[:opportunity_stage_ids].last] }
     end
   end
 
