@@ -23,7 +23,10 @@ end
 
 RSpec.configure do |c|
   c.include PortalCleanup
-  c.before(:all) { configure_test_portal }
+  c.before(:all) do
+    DATA_COLLECTOR.clear
+    configure_test_portal
+  end
 end
 
 shared_examples_for 'an api request' do |*flags|
