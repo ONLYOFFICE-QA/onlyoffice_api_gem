@@ -14,6 +14,28 @@ describe '[CRM]' do
     end
   end
 
+  describe '#create_opportunity_stage' do
+    it_should_behave_like 'an api request' do
+      let(:teamlab_module) { :crm }
+      let(:command) { :create_opportunity_stage }
+      let(:args) { [random_word.capitalize, COLORS_NAMES.sample] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :opportunity_stage_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
+  describe '#create_opportunity_stage' do
+    it_should_behave_like 'an api request' do
+      let(:teamlab_module) { :crm }
+      let(:command) { :create_opportunity_stage }
+      let(:args) { [random_word.capitalize, COLORS_NAMES.sample] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :opportunity_stage_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
   describe '#create_person' do
     it_should_behave_like 'an api request' do
       let(:teamlab_module) { :crm }
@@ -55,7 +77,7 @@ describe '[CRM]' do
   describe '#get_tags_for_entity_type' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_tags_for_entity_type }
-      let(:args) { [ENTITY_TYPES.sample] }
+      let(:args) { [ENTITY_TYPES.sample.sub('company', 'contact')] }
     end
   end
 
