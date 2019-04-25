@@ -56,13 +56,12 @@ describe '[CRM]' do
     end
   end
 
-  describe '#create_opportunity_stage' do
+  describe '#create_opportunity' do
     it_should_behave_like 'an api request' do
-      let(:teamlab_module) { :crm }
-      let(:command) { :create_opportunity_stage }
-      let(:args) { [random_word.capitalize, COLORS_NAMES.sample] }
+      let(:command) { :create_opportunity }
+      let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].last, random_word, random_id(:user)] }
       let(:add_data_to_collector) { true }
-      let(:data_param) { :opportunity_stage_ids }
+      let(:data_param) { :opportunity_ids }
       let(:param_names) { %w[id] }
     end
   end
@@ -102,7 +101,7 @@ describe '[CRM]' do
   describe '#update_user_fields_order' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_user_fields_order }
-      let(:args) { [DATA_COLLECTOR[:user_field_title_ids].sample(rand(1..4))] }
+      let(:args) { [ENTITY_TYPES.last, DATA_COLLECTOR[:user_field_ids]] }
     end
   end
 
