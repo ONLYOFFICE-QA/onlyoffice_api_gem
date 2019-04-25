@@ -5,8 +5,8 @@ module Teamlab
       @request.put(%w[settings organisation base], companyName: title)
     end
 
-    def update_organisation_address(text)
-      @request.put(%w[settings organisation address], companyAddress: text)
+    def update_organisation_address(options = {})
+      @request.put(%w[settings organisation address], options)
     end
   end
 end
