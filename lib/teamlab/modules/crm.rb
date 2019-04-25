@@ -46,51 +46,6 @@ module Teamlab
 
     # region Files
 
-    def get_task_template_container_list(entity_type)
-      @request.get([entity_type.to_s, 'tasktemplatecontainer'])
-    end
-
-    def get_task_template_container(id)
-      @request.get(['tasktemplatecontainer', id.to_s])
-    end
-
-    def get_task_template(id)
-      @request.get(['tasktemplatecontainer', 'tasktemplate', id.to_s])
-    end
-
-    def get_task_template_list_by_container_id(id)
-      @request.get(['tasktemplatecontainer', id.to_s, 'tasktemplate'])
-    end
-
-    def create_task_template_container(entity_type, title)
-      @request.post([entity_type.to_s, 'tasktemplatecontainer'], title: title)
-    end
-
-    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
-
-    def create_task_template(container_id, title, category_id, options = {})
-      @request.post(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'],
-                    { title: title, categoryid: category_id }.merge(options))
-    end
-
-    def update_task_template_container(container_id, title)
-      @request.put(['tasktemplatecontainer', container_id.to_s], title: title)
-    end
-
-    #=========================================== TODO: OPTIONAL VARIABLES =====================================================
-
-    def update_task_template(container_id, task_template_id, title, options = {})
-      @request.put(['tasktemplatecontainer', container_id.to_s, 'tasktemplate'], { id: task_template_id.to_s, title: title }.merge(options))
-    end
-
-    def delete_task_template_container(container_id)
-      @request.delete(['tasktemplatecontainer', container_id.to_s])
-    end
-
-    def delete_task_template(id)
-      @request.delete(['tasktemplatecontainer', 'tasktemplate', id.to_s])
-    end
-
     def update_crm_entity_creation_date(entity_name, entity_id, date = '2007-01-01')
       id_field = "#{entity_name}id".to_sym
       options = {}

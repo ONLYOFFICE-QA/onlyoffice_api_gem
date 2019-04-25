@@ -73,26 +73,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#create_task_template_container' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :create_task_template_container }
-      let(:args) { [ENTITY_TYPES.sample.sub('company', 'contact'), random_word] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :task_template_container_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
-  describe '#create_task_template' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :create_task_template }
-      let(:args) { [DATA_COLLECTOR[:task_template_container_ids].last, random_word, random_id(:crm_task_category)] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :task_template_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
   describe '#get_result_of_convertation' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_result_of_convertation }
@@ -180,52 +160,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#get_task_template_container_list' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_task_template_container_list }
-      let(:args) { [ENTITY_TYPES.sample.sub('company', 'contact')] }
-    end
-  end
-
-  describe '#update_task_template_container' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_task_template_container }
-      let(:args) { [random_id(:task_template_container), random_word] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :task_template_container_title_ids }
-      let(:param_names) { %w[title] }
-    end
-  end
-
-  describe '#get_task_template_container' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_task_template_container }
-      let(:args) { [random_id(:task_template_container)] }
-    end
-  end
-
-  describe '#get_task_template' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_task_template }
-      let(:args) { [random_id(:task_template)] }
-    end
-  end
-
-  describe '#get_task_template_list_by_container_id' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_task_template_list_by_container_id }
-      let(:args) { [random_id(:task_template_container)] }
-    end
-  end
-
-  describe '#update_task_template' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_task_template }
-      i = -1
-      let(:args) { [DATA_COLLECTOR[:task_template_container_ids].last, DATA_COLLECTOR[:task_template_ids][i += 1], random_word] }
-    end
-  end
-
   describe '#delete_event_and_related_files' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_event_and_related_files }
@@ -238,20 +172,6 @@ describe '[CRM]' do
       let(:command) { :delete_person_from_company }
       i = -1
       let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
-    end
-  end
-
-  describe '#delete_task_template' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_task_template }
-      let(:args) { [DATA_COLLECTOR[:task_template_ids].pop] }
-    end
-  end
-
-  describe '#delete_task_template_container' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_task_template_container }
-      let(:args) { [DATA_COLLECTOR[:task_template_container_ids].pop] }
     end
   end
 

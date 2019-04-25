@@ -42,6 +42,7 @@
 * Remove non-existing method `Crm#update_contact_address`
 * Remove non-existing method `People#remind_password`
 * Remove non-existing method `Community#delete_post_in_topic`
+* Remove deprecated method for CRM Task Template
 
 ### Refactor
 
