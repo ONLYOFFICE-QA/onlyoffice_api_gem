@@ -92,13 +92,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#add_deal_to_contact' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :add_deal_to_contact }
-      let(:args) { [random_id(:new_contact), random_id(:opportunity)] }
-    end
-  end
-
   describe '#update_organisation_company_name' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_organisation_company_name }

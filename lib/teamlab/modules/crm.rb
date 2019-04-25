@@ -26,10 +26,6 @@ module Teamlab
     end
 
     # region General
-    def add_deal_to_contact(contact_id, opportunity_id)
-      @request.post(['contact', contact_id.to_s, 'opportunity', opportunity_id.to_s])
-    end
-
     def save_smtp_settings(options = {})
       @request.put(%w[settings smtp], options)
     end
