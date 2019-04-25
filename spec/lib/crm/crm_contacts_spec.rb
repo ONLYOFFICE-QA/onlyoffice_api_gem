@@ -296,6 +296,13 @@ describe '[CRM]' do
     end
   end
 
+  describe '#add_contact_opportunity' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :add_contact_opportunity }
+      let(:args) { [random_id(:new_contact), random_id(:opportunity)] }
+    end
+  end
+
   describe '#get_contacts_by_project_id' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_contacts_by_project_id }

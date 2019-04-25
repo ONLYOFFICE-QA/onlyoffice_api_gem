@@ -165,6 +165,10 @@ module Teamlab
       @request.post(['contact', contact_id.to_s, 'project', project_id.to_s])
     end
 
+    def add_contact_opportunity(contact_id, opportunity_id)
+      @request.post(['contact', contact_id.to_s, 'opportunity', opportunity_id.to_s])
+    end
+
     def delete_contact_group(*contact_ids)
       @request.put(%w[contact], contactids: contact_ids.flatten)
     end

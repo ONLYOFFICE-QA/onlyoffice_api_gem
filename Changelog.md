@@ -38,6 +38,7 @@
 * Fix `Crm#update_invoice` request
 * Fix `Crm#delete_invoice_line` request
 * Rename `Crm#update_invoice_patch_status` to `Crm#update_invoice_group_status`
+* Rename `Crm#add_deal_to_contact` to `Crm#add_contact_opportunity`
 * Remove non-existing method `Crm#add_contact_address`
 * Remove non-existing method `Crm#update_contact_address`
 * Remove non-existing method `People#remind_password`
