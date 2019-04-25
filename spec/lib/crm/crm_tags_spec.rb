@@ -89,7 +89,7 @@ describe '[CRM]' do
 
   describe '#get_entity_tags' do
     it_should_behave_like 'an api request' do
-      let(:command) { :get_all_contact_tags }
+      let(:command) { :get_entity_tags }
       let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym)] }
     end
   end
