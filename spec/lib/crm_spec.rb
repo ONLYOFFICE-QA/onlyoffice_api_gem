@@ -93,16 +93,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#create_user_field' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :create_user_field }
-      let(:args) { [ENTITY_TYPES.last, random_word, rand(6)] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :user_field_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
   describe '#get_result_of_convertation' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_result_of_convertation }
@@ -233,52 +223,6 @@ describe '[CRM]' do
       let(:command) { :update_task_template }
       i = -1
       let(:args) { [DATA_COLLECTOR[:task_template_container_ids].last, DATA_COLLECTOR[:task_template_ids][i += 1], random_word] }
-    end
-  end
-
-  describe '#get_user_field_values' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_user_field_values }
-      let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym)] }
-    end
-  end
-
-  describe '#get_user_field_list' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_user_field_list }
-      let(:args) { [ENTITY_TYPES.sample.sub('company', 'contact')] }
-    end
-  end
-
-  describe '#set_user_field_value' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :set_user_field_value }
-      let(:args) { [ENTITY_TYPES.last, random_id(ENTITY_TYPES.last.to_sym), random_id(:user_field), random_word] }
-    end
-  end
-
-  describe '#update_selected_user_field' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_selected_user_field }
-      i = -1
-      let(:args) { [ENTITY_TYPES.last, DATA_COLLECTOR[:user_field_ids][i += 1], random_word, rand(6)] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :user_field_title_ids }
-      let(:param_names) { %w[label] }
-    end
-  end
-
-  describe '#update_user_fields_order' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_user_fields_order }
-      let(:args) { [DATA_COLLECTOR[:user_field_title_ids].sample(rand(1..4))] }
-    end
-  end
-
-  describe '#delete_user_field' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_user_field }
-      let(:args) { [ENTITY_TYPES.last, DATA_COLLECTOR[:user_field_ids].pop] }
     end
   end
 
