@@ -66,12 +66,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#save_smtp_settings' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :save_smtp_settings }
-    end
-  end
-
   describe '#save_number_settings' do
     it_should_behave_like 'an api request' do
       let(:command) { :save_number_settings }
