@@ -296,6 +296,14 @@ describe '[CRM]' do
     end
   end
 
+  describe '#add_persons_to_company' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :add_persons_to_company }
+      i = -1
+      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
+    end
+  end
+
   describe '#link_contact_with_project' do
     it_should_behave_like 'an api request' do
       let(:command) { :link_contact_with_project }
