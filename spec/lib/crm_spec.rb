@@ -66,13 +66,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#quick_company_list_creation' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :quick_company_list_creation }
-      let(:args) { [random_word] }
-    end
-  end
-
   describe '#update_company' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_company }
