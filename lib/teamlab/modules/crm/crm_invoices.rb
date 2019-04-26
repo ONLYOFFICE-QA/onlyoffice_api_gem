@@ -13,9 +13,13 @@ module Teamlab
       @request.get(%w[invoice filter], options)
     end
 
-    def get_settings
+    def get_invoices_settings
       @request.get(%w[invoice settings])
     end
+    alias get_settings get_invoices_settings
+
+    extend Gem::Deprecate
+    deprecate :get_settings, 'get_invoices_settings', 2020, 1
 
     def get_invoice_items_by_filter(options = {})
       @request.get(%w[invoiceitem filter], options)

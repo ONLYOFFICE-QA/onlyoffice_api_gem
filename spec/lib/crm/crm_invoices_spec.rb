@@ -109,6 +109,12 @@ describe '[CRM]' do
     end
   end
 
+  describe '#get_invoices_settings' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_invoices_settings }
+    end
+  end
+
   describe '#get_invoice_items_by_filter' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_invoice_items_by_filter }

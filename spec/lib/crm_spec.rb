@@ -66,12 +66,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#get_settings' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_settings }
-    end
-  end
-
   describe '#create_task_group' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_task_group }
