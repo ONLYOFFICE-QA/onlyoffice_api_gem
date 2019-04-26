@@ -77,6 +77,17 @@ describe '[CRM]' do
     end
   end
 
+  describe '#create_person' do
+    it_should_behave_like 'an api request' do
+      let(:teamlab_module) { :crm }
+      let(:command) { :create_person }
+      let(:args) { [random_word.capitalize, random_word.capitalize] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :new_contact_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
   describe '#add_contact_info' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_contact_info }
@@ -463,6 +474,14 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_contact_status }
       let(:args) { [DATA_COLLECTOR[:contact_status_ids].pop] }
+    end
+  end
+
+  describe '#delete_person_from_company' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_person_from_company }
+      i = -1
+      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
     end
   end
 end

@@ -56,14 +56,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#delete_person_from_company' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_person_from_company }
-      i = -1
-      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
-    end
-  end
-
   describe '#update_crm_entity_creation_date' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_crm_entity_creation_date }
