@@ -1,12 +1,14 @@
 require_relative 'projects/projects_comments'
 require_relative 'projects/projects_contacts'
 require_relative 'projects/projects_discussions'
+require_relative 'projects/projects_files'
 require_relative 'projects/projects_settings'
 module Teamlab
   class Project
     include ProjectsComments
     include ProjectsContacts
     include ProjectsDiscussions
+    include ProjectsFiles
     include ProjectsSettings
 
     def initialize
@@ -26,34 +28,6 @@ module Teamlab
 
     def get_projects_for_import(url, username, password)
       @request.post(%w[import projects], url: url, userName: username, password: password)
-    end
-
-    # endregion
-
-    # region Files
-
-    def get_task_files(task_id)
-      @request.get(['task', task_id.to_s, 'files'])
-    end
-
-    def get_entity_files(entity_id, entity_type)
-      @request.get([entity_id.to_s, 'entityfiles'], entityType: entity_type)
-    end
-
-    def upload_file_to_task(task_id, *files)
-      @request.post(['task', task_id.to_s, 'files'], files: files.flatten)
-    end
-
-    def upload_file_to_message(message_id, *files)
-      @request.post(['message', message_id.to_s, 'files'], files: files.flatten)
-    end
-
-    def detach_file_from_task(task_id, file_id)
-      @request.delete(['task', task_id.to_s, 'files'], fileid: file_id)
-    end
-
-    def detach_file_from_message(message_id, file_id)
-      @request.delete(['message', message_id.to_s, 'files'], fileid: file_id)
     end
 
     # endregion

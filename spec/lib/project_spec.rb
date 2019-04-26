@@ -123,20 +123,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#upload_file_to_task' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :upload_file_to_task }
-      let(:args) { [random_id(:project_task), [random_id(:file)]] }
-    end
-  end
-
-  describe '#upload_file_to_message' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :upload_file_to_message }
-      let(:args) { [random_id(:discussion), [random_id(:file)]] }
-    end
-  end
-
   describe '#add_milestone' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_milestone }
@@ -164,27 +150,6 @@ describe '[Project]' do
       let(:add_data_to_collector) { true }
       let(:data_param) { :comment_ids }
       let(:param_names) { %w[id] }
-    end
-  end
-
-  describe '#get_task_files' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_task_files }
-      let(:args) { [random_id(:project_task)] }
-    end
-  end
-
-  describe '#get_entity_files' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_entity_files }
-      let(:args) { [random_id(:project_task), 'Task'] }
-    end
-  end
-
-  describe '#get_message_files' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_message_files }
-      let(:args) { [random_id(:discussion)] }
     end
   end
 
@@ -656,20 +621,6 @@ describe '[Project]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_subtask }
       let(:args) { [DATA_COLLECTOR[:project_task_ids].last, DATA_COLLECTOR[:project_subtask_ids].pop] }
-    end
-  end
-
-  describe '#detach_file_from_task' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :detach_file_from_task }
-      let(:args) { [random_id(:project_task), random_id(:file)] }
-    end
-  end
-
-  describe '#detach_file_from_message' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :detach_file_from_task }
-      let(:args) { [random_id(:discussion), random_id(:file)] }
     end
   end
 
