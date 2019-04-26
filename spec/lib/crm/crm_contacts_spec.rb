@@ -246,6 +246,20 @@ describe '[CRM]' do
     end
   end
 
+  describe '#update_crm_entity_creation_date' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_crm_entity_creation_date }
+      let(:args) { ['contact', random_id(:new_contact)] }
+    end
+  end
+
+  describe '#update_crm_entity_modification_date' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_crm_entity_modification_date }
+      let(:args) { ['contact', random_id(:new_contact)] }
+    end
+  end
+
   describe '#change_contact_photo' do
     it_should_behave_like 'an api request' do
       let(:command) { :change_contact_photo }
