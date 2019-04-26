@@ -153,6 +153,13 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_task_group }
       let(:args) { [random_word] }
+    end
+  end
+
+  describe '#create_task_group' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :create_task_group }
+      let(:args) { [random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :task_group_ids }
       let(:param_names) { %w[id] }
