@@ -76,16 +76,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#add_message' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :add_message }
-      let(:args) { [random_id(:new_project), random_word, random_word, DATA_COLLECTOR[:user_ids].join(',')] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :discussion_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
   describe '#create_template' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_template }
@@ -174,54 +164,6 @@ describe '[Project]' do
       let(:add_data_to_collector) { true }
       let(:data_param) { :comment_ids }
       let(:param_names) { %w[id] }
-    end
-  end
-
-  describe '#get_latest_discussion_messages' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_latest_discussion_messages }
-    end
-  end
-
-  describe '#get_message_by_filter' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_message_by_filter }
-      let(:args) { [{ projectId: random_id(:new_project) }] }
-    end
-  end
-
-  describe '#get_messages' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_messages }
-      let(:args) { [random_id(:new_project)] }
-    end
-  end
-
-  describe '#check_subscription_to_discussion' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :check_subscription_to_discussion }
-      let(:args) { [random_id(:discussion)] }
-    end
-  end
-
-  describe '#update_message' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_message }
-      let(:args) { [random_id(:discussion), random_id(:new_project), random_word, random_word] }
-    end
-  end
-
-  describe '#update_message_status' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_message_status }
-      let(:args) { [random_id(:discussion), PROJECT_DISCUSSION_STATUSES.sample] }
-    end
-  end
-
-  describe '#subscribe_to_message_action' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :subscribe_to_message_action }
-      let(:args) { [random_id(:discussion)] }
     end
   end
 
