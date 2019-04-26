@@ -589,20 +589,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#add_project_contact' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :add_project_contact }
-      let(:args) { [random_id(:new_project), random_id(:contact)] }
-    end
-  end
-
-  describe '#get_projects_for_contact' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_projects_for_contact }
-      let(:args) { [random_id(:contact)] }
-    end
-  end
-
   describe '#get_project_tags' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_project_tags }
@@ -721,13 +707,6 @@ describe '[Project]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_time_spents }
       let(:args) { [DATA_COLLECTOR[:project_task_time_ids].pop] }
-    end
-  end
-
-  describe '#delete_project_contact' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_project_contact }
-      let(:args) { [random_id(:new_project), random_id(:contact)] }
     end
   end
 
