@@ -56,23 +56,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#create_event' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :create_event }
-      let(:args) { [random_id(:new_contact), random_word, random_id(:crm_history_category)] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :crm_event_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
-  describe '#delete_event_and_related_files' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_event_and_related_files }
-      let(:args) { [DATA_COLLECTOR[:crm_event_ids].pop] }
-    end
-  end
-
   describe '#delete_person_from_company' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_person_from_company }
