@@ -142,6 +142,18 @@ describe '[CRM]' do
     end
   end
 
+  describe '#save_number_settings' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :save_number_settings }
+    end
+  end
+
+  describe '#save_terms_settings' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :save_terms_settings }
+    end
+  end
+
   describe '#update_invoice_group_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_invoice_group_status }

@@ -66,18 +66,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#save_number_settings' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :save_number_settings }
-    end
-  end
-
-  describe '#save_terms_settings' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :save_terms_settings }
-    end
-  end
-
   describe '#get_event_list_by_filter' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_event_list_by_filter }
