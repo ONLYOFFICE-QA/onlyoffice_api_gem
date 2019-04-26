@@ -3,6 +3,12 @@ require 'spec_helper'
 describe '[CRM]' do
   let(:teamlab_module) { :crm }
 
+  describe '#get_event_list_by_filter' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_event_list_by_filter }
+    end
+  end
+
   describe '#create_history_category' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_history_category }

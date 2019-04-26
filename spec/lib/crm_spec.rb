@@ -66,12 +66,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#get_event_list_by_filter' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_event_list_by_filter }
-    end
-  end
-
   describe '#add_persons_to_company' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_persons_to_company }
