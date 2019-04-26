@@ -66,13 +66,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#update_company' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_company }
-      let(:args) { [random_id(:company), random_word] }
-    end
-  end
-
   describe '#delete_event_and_related_files' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_event_and_related_files }

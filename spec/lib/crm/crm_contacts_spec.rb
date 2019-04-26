@@ -388,6 +388,13 @@ describe '[CRM]' do
     end
   end
 
+  describe '#update_company' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_company }
+      let(:args) { [random_id(:company), random_word] }
+    end
+  end
+
   describe '#update_contact_types_order' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_types_order }
