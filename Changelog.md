@@ -51,6 +51,8 @@
 * Move development dependencies to `Gemfile`
 * Remove dependency of `activesupport`
 * Remove deprecated `Crm#delete_contact_address`
+* Remove deprecated `Crm#save_crm_settings`
+* Rename `Crm#get_settings` to `Crm#get_invoice_settings`
 
 ## 0.6
 ### New features

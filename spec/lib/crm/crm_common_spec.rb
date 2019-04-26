@@ -9,6 +9,12 @@ describe '[CRM]' do
     end
   end
 
+  describe '#get_result_of_convertation' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_result_of_convertation }
+    end
+  end
+
   describe '#get_summary_table' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_summary_table }

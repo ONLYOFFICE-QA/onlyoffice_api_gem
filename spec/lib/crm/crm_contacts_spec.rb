@@ -77,6 +77,17 @@ describe '[CRM]' do
     end
   end
 
+  describe '#create_person' do
+    it_should_behave_like 'an api request' do
+      let(:teamlab_module) { :crm }
+      let(:command) { :create_person }
+      let(:args) { [random_word.capitalize, random_word.capitalize] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :new_contact_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
   describe '#add_contact_info' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_contact_info }
@@ -146,6 +157,13 @@ describe '[CRM]' do
       let(:add_data_to_collector) { true }
       let(:data_param) { :company_ids }
       let(:param_names) { %w[id] }
+    end
+  end
+
+  describe '#create_task_group' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :create_task_group }
+      let(:args) { [random_word] }
     end
   end
 
@@ -228,6 +246,20 @@ describe '[CRM]' do
     end
   end
 
+  describe '#update_crm_entity_creation_date' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_crm_entity_creation_date }
+      let(:args) { ['contact', random_id(:new_contact)] }
+    end
+  end
+
+  describe '#update_crm_entity_modification_date' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_crm_entity_modification_date }
+      let(:args) { ['contact', random_id(:new_contact)] }
+    end
+  end
+
   describe '#change_contact_photo' do
     it_should_behave_like 'an api request' do
       let(:command) { :change_contact_photo }
@@ -289,6 +321,14 @@ describe '[CRM]' do
     end
   end
 
+  describe '#add_persons_to_company' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :add_persons_to_company }
+      i = -1
+      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
+    end
+  end
+
   describe '#link_contact_with_project' do
     it_should_behave_like 'an api request' do
       let(:command) { :link_contact_with_project }
@@ -345,6 +385,20 @@ describe '[CRM]' do
     end
   end
 
+  describe '#quick_person_list_creation' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :quick_person_list_creation }
+      let(:args) { [[[random_word, random_word], [random_word, random_word]]] }
+    end
+  end
+
+  describe '#quick_company_list_creation' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :quick_company_list_creation }
+      let(:args) { [random_word] }
+    end
+  end
+
   describe '#merge_contacts' do
     it_should_behave_like 'an api request' do
       let(:command) { :merge_contacts }
@@ -356,6 +410,13 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :set_contacts_access_rights }
       let(:args) { [[DATA_COLLECTOR[:new_contact_ids].sample(rand(1..4))]] }
+    end
+  end
+
+  describe '#update_company' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_company }
+      let(:args) { [random_id(:company), random_word] }
     end
   end
 
@@ -427,6 +488,14 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_contact_status }
       let(:args) { [DATA_COLLECTOR[:contact_status_ids].pop] }
+    end
+  end
+
+  describe '#delete_person_from_company' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_person_from_company }
+      i = -1
+      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
     end
   end
 end

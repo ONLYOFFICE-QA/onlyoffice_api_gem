@@ -26,28 +26,5 @@ module Teamlab
     def initialize
       @request = Teamlab::Request.new('crm')
     end
-
-    # region General
-    def save_smtp_settings(options = {})
-      @request.put(%w[settings smtp], options)
-    end
-
-    # region Files
-
-    def update_crm_entity_creation_date(entity_name, entity_id, date = '2007-01-01')
-      id_field = "#{entity_name}id".to_sym
-      options = {}
-      options[id_field] = entity_id.to_s
-      options[:creationDate] = date.to_s
-      @request.put([entity_name.to_s, entity_id.to_s, 'creationdate'], options)
-    end
-
-    def update_crm_entity_modification_date(entity_name, entity_id, date = '2007-01-01')
-      id_field = "#{entity_name}id".to_sym
-      options = {}
-      options[id_field] = entity_id.to_s
-      options[:lastModifedDate] = date.to_s
-      @request.put([entity_name.to_s, entity_id.to_s, 'lastmodifeddate'], options)
-    end
   end
 end
