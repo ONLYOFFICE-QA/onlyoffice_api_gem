@@ -66,19 +66,6 @@ describe '[CRM]' do
     end
   end
 
-  describe '#quick_person_list_creation' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :quick_person_list_creation }
-      let(:args) { [[[random_word, random_word], [random_word, random_word]]] }
-    end
-  end
-
-  describe '#get_result_of_convertation' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_result_of_convertation }
-    end
-  end
-
   describe '#get_settings' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_settings }
