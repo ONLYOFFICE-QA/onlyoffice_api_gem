@@ -7,6 +7,7 @@ require_relative 'projects/projects_projects'
 require_relative 'projects/projects_reports'
 require_relative 'projects/projects_settings'
 require_relative 'projects/projects_tags'
+require_relative 'projects/projects_tasks'
 module Teamlab
   class Project
     include ProjectsComments
@@ -18,6 +19,7 @@ module Teamlab
     include ProjectsReports
     include ProjectsSettings
     include ProjectsTags
+    include ProjectsTasks
 
     def initialize
       @request = Teamlab::Request.new('project')
@@ -60,10 +62,6 @@ module Teamlab
 
     def delete_template(id)
       @request.delete(['template', id.to_s])
-    end
-
-    def delete_task(id)
-      @request.delete(['task', id.to_s])
     end
 
     # endregion
@@ -120,86 +118,6 @@ module Teamlab
 
     def remove_from_team(project_id, user_id)
       @request.delete([project_id.to_s, 'team'], userId: user_id)
-    end
-
-    # endregion
-
-    # region Tasks
-
-    def get_my_tasks
-      @request.get(%w[task @self])
-    end
-
-    def get_task_by_filter(options = {})
-      @request.get(%w[task filter], options)
-    end
-
-    def get_task(id)
-      @request.get(['task', id.to_s])
-    end
-
-    def get_tasks(project_id)
-      @request.get([project_id.to_s, 'task'])
-    end
-
-    def get_my_tasks_by_status(status)
-      @request.get(['task', '@self', status.to_s])
-    end
-
-    def notify_task_responsible(task_id)
-      @request.get(['task', task_id.to_s, 'notify'])
-    end
-
-    def get_all_tasks(project_id)
-      @request.get([project_id.to_s, 'task'])
-    end
-
-    def check_subscription_to_task_action(task_id)
-      @request.get(['task', task_id.to_s, 'subscribe'])
-    end
-
-    def get_tasks_with_status(project_id, status)
-      @request.get([project_id.to_s, 'task', status.to_s])
-    end
-
-    def get_my_tasks_with_status(project_id, status)
-      @request.get([project_id.to_s, 'task', '@self', status.to_s])
-    end
-
-    def create_subtask(task_id, responsible_id, title)
-      @request.post(['task', task_id.to_s], responsible: responsible_id, title: title)
-    end
-
-    def add_task(project_id, title, options = {})
-      @request.post([project_id.to_s, 'task'], { title: title }.merge(options))
-    end
-
-    def add_task_from_discussion(project_id, message_id)
-      @request.post([project_id.to_s, 'task', message_id.to_s])
-    end
-
-    def update_task_status(task_id, status)
-      @request.put(['task', task_id.to_s, 'status'], status: status)
-    end
-
-    def update_task_milestone(task_id, milestone_id)
-      @request.put(['task', task_id.to_s, 'milestone'], milestoneId: milestone_id)
-    end
-
-    def subscribe_to_task_action(task_id)
-      @request.put(['task', task_id.to_s, 'subscribe'])
-    end
-
-    def update_subtask(task_id, subtask_id, responsible_id, title)
-      @request.post(['task', task_id.to_s, subtask_id.to_s], responsibleId: responsible_id, title: title)
-    end
-
-    def update_subtask_status(task_id, subtask_id, status)
-      @request.put(['task', task_id.to_s, subtask_id.to_s, 'status'], status: status)
-    end
-
-    def delete_subtask(task_id, subtask_id)
-      @request.delete(['task', task_id.to_s, subtask_id.to_s])
     end
 
     # endregion

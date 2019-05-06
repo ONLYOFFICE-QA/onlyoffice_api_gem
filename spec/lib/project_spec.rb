@@ -103,16 +103,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#create_subtask' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :create_subtask }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids].last, random_id(:user), random_word] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :project_subtask_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
   describe '#add_task_time' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_task_time }
@@ -307,84 +297,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#get_my_tasks' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_my_tasks }
-    end
-  end
-
-  describe '#get_task_by_filter' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_task_by_filter }
-      let(:args) { [{ participant: random_id(:user) }] }
-    end
-  end
-
-  describe '#get_task' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_task }
-      let(:args) { [random_id(:project_task)] }
-    end
-  end
-
-  describe '#get_tasks' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_tasks }
-      let(:args) { [random_id(:new_project)] }
-    end
-  end
-
-  describe '#get_my_tasks_by_status' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_my_tasks_by_status }
-      let(:args) { [PROJECT_TASKS_STATUSES.sample] }
-    end
-  end
-
-  describe '#notify_task_responsible' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :notify_task_responsible }
-      let(:args) { [random_id(:project_task)] }
-    end
-  end
-
-  describe '#get_all_tasks' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_all_tasks }
-      let(:args) { [random_id(:new_project)] }
-    end
-  end
-
-  describe '#get_tasks_with_status' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_tasks_with_status }
-      let(:args) { [random_id(:new_project), PROJECT_TASKS_STATUSES.sample] }
-    end
-  end
-
-  describe '#update_task_status' do
-    it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23860'
-      let(:command) { :update_task_status }
-      let(:args) { [random_id(:project_task), PROJECT_TASKS_STATUSES.sample] }
-    end
-  end
-
-  describe '#update_subtask' do
-    it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23860'
-      let(:command) { :update_subtask }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids].last, random_id(:project_subtask), random_id(:user), random_word] }
-    end
-  end
-
-  describe '#update_subtask_status' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_subtask_status }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids].last, random_id(:project_subtask), PROJECT_TASKS_STATUSES.sample] }
-    end
-  end
-
   describe '#get_upcoming_milestones' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_upcoming_milestones }
@@ -437,24 +349,10 @@ describe '[Project]' do
     end
   end
 
-  describe '#delete_subtask' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_subtask }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids].last, DATA_COLLECTOR[:project_subtask_ids].pop] }
-    end
-  end
-
   describe '#delete_message_comments' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_comment }
       let(:args) { [DATA_COLLECTOR[:comment_ids].pop] }
-    end
-  end
-
-  describe '#delete_task' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_task }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids].pop] }
     end
   end
 
