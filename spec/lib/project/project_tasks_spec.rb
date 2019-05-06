@@ -102,7 +102,6 @@ describe '[Project] Tasks' do
 
   describe '#update_task_status' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23860'
       let(:command) { :update_task_status }
       let(:args) { [random_id(:project_task), PROJECT_TASKS_STATUSES.sample] }
     end
