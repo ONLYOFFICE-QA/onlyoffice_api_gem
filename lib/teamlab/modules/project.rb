@@ -6,6 +6,7 @@ require_relative 'projects/projects_milestones'
 require_relative 'projects/projects_projects'
 require_relative 'projects/projects_reports'
 require_relative 'projects/projects_settings'
+require_relative 'projects/projects_tags'
 module Teamlab
   class Project
     include ProjectsComments
@@ -16,6 +17,7 @@ module Teamlab
     include ProjectsProjects
     include ProjectsReports
     include ProjectsSettings
+    include ProjectsTags
 
     def initialize
       @request = Teamlab::Request.new('project')
@@ -198,22 +200,6 @@ module Teamlab
 
     def delete_subtask(task_id, subtask_id)
       @request.delete(['task', task_id.to_s, subtask_id.to_s])
-    end
-
-    # endregion
-
-    # region Tags
-
-    def get_project_tags
-      @request.get(%w[tag])
-    end
-
-    def get_project_by_tag(tag)
-      @request.get(['tag', tag.to_s])
-    end
-
-    def get_tags_by_name(tag_name)
-      @request.get(%w[tag search], tagName: tag_name)
     end
 
     # endregion
