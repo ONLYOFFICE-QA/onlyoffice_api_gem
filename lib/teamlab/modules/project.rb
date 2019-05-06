@@ -4,6 +4,7 @@ require_relative 'projects/projects_discussions'
 require_relative 'projects/projects_files'
 require_relative 'projects/projects_milestones'
 require_relative 'projects/projects_projects'
+require_relative 'projects/projects_reports'
 require_relative 'projects/projects_settings'
 module Teamlab
   class Project
@@ -13,6 +14,7 @@ module Teamlab
     include ProjectsFiles
     include ProjectsMilestones
     include ProjectsProjects
+    include ProjectsReports
     include ProjectsSettings
 
     def initialize
@@ -32,22 +34,6 @@ module Teamlab
 
     def get_projects_for_import(url, username, password)
       @request.post(%w[import projects], url: url, userName: username, password: password)
-    end
-
-    # endregion
-
-    # region Report Template
-
-    def create_report_template(name, options = {})
-      @request.post(['report'], { name: name }.merge(options))
-    end
-
-    def update_report_template(report_id, name, options = {})
-      @request.put(['report', report_id.to_s], { name: name }.merge(options))
-    end
-
-    def delete_report_template(report_id)
-      @request.delete(['report', report_id.to_s])
     end
 
     # endregion
