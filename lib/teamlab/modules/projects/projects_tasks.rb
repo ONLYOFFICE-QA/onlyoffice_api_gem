@@ -66,7 +66,7 @@ module Teamlab
     end
 
     def update_subtask(task_id, subtask_id, responsible_id, title)
-      @request.post(['task', task_id.to_s, subtask_id.to_s], responsibleId: responsible_id, title: title)
+      @request.put(['task', task_id.to_s, subtask_id.to_s], responsible: responsible_id, title: title)
     end
 
     def update_subtask_status(task_id, subtask_id, status)

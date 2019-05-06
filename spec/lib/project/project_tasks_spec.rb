@@ -109,7 +109,6 @@ describe '[Project] Tasks' do
 
   describe '#update_subtask' do
     it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23860'
       let(:command) { :update_subtask }
       let(:args) { [DATA_COLLECTOR[:project_task_ids].last, random_id(:project_subtask), random_id(:user), random_word] }
     end
