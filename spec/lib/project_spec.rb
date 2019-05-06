@@ -528,55 +528,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#get_milestone' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_milestone }
-      let(:args) { [random_id(:project_milestone)] }
-    end
-  end
-
-  describe '#get_milestones_by_filter' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_milestones_by_filter }
-      let(:args) { [{ projectid: random_id(:new_project) }] }
-    end
-  end
-
-  describe '#get_milestone_tasks' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_milestone_tasks }
-      let(:args) { [random_id(:project_milestone)] }
-    end
-  end
-
-  describe '#get_milestones_by_month' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_milestones_by_month }
-      let(:args) { [rand(2000..Time.now.year.to_i), rand(1..12)] }
-    end
-  end
-
-  describe '#get_milestones_by_full_date' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_milestones_by_full_date }
-      let(:args) { [rand(2000..Time.now.year.to_i), rand(1..12), rand(1..31)] }
-    end
-  end
-
-  describe '#update_milestone' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_milestone }
-      let(:args) { [random_id(:project_milestone), random_word, DateTime.commercial(2015).to_s] }
-    end
-  end
-
-  describe '#update_milestone_status' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_milestone_status }
-      let(:args) { [random_id(:project_milestone), PROJECT_MILESTONE_STATUSES.sample] }
-    end
-  end
-
   describe '#get_time_spent_by_filter' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_time_spent_by_filter }
@@ -628,13 +579,6 @@ describe '[Project]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_comment }
       let(:args) { [DATA_COLLECTOR[:comment_ids].pop] }
-    end
-  end
-
-  describe '#delete_milestone' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_milestone }
-      let(:args) { [DATA_COLLECTOR[:project_milestone_ids].pop] }
     end
   end
 
