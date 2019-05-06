@@ -100,13 +100,6 @@ describe '[Project] Tasks' do
     end
   end
 
-  describe '#update_task_status' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_task_status }
-      let(:args) { [random_id(:project_task), PROJECT_TASKS_STATUSES.sample] }
-    end
-  end
-
   describe '#update_subtask' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_subtask }
@@ -125,6 +118,13 @@ describe '[Project] Tasks' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_subtask }
       let(:args) { [DATA_COLLECTOR[:project_task_ids].last, DATA_COLLECTOR[:project_subtask_ids].pop] }
+    end
+  end
+
+  describe '#update_task_status' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_task_status }
+      let(:args) { [random_id(:project_task), PROJECT_TASKS_STATUSES.sample] }
     end
   end
 
