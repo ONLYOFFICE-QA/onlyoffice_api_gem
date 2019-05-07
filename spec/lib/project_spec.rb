@@ -194,13 +194,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#set_task_order' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :set_task_order }
-      let(:args) { [random_id(:new_project), '123456'] }
-    end
-  end
-
   describe '#get_upcoming_milestones' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_upcoming_milestones }

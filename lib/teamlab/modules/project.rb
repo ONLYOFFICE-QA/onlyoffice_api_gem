@@ -68,9 +68,5 @@ module Teamlab
     def update_project(id, title, responsible_id, options = {})
       @request.put([id.to_s], { title: title, responsibleId: responsible_id }.merge(options))
     end
-
-    def set_task_order(project_id, order)
-      @request.put([project_id.to_s, 'order'], order: order)
-    end
   end
 end
