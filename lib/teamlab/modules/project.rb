@@ -8,6 +8,8 @@ require_relative 'projects/projects_reports'
 require_relative 'projects/projects_settings'
 require_relative 'projects/projects_tags'
 require_relative 'projects/projects_tasks'
+require_relative 'projects/projects_team'
+
 module Teamlab
   class Project
     include ProjectsComments
@@ -20,6 +22,7 @@ module Teamlab
     include ProjectsSettings
     include ProjectsTags
     include ProjectsTasks
+    include ProjectsTeam
 
     def initialize
       @request = Teamlab::Request.new('project')
@@ -93,34 +96,6 @@ module Teamlab
     def update_project_task(task_id, title, options = {})
       @request.put(['task', task_id.to_s], { title: title.to_s }.merge(options))
     end
-
-    # region Team
-
-    def get_project_team(project_id)
-      @request.get([project_id.to_s, 'team'])
-    end
-
-    def get_projects_teams(*project_ids)
-      @request.post(%w[team], ids: project_ids.flatten)
-    end
-
-    def add_to_team(project_id, user_id)
-      @request.post([project_id.to_s, 'team'], userid: user_id)
-    end
-
-    def update_project_team(project_id, participants_ids, options = {})
-      @request.put([project_id.to_s, 'team'], { participants: participants_ids }.merge(options))
-    end
-
-    def set_team_security(project_id, user_id, security, options = {})
-      @request.put([project_id.to_s, 'team', 'security'], { userId: user_id, security: security }.merge(options))
-    end
-
-    def remove_from_team(project_id, user_id)
-      @request.delete([project_id.to_s, 'team'], userId: user_id)
-    end
-
-    # endregion
 
     def get_time_spent_by_filter(options = {})
       @request.get(%w[time filter], options)

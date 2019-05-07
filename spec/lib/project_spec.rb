@@ -255,48 +255,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#get_project_team' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_project_team }
-      let(:args) { [random_id(:new_project)] }
-    end
-  end
-
-  describe '#get_projects_teams' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_projects_teams }
-      let(:args) { [DATA_COLLECTOR[:new_project_ids].sample(rand(2..4))] }
-    end
-  end
-
-  describe '#add_to_team' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :add_to_team }
-      let(:args) { [random_id(:new_project), random_id(:user)] }
-    end
-  end
-
-  describe '#update_project_team' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_project_team }
-      let(:args) { [random_id(:new_project), DATA_COLLECTOR[:user_ids].sample(rand(2..4)), { notify: random_bool }] }
-    end
-  end
-
-  describe '#set_team_security' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :set_team_security }
-      let(:args) { [random_id(:new_project), random_id(:user), PROJECT_SECURITY_RIGHTS.sample] }
-    end
-  end
-
-  describe '#remove_from_team' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :remove_from_team }
-      let(:args) { [random_id(:new_project), random_id(:user)] }
-    end
-  end
-
   describe '#get_upcoming_milestones' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_upcoming_milestones }
