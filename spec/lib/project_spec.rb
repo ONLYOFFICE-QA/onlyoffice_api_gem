@@ -76,16 +76,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#create_template' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :create_template }
-      let(:args) { [random_word] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :project_template_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
   describe '#add_task' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_task }
@@ -171,12 +161,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#get_templates' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_templates }
-    end
-  end
-
   describe '#get_spent_time' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_spent_time }
@@ -184,24 +168,10 @@ describe '[Project]' do
     end
   end
 
-  describe '#get_template' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_template }
-      let(:args) { [random_id(:project_template)] }
-    end
-  end
-
   describe '#get_milestones' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_milestones }
       let(:args) { [random_id(:new_project)] }
-    end
-  end
-
-  describe '#update_template' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_template }
-      let(:args) { [random_id(:project_template), random_word] }
     end
   end
 
@@ -311,13 +281,6 @@ describe '[Project]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_comment }
       let(:args) { [DATA_COLLECTOR[:comment_ids].pop] }
-    end
-  end
-
-  describe '#delete_template' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_template }
-      let(:args) { [DATA_COLLECTOR[:project_template_ids].pop] }
     end
   end
 
