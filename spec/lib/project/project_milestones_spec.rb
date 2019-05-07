@@ -35,6 +35,12 @@ describe '[Project] Milestones' do
     end
   end
 
+  describe '#get_upcoming_milestones' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_upcoming_milestones }
+    end
+  end
+
   describe '#get_overdue_milestones' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_overdue_milestones }
