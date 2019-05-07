@@ -93,16 +93,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#add_task_time' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :add_task_time }
-      let(:args) { [random_id(:project_task), Time.now.strftime('%Y-%m-%-d'), random_id(:user), DATA_COLLECTOR[:new_project_ids].last] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :project_task_time_ids }
-      let(:param_names) { %w[id] }
-    end
-  end
-
   describe '#add_milestone' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_milestone }
@@ -158,13 +148,6 @@ describe '[Project]' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_comment }
       let(:args) { [random_id(:comment), random_word] }
-    end
-  end
-
-  describe '#get_spent_time' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_spent_time }
-      let(:args) { [random_id(:new_project)] }
     end
   end
 
@@ -234,46 +217,6 @@ describe '[Project]' do
   describe '#get_overdue_milestones' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_overdue_milestones }
-    end
-  end
-
-  describe '#get_time_spent_by_filter' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_time_spent_by_filter }
-    end
-  end
-
-  describe '#get_total_time_spent_by_filter' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_total_time_spent_by_filter }
-    end
-  end
-
-  describe '#get_time_spent' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_time_spent }
-      let(:args) { [random_id(:project_task)] }
-    end
-  end
-
-  describe '#update_task_time' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_task_time }
-      let(:args) { [random_id(:project_task_time), Time.now.strftime('%Y-%m-%-d'), random_id(:user)] }
-    end
-  end
-
-  describe '#update_time_status_of_payment' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_time_status_of_payment }
-      let(:args) { [DATA_COLLECTOR[:project_task_time_ids].sample(rand(2..4)), PROJECT_TASK_TIME_STATUSES.sample] }
-    end
-  end
-
-  describe '#delete_time_spents' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_time_spents }
-      let(:args) { [DATA_COLLECTOR[:project_task_time_ids].pop] }
     end
   end
 
