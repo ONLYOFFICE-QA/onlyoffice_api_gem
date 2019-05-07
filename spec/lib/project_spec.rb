@@ -206,13 +206,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#delete_message_comments' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :delete_comment }
-      let(:args) { [DATA_COLLECTOR[:comment_ids].pop] }
-    end
-  end
-
   describe '#projects_settings' do
     it_should_behave_like 'an api request' do
       let(:command) { :projects_settings }
