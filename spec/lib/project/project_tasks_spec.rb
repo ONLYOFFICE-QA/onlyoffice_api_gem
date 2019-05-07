@@ -100,6 +100,13 @@ describe '[Project] Tasks' do
     end
   end
 
+  describe '#update_project_task' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_project_task }
+      let(:args) { [random_id(:project_task), random_word] }
+    end
+  end
+
   describe '#update_subtask' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_subtask }

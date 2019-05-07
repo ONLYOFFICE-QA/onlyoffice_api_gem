@@ -57,6 +57,10 @@ module Teamlab
       @request.put(['task', task_id.to_s, 'status'], status: status)
     end
 
+    def update_project_task(task_id, title, options = {})
+      @request.put(['task', task_id.to_s], { title: title.to_s }.merge(options))
+    end
+
     def update_task_milestone(task_id, milestone_id)
       @request.put(['task', task_id.to_s, 'milestone'], milestoneId: milestone_id)
     end

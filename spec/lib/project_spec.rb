@@ -201,13 +201,6 @@ describe '[Project]' do
     end
   end
 
-  describe '#update_project_task' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_project_task }
-      let(:args) { [random_id(:project_task), random_word] }
-    end
-  end
-
   describe '#get_upcoming_milestones' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_upcoming_milestones }
