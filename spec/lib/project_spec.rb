@@ -150,18 +150,4 @@ describe '[Project]' do
       let(:args) { [random_id(:comment), random_word] }
     end
   end
-
-  describe '#get_milestones' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_milestones }
-      let(:args) { [random_id(:new_project)] }
-    end
-  end
-
-  describe '#get_tasks_by_ids' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_tasks_by_ids }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids].sample(rand(2..4))] }
-    end
-  end
 end
