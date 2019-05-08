@@ -164,11 +164,4 @@ describe '[Project]' do
       let(:args) { [DATA_COLLECTOR[:project_task_ids].sample(rand(2..4))] }
     end
   end
-
-  describe '#get_task_order' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_task_order }
-      let(:args) { [random_id(:new_project)] }
-    end
-  end
 end

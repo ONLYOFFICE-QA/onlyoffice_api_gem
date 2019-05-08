@@ -52,9 +52,5 @@ module Teamlab
     def get_tasks_by_ids(*task_ids)
       @request.get(['task'], taskid: task_ids.flatten)
     end
-
-    def get_task_order(project_id)
-      @request.get([project_id.to_s, 'order'])
-    end
   end
 end
