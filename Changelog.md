@@ -49,6 +49,7 @@
 * Remove non-documented and not working `Projects#set_task_order`
 * Remove non-documented `Projects#get_simple_task_by_filter`
 * Remove non-documented `Projects#get_task_order`
+* Remove non-documented `Projects#get_tasks_by_ids`
 
 ### Refactor
 

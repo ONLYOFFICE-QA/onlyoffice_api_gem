@@ -48,9 +48,5 @@ module Teamlab
     end
 
     # endregion
-
-    def get_tasks_by_ids(*task_ids)
-      @request.get(['task'], taskid: task_ids.flatten)
-    end
   end
 end
