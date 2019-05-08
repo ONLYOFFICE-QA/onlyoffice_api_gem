@@ -70,6 +70,13 @@ describe '[Project] Projects' do
     end
   end
 
+  describe '#get_milestones' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_milestones }
+      let(:args) { [random_id(:project)] }
+    end
+  end
+
   describe '#search_all_projects' do
     it_should_behave_like 'an api request' do
       let(:command) { :search_all_projects }
