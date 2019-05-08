@@ -56,9 +56,5 @@ module Teamlab
     def get_task_order(project_id)
       @request.get([project_id.to_s, 'order'])
     end
-
-    def get_simple_task_by_filter(project_id, options = {})
-      @request.get(%w[task filter simple], { projectid: project_id }.merge(options))
-    end
   end
 end

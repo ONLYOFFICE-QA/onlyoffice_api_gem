@@ -171,11 +171,4 @@ describe '[Project]' do
       let(:args) { [random_id(:new_project)] }
     end
   end
-
-  describe '#get_simple_task_by_filter' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_simple_task_by_filter }
-      let(:args) { [random_id(:new_project)] }
-    end
-  end
 end
