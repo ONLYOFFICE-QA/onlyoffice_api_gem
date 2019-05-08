@@ -60,9 +60,5 @@ module Teamlab
     def get_simple_task_by_filter(project_id, options = {})
       @request.get(%w[task filter simple], { projectid: project_id }.merge(options))
     end
-
-    def add_link(parent_task_id, dependence_task_id, link_type)
-      @request.post(['task', parent_task_id.to_s, 'link'], dependenceTaskId: dependence_task_id, linkType: link_type)
-    end
   end
 end

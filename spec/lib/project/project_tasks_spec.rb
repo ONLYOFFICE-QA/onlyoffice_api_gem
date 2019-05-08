@@ -35,6 +35,16 @@ describe '[Project] Tasks' do
     end
   end
 
+  describe '#add_task' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :add_task }
+      let(:args) { [random_id(:project), random_word] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :project_task_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
   describe '#create_subtask' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_subtask }
@@ -97,6 +107,13 @@ describe '[Project] Tasks' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_tasks_with_status }
       let(:args) { [random_id(:project), PROJECT_TASKS_STATUSES.sample] }
+    end
+  end
+
+  describe '#add_link' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :add_link }
+      let(:args) { [DATA_COLLECTOR[:project_task_ids][0], DATA_COLLECTOR[:project_task_ids][1], PROJECT_TASK_LINK_TYPES.first] }
     end
   end
 

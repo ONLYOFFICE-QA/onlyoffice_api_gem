@@ -45,6 +45,10 @@ module Teamlab
       @request.post(['task', task_id.to_s], responsible: responsible_id, title: title)
     end
 
+    def add_link(parent_task_id, dependence_task_id, link_type)
+      @request.post(['task', parent_task_id.to_s, 'link'], dependenceTaskId: dependence_task_id, linkType: link_type)
+    end
+
     def add_task(project_id, title, options = {})
       @request.post([project_id.to_s, 'task'], { title: title }.merge(options))
     end

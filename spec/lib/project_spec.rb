@@ -178,12 +178,4 @@ describe '[Project]' do
       let(:args) { [random_id(:new_project)] }
     end
   end
-
-  describe '#add_link' do
-    it_should_behave_like 'an api request' do
-      pending 'http://bugzserver/show_bug.cgi?id=23861'
-      let(:command) { :add_link }
-      let(:args) { [random_id(:project_task), random_id(:project_task), PROJECT_TASK_LINK_TYPES.sample] }
-    end
-  end
 end
