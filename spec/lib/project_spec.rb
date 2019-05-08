@@ -186,11 +186,4 @@ describe '[Project]' do
       let(:args) { [random_id(:project_task), random_id(:project_task), PROJECT_TASK_LINK_TYPES.sample] }
     end
   end
-
-  describe '#update_project' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :update_project }
-      let(:args) { [random_id(:new_project), random_word, random_id(:user), { private: random_bool, notify: random_bool }] }
-    end
-  end
 end

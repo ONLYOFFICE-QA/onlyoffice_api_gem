@@ -112,6 +112,13 @@ describe '[Project] Projects' do
     end
   end
 
+  describe '#update_project' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :update_project }
+      let(:args) { [random_id(:project), random_word, random_id(:user), { private: random_bool, notify: random_bool }] }
+    end
+  end
+
   describe '#delete_project' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_project }
