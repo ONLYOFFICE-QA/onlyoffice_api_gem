@@ -10,13 +10,6 @@ describe '[Mail]' do
     end
   end
 
-  describe '#create_account_by_email' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :create_account_by_email }
-      let(:args) { [USERNAME, PASSWORD] }
-    end
-  end
-
   describe '#get_filtered_messages' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_filtered_messages }
@@ -34,12 +27,6 @@ describe '[Mail]' do
   describe '#get_message_template' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_message_template }
-    end
-  end
-
-  describe '#get_account_list' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :get_account_list }
     end
   end
 
