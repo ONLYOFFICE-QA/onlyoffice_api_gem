@@ -85,11 +85,4 @@ describe '[Project]' do
       let(:param_names) { %w[id] }
     end
   end
-
-  describe '#add_task_from_discussion' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :add_task_from_discussion }
-      let(:args) { [random_id(:new_project), random_id(:discussion)] }
-    end
-  end
 end

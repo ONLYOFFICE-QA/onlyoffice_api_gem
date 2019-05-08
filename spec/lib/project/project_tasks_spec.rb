@@ -25,6 +25,16 @@ describe '[Project] Tasks' do
     end
   end
 
+  describe '#add_message' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :add_message }
+      let(:args) { [random_id(:project), random_word, random_word, DATA_COLLECTOR[:user_ids].join(',')] }
+      let(:add_data_to_collector) { true }
+      let(:data_param) { :discussion_ids }
+      let(:param_names) { %w[id] }
+    end
+  end
+
   describe '#add_task' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_task }
@@ -42,6 +52,13 @@ describe '[Project] Tasks' do
       let(:add_data_to_collector) { true }
       let(:data_param) { :project_task_ids }
       let(:param_names) { %w[id] }
+    end
+  end
+
+  describe '#add_task_from_discussion' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :add_task_from_discussion }
+      let(:args) { [random_id(:project), random_id(:discussion)] }
     end
   end
 
