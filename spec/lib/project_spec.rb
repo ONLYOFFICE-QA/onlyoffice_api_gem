@@ -193,10 +193,4 @@ describe '[Project]' do
       let(:args) { [random_id(:new_project), random_word, random_id(:user), { private: random_bool, notify: random_bool }] }
     end
   end
-
-  describe '#projects_settings' do
-    it_should_behave_like 'an api request' do
-      let(:command) { :projects_settings }
-    end
-  end
 end
