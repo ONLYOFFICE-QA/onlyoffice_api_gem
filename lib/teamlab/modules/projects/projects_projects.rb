@@ -57,6 +57,10 @@ module Teamlab
       @request.post([project_id.to_s, 'milestone'], { title: title, deadline: deadline, responsible: responsible_id }.merge(options))
     end
 
+    def update_project(id, title, responsible_id, options = {})
+      @request.put([id.to_s], { title: title, responsibleId: responsible_id }.merge(options))
+    end
+
     def update_project_tags(id, tags)
       @request.put([id.to_s, 'tag'], tags: tags)
     end

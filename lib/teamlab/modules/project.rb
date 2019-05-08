@@ -64,9 +64,5 @@ module Teamlab
     def add_link(parent_task_id, dependence_task_id, link_type)
       @request.post(['task', parent_task_id.to_s, 'link'], dependenceTaskId: dependence_task_id, linkType: link_type)
     end
-
-    def update_project(id, title, responsible_id, options = {})
-      @request.put([id.to_s], { title: title, responsibleId: responsible_id }.merge(options))
-    end
   end
 end
