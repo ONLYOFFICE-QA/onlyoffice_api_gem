@@ -1,8 +1,10 @@
 require_relative 'mail/mail_accounts'
+require_relative 'mail/mail_alerts'
 require_relative 'mail/mail_settings'
 module Teamlab
   class Mail
     include MailAccounts
+    include MailAlerts
     include MailSettings
 
     def initialize
@@ -96,18 +98,6 @@ module Teamlab
     def update_signature(mailbox_id, html, options = {})
       @request.post(['signature', 'update', mailbox_id.to_s], { html: html }.merge(options))
     end
-
-    # region Alerts
-
-    def get_alerts_list
-      @request.get('alert')
-    end
-
-    def delete_alert_by_id(id)
-      @request.delete(['alert', id.to_s])
-    end
-
-    # endregion
 
     # region Contacts
 
