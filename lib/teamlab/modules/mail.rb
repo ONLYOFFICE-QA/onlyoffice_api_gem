@@ -1,10 +1,12 @@
 require_relative 'mail/mail_accounts'
 require_relative 'mail/mail_alerts'
+require_relative 'mail/mail_contacts'
 require_relative 'mail/mail_settings'
 module Teamlab
   class Mail
     include MailAccounts
     include MailAlerts
+    include MailContacts
     include MailSettings
 
     def initialize
@@ -98,18 +100,6 @@ module Teamlab
     def update_signature(mailbox_id, html, options = {})
       @request.post(['signature', 'update', mailbox_id.to_s], { html: html }.merge(options))
     end
-
-    # region Contacts
-
-    def get_contact_list_for_auto_complete(term)
-      @request.get(%w[contacts], term: term)
-    end
-
-    def get_crm_linked_entities(message_id)
-      @request.get(%w[crm linked entities], messageId: message_id)
-    end
-
-    # endregion
 
     # region Conversations
 
