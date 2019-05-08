@@ -3,6 +3,7 @@ require_relative 'mail/mail_alerts'
 require_relative 'mail/mail_contacts'
 require_relative 'mail/mail_conversations'
 require_relative 'mail/mail_folders'
+require_relative 'mail/mail_helpcenter'
 require_relative 'mail/mail_settings'
 module Teamlab
   class Mail
@@ -11,6 +12,7 @@ module Teamlab
     include MailContacts
     include MailConversations
     include MailFolders
+    include MailHelpCenter
     include MailSettings
 
     def initialize
@@ -85,14 +87,6 @@ module Teamlab
 
     def delete_attachment_from_message(message_id, attachment_id)
       @request.delete(['messages', message_id.to_s, 'attachments', attachment_id.to_s])
-    end
-
-    # endregion
-
-    # region HelpCenter
-
-    def get_html_of_help_center
-      @request.get(%w[helpcenter])
     end
 
     # endregion
