@@ -89,10 +89,6 @@ PROJECT_SECURITY_RIGHTS = %w[None Messages Tasks Files Milestone Contacts].freez
 PROJECT_TASKS_STATUSES = %w[open closed].freeze
 PROJECT_TASK_TIME_STATUSES = %w[NotChargeable NotBilled Billed].freeze
 PROJECT_DISCUSSION_STATUSES = %w[Open Archived].freeze
-
-BASECAMP_URL = 'https://basecamp.com/2452154'.freeze
-BASECAMP_LOGIN = ''.freeze
-BASECAMP_PSW = ''.freeze
 # endregion
 
 # region CRM
