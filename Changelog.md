@@ -60,6 +60,7 @@
 * Remove deprecated `Crm#save_crm_settings`
 * Rename `Crm#get_settings` to `Crm#get_invoice_settings`
 * Remove Basecamp import methods
+* Remove undocumented `Mail#generate_custom_guid` method
 
 ## 0.6
 ### New features

@@ -25,13 +25,5 @@ module Teamlab
     def initialize
       @request = Teamlab::Request.new('mail')
     end
-
-    # region GUID
-
-    def generate_custom_guid
-      @request.get(%w[random_guid])
-    end
-
-    # endregion
   end
 end
