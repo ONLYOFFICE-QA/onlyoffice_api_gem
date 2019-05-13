@@ -7,6 +7,7 @@ require_relative 'mail/mail_helpcenter'
 require_relative 'mail/mail_images'
 require_relative 'mail/mail_messages'
 require_relative 'mail/mail_settings'
+require_relative 'mail/mail_signature'
 require_relative 'mail/mail_tags'
 module Teamlab
   class Mail
