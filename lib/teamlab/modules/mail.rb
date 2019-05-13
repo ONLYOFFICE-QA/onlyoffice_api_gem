@@ -6,6 +6,7 @@ require_relative 'mail/mail_folders'
 require_relative 'mail/mail_helpcenter'
 require_relative 'mail/mail_messages'
 require_relative 'mail/mail_settings'
+require_relative 'mail/mail_tags'
 module Teamlab
   class Mail
     include MailAccounts
@@ -16,6 +17,7 @@ module Teamlab
     include MailHelpCenter
     include MailMessages
     include MailSettings
+    include MailTags
 
     def initialize
       @request = Teamlab::Request.new('mail')
@@ -49,34 +51,6 @@ module Teamlab
 
     def remove_from_trusted_addresses(address)
       @request.delete(%w[display_messages addresses], addres: address)
-    end
-
-    # endregion
-
-    # region Tags
-
-    def get_tag_list
-      @request.get(%w[tags])
-    end
-
-    def create_tag(name, options = {})
-      @request.post(%w[tags], { name: name }.merge(options))
-    end
-
-    def update_tag(id, name, options = {})
-      @request.put(['tags', id.to_s], { name: name }.merge(options))
-    end
-
-    def set_tag_to_messages(id, *message_ids)
-      @request.put(['tags', id.to_s, 'set'], messages: message_ids.flatten)
-    end
-
-    def remove_tag_from_messages(id, *message_ids)
-      @request.put(['tags', id.to_s, 'remove'], messages: message_ids.flatten)
-    end
-
-    def delete_tag(id)
-      @request.delete(['tags', id.to_s])
     end
 
     # endregion

@@ -1,6 +1,6 @@
-require_relative '../spec_helper'
+require 'spec_helper'
 
-describe '[Mail]' do
+describe '[Mail] Tags' do
   let(:teamlab_module) { :mail }
 
   describe '#create_tag' do
