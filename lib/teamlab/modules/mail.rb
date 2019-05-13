@@ -4,6 +4,7 @@ require_relative 'mail/mail_contacts'
 require_relative 'mail/mail_conversations'
 require_relative 'mail/mail_folders'
 require_relative 'mail/mail_helpcenter'
+require_relative 'mail/mail_images'
 require_relative 'mail/mail_messages'
 require_relative 'mail/mail_settings'
 require_relative 'mail/mail_tags'
@@ -15,6 +16,7 @@ module Teamlab
     include MailConversations
     include MailFolders
     include MailHelpCenter
+    include MailImages
     include MailMessages
     include MailSettings
     include MailTags
@@ -35,22 +37,6 @@ module Teamlab
 
     def generate_custom_guid
       @request.get(%w[random_guid])
-    end
-
-    # endregion
-
-    # region IMAGES
-
-    def get_trusted_addresses
-      @request.get(%w[display_messages addresses])
-    end
-
-    def add_trusted_address(address)
-      @request.post(%w[display_messages addresses], addres: address)
-    end
-
-    def remove_from_trusted_addresses(address)
-      @request.delete(%w[display_messages addresses], addres: address)
     end
 
     # endregion
