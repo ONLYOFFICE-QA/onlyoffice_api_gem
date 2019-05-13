@@ -38,6 +38,7 @@
 * Fix `Crm#update_invoice` request
 * Fix `Crm#delete_invoice_line` request
 * Fix `Crm#update_organisation_address`
+* Fix `Projects#update_subtask` request
 * Rename `Crm#update_invoice_patch_status` to `Crm#update_invoice_group_status`
 * Rename `Crm#add_deal_to_contact` to `Crm#add_contact_opportunity`
 * Remove non-existing method `Crm#add_contact_address`
@@ -45,6 +46,10 @@
 * Remove non-existing method `People#remind_password`
 * Remove non-existing method `Community#delete_post_in_topic`
 * Remove deprecated method for CRM Task Template
+* Remove non-documented and not working `Projects#set_task_order`
+* Remove non-documented `Projects#get_simple_task_by_filter`
+* Remove non-documented `Projects#get_task_order`
+* Remove non-documented `Projects#get_tasks_by_ids`
 
 ### Refactor
 
@@ -53,6 +58,7 @@
 * Remove deprecated `Crm#delete_contact_address`
 * Remove deprecated `Crm#save_crm_settings`
 * Rename `Crm#get_settings` to `Crm#get_invoice_settings`
+* Remove Basecamp import methods
 
 ## 0.6
 ### New features
