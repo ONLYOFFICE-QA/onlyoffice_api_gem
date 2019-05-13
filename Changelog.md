@@ -39,6 +39,7 @@
 * Fix `Crm#delete_invoice_line` request
 * Fix `Crm#update_organisation_address`
 * Fix `Projects#update_subtask` request
+* Fix urls for Mail Images methods
 * Rename `Crm#update_invoice_patch_status` to `Crm#update_invoice_group_status`
 * Rename `Crm#add_deal_to_contact` to `Crm#add_contact_opportunity`
 * Remove non-existing method `Crm#add_contact_address`
@@ -59,6 +60,7 @@
 * Remove deprecated `Crm#save_crm_settings`
 * Rename `Crm#get_settings` to `Crm#get_invoice_settings`
 * Remove Basecamp import methods
+* Remove undocumented `Mail#generate_custom_guid` method
 
 ## 0.6
 ### New features
