@@ -18,19 +18,12 @@ module Teamlab
     include MailHelpCenter
     include MailImages
     include MailMessages
+    include MailSignature
     include MailSettings
     include MailTags
 
     def initialize
       @request = Teamlab::Request.new('mail')
-    end
-
-    def get_meail_signature(mailbox_id)
-      @request.get(['signature', mailbox_id.to_s])
-    end
-
-    def update_signature(mailbox_id, html, options = {})
-      @request.post(['signature', 'update', mailbox_id.to_s], { html: html }.merge(options))
     end
 
     # region GUID
