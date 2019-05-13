@@ -82,7 +82,7 @@ describe '[CRM]' do
   describe '#upload_file' do
     it_should_behave_like 'an api request' do
       let(:command) { :upload_file }
-      let(:args) { [entity = ENTITY_TYPES.sample, random_id(entity.to_sym), FILE_FOR_UPLOAD] }
+      let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym), FILE_FOR_UPLOAD] }
     end
   end
 
