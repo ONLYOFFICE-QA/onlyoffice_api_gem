@@ -1,5 +1,8 @@
+require_relative 'people/people_reassign'
 module Teamlab
   class People
+    include PeopleReassign
+
     def initialize
       @request = Teamlab::Request.new('people')
     end

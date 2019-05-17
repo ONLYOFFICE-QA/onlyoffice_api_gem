@@ -17,6 +17,9 @@
 * Add `Project#projects_settings` request
 * Add `Community#delete_bookmark`
 * Add `Community#delete_forum_post`, `Community#delete_forum_topic`
+* Add `People#start_reassign_user_data`,
+  `People#get_reassign_progress`,
+  `People#terminate_reassign`
 * Remove usage of `httmultiparty`
 
 ### Fixes
