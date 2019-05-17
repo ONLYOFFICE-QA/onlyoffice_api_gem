@@ -56,6 +56,13 @@ describe '[Community]' do
     end
   end
 
+  describe '#get_event_comments' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :get_event_comments }
+      let(:args) { [random_id(:community_event)] }
+    end
+  end
+
   describe '#vote_for_event' do
     it_should_behave_like 'an api request' do
       let(:command) { :vote_for_event }
