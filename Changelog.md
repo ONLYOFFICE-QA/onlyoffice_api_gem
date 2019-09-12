@@ -64,6 +64,7 @@
 * Rename `Crm#get_settings` to `Crm#get_invoice_settings`
 * Remove Basecamp import methods
 * Remove undocumented `Mail#generate_custom_guid` method
+* `Community#update_event` require `type` and change to keyword arguments
 
 ## 0.6
 ### New features
