@@ -178,9 +178,9 @@ describe '[Calendar]' do
     end
   end
 
-  describe '#remove_event' do
+  describe '#delete_event' do
     it_should_behave_like 'an api request' do
-      let(:command) { :remove_event }
+      let(:command) { :delete_event }
       let(:args) { [DATA_COLLECTOR[:calendar_event_ids].pop] }
     end
   end

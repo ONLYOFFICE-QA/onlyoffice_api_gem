@@ -65,6 +65,8 @@
 * Remove Basecamp import methods
 * Remove undocumented `Mail#generate_custom_guid` method
 * `Community#update_event` require `type` and change to keyword arguments
+* Rename `remove_event` to `delete_event` according to official docs.
+  Keep old name as alias
 
 ## 0.6
 ### New features
