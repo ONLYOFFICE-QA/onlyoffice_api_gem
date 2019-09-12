@@ -18,7 +18,7 @@ def configure_test_portal
     config.password = PASSWORD
   end
 
-  # reset_portal
+  reset_portal
 end
 
 RSpec.configure do |c|
