@@ -36,9 +36,9 @@ module Teamlab
     end
 
     def update_event(event_id, options = {})
-      @request.put(['event', event_id.to_s], { title: options[:title],
-                                               content: options[:content],
-                                               type: options[:type] })
+      @request.put(['event', event_id.to_s], title: options[:title],
+                                             content: options[:content],
+                                             type: options[:type])
     end
   end
 end
