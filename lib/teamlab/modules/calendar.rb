@@ -96,9 +96,11 @@ module Teamlab
       @request.delete(['events', event_id.to_s])
     end
 
-    def remove_event(event_id, options = {})
+    def delete_event(event_id, options = {})
       @request.delete(['events', event_id.to_s, 'custom'], options)
     end
+
+    alias remove_event delete_event
 
     def unsubscribe_from_event(event_id)
       @request.delete(['events', event_id.to_s, 'unsubscribe'])
