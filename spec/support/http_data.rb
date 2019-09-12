@@ -46,7 +46,7 @@ USER_STATUSES = %w[Active Terminated LeaveOfAbsence Default All].freeze
 USER_CONTACTS = [
   { type: 'skype', value: random_word },
   { type: 'email', value: random_email }
-]
+].freeze
 USER_TYPES = %w[All User Visitor].freeze
 PATH_TO_IMAGE = 'http://ic.pics.livejournal.com/scryp/14761862/5478/5478_original.jpg'
 USER_THIRD_PARTIES_PROVIDERS = %w[google facebook twitter linkedin].freeze
@@ -65,7 +65,7 @@ SETTINGS_ENTITY_IDS = ['1e044602-43b5-4d79-82f3-fd6208a11960',
                        '2a923037-8b2d-487b-9a22-5ac0918acf3f',
                        'bf88953e-3c43-4850-a3fb-b1e43ad53a3e',
                        '32d24cb5-7ece-4606-9c94-19216ba42086',
-                       Teamlab::Settings::GLOBAL_ADMIN_ID]
+                       Teamlab::Settings::GLOBAL_ADMIN_ID].freeze
 
 SETTINGS_TEST_USER = '27cd9da5-4f97-4335-ac45-55dd05d96d89'
 SETTINGS_TALK_MODULE_ID = 'bf88953e-3c43-4850-a3fb-b1e43ad53a3e'
