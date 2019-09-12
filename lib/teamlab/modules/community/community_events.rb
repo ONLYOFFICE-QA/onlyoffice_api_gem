@@ -33,8 +33,10 @@ module Teamlab
       @request.post(['event', event_id.to_s, 'comment'], { content: content }.merge(options))
     end
 
-    def update_event(event_id, title, content, options = {})
-      @request.put(['event', event_id.to_s], { title: title, content: content }.merge(options))
+    def update_event(event_id, options = {})
+      @request.put(['event', event_id.to_s], { title: options[:title],
+                                               content: options[:content],
+                                               type: options[:type] })
     end
   end
 end

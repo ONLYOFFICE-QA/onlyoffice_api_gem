@@ -26,7 +26,12 @@ describe '[Community]' do
   describe '#update_event' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_event }
-      let(:args) { [random_id(:community_event), random_word, random_word] }
+      let(:args) do
+        [DATA_COLLECTOR[:community_event_ids].first,
+         title: random_word,
+         content: random_word,
+         type: 'News']
+      end
     end
   end
 
