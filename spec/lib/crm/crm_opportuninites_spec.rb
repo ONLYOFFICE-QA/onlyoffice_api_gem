@@ -50,7 +50,7 @@ describe '[CRM]' do
   describe '#create_opportunity' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_opportunity }
-      let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].last, random_word, random_id(:user)] }
+      let(:args) { [@data_collector[:opportunity_stage_ids].last, random_word, random_id(:user)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :opportunity_ids }
       let(:param_names) { %w[id] }
@@ -60,7 +60,7 @@ describe '[CRM]' do
   describe '#create_opportunity_for_group' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_opportunity }
-      let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].last, random_word, random_id(:user)] }
+      let(:args) { [@data_collector[:opportunity_stage_ids].last, random_word, random_id(:user)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :opportunity_ids }
       let(:param_names) { %w[id] }
@@ -71,7 +71,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_opportunity_contact }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:opportunity_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
+      let(:args) { [@data_collector[:opportunity_ids].last, @data_collector[:new_contact_ids][i += 1]] }
     end
   end
 
@@ -118,14 +118,14 @@ describe '[CRM]' do
   describe '#update_opportunity_stage' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_opportunity_stage }
-      let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].first, random_word, COLORS_NAMES.sample] }
+      let(:args) { [@data_collector[:opportunity_stage_ids].first, random_word, COLORS_NAMES.sample] }
     end
   end
 
   describe '#update_opportunity_stages_order' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_opportunity_stages_order }
-      let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].sample(rand(1..3))] }
+      let(:args) { [@data_collector[:opportunity_stage_ids].sample(rand(1..3))] }
     end
   end
 
@@ -138,7 +138,7 @@ describe '[CRM]' do
   describe '#update_opportunity_to_stage' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_opportunity_to_stage }
-      let(:args) { [random_id(:opportunity), DATA_COLLECTOR[:opportunity_stage_ids].last] }
+      let(:args) { [random_id(:opportunity), @data_collector[:opportunity_stage_ids].last] }
     end
   end
 
@@ -146,21 +146,21 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_opportunity_contact }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:opportunity_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
+      let(:args) { [@data_collector[:opportunity_ids].last, @data_collector[:new_contact_ids][i += 1]] }
     end
   end
 
   describe '#delete_opportunity_group' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_opportunity_group }
-      let(:args) { [DATA_COLLECTOR[:opportunity_ids].pop] }
+      let(:args) { [@data_collector[:opportunity_ids].pop] }
     end
   end
 
   describe '#delete_opportunity' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_opportunity }
-      let(:args) { [DATA_COLLECTOR[:opportunity_ids].pop] }
+      let(:args) { [@data_collector[:opportunity_ids].pop] }
     end
   end
 
@@ -173,7 +173,7 @@ describe '[CRM]' do
   describe '#delete_opportunity_stage' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_opportunity_stage }
-      let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].pop] }
+      let(:args) { [@data_collector[:opportunity_stage_ids].pop] }
     end
   end
 end

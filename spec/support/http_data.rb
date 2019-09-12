@@ -2,8 +2,6 @@ SERVER = 'https://nctautotest-rubygem-test.onlyoffice.com'.freeze
 USERNAME = 'teamlab.ruby@gmail.com'.freeze
 PASSWORD = '123456'.freeze
 
-DATA_COLLECTOR = {}
-
 def args
   []
 end
@@ -26,10 +24,10 @@ end
 
 def random_id(param)
   data_name = "#{param}_ids".to_sym
-  raise "No data for `#{data_name}` is found in DATA_COLLECTOR" unless DATA_COLLECTOR.key?(data_name)
-  raise "Data DATA_COLLECTOR['#{param}'] is empty!" if DATA_COLLECTOR[data_name].empty?
+  raise "No data for `#{data_name}` is found in `data_collector`" unless @data_collector.key?(data_name)
+  raise "Data `data_collector['#{param}']` is empty!" if @data_collector[data_name].empty?
 
-  DATA_COLLECTOR[data_name].sample
+  @data_collector[data_name].sample
 end
 
 def random_settings_entity_id

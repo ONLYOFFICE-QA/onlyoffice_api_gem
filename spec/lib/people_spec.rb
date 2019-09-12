@@ -80,7 +80,7 @@ describe '[People]' do
   describe '#send_invite' do
     it_should_behave_like 'an api request' do
       let(:command) { :send_invite }
-      let(:args) { [DATA_COLLECTOR[:new_user_ids]] }
+      let(:args) { [@data_collector[:new_user_ids]] }
     end
   end
 
@@ -101,7 +101,7 @@ describe '[People]' do
   describe '#change_people_type' do
     it_should_behave_like 'an api request' do
       let(:command) { :change_people_type }
-      let(:args) { [USER_TYPES.sample, DATA_COLLECTOR[:new_user_ids]] }
+      let(:args) { [USER_TYPES.sample, @data_collector[:new_user_ids]] }
     end
   end
 
@@ -143,14 +143,14 @@ describe '[People]' do
   describe '#change_people_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :change_people_status }
-      let(:args) { ['Terminated', DATA_COLLECTOR[:new_user_ids]] }
+      let(:args) { ['Terminated', @data_collector[:new_user_ids]] }
     end
   end
 
   describe '#delete_user' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_user }
-      let(:args) { [DATA_COLLECTOR[:new_user_ids].pop] }
+      let(:args) { [@data_collector[:new_user_ids].pop] }
     end
   end
 

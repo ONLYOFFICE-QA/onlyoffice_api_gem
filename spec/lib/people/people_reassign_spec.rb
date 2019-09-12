@@ -29,7 +29,7 @@ describe '[People] Reassign' do
     describe '#change_people_status' do
       it_should_behave_like 'an api request' do
         let(:command) { :change_people_status }
-        let(:args) { [2, DATA_COLLECTOR[:user_ids].first] }
+        let(:args) { [2, @data_collector[:user_ids].first] }
       end
     end
   end
@@ -37,21 +37,21 @@ describe '[People] Reassign' do
   describe '#start_reassign_user_data' do
     it_should_behave_like 'an api request' do
       let(:command) { :start_reassign_user_data }
-      let(:args) { [DATA_COLLECTOR[:user_ids].first, DATA_COLLECTOR[:user_ids].last, false] }
+      let(:args) { [@data_collector[:user_ids].first, @data_collector[:user_ids].last, false] }
     end
   end
 
   describe '#get_reassign_progress' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_reassign_progress }
-      let(:args) { [DATA_COLLECTOR[:user_ids].first] }
+      let(:args) { [@data_collector[:user_ids].first] }
     end
   end
 
   describe '#terminate_reassign' do
     it_should_behave_like 'an api request' do
       let(:command) { :terminate_reassign }
-      let(:args) { [DATA_COLLECTOR[:user_ids].first] }
+      let(:args) { [@data_collector[:user_ids].first] }
     end
   end
 end

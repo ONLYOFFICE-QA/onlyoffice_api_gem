@@ -38,7 +38,7 @@ describe '[Project] Comments' do
   describe '#add_message' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_message }
-      let(:args) { [random_id(:project), random_word, random_word, DATA_COLLECTOR[:user_ids].join(',')] }
+      let(:args) { [random_id(:project), random_word, random_word, @data_collector[:user_ids].join(',')] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :discussion_ids }
       let(:param_names) { %w[id] }
@@ -96,7 +96,7 @@ describe '[Project] Comments' do
   describe '#delete_message_comments' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_comment }
-      let(:args) { [DATA_COLLECTOR[:comment_ids].pop] }
+      let(:args) { [@data_collector[:comment_ids].pop] }
     end
   end
 end

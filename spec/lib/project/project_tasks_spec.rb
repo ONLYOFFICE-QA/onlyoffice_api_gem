@@ -28,7 +28,7 @@ describe '[Project] Tasks' do
   describe '#add_message' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_message }
-      let(:args) { [random_id(:project), random_word, random_word, DATA_COLLECTOR[:user_ids].join(',')] }
+      let(:args) { [random_id(:project), random_word, random_word, @data_collector[:user_ids].join(',')] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :discussion_ids }
       let(:param_names) { %w[id] }
@@ -65,7 +65,7 @@ describe '[Project] Tasks' do
   describe '#create_subtask' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_subtask }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids].last, random_id(:user), random_word] }
+      let(:args) { [@data_collector[:project_task_ids].last, random_id(:user), random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :project_subtask_ids }
       let(:param_names) { %w[id] }
@@ -130,7 +130,7 @@ describe '[Project] Tasks' do
   describe '#add_link' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_link }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids][0], DATA_COLLECTOR[:project_task_ids][1], PROJECT_TASK_LINK_TYPES.first] }
+      let(:args) { [@data_collector[:project_task_ids][0], @data_collector[:project_task_ids][1], PROJECT_TASK_LINK_TYPES.first] }
     end
   end
 
@@ -144,21 +144,21 @@ describe '[Project] Tasks' do
   describe '#update_subtask' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_subtask }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids].last, random_id(:project_subtask), random_id(:user), random_word] }
+      let(:args) { [@data_collector[:project_task_ids].last, random_id(:project_subtask), random_id(:user), random_word] }
     end
   end
 
   describe '#update_subtask_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_subtask_status }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids].last, random_id(:project_subtask), PROJECT_TASKS_STATUSES.sample] }
+      let(:args) { [@data_collector[:project_task_ids].last, random_id(:project_subtask), PROJECT_TASKS_STATUSES.sample] }
     end
   end
 
   describe '#delete_subtask' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_subtask }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids].last, DATA_COLLECTOR[:project_subtask_ids].pop] }
+      let(:args) { [@data_collector[:project_task_ids].last, @data_collector[:project_subtask_ids].pop] }
     end
   end
 
@@ -172,7 +172,7 @@ describe '[Project] Tasks' do
   describe '#delete_task' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_task }
-      let(:args) { [DATA_COLLECTOR[:project_task_ids].pop] }
+      let(:args) { [@data_collector[:project_task_ids].pop] }
     end
   end
 end

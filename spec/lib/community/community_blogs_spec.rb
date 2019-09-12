@@ -82,7 +82,7 @@ describe '[Community]' do
   describe '#get_user_posts' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_user_posts }
-      let(:args) { [DATA_COLLECTOR[:self_username].sample] }
+      let(:args) { [@data_collector[:self_username].sample] }
     end
   end
 
@@ -96,7 +96,7 @@ describe '[Community]' do
   describe '#delete_post' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_post }
-      let(:args) { [DATA_COLLECTOR[:community_post_ids].pop] }
+      let(:args) { [@data_collector[:community_post_ids].pop] }
     end
   end
 end

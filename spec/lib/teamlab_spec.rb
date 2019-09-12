@@ -72,7 +72,7 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:teamlab_module) { :files }
         let(:command) { :delete_file }
-        let(:args) { [DATA_COLLECTOR[:file_ids].pop] }
+        let(:args) { [@data_collector[:file_ids].pop] }
       end
     end
 
@@ -80,7 +80,7 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:teamlab_module) { :crm }
         let(:command) { :delete_contact }
-        let(:args) { [DATA_COLLECTOR[:contact_ids].pop] }
+        let(:args) { [@data_collector[:contact_ids].pop] }
       end
     end
 
@@ -88,7 +88,7 @@ describe Teamlab do
       it_should_behave_like 'an api request' do
         let(:teamlab_module) { :project }
         let(:command) { :delete_project }
-        let(:args) { [DATA_COLLECTOR[:project_ids].pop] }
+        let(:args) { [@data_collector[:project_ids].pop] }
       end
     end
   end

@@ -92,7 +92,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_contact_info }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i += 1], info_type = CONTACT_INFO_TYPES.sample, random_word, random_info_category(info_type)] }
+      let(:args) { [@data_collector[:new_contact_ids][i += 1], info_type = CONTACT_INFO_TYPES.sample, random_word, random_info_category(info_type)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :contact_info_ids }
       let(:param_names) { %w[id] }
@@ -134,7 +134,7 @@ describe '[CRM]' do
   describe '#get_contacts_for_mail' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_contacts_for_mail }
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids].sample(rand(1..3))] }
+      let(:args) { [@data_collector[:new_contact_ids].sample(rand(1..3))] }
     end
   end
 
@@ -197,7 +197,7 @@ describe '[CRM]' do
   describe '#update_contact_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_status }
-      let(:args) { [DATA_COLLECTOR[:contact_status_ids].first, random_word, { color: COLORS_NAMES.sample }] }
+      let(:args) { [@data_collector[:contact_status_ids].first, random_word, { color: COLORS_NAMES.sample }] }
     end
   end
 
@@ -228,7 +228,7 @@ describe '[CRM]' do
   describe '#update_contact_status_color' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_status_color }
-      let(:args) { [DATA_COLLECTOR[:contact_status_ids].first, COLORS_NAMES.sample] }
+      let(:args) { [@data_collector[:contact_status_ids].first, COLORS_NAMES.sample] }
     end
   end
 
@@ -242,7 +242,7 @@ describe '[CRM]' do
   describe '#update_contact_status_by_id' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_status_by_id }
-      let(:args) { [random_id(:new_contact), DATA_COLLECTOR[:contact_status_ids].first] }
+      let(:args) { [random_id(:new_contact), @data_collector[:contact_status_ids].first] }
     end
   end
 
@@ -270,14 +270,14 @@ describe '[CRM]' do
   describe '#update_person_and_its_company_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_person_and_its_company_status }
-      let(:args) { [random_id(:new_contact), DATA_COLLECTOR[:contact_status_ids].first] }
+      let(:args) { [random_id(:new_contact), @data_collector[:contact_status_ids].first] }
     end
   end
 
   describe '#update_company_and_participants_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_company_and_participants_status }
-      let(:args) { [random_id(:company), DATA_COLLECTOR[:contact_status_ids].first] }
+      let(:args) { [random_id(:company), @data_collector[:contact_status_ids].first] }
     end
   end
 
@@ -317,7 +317,7 @@ describe '[CRM]' do
   describe '#link_contact_list_with_project' do
     it_should_behave_like 'an api request' do
       let(:command) { :link_contact_list_with_project }
-      let(:args) { [random_id(:project), DATA_COLLECTOR[:new_contact_ids].sample(rand(1..4))] }
+      let(:args) { [random_id(:project), @data_collector[:new_contact_ids].sample(rand(1..4))] }
     end
   end
 
@@ -325,7 +325,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_persons_to_company }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
+      let(:args) { [@data_collector[:company_ids].last, @data_collector[:new_contact_ids][i += 1]] }
     end
   end
 
@@ -402,14 +402,14 @@ describe '[CRM]' do
   describe '#merge_contacts' do
     it_should_behave_like 'an api request' do
       let(:command) { :merge_contacts }
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids].pop, random_id(:new_contact)] }
+      let(:args) { [@data_collector[:new_contact_ids].pop, random_id(:new_contact)] }
     end
   end
 
   describe '#set_contacts_access_rights' do
     it_should_behave_like 'an api request' do
       let(:command) { :set_contacts_access_rights }
-      let(:args) { [[DATA_COLLECTOR[:new_contact_ids].sample(rand(1..4))]] }
+      let(:args) { [[@data_collector[:new_contact_ids].sample(rand(1..4))]] }
     end
   end
 
@@ -423,7 +423,7 @@ describe '[CRM]' do
   describe '#update_contact_types_order' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_contact_types_order }
-      let(:args) { [DATA_COLLECTOR[:contact_types_titles].sample(rand(1..4))] }
+      let(:args) { [@data_collector[:contact_types_titles].sample(rand(1..4))] }
     end
   end
 
@@ -458,7 +458,7 @@ describe '[CRM]' do
   describe '#delete_contact_type' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_contact_type }
-      let(:args) { [DATA_COLLECTOR[:contact_type_ids].pop] }
+      let(:args) { [@data_collector[:contact_type_ids].pop] }
     end
   end
 
@@ -466,28 +466,28 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_contact_info }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids][i += 1], DATA_COLLECTOR[:contact_info_ids][i]] }
+      let(:args) { [@data_collector[:new_contact_ids][i += 1], @data_collector[:contact_info_ids][i]] }
     end
   end
 
   describe '#delete_contact_group' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_contact_group }
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids].pop] }
+      let(:args) { [@data_collector[:new_contact_ids].pop] }
     end
   end
 
   describe '#delete_contact' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_contact }
-      let(:args) { [DATA_COLLECTOR[:new_contact_ids].pop] }
+      let(:args) { [@data_collector[:new_contact_ids].pop] }
     end
   end
 
   describe '#delete_contact_status' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_contact_status }
-      let(:args) { [DATA_COLLECTOR[:contact_status_ids].pop] }
+      let(:args) { [@data_collector[:contact_status_ids].pop] }
     end
   end
 
@@ -495,7 +495,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_person_from_company }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:company_ids].last, DATA_COLLECTOR[:new_contact_ids][i += 1]] }
+      let(:args) { [@data_collector[:company_ids].last, @data_collector[:new_contact_ids][i += 1]] }
     end
   end
 end

@@ -89,14 +89,14 @@ describe '[CRM]' do
   describe '#associate_file_with_entity' do
     it_should_behave_like 'an api request' do
       let(:command) { :associate_file_with_entity }
-      let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym), DATA_COLLECTOR[:file_ids].sample] }
+      let(:args) { [(entity = ENTITY_TYPES.sample).sub('company', 'contact'), random_id(entity.to_sym), @data_collector[:file_ids].sample] }
     end
   end
 
   describe '#delete_file' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_file }
-      let(:args) { [DATA_COLLECTOR[:file_ids].pop] }
+      let(:args) { [@data_collector[:file_ids].pop] }
     end
   end
 end

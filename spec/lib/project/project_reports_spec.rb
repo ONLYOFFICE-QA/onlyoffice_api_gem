@@ -23,7 +23,7 @@ describe '[Project] Projects' do
   describe '#delete_report_template' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_report_template }
-      let(:args) { [DATA_COLLECTOR[:report_template_ids].pop] }
+      let(:args) { [@data_collector[:report_template_ids].pop] }
     end
   end
 end

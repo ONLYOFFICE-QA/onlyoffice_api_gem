@@ -208,14 +208,14 @@ describe '[Files]' do
   describe '#move_files' do
     it_should_behave_like 'an api request' do
       let(:command) { :move_files }
-      let(:args) { [random_id(:new_folder), { fileids: DATA_COLLECTOR[:new_file_ids].sample(rand(1..4)), overwrite: random_bool }] }
+      let(:args) { [random_id(:new_folder), { fileids: @data_collector[:new_file_ids].sample(rand(1..4)), overwrite: random_bool }] }
     end
   end
 
   describe '#copy_to_folder' do
     it_should_behave_like 'an api request' do
       let(:command) { :copy_to_folder }
-      let(:args) { [random_id(:new_folder), { fileids: DATA_COLLECTOR[:new_file_ids].sample(rand(1..4)), overwrite: random_bool }] }
+      let(:args) { [random_id(:new_folder), { fileids: @data_collector[:new_file_ids].sample(rand(1..4)), overwrite: random_bool }] }
     end
   end
 
@@ -303,14 +303,14 @@ describe '[Files]' do
   describe '#delete_file' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_file }
-      let(:args) { [DATA_COLLECTOR[:new_file_ids].pop] }
+      let(:args) { [@data_collector[:new_file_ids].pop] }
     end
   end
 
   describe '#delete_folder' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_folder }
-      let(:args) { [DATA_COLLECTOR[:new_folder_ids].pop] }
+      let(:args) { [@data_collector[:new_folder_ids].pop] }
     end
   end
 

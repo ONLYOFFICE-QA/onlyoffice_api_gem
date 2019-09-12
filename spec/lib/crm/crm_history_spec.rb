@@ -53,7 +53,7 @@ describe '[CRM]' do
   describe '#update_history_category' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_history_category }
-      let(:args) { [DATA_COLLECTOR[:crm_history_category_ids][1], random_word] }
+      let(:args) { [@data_collector[:crm_history_category_ids][1], random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :history_category_titles }
       let(:param_names) { %w[title] }
@@ -75,7 +75,7 @@ describe '[CRM]' do
   describe '#update_history_categories_order' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_history_categories_order }
-      let(:args) { [DATA_COLLECTOR[:history_category_titles].shuffle] }
+      let(:args) { [@data_collector[:history_category_titles].shuffle] }
     end
   end
 
@@ -89,14 +89,14 @@ describe '[CRM]' do
   describe '#delete_event_and_related_files' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_event_and_related_files }
-      let(:args) { [DATA_COLLECTOR[:crm_event_ids].pop] }
+      let(:args) { [@data_collector[:crm_event_ids].pop] }
     end
   end
 
   describe '#delete_history_category' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_history_category }
-      let(:args) { [DATA_COLLECTOR[:crm_history_category_ids].pop] }
+      let(:args) { [@data_collector[:crm_history_category_ids].pop] }
     end
   end
 end
