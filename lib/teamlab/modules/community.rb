@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'community/community_blogs'
 require_relative 'community/community_bookmarks'
 require_relative 'community/community_events'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Teamlab
   # Module for projects discussions methods
   module ProjectsDiscussions

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'teamlab/version'
 require_relative 'teamlab/config'
 require_relative 'teamlab/request'

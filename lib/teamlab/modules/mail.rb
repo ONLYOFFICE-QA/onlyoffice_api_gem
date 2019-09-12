@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'mail/mail_accounts'
 require_relative 'mail/mail_alerts'
 require_relative 'mail/mail_contacts'
