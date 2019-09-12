@@ -23,7 +23,7 @@ describe '[Group]' do
   describe '#add_group' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_group }
-      let(:args) { [random_id(:user), random_word, DATA_COLLECTOR[:user_ids]] }
+      let(:args) { [random_id(:user), random_word, @data_collector[:user_ids]] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :group_ids }
       let(:param_names) { %w[id] }
@@ -40,21 +40,21 @@ describe '[Group]' do
   describe '#replace_members' do
     it_should_behave_like 'an api request' do
       let(:command) { :replace_members }
-      let(:args) { [random_id(:group), DATA_COLLECTOR[:user_ids]] }
+      let(:args) { [random_id(:group), @data_collector[:user_ids]] }
     end
   end
 
   describe '#update_group' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_group }
-      let(:args) { [random_id(:group), { groupManager: random_id(:user), groupName: random_word, members: DATA_COLLECTOR[:user_ids] }] }
+      let(:args) { [random_id(:group), { groupManager: random_id(:user), groupName: random_word, members: @data_collector[:user_ids] }] }
     end
   end
 
   describe '#add_group_users' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_group_users }
-      let(:args) { [random_id(:group), DATA_COLLECTOR[:user_ids]] }
+      let(:args) { [random_id(:group), @data_collector[:user_ids]] }
     end
   end
 
@@ -82,7 +82,7 @@ describe '[Group]' do
   describe '#delete_group' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_group }
-      let(:args) { [DATA_COLLECTOR[:group_ids].pop] }
+      let(:args) { [@data_collector[:group_ids].pop] }
     end
   end
 end

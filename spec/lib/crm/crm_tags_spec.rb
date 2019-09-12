@@ -28,7 +28,7 @@ describe '[CRM]' do
   describe '#create_opportunity' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_opportunity }
-      let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].last, random_word, random_id(:user)] }
+      let(:args) { [@data_collector[:opportunity_stage_ids].last, random_word, random_id(:user)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :opportunity_ids }
       let(:param_names) { %w[id] }
@@ -132,7 +132,7 @@ describe '[CRM]' do
   describe '#delete_tag' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_tag }
-      let(:args) { [ENTITY_TYPES.last, DATA_COLLECTOR[:crm_tag_ids].pop] }
+      let(:args) { [ENTITY_TYPES.last, @data_collector[:crm_tag_ids].pop] }
     end
   end
 

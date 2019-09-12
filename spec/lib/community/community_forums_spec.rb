@@ -26,7 +26,7 @@ describe '[Community]' do
   describe '#add_post_to_topic' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_post_to_topic }
-      let(:args) { [DATA_COLLECTOR[:thread_topic_ids].last, random_word, random_word] }
+      let(:args) { [@data_collector[:thread_topic_ids].last, random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :topic_post_ids }
       let(:param_names) { %w[id] }
@@ -76,21 +76,21 @@ describe '[Community]' do
   describe '#update_post_in_topic' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_post_in_topic }
-      let(:args) { [DATA_COLLECTOR[:thread_topic_ids].last, random_id(:topic_post)] }
+      let(:args) { [@data_collector[:thread_topic_ids].last, random_id(:topic_post)] }
     end
   end
 
   describe '#delete_post' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_forum_post }
-      let(:args) { [DATA_COLLECTOR[:topic_post_ids].last] }
+      let(:args) { [@data_collector[:topic_post_ids].last] }
     end
   end
 
   describe '#delete_topic' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_forum_topic }
-      let(:args) { [DATA_COLLECTOR[:thread_topic_ids].pop] }
+      let(:args) { [@data_collector[:thread_topic_ids].pop] }
     end
   end
 end

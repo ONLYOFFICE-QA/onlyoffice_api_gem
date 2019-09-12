@@ -18,13 +18,13 @@ def configure_test_portal
     config.password = PASSWORD
   end
 
-  reset_portal
+  # reset_portal
 end
 
 RSpec.configure do |c|
   c.include PortalCleanup
   c.before(:all) do
-    DATA_COLLECTOR.clear
+    @data_collector = {}
     configure_test_portal
   end
 end
@@ -38,10 +38,10 @@ shared_examples_for 'an api request' do |*flags|
       puts "#{command}(#{args.join(', ')})"
       RequestHelper.current_responce = args.empty? ? @module.send(command) : @module.send(command, *args)
       if add_data_to_collector
-        DATA_COLLECTOR[data_param] ||= []
+        @data_collector[data_param] ||= []
         response = [RequestHelper.current_responce.body['response']].flatten
         response.each do |cur_response|
-          DATA_COLLECTOR[data_param] << param_names.inject(cur_response) { |a, e| a[e] }
+          @data_collector[data_param] << param_names.inject(cur_response) { |a, e| a[e] }
         end
       end
     end

@@ -17,7 +17,7 @@ describe '[CRM]' do
   describe '#create_case' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_case }
-      let(:args) { [random_word, { members: DATA_COLLECTOR[:new_contact_ids] }] }
+      let(:args) { [random_word, { members: @data_collector[:new_contact_ids] }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_case_ids }
       let(:param_names) { %w[id] }
@@ -103,7 +103,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :close_case }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:crm_case_ids][i += 1]] }
+      let(:args) { [@data_collector[:crm_case_ids][i += 1]] }
     end
   end
 
@@ -111,7 +111,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :resume_case }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:crm_case_ids][i += 1]] }
+      let(:args) { [@data_collector[:crm_case_ids][i += 1]] }
     end
   end
 
@@ -126,21 +126,21 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_case_contact }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:crm_case_ids][i += 1], random_id(:new_contact)] }
+      let(:args) { [@data_collector[:crm_case_ids][i += 1], random_id(:new_contact)] }
     end
   end
 
   describe '#delete_case' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_case }
-      let(:args) { [DATA_COLLECTOR[:crm_case_ids].shift] }
+      let(:args) { [@data_collector[:crm_case_ids].shift] }
     end
   end
 
   describe '#delete_case_group' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_case_group }
-      let(:args) { [DATA_COLLECTOR[:crm_case_ids].pop] }
+      let(:args) { [@data_collector[:crm_case_ids].pop] }
     end
   end
 
@@ -148,7 +148,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_case_group }
       i = -1
-      let(:args) { [{ contactId: DATA_COLLECTOR[:new_contact_ids][i += 1] }] }
+      let(:args) { [{ contactId: @data_collector[:new_contact_ids][i += 1] }] }
     end
   end
 end

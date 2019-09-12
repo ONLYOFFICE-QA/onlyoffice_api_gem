@@ -36,7 +36,7 @@ describe '[Project] Team' do
   describe '#delete_template' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_template }
-      let(:args) { [DATA_COLLECTOR[:project_template_ids].pop] }
+      let(:args) { [@data_collector[:project_template_ids].pop] }
     end
   end
 end

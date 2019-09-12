@@ -59,7 +59,7 @@ describe '[CRM]' do
   describe '#create_opportunity' do
     it_should_behave_like 'an api request' do
       let(:command) { :create_opportunity }
-      let(:args) { [DATA_COLLECTOR[:opportunity_stage_ids].last, random_word, random_id(:user)] }
+      let(:args) { [@data_collector[:opportunity_stage_ids].last, random_word, random_id(:user)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :opportunity_ids }
       let(:param_names) { %w[id] }
@@ -91,7 +91,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_selected_user_field }
       i = -1
-      let(:args) { [ENTITY_TYPES.last, DATA_COLLECTOR[:user_field_ids][i += 1], random_word, 3] }
+      let(:args) { [ENTITY_TYPES.last, @data_collector[:user_field_ids][i += 1], random_word, 3] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :user_field_title_ids }
       let(:param_names) { %w[label] }
@@ -101,14 +101,14 @@ describe '[CRM]' do
   describe '#update_user_fields_order' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_user_fields_order }
-      let(:args) { [ENTITY_TYPES.last, DATA_COLLECTOR[:user_field_ids]] }
+      let(:args) { [ENTITY_TYPES.last, @data_collector[:user_field_ids]] }
     end
   end
 
   describe '#delete_user_field' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_user_field }
-      let(:args) { [ENTITY_TYPES.last, DATA_COLLECTOR[:user_field_ids].pop] }
+      let(:args) { [ENTITY_TYPES.last, @data_collector[:user_field_ids].pop] }
     end
   end
 end

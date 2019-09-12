@@ -38,7 +38,7 @@ describe '[Project] Time' do
   describe '#add_task_time' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_task_time }
-      let(:args) { [random_id(:project_task), Time.now.strftime('%Y-%m-%-d'), random_id(:user), DATA_COLLECTOR[:project_ids].last] }
+      let(:args) { [random_id(:project_task), Time.now.strftime('%Y-%m-%-d'), random_id(:user), @data_collector[:project_ids].last] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :project_task_time_ids }
       let(:param_names) { %w[id] }
@@ -74,14 +74,14 @@ describe '[Project] Time' do
   describe '#update_time_status_of_payment' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_time_status_of_payment }
-      let(:args) { [DATA_COLLECTOR[:project_task_time_ids].sample(rand(2..4)), PROJECT_TASK_TIME_STATUSES.sample] }
+      let(:args) { [@data_collector[:project_task_time_ids].sample(rand(2..4)), PROJECT_TASK_TIME_STATUSES.sample] }
     end
   end
 
   describe '#delete_time_spents' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_time_spents }
-      let(:args) { [DATA_COLLECTOR[:project_task_time_ids].pop] }
+      let(:args) { [@data_collector[:project_task_time_ids].pop] }
     end
   end
 end

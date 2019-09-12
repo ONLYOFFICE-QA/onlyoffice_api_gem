@@ -99,7 +99,7 @@ describe '[Project] Milestones' do
   describe '#delete_milestone' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_milestone }
-      let(:args) { [DATA_COLLECTOR[:project_milestone_ids].pop] }
+      let(:args) { [@data_collector[:project_milestone_ids].pop] }
     end
   end
 end

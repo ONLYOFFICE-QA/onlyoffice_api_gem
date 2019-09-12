@@ -35,7 +35,7 @@ describe '[Project] Team' do
   describe '#get_projects_teams' do
     it_should_behave_like 'an api request' do
       let(:command) { :get_projects_teams }
-      let(:args) { [DATA_COLLECTOR[:project_ids].sample(rand(2..4))] }
+      let(:args) { [@data_collector[:project_ids].sample(rand(2..4))] }
     end
   end
 
@@ -49,7 +49,7 @@ describe '[Project] Team' do
   describe '#update_project_team' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_project_team }
-      let(:args) { [random_id(:project), DATA_COLLECTOR[:user_ids].sample(rand(2..4)), { notify: random_bool }] }
+      let(:args) { [random_id(:project), @data_collector[:user_ids].sample(rand(2..4)), { notify: random_bool }] }
     end
   end
 

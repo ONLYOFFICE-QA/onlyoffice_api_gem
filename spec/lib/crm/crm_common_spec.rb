@@ -55,7 +55,7 @@ describe '[CRM]' do
   describe '#delete_currency_rate_by_id' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_currency_rate_by_id }
-      let(:args) { [DATA_COLLECTOR[:new_currency_rate_ids].pop] }
+      let(:args) { [@data_collector[:new_currency_rate_ids].pop] }
     end
   end
 

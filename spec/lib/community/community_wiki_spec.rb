@@ -98,21 +98,21 @@ describe '[Community]' do
   describe '#delete_wiki_page_comment' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_wiki_page_comment }
-      let(:args) { [DATA_COLLECTOR[:wiki_page_comment_ids].pop] }
+      let(:args) { [@data_collector[:wiki_page_comment_ids].pop] }
     end
   end
 
   describe '#delete_wiki_file' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_wiki_file }
-      let(:args) { [DATA_COLLECTOR[:wiki_page_file_name_ids].pop] }
+      let(:args) { [@data_collector[:wiki_page_file_name_ids].pop] }
     end
   end
 
   describe '#delete_wiki_page' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_wiki_page }
-      let(:args) { [DATA_COLLECTOR[:wiki_page_name_ids].pop] }
+      let(:args) { [@data_collector[:wiki_page_name_ids].pop] }
     end
   end
 end

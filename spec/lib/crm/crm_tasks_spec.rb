@@ -28,7 +28,7 @@ describe '[CRM]' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_task_category }
       i = -1
-      let(:args) { [DATA_COLLECTOR[:crm_task_category_ids][i += 1], random_word] }
+      let(:args) { [@data_collector[:crm_task_category_ids][i += 1], random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :crm_task_category_titles }
       let(:param_names) { %w[title] }
@@ -95,7 +95,7 @@ describe '[CRM]' do
   describe '#update_task_categories_order' do
     it_should_behave_like 'an api request' do
       let(:command) { :update_task_categories_order }
-      let(:args) { [DATA_COLLECTOR[:crm_task_category_titles].shuffle] }
+      let(:args) { [@data_collector[:crm_task_category_titles].shuffle] }
     end
   end
 
@@ -109,14 +109,14 @@ describe '[CRM]' do
   describe '#delete_task' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_task }
-      let(:args) { [DATA_COLLECTOR[:crm_task_ids].pop] }
+      let(:args) { [@data_collector[:crm_task_ids].pop] }
     end
   end
 
   describe '#delete_task_category' do
     it_should_behave_like 'an api request' do
       let(:command) { :delete_task_category }
-      let(:args) { [DATA_COLLECTOR[:crm_task_category_ids].pop] }
+      let(:args) { [@data_collector[:crm_task_category_ids].pop] }
     end
   end
 end
