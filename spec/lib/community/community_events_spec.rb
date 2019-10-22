@@ -83,4 +83,11 @@ describe '[Community]' do
       let(:args) { [random_id(:community_event), random_word] }
     end
   end
+
+  describe '#delete_event' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_event }
+      let(:args) { [random_id(:community_event)] }
+    end
+  end
 end

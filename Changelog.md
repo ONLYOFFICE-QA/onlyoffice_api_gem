@@ -20,6 +20,7 @@
 * Add `People#start_reassign_user_data`,
   `People#get_reassign_progress`,
   `People#terminate_reassign`
+* Add `Community#delete_event`
 * Remove usage of `httmultiparty`
 
 ### Fixes
