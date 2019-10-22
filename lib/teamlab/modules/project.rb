@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'projects/projects_comments'
 require_relative 'projects/projects_contacts'
 require_relative 'projects/projects_discussions'

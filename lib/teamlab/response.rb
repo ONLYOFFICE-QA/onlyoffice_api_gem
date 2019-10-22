@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Teamlab
   class Response
     attr_reader :body, :error, :code, :success

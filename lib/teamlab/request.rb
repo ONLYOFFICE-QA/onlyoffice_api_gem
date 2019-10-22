@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'json'
 require 'httparty'
@@ -35,10 +37,10 @@ module Teamlab
       attempts = 0
       begin
         response = Teamlab::Response.new(HTTParty.send(type, url, opts))
-      rescue Timeout::Error => timeout_exception
+      rescue Timeout::Error => e
         attempts += 1
         retry if attempts < 3
-        raise "Can't #{type} to #{url} because of TimeoutError: #{timeout_exception}"
+        raise "Can't #{type} to #{url} because of TimeoutError: #{e}"
       rescue StandardError => e
         raise e
       end

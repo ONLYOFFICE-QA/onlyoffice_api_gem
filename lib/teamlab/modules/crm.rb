@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'crm/crm_cases'
 require_relative 'crm/crm_common'
 require_relative 'crm/crm_contacts'

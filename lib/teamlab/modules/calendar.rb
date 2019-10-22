@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Teamlab
   class Calendar
     def initialize

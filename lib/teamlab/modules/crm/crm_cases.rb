@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Teamlab
   # Methods for working with crm cases
   module CrmCases

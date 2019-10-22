@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PortalCleanup
   # @return [Void] reset all portal data
   def reset_portal

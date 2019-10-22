@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'people/people_reassign'
 module Teamlab
   class People
