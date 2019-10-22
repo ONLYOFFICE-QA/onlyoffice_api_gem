@@ -102,4 +102,11 @@ describe '[Community]' do
       let(:args) { [@data_collector[:thread_ids].pop] }
     end
   end
+
+  describe '#delete_category' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_category }
+      let(:args) { [Teamlab.send(teamlab_module).get_forums.body['response']['categories'].first['id']] }
+    end
+  end
 end
