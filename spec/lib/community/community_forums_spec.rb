@@ -95,4 +95,11 @@ describe '[Community]' do
       let(:args) { [@data_collector[:thread_topic_ids].pop] }
     end
   end
+
+  describe '#delete_thread' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_thread }
+      let(:args) { [@data_collector[:thread_ids].pop] }
+    end
+  end
 end

@@ -54,5 +54,11 @@ module Teamlab
     def delete_forum_topic(topic_id)
       @request.delete(['forum', 'topic', topic_id.to_s])
     end
+
+    # @param thread_id [Integer] thread to delete
+    # @return [Teamlab::Response] result of delete
+    def delete_thread(thread_id)
+      @request.delete(['forum', 'thread', thread_id.to_s])
+    end
   end
 end
