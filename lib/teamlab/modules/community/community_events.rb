@@ -40,5 +40,11 @@ module Teamlab
                                              content: options[:content],
                                              type: options[:type])
     end
+
+    # Deletes the selected event
+    # @param event_id [Integer] id of event
+    def delete_event(event_id)
+      @request.delete(['event', event_id.to_s])
+    end
   end
 end
