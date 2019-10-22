@@ -7,6 +7,7 @@ module PortalCleanup
     remove_users
     remove_blog_posts
     remove_bookmarks
+    remove_events
   end
 
   # @return [Void] Set all modules to true
@@ -40,6 +41,14 @@ module PortalCleanup
     bookmarks = Teamlab.community.get_all_bookmarks.body['response']
     bookmarks.each do |bookmark|
       Teamlab.community.delete_bookmark(bookmark['id'])
+    end
+  end
+
+  # @return [Void] Remove all events on portal
+  def remove_events
+    events = Teamlab.community.get_all_events.body['response']
+    events.each do |event|
+      Teamlab.community.delete_event(event['id'])
     end
   end
 end
