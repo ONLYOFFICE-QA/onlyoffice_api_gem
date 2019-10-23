@@ -9,9 +9,6 @@ describe '[Community]' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_thread_to_category }
       let(:args) { [-1, random_word, random_word, random_word] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :thread_ids }
-      let(:param_names) { %w[id] }
     end
   end
 
@@ -92,31 +89,31 @@ describe '[Community]' do
     end
   end
 
-  # describe '#delete_post' do
-  #   it_should_behave_like 'an api request' do
-  #     let(:command) { :delete_forum_post }
-  #     let(:args) { [@data_collector[:topic_post_ids].last] }
-  #   end
-  # end
-  #
-  # describe '#delete_topic' do
-  #   it_should_behave_like 'an api request' do
-  #     let(:command) { :delete_forum_topic }
-  #     let(:args) { [@data_collector[:thread_topic_ids].pop] }
-  #   end
-  # end
-  #
-  # describe '#delete_thread' do
-  #   it_should_behave_like 'an api request' do
-  #     let(:command) { :delete_thread }
-  #     let(:args) { [@data_collector[:thread_ids].pop] }
-  #   end
-  # end
-  #
-  # describe '#delete_category' do
-  #   it_should_behave_like 'an api request' do
-  #     let(:command) { :delete_category }
-  #     let(:args) { [Teamlab.send(teamlab_module).get_forums.body['response']['categories'].first['id']] }
-  #   end
-  # end
+  describe '#delete_post' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_forum_post }
+      let(:args) { [@data_collector[:topic_post_ids].last] }
+    end
+  end
+
+  describe '#delete_topic' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_forum_topic }
+      let(:args) { [@data_collector[:thread_topic_ids].pop] }
+    end
+  end
+
+  describe '#delete_thread' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_thread }
+      let(:args) { [@data_collector[:thread_ids].pop] }
+    end
+  end
+
+  describe '#delete_category' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :delete_category }
+      let(:args) { [Teamlab.send(teamlab_module).get_forums.body['response']['categories'].first['id']] }
+    end
+  end
 end
