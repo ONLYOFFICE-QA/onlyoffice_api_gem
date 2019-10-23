@@ -22,6 +22,7 @@
   `People#terminate_reassign`
 * Add `Community#delete_event`
 * Add `Community#delete_thread`
+* Add `Community#delete_category`
 * Remove usage of `httmultiparty`
 
 ### Fixes
