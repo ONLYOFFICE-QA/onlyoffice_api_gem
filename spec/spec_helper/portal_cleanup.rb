@@ -8,6 +8,7 @@ module PortalCleanup
     remove_blog_posts
     remove_bookmarks
     remove_events
+    remove_forum_categories
   end
 
   # @return [Void] Set all modules to true
@@ -49,6 +50,14 @@ module PortalCleanup
     events = Teamlab.community.get_all_events.body['response']
     events.each do |event|
       Teamlab.community.delete_event(event['id'])
+    end
+  end
+
+  # @return [Void] Remove all forum categories
+  def remove_forum_categories
+    categories = Teamlab.community.get_forums.body['response']['categories']
+    categories.each do |category|
+      Teamlab.community.delete_category(category['id'])
     end
   end
 end
