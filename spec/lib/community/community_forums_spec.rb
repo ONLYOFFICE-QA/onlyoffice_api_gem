@@ -9,6 +9,13 @@ describe '[Community]' do
     it_should_behave_like 'an api request' do
       let(:command) { :add_thread_to_category }
       let(:args) { [-1, random_word, random_word, random_word] }
+    end
+  end
+
+  describe '#add_thread_to_category' do
+    it_should_behave_like 'an api request' do
+      let(:command) { :add_thread_to_category }
+      let(:args) { [-1, random_word, random_word, random_word] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :thread_ids }
       let(:param_names) { %w[id] }
