@@ -15,9 +15,9 @@ require_relative 'support/http_data'
 
 def configure_test_portal
   Teamlab.configure do |config|
-    config.server = SERVER
-    config.username = USERNAME
-    config.password = PASSWORD
+    config.server = ENV['ONLYOFFICE_API_GEM_TEST_PORTAL']
+    config.username = ENV['ONLYOFFICE_API_GEM_TEST_USER']
+    config.password = ENV['ONLYOFFICE_API_GEM_TEST_PASSWORD']
   end
 
   reset_portal

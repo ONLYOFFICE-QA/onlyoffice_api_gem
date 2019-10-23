@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-SERVER = 'https://nctautotest-rubygem-test.onlyoffice.com'
-USERNAME = 'teamlab.ruby@gmail.com'
-PASSWORD = '123456'
-
 def args
   []
 end
