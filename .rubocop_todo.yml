@@ -61,13 +61,6 @@ RSpec/BeforeAfterAll:
     - 'spec/support/**/*.rb'
     - 'spec/lib/calendar_spec.rb'
 
-# Offense count: 1
-# Configuration parameters: Prefixes.
-# Prefixes: when, with, without
-RSpec/ContextWording:
-  Exclude:
-    - 'spec/spec_helper.rb'
-
 # Offense count: 42
 RSpec/DescribeClass:
   Enabled: false
