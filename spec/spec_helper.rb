@@ -49,7 +49,7 @@ shared_examples_for 'an api request' do |*flags|
     end
   end
 
-  context 'Successful api request' do
+  describe 'Successful api request' do
     it 'returns Teamlab::Response object' do
       expect(RequestHelper.current_responce).to be_instance_of(Teamlab::Response)
     end
