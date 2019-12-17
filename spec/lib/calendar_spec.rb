@@ -205,11 +205,4 @@ describe '[Calendar]' do
       let(:args) { [@data_collector[:calendar_ids].pop] }
     end
   end
-
-  after :all do
-    all_calendars = Teamlab.calendar.get_calendars_and_subscriptions(DateTime.new(2010).strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s, DateTime.now.strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s).body['response']
-    all_calendars.each do |current_calendar|
-      Teamlab.calendar.delete_calendar(current_calendar['objectId']) if current_calendar['isEditable'] || current_calendar['isiCalStream']
-    end
-  end
 end

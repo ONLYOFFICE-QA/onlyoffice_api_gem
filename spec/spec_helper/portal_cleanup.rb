@@ -9,6 +9,7 @@ module PortalCleanup
     remove_bookmarks
     remove_events
     remove_forum_categories
+    remove_calendars
   end
 
   # @return [Void] Set all modules to true
@@ -58,6 +59,15 @@ module PortalCleanup
     categories = Teamlab.community.get_forums.body['response']['categories']
     categories.each do |category|
       Teamlab.community.delete_category(category['id'])
+    end
+  end
+
+  # @return [Void] Remove all calendars
+  def remove_calendars
+    all_calendars = Teamlab.calendar.get_calendars_and_subscriptions(DateTime.new(1990).strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s,
+                                                                     DateTime.now.strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s).body['response']
+    all_calendars.each do |current_calendar|
+      Teamlab.calendar.delete_calendar(current_calendar['objectId']) if current_calendar['isEditable'] || current_calendar['isiCalStream']
     end
   end
 end
