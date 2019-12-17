@@ -7,7 +7,7 @@ describe '[People] Reassign' do
 
   describe 'Preconditions' do
     describe '#add_user' do
-      it_should_behave_like 'an api request' do
+      it_behaves_like 'an api request' do
         let(:command) { :add_user }
         let(:args) { [false, random_email, random_word.capitalize, random_word.capitalize] }
         let(:add_data_to_collector) { true }
@@ -17,7 +17,7 @@ describe '[People] Reassign' do
     end
 
     describe '#add_user' do
-      it_should_behave_like 'an api request' do
+      it_behaves_like 'an api request' do
         let(:command) { :add_user }
         let(:args) { [false, random_email, random_word.capitalize, random_word.capitalize] }
         let(:add_data_to_collector) { true }
@@ -27,7 +27,7 @@ describe '[People] Reassign' do
     end
 
     describe '#change_people_status' do
-      it_should_behave_like 'an api request' do
+      it_behaves_like 'an api request' do
         let(:command) { :change_people_status }
         let(:args) { [2, @data_collector[:user_ids].first] }
       end
@@ -35,21 +35,21 @@ describe '[People] Reassign' do
   end
 
   describe '#start_reassign_user_data' do
-    it_should_behave_like 'an api request' do
+    it_behaves_like 'an api request' do
       let(:command) { :start_reassign_user_data }
       let(:args) { [@data_collector[:user_ids].first, @data_collector[:user_ids].last, false] }
     end
   end
 
   describe '#get_reassign_progress' do
-    it_should_behave_like 'an api request' do
+    it_behaves_like 'an api request' do
       let(:command) { :get_reassign_progress }
       let(:args) { [@data_collector[:user_ids].first] }
     end
   end
 
   describe '#terminate_reassign' do
-    it_should_behave_like 'an api request' do
+    it_behaves_like 'an api request' do
       let(:command) { :terminate_reassign }
       let(:args) { [@data_collector[:user_ids].first] }
     end

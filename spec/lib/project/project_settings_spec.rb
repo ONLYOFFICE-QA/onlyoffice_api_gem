@@ -6,7 +6,7 @@ describe '[Project] Projects' do
   let(:teamlab_module) { :project }
 
   describe '#projects_settings' do
-    it_should_behave_like 'an api request' do
+    it_behaves_like 'an api request' do
       let(:command) { :projects_settings }
     end
   end

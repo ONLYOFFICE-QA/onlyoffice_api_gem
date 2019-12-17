@@ -83,13 +83,6 @@ RSpec/HooksBeforeExamples:
 RSpec/InstanceVariable:
   Enabled: false
 
-# Offense count: 553
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: it_behaves_like, it_should_behave_like
-RSpec/ItBehavesLike:
-  Enabled: false
-
 # Offense count: 16
 Style/Documentation:
   Exclude:
