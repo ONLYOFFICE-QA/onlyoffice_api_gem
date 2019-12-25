@@ -113,25 +113,25 @@ module Teamlab
 
     # region Folders
 
-    def get_my_docs
-      @request.get(['@my'])
+    def get_my_docs(params = {})
+      @request.get(['@my'], params)
     end
     alias get_my_files get_my_docs
 
-    def get_shared_docs
-      @request.get(['@share'])
+    def get_shared_docs(params = {})
+      @request.get(['@share'], params)
     end
 
-    def get_trash
-      @request.get(['@trash'])
+    def get_trash(params = {})
+      @request.get(['@trash'], params)
     end
 
-    def get_common_docs
-      @request.get(['@common'])
+    def get_common_docs(params = {})
+      @request.get(['@common'], params)
     end
 
-    def get_projects_folder
-      @request.get(['@projects'])
+    def get_projects_folder(params = {})
+      @request.get(['@projects'], params)
     end
 
     def get_folder(folder_id, options = {})

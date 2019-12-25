@@ -23,6 +23,7 @@
 * Add `Community#delete_event`
 * Add `Community#delete_thread`
 * Add `Community#delete_category`
+* Add `params` support to several `Files` methods 
 * Remove usage of `httmultiparty`
 
 ### Fixes
