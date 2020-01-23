@@ -33,7 +33,7 @@ def random_settings_entity_id
 end
 
 def random_info_category(info_type)
-  Teamlab.crm.get_all_categories(info_type).body['response'].sample
+  Teamlab.crm.get_all_categories(info_type).data.sample
 end
 
 # region OPTIONS

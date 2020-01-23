@@ -32,5 +32,10 @@ module Teamlab
     rescue Encoding::UndefinedConversionError
       msg.force_encoding(Encoding::UTF_8)
     end
+
+    # @return [Hash] data of response
+    def data
+      @body['response']
+    end
   end
 end

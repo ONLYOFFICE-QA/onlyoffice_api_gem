@@ -41,7 +41,7 @@ shared_examples_for 'an api request' do |*flags|
       RequestHelper.current_responce = args.empty? ? @module.send(command) : @module.send(command, *args)
       if add_data_to_collector
         @data_collector[data_param] ||= []
-        response = [RequestHelper.current_responce.body['response']].flatten
+        response = [RequestHelper.current_responce.data].flatten
         response.each do |cur_response|
           @data_collector[data_param] << param_names.inject(cur_response) { |a, e| a[e] }
         end
