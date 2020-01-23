@@ -10,6 +10,7 @@ module PortalCleanup
     remove_events
     remove_forum_categories
     remove_calendars
+    remove_groups
   end
 
   # @return [Void] Set all modules to true
@@ -68,6 +69,13 @@ module PortalCleanup
                                                                      DateTime.now.strftime('%Y-%m-%dT%H-%M-%S.%LZ').to_s).data
     all_calendars.each do |current_calendar|
       Teamlab.calendar.delete_calendar(current_calendar['objectId']) if current_calendar['isEditable'] || current_calendar['isiCalStream']
+    end
+  end
+
+  # @return [Void] Remove all groups
+  def remove_groups
+    Teamlab.group.get_groups.data.each do |group|
+      Teamlab.group.delete_group(group['id'])
     end
   end
 end
