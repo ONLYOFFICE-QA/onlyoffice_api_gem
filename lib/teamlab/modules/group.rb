@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+require_relative 'group/group_helper'
+
 module Teamlab
   class Group
+    include GroupHelper
+
     def initialize
       @request = Teamlab::Request.new('group')
     end

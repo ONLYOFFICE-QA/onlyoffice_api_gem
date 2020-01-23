@@ -26,6 +26,7 @@
 * Add `params` support to several `Files` methods 
 * Remove usage of `httmultiparty`
 * Add shortcut `Response#data` method
+* Add `Group#info_by_name` method
 
 ### Fixes
 

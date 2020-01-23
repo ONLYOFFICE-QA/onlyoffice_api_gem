@@ -7,6 +7,7 @@ if ENV['CI'] == 'true'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
 
+require 'faker'
 require 'rspec'
 require 'onlyoffice_api'
 require_relative 'spec_helper/portal_cleanup'
