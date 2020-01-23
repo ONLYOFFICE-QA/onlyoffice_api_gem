@@ -25,6 +25,7 @@
 * Add `Community#delete_category`
 * Add `params` support to several `Files` methods 
 * Remove usage of `httmultiparty`
+* Add shortcut `Response#data` method
 
 ### Fixes
 
