@@ -112,4 +112,6 @@ IMAGE_FILE = File.expand_path('../lib/data/contact_photo.jpg', __dir__)
 EVENT_ICS = File.expand_path('../lib/data/event.ics', __dir__)
 CALENDAR_WEB_URL = 'https://raw.githubusercontent.com/ONLYOFFICE/onlyoffice_api_gem/master/spec/lib/data/basic.ics'
 # endregion
-# endregion
+
+EMAIL = ENV['ONLYOFFICE_API_GEM_MAIL_NAME']
+EMAIL_PASS = ENV['ONLYOFFICE_API_GEM_MAIL_PASS']
