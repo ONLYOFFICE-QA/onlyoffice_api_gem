@@ -12,6 +12,13 @@ describe '[Mail] Accounts' do
     end
   end
 
+  describe '#set_default_account' do
+    it_behaves_like 'an api request' do
+      let(:command) { :set_default_account }
+      let(:args) { [EMAIL, true] }
+    end
+  end
+
   describe '#get_account_list' do
     it_behaves_like 'an api request' do
       let(:command) { :get_account_list }

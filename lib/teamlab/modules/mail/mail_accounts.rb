@@ -39,6 +39,13 @@ module Teamlab
       @request.put(['accounts', mailbox_id.to_s, 'emailinfolder'], emailInFolder: email_in_folder)
     end
 
+    # Sets the default account specified in the request
+    # @param email [String] email of account
+    # @param is_default [Boolean] Set or reset account as default
+    def set_default_account(email, is_default)
+      @request.put(%w[accounts default], email: email, isDefault: is_default)
+    end
+
     def delete_account(email)
       @request.delete(['accounts', email.to_s])
     rescue StandardError
