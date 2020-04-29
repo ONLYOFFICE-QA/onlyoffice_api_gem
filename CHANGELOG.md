@@ -31,6 +31,7 @@
 * Add `Mail#set_default_account`
 * Add support of `rubocop-performance`
 * Add `markdownlint` support in travis
+* Add rake task to release gem on `github`
 
 ### Fixes
 
