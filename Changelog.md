@@ -28,6 +28,7 @@
 * Add shortcut `Response#data` method
 * Add `Group#info_by_name` method
 * Add `Mail#set_default_account`
+* Add support of `rubocop-performance`
 
 ### Fixes
 
