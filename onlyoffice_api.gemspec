@@ -1,24 +1,26 @@
 # frozen_string_literal: true
 
-lib = File.expand_path('lib', __dir__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'teamlab/version'
+require_relative 'lib/teamlab/name'
+require_relative 'lib/teamlab/version'
 
-Gem::Specification.new do |spec|
-  spec.name          = 'onlyoffice_api'
-  spec.version       = Teamlab::VERSION
-  spec.authors       = %w[ONLYOFFICE rzagudaev shockwavenn DaftTrick]
-  spec.email         = ['rzagudaev@gmail.com', 'shockwavenn@gmail.com', 'nazarov90@gmail.com']
-  spec.description   = 'Ruby Framework to interact with OnlyOffice API 2.0'
-  spec.summary       = 'Ruby gem for OnlyOffice. Formerly known as `teamlab`.'
-  spec.homepage      = 'https://github.com/ONLYOFFICE/onlyoffice_api_gem'
-  spec.license       = 'AGPL-3.0'
-
-  spec.files         = `git ls-files`.split($RS)
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ['lib']
-
-  spec.add_runtime_dependency 'httparty', '~> 0.16'
-  spec.add_runtime_dependency 'rspec', '~> 3.3'
+Gem::Specification.new do |s|
+  s.name = Teamlab::NAME
+  s.version = Teamlab::VERSION
+  s.platform = Gem::Platform::RUBY
+  s.authors = ['ONLYOFFICE', 'Pavel Lobashov', 'rzagudaev', 'DaftTrick']
+  s.summary = 'Ruby gem for OnlyOffice. Formerly known as `teamlab`.'
+  s.description = 'Ruby Framework to interact with OnlyOffice API 2.0'
+  s.homepage = "https://github.com/ONLYOFFICE/#{s.name}"
+  s.metadata = {
+    'bug_tracker_uri' => "#{s.homepage}/issues",
+    'changelog_uri' => "#{s.homepage}/blob/master/CHANGELOG.md",
+    'documentation_uri' => "https://www.rubydoc.info/gems/#{s.name}",
+    'homepage_uri' => s.homepage,
+    'source_code_uri' => s.homepage
+  }
+  s.email = %w[rzagudaev@gmail.com shockwavenn@gmail.com nazarov90@gmail.com]
+  s.files = Dir['lib/**/*']
+  s.add_runtime_dependency('httparty', '~> 0.16')
+  s.add_development_dependency('rake', '~> 13.0')
+  s.license = 'AGPL-3.0'
 end
