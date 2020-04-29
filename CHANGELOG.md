@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 0.7.0 (2020-04-29)
+
 ### New features
 
 * [#36](https://github.com/ONLYOFFICE/onlyoffice_api_gem/pull/36):
