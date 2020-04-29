@@ -1,18 +1,9 @@
-require: rubocop-rspec
+require:
+    - rubocop-performance
+    - rubocop-rspec
+
 inherit_from:
     - .rubocop_todo.yml
 
-Lint/RaiseException:
-    Enabled: true
-
-Lint/StructNewOverride:
-    Enabled: true
-
-Style/HashEachMethods:
-    Enabled: true
-
-Style/HashTransformKeys:
-    Enabled: true
-
-Style/HashTransformValues:
-    Enabled: true
+AllCops:
+    NewCops: enable
