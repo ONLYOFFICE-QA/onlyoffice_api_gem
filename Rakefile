@@ -1,13 +1,17 @@
 # frozen_string_literal: true
 
-require 'bundler'
+require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
 
-Bundler::GemHelper.install_tasks
+RSpec::Core::RakeTask.new(:spec)
 
-desc 'Test All'
-task :test do
-  RSpec::Core::RakeTask.new(:spec)
-  Rake::Task['spec'].execute
+task default: :spec
+
+desc 'Release gem '
+task :release_github_rubygems do
+  Rake::Task['release'].invoke
+  sh('gem push --key github '\
+   '--host https://rubygems.pkg.github.com/onlyoffice '\
+   "pkg/#{Teamlab::NAME}-"\
+   "#{Teamlab::VERSION}.gem")
 end
-task default: [:test]
