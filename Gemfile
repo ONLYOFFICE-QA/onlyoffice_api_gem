@@ -9,6 +9,7 @@ group :test do
   gem 'codecov', require: false
   gem 'faker'
   gem 'rake'
+  gem 'rspec'
 end
 
 group :development do

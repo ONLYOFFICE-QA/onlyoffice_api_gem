@@ -76,6 +76,7 @@
 * `Community#update_event` require `type` and change to keyword arguments
 * Rename `remove_event` to `delete_event` according to official docs.
   Keep old name as alias
+* Minor cleanup in `gemspec`
 
 ## 0.6
 ### New features
