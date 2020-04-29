@@ -31,7 +31,6 @@ and then call methods you need:
 
     OnlyOfficeApi.people.get_people
 
-
 ## Contributing
 
 1. Fork it
@@ -40,19 +39,20 @@ and then call methods you need:
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-
 ## Documentation
 
-Please read ONLYOFFICE API [documentation](https://api.onlyoffice.com/) for more information about API methods
+Please read ONLYOFFICE API [documentation](https://api.onlyoffice.com/)
+for more information about API methods
 
 ## Project Information
 
-Official website: [http://www.onlyoffice.org](http://onlyoffice.org "http://www.onlyoffice.org")
+Official website: [https://www.onlyoffice.coom](https://onlyoffice.com)
 
-Code repository: [https://github.com/ONLYOFFICE/onlyoffice_api_gem](https://github.com/ONLYOFFICE/onlyoffice_api_gem "https://github.com/ONLYOFFICE/onlyoffice_api_gem")
+Code repository: [https://github.com/ONLYOFFICE/onlyoffice_api_gem](https://github.com/ONLYOFFICE/onlyoffice_api_gem)
 
-SaaS version: [http://www.onlyoffice.com](http://www.onlyoffice.com "http://www.onlyoffice.com")
+SaaS version: [https://www.onlyoffice.com](https://www.onlyoffice.com)
 
 ## License
 
-onlyoffice_api_gem is released under an GNU AGPL v3.0 license. See the LICENSE file for more information.
+onlyoffice_api_gem is released under an GNU AGPL v3.0 license.
+See the LICENSE file for more information.

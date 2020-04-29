@@ -2,6 +2,11 @@ language: ruby
 rvm:
   - 2.5
 
+script:
+  - npm install -g markdownlint-cli
+  - markdownlint *.md
+  - rake
+
 env:
   global:
   - secure: CPhhWEvMM0n64YP5pS6CSJysI7GBxg6KoGwZDD4hDo11I4b8Z+H2ZkW51gnfFHXNK2g9FeACC4SEStix8O7kr/CWbBp90W1OXJbtP7xg0jA3hEWENoK6lxPPPpPputRkLMOcNmBLpxvAk2KMdJCE3bM6VHI70yg9VfsjT7LQfcSNIBea33gGwDvhO10q7moH/ZsQo5ibb6oapvFc+lU1k5YUvwaRYXqY2wsIJftVOYqUwlZpI5YkafqQ95p+IYvrZy3ikd7GKm7kSJetIQ60+411t/BF2ggn8T54i95znNjbtwgrCScUfd76gA9ZuJXAmFZ2W6o9mdXZZnVOn7IgvpPpEoWYa+bNF5FCEs8RCEs9Xi8tfRcw2Yl2RjcF90V8q7sUGesIJ4UJh4QTGndblJrHeewXPTVRzIqc39cOKP13sKX6d3ykAT6Jz6AX/CAqer/QHCgrwYUl0Lc4vjvTffiiwar2pGfdTpVlblel8XEgN6sHomB8PABTVMMfQKchvicoPd4U7jLzNMH3dn6omqW5SOmAW3SKAYAb9axBjseJriHmvl7i4KVarRK3hF3fp94wnHB+5z2/UT1+T8Zs6Mb2NLRZNMRQVR/tyzezG9iiaLBp91gVob3azvIJkEO1ZF8QUOj9U4pYjJjFfwnHnuQEvhu+5RuCsNgl82wc1Z8=
