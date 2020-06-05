@@ -1,11 +1,17 @@
-language: ruby
-rvm:
-  - 2.5
-
-script:
-  - npm install -g markdownlint-cli
-  - markdownlint *.md
-  - rake
+matrix:
+  include:
+    - name: markdown lint
+      language: node_js
+      node_js: "12"
+      install:
+        - npm install -g markdownlint-cli
+      script:
+        - markdownlint *.md
+    - name: ruby tests
+      language: ruby
+      rvm:
+        - 2.5
+      script: rake
 
 env:
   global:

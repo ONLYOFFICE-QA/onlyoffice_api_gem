@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Fixes
+
+* Fix travis command to running markdownlint
+
 ## 0.7.0 (2020-04-29)
 
 ### New features
