@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v1
       - name: Check markdown files using `markdownlint`
-      - run: |
+        run: |
           npm install -g markdownlint-cli
           markdownlint *.md
   run-tests:
