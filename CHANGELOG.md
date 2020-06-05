@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+* Use Github Actions instead of travis-ci 
+
 ## 0.7.0 (2020-04-29)
 
 ### New features
