@@ -5,6 +5,7 @@
 ### Fixes
 
 * Fix travis command to running markdownlint
+* Fix `Community#get_bookmarks_by_tag` for tag with spaces
 
 ## 0.7.0 (2020-04-29)
 
