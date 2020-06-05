@@ -5,10 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v1
-      - name: Check markdown files using `markdownlint`
-        run: |
-          npm install -g markdownlint-cli
-          markdownlint *.md
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+      - name: Check all md files
+        run: markdownlint *.md
   run-tests:
     runs-on: ubuntu-latest
     steps:
