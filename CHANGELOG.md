@@ -7,6 +7,10 @@
 * Fix travis command to running markdownlint
 * Fix `Community#get_bookmarks_by_tag` for tag with spaces
 
+### Changes
+
+* Use actual ruby 2.7 in CI tests
+
 ## 0.7.0 (2020-04-29)
 
 ### New features

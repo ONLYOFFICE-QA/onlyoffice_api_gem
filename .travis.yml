@@ -10,7 +10,7 @@ matrix:
     - name: ruby tests
       language: ruby
       rvm:
-        - 2.5
+        - 2.7
       script: rake
 
 env:
