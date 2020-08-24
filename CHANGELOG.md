@@ -6,6 +6,7 @@
 
 * Fix travis command to running markdownlint
 * Fix `Community#get_bookmarks_by_tag` for tag with spaces
+* Fix duplicate ids for some CRM requrest (bug #41394)
 
 ### Changes
 

@@ -62,7 +62,6 @@ module Teamlab
     end
 
     def update_invoice(id, options = {})
-      options[:id] = id
       @request.put(['invoice', id.to_s], options)
     end
 
@@ -83,7 +82,6 @@ module Teamlab
     end
 
     def update_invoice_line(invoice_line_id, invoice_id, options = {})
-      options[:id] = invoice_line_id
       options[:invoiceId] = invoice_id
       @request.put(['invoiceline', invoice_line_id], options)
     end
@@ -111,7 +109,7 @@ module Teamlab
     end
 
     def delete_invoice_line(id)
-      @request.delete(['invoiceline', id.to_s], id: id)
+      @request.delete(['invoiceline', id.to_s])
     end
 
     # @param invoice_item_id [Integer] id of invoice
