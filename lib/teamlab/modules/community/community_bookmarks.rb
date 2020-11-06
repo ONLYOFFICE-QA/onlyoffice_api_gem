@@ -28,7 +28,7 @@ module Teamlab
     end
 
     def get_bookmarks_by_tag(tag)
-      @request.get(['bookmark', 'tag', tag.to_s.gsub(' ', '%20')])
+      @request.get(['bookmark', "bytag?tag=#{tag.to_s.gsub(' ', '%20')}"])
     end
 
     def get_recently_added_bookmarks
