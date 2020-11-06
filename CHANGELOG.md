@@ -11,6 +11,7 @@
 ### Changes
 
 * Use actual ruby 2.7 in CI tests
+* Use GitHub Actions instead of TravisCI
 
 ## 0.7.0 (2020-04-29)
 
