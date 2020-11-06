@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
+require_relative 'portal_cleanup/crm_cleanup'
+
 module PortalCleanup
+  include CrmCleanup
   # @return [Void] reset all portal data
   def reset_portal
     reset_modules
@@ -11,6 +14,7 @@ module PortalCleanup
     remove_forum_categories
     remove_calendars
     remove_groups
+    crm_cleanup
   end
 
   # @return [Void] Set all modules to true
