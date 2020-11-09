@@ -54,7 +54,7 @@ module Teamlab
     end
 
     def parse_args(args, type)
-      command = args.first.instance_of?(Array) ? '/' + args.shift.join('/') : args.shift.to_s
+      command = args.first.instance_of?(Array) ? "/#{args.shift.join('/')}" : args.shift.to_s
       opts = {}
       opts[:body] = args.last.instance_of?(Hash) ? args.pop : {}
       opts[:body].delete_if { |_key, value| value == [] }

@@ -166,7 +166,7 @@ describe '[CRM]' do
   describe '#update_invoice_line' do
     it_behaves_like 'an api request' do
       let(:command) { :update_invoice_line }
-      let(:args) { [random_id(:invoice_line), @data_collector[:invoice_ids].first, invoiceItemId: @data_collector[:invoice_item_ids].first] }
+      let(:args) { [random_id(:invoice_line), @data_collector[:invoice_ids].first, { invoiceItemId: @data_collector[:invoice_item_ids].first }] }
     end
   end
 
@@ -196,14 +196,14 @@ describe '[CRM]' do
       let(:command) { :update_invoice }
       let(:args) do
         [@data_collector[:invoice_ids].first,
-         issueDate: DUE_DATE,
-         dueDate: DUE_DATE,
-         contactId: random_id(:new_contact),
-         language: LANGUAGE.sample,
-         currency: CURRENCY.sample,
-         exchangeRate: rand(1000),
-         terms: random_word,
-         invoiceLines: [{ invoiceItemID: @data_collector[:invoice_item_ids].first }]]
+         { issueDate: DUE_DATE,
+           dueDate: DUE_DATE,
+           contactId: random_id(:new_contact),
+           language: LANGUAGE.sample,
+           currency: CURRENCY.sample,
+           exchangeRate: rand(1000),
+           terms: random_word,
+           invoiceLines: [{ invoiceItemID: @data_collector[:invoice_item_ids].first }] }]
       end
     end
   end

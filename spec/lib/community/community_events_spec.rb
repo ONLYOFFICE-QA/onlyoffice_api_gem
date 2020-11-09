@@ -30,9 +30,9 @@ describe '[Community]' do
       let(:command) { :update_event }
       let(:args) do
         [@data_collector[:community_event_ids].first,
-         title: random_word,
-         content: random_word,
-         type: 'News']
+         { title: random_word,
+           content: random_word,
+           type: 'News' }]
       end
     end
   end
