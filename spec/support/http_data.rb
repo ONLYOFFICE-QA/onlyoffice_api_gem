@@ -13,7 +13,7 @@ def random_bool
 end
 
 def random_email
-  random_word + '@sharklasers.com'
+  "#{random_word}@sharklasers.com"
 end
 
 def add_data_to_collector

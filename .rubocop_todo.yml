@@ -132,13 +132,6 @@ Style/OptionalBooleanParameter:
     - 'lib/teamlab/modules/people/people_reassign.rb'
     - 'lib/teamlab/modules/settings.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/StringConcatenation:
-  Exclude:
-    - 'lib/teamlab/request.rb'
-    - 'spec/support/http_data.rb'
-
 # Offense count: 58
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
