@@ -6,6 +6,7 @@
 
 * Check `rubocop` in CI
 * Add `dependabot` config
+* Add `MailServer#tenant_domain_list` method
 
 ### Fixes
 
