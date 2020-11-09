@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Feature
+
+* Check `rubocop` in CI
+
 ### Fixes
 
 * Fix travis command to running markdownlint
