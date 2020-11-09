@@ -10,12 +10,12 @@ module Teamlab
     # @param notify_current [True, False] Send message to creating mailbox's address
     # @param notify_profile [True, False] Send message to email from user profile
     # @return [Hash] Add mailbox
-    def add(name: nil,
-            local_part: nil,
-            domain_id: nil,
-            user_id: nil,
-            notify_current: true,
-            notify_profile: true)
+    def add_mailbox(name: nil,
+                    local_part: nil,
+                    domain_id: nil,
+                    user_id: nil,
+                    notify_current: true,
+                    notify_profile: true)
       @request.post(%w[mailboxes add],
                     name: name,
                     local_part: local_part,
