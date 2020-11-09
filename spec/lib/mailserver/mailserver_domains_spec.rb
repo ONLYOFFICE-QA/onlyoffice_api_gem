@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe '[Mail] Accounts' do
+describe '[Mailserver] Domains' do
   let(:teamlab_module) { :mailserver }
 
   describe '#tenant_domain_list' do

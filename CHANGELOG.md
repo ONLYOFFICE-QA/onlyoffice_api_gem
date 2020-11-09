@@ -7,7 +7,8 @@
 * Check `rubocop` in CI
 * Add `dependabot` config
 * Add `MailServer#tenant_domain_list` method
-* Add `MailServer#add_mailbox` method
+* Add `MailServer#add_mailbox`, `MailServer#mailboxes`, 
+  `MailServer#delete_mailbox` method
 
 ### Fixes
 

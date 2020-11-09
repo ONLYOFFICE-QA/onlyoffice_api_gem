@@ -24,5 +24,17 @@ module Teamlab
                     notifyCurrent: notify_current,
                     notifyProfile: notify_profile)
     end
+
+    # @return [Hash] mailboxes list
+    def mailboxes
+      @request.get(%w[mailboxes get])
+    end
+
+    # Deletes the selected mailbox
+    # @param id [Integer] id of mailbox
+    # @return [Hash] result of mailbox deletion
+    def delete_mailbox(id)
+      @request.delete(['mailboxes', 'remove', id.to_s])
+    end
   end
 end
