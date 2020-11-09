@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.name = Teamlab::NAME
   s.version = Teamlab::VERSION
   s.platform = Gem::Platform::RUBY
+  s.required_ruby_version = '>= 2.5'
   s.authors = ['ONLYOFFICE', 'Pavel Lobashov', 'rzagudaev', 'DaftTrick']
   s.summary = 'Ruby gem for OnlyOffice. Formerly known as `teamlab`.'
   s.description = 'Ruby Framework to interact with OnlyOffice API 2.0'

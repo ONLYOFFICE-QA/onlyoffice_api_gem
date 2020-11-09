@@ -19,6 +19,7 @@
 * Add CRM cleanup in rspec tests
 * Store all deps in gemspec
 * Add `Gemfile.lock` to freeze specific versions
+* Require ruby >= 2.5, since older version are EOLed
 
 ## 0.7.0 (2020-04-29)
 
