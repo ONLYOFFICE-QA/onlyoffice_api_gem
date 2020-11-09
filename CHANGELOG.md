@@ -5,6 +5,7 @@
 ### New Feature
 
 * Check `rubocop` in CI
+* Add `dependabot` config
 
 ### Fixes
 
