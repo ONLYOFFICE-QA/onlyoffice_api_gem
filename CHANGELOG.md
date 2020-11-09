@@ -13,6 +13,8 @@
 * Use actual ruby 2.7 in CI tests
 * Use GitHub Actions instead of TravisCI
 * Add CRM cleanup in rspec tests
+* Store all deps in gemspec
+* Add `Gemfile.lock` to freeze specific versions
 
 ## 0.7.0 (2020-04-29)
 
