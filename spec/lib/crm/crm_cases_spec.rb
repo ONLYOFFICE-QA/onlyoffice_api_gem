@@ -120,7 +120,7 @@ describe '[CRM]' do
   describe '#set_rights_to_case' do
     it_behaves_like 'an api request' do
       let(:command) { :set_rights_to_case }
-      let(:args) { [random_id(:crm_case), isPrivate: random_bool] }
+      let(:args) { [random_id(:crm_case), { isPrivate: random_bool }] }
     end
   end
 

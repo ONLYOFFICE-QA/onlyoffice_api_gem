@@ -112,16 +112,6 @@ Style/Documentation:
     - 'lib/teamlab/request.rb'
     - 'lib/teamlab/response.rb'
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: braces, no_braces
-Style/HashAsLastArrayItem:
-  Exclude:
-    - 'spec/lib/community/community_events_spec.rb'
-    - 'spec/lib/crm/crm_cases_spec.rb'
-    - 'spec/lib/crm/crm_invoices_spec.rb'
-
 # Offense count: 6
 # Configuration parameters: AllowedMethods.
 # AllowedMethods: respond_to_missing?
