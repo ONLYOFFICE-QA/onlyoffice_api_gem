@@ -14,6 +14,7 @@ require_relative 'teamlab/modules/crm'
 require_relative 'teamlab/modules/community'
 require_relative 'teamlab/modules/calendar'
 require_relative 'teamlab/modules/mail'
+require_relative 'teamlab/modules/mailserver'
 require_relative 'teamlab/modules/feed'
 
 module Teamlab
@@ -55,6 +56,10 @@ module Teamlab
 
   def self.mail
     @mail ||= Teamlab::Mail.new
+  end
+
+  def self.mailserver
+    @mailserver ||= Teamlab::MailServer.new
   end
 
   def self.feed
