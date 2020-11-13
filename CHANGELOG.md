@@ -9,6 +9,7 @@
 * Add `MailServer#tenant_domain_list` method
 * Add `MailServer#add_mailbox`, `MailServer#mailboxes`,
   `MailServer#delete_mailbox` method
+* Add `Mail#operations` method
 
 ### Fixes
 

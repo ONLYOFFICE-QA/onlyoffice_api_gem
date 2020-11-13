@@ -28,5 +28,10 @@ module Teamlab
     def initialize
       @request = Teamlab::Request.new('mail')
     end
+
+    # @return [Teamlab::Response] Returns all Mail running operations (only complex)
+    def operations
+      @request.get(%w[operations])
+    end
   end
 end
