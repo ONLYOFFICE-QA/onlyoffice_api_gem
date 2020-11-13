@@ -17,6 +17,7 @@
 * Fix `Community#get_bookmarks_by_tag` for tag with spaces
 * Fix duplicate ids for some CRM requrest (bug #41394)
 * Do not use random word length in test, sometimes it's zero
+* Remove randomness from `Crm#update_invoice_group_status` test
 
 ### Changes
 
