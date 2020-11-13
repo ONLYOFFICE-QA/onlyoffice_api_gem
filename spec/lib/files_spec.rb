@@ -141,42 +141,42 @@ describe '[Files]' do
   describe '#create_txt_in_my_docs' do
     it_behaves_like 'an api request' do
       let(:command) { :create_txt_in_my_docs }
-      let(:args) { [random_word, random_word(rand(100))] }
+      let(:args) { [random_word, random_word(100)] }
     end
   end
 
   describe '#create_html_in_my_docs' do
     it_behaves_like 'an api request' do
       let(:command) { :create_html_in_my_docs }
-      let(:args) { [random_word, random_word(rand(100))] }
+      let(:args) { [random_word, random_word(100)] }
     end
   end
 
   describe '#create_txt_in_common_docs' do
     it_behaves_like 'an api request' do
       let(:command) { :create_txt_in_common_docs }
-      let(:args) { [random_word, random_word(rand(100))] }
+      let(:args) { [random_word, random_word(100)] }
     end
   end
 
   describe '#create_html_in_common_docs' do
     it_behaves_like 'an api request' do
       let(:command) { :create_html_in_common_docs }
-      let(:args) { [random_word, random_word(rand(100))] }
+      let(:args) { [random_word, random_word(100)] }
     end
   end
 
   describe '#create_txt' do
     it_behaves_like 'an api request' do
       let(:command) { :create_txt }
-      let(:args) { [random_id(:new_folder), random_word, random_word(rand(100))] }
+      let(:args) { [random_id(:new_folder), random_word, random_word(100)] }
     end
   end
 
   describe '#create_html' do
     it_behaves_like 'an api request' do
       let(:command) { :create_html }
-      let(:args) { [random_id(:new_folder), random_word, random_word(rand(100))] }
+      let(:args) { [random_id(:new_folder), random_word, random_word(100)] }
     end
   end
 
