@@ -159,7 +159,7 @@ describe '[CRM]' do
   describe '#update_invoice_group_status' do
     it_behaves_like 'an api request' do
       let(:command) { :update_invoice_group_status }
-      let(:args) { [INVOICE_STATUSES.sample, [@data_collector[:invoice_ids].sample]] }
+      let(:args) { ['Draft', [@data_collector[:invoice_ids].sample]] }
     end
   end
 

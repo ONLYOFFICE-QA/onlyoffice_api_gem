@@ -90,7 +90,6 @@ PROJECT_DISCUSSION_STATUSES = %w[Open Archived].freeze
 # region CRM
 BID_TYPES = %w[FixedBid PerHour PerDay PerWeek PerMonth PerYear].freeze
 COLORS_NAMES = %w[red yellow black white green purple brown grey blue].freeze
-INVOICE_STATUSES = %w[Draft Sent Rejected Paid Archived].freeze
 CONTACT_INFO_TYPES = %w[Phone Email Website Skype Twitter LinkedIn Facebook LiveJournal MySpace GMail Blogger Yahoo MSN ICQ Jabber AIM].freeze
 ENTITY_TYPES = %w[opportunity company contact].freeze
 USER_FIELDS = %w[TextField TextArea SelectBox CheckBox Heading Date].freeze
