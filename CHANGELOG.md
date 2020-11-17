@@ -27,6 +27,7 @@
 * Store all deps in gemspec
 * Add `Gemfile.lock` to freeze specific versions
 * Require ruby >= 2.5, since older version are EOLed
+* Fixes from update `rubocop-performance` to `v1.9.0`
 
 ## 0.7.0 (2020-04-29)
 
