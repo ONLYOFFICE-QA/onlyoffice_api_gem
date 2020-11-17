@@ -5,9 +5,9 @@ require_relative 'request'
 module Teamlab
   attr_reader :config
 
-  def self.configure(&_block)
+  def self.configure(&block)
     @config ||= Config.new
-    yield @config if block_given?
+    yield @config if block
     auth_response = Teamlab::Request.new('authentication').post('', userName: @config.username, password: @config.password).body
     raise "Cannot get response token for #{auth_response}" if auth_response['response'].nil? || auth_response['response']['token'].nil?
 
