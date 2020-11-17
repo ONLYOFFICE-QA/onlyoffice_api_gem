@@ -38,7 +38,11 @@ Metrics/ModuleLength:
   Max: 180
 
 # Offense count: 6
+<<<<<<< HEAD
 # Configuration parameters: CountKeywordArgs, MaxOptionalParameters.
+=======
+# Configuration parameters: CountKeywordArgs.
+>>>>>>> 863fa18... Fixes from update `rubocop-performance` to `v1.9.0`
 Metrics/ParameterLists:
   Max: 10
 
