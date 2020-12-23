@@ -30,8 +30,9 @@ module PortalCleanup
 
   # @return [Void] Remove all user expect admin from portal
   def remove_users
-    users = Teamlab.people.get_people.data
-    users.each do |user|
+    active_users = Teamlab.people.get_people.data
+    terminated_users = Teamlab.people.get_people_by_status(:terminated).data
+    (active_users + terminated_users).each do |user|
       next if user['isOwner']
 
       Teamlab.people.change_people_status('2', [user['id']])

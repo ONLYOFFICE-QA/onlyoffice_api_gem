@@ -19,6 +19,7 @@
 * Fix duplicate ids for some CRM requrest (bug #41394)
 * Do not use random word length in test, sometimes it's zero
 * Remove randomness from `Crm#update_invoice_group_status` test
+* `PortalCleanup#remove_users` deletes terminated users
 
 ### Changes
 
