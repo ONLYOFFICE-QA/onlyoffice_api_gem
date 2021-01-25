@@ -7,7 +7,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    ast (2.4.1)
+    ast (2.4.2)
     childprocess (4.0.0)
     codecov (0.3.0)
       simplecov (>= 0.15, < 0.22)
