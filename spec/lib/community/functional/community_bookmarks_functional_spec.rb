@@ -6,7 +6,7 @@ describe '[Community][Functional] Bookmarks' do
   let(:tag) { "tag with space #{SecureRandom.uuid}" }
 
   it 'Get bookmark by tag with spaces in tag' do
-    added = Teamlab.community.add_bookmark('www.google.com',
+    added = Teamlab.community.add_bookmark('https://www.google.com',
                                            'description',
                                            tags: tag).body['response']
     expect(Teamlab.community.get_bookmarks_by_tag(tag)
