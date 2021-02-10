@@ -100,7 +100,7 @@ CURRENCY = %w[AUD CAD CHF EUR GBP JPY USD AMD ARS AZN BDT BGN BRL BYR CLP CNY CO
 # endregion
 
 # region Community
-SOME_URL = 'www.teamlab.info'
+SOME_URL = 'https://example.com'
 EVENT_TYPES = %w[None News Order Advert AllNews Poll All].freeze
 # endregion
 
