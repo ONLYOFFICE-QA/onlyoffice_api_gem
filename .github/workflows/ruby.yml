@@ -3,15 +3,6 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.allow-failures }}
-    strategy:
-      matrix:
-        ruby: [ 2.7, 3.0 ]
-        allow-failures: [ false ]
-        include:
-          - ruby: head
-            allow-failures: true
-      max-parallel: 1
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby 2.7
