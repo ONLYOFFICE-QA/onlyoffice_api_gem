@@ -24,7 +24,7 @@ GEM
     iniparse (1.5.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0212)
+    mime-types-data (3.2021.0225)
     multi_xml (0.6.0)
     overcommit (0.57.0)
       childprocess (>= 0.6.3, < 5)
