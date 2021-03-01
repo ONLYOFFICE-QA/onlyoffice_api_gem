@@ -20,6 +20,7 @@
 * Do not use random word length in test, sometimes it's zero
 * Remove randomness from `Crm#update_invoice_group_status` test
 * `PortalCleanup#remove_users` deletes terminated users
+* Add projects cleanup in default spec
 
 ### Changes
 

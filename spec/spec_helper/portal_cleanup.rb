@@ -18,6 +18,7 @@ module PortalCleanup
     remove_calendars
     remove_groups
     crm_cleanup
+    remove_projects
     remove_mailserver_mailboxes
   end
 
@@ -85,6 +86,13 @@ module PortalCleanup
   def remove_groups
     Teamlab.group.get_groups.data.each do |group|
       Teamlab.group.delete_group(group['id'])
+    end
+  end
+
+  # @return [Void] Remove all projects
+  def remove_projects
+    Teamlab.project.get_projects.data.each do |group|
+      Teamlab.project.delete_project(group['id'])
     end
   end
 end
