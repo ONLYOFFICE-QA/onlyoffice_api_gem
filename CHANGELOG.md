@@ -11,6 +11,7 @@
   `MailServer#delete_mailbox` method
 * Add `Mail#operations` method
 * Add `rubocop-rake` support
+* Add `ruby-3.0` and `ruby-head` to CI
 
 ### Fixes
 
