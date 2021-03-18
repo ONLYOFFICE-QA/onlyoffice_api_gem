@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 0.8.0 (2021-03-16)
+
 ### New Feature
 
 * Check `rubocop` in CI
