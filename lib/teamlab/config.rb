@@ -29,7 +29,7 @@ module Teamlab
     end
 
     def default_configuration
-      @server = 'https://teamlab.com'
+      @server = 'https://onlyoffice.com'
       @api_path = '/api/2.0/'
       @api_additive = ''
       @username = 'user'

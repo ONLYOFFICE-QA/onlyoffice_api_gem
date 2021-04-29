@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Fixes
+
+* Change `Config#default_configuration` domain
+
 ## 0.8.0 (2021-03-16)
 
 ### New Feature
