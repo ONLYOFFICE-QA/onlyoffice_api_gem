@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ['ONLYOFFICE', 'Pavel Lobashov', 'rzagudaev', 'DaftTrick']
   s.summary = 'Ruby gem for OnlyOffice. Formerly known as `teamlab`.'
   s.description = 'Ruby Framework to interact with OnlyOffice API 2.0'
-  s.homepage = "https://github.com/ONLYOFFICE/#{s.name}"
+  s.homepage = 'https://github.com/ONLYOFFICE/onlyoffice_api_gem'
   s.metadata = {
     'bug_tracker_uri' => "#{s.homepage}/issues",
     'changelog_uri' => "#{s.homepage}/blob/master/CHANGELOG.md",
