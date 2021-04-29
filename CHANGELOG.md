@@ -2,6 +2,12 @@
 
 ## master (unreleased)
 
+## 0.10.0 (2021-04-29)
+
+### Fixes
+
+* Fix incorrect homepage of gem
+
 ## 0.9.0 (2021-04-29)
 
 ### Fixes
