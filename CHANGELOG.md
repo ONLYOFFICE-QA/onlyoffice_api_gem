@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 0.9.0 (2021-04-29)
+
 ### Fixes
 
 * Change `Config#default_configuration` domain
