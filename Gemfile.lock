@@ -11,7 +11,7 @@ GEM
     childprocess (4.0.0)
     codecov (0.5.2)
       simplecov (>= 0.15, < 0.22)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     diff-lcs (1.4.4)
     docile (1.4.0)
     faker (2.18.0)
