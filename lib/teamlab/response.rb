@@ -47,6 +47,8 @@ module Teamlab
     # @param [Teamlab::Responce] responce to check
     # @return [Nil] is body responce correct and raise exception in any other situation
     def check_responce_body(responce)
+      return if stream_data_request?(responce)
+
       JSON.parse(responce.body)
     rescue JSON::ParserError => e
       request_info = "#{responce.request.http_method} #{responce.request.uri}"
@@ -60,6 +62,19 @@ module Teamlab
     def handle_success_responce(responce)
       check_responce_body(responce)
       @body = responce.to_hash
+    end
+
+    # Check if request for stream data
+    # Those request has no body, but data stream in responce
+    # @param [Teamlab::Responce] responce to check
+    # @return [Boolean] result of check
+    def stream_data_request?(responce)
+      calendar_ical_request_regexp = %r{.*/calendar/\d*/ical/\S*}
+      uri = responce.request.uri.to_s
+
+      return true if calendar_ical_request_regexp.match?(uri)
+
+      false
     end
   end
 end
