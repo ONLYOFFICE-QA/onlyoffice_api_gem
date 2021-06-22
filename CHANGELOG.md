@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 0.11.0 (2021-06-22)
+
 ### Changes
 
 * Add more detailed exception if responce is not JSON
