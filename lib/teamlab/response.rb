@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'responce/custom_exceptions'
+
 module Teamlab
   class Response
     attr_reader :body, :error, :code, :success
@@ -9,7 +11,7 @@ module Teamlab
       @success = @code < 400
       err_msg = generate_err_msg(http_response) if @code >= 400
       if @success
-        @body = http_response.to_hash
+        handle_success_responce(http_response)
       else
         raise TimeoutError, 'Portal is warming up' if http_response.parsed_response.include?('portal is being warmed')
         raise "Error #{@code}\n#{err_msg}" if @code >= 400
@@ -36,6 +38,43 @@ module Teamlab
     # @return [Hash] data of response
     def data
       @body['response']
+    end
+
+    private
+
+    # Sometime in strange situation, like maybe nginx errors
+    # API requests return not JSON, but html or other data
+    # @param [Teamlab::Responce] responce to check
+    # @return [Nil] is body responce correct and raise exception in any other situation
+    def check_responce_body(responce)
+      return if stream_data_request?(responce)
+
+      JSON.parse(responce.body)
+    rescue JSON::ParserError => e
+      request_info = "#{responce.request.http_method} #{responce.request.uri}"
+      raise NoJsonInResponce, "Request `#{request_info}` responce body is not a json\n "\
+                              "Parsing error: \n#{e}\n"
+    end
+
+    # Handle success responce
+    # @param [Teamlab::Responce] responce to handle
+    # @return [nil] if everything is fine or exception
+    def handle_success_responce(responce)
+      check_responce_body(responce)
+      @body = responce.to_hash
+    end
+
+    # Check if request for stream data
+    # Those request has no body, but data stream in responce
+    # @param [Teamlab::Responce] responce to check
+    # @return [Boolean] result of check
+    def stream_data_request?(responce)
+      calendar_ical_request_regexp = %r{.*/calendar/\d*/ical/\S*}
+      uri = responce.request.uri.to_s
+
+      return true if calendar_ical_request_regexp.match?(uri)
+
+      false
     end
   end
 end
