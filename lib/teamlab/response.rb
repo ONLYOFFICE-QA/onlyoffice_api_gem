@@ -23,10 +23,10 @@ module Teamlab
 
     def generate_err_msg(http_response)
       "API request failed\n\noriginal request:\n"\
-      "#{http_response.request.http_method} #{http_response.request.path}\nbody: "\
-      "#{JSON.pretty_generate(http_response.request.options[:body])}"\
-      "\n\nresponse:\n"\
-      "#{prettify_response(http_response.parsed_response)}"
+        "#{http_response.request.http_method} #{http_response.request.path}\nbody: "\
+        "#{JSON.pretty_generate(http_response.request.options[:body])}"\
+        "\n\nresponse:\n"\
+        "#{prettify_response(http_response.parsed_response)}"
     end
 
     def prettify_response(msg)
