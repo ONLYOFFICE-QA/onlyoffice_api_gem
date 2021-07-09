@@ -21,7 +21,7 @@ module CrmCleanup
 
   # @param [Teamlab::OnlyofficeApiInstance] api to use
   # Remove all crm contacts(api)
-  def remove_contacts
+  def remove_contacts(api)
     contacts = api.crm.get_contacts_by_filter.body['response']
     contact_ids = contacts.map { |contact| contact['id'] }
     return if contact_ids.empty?

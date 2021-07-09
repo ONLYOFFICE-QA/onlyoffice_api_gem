@@ -25,8 +25,8 @@ module Teamlab
     include CrmTasks
     include CrmUserFields
 
-    def initialize
-      @request = Teamlab::Request.new('crm')
+    def initialize(config)
+      @request = Teamlab::Request.new(config, 'crm')
     end
   end
 end
