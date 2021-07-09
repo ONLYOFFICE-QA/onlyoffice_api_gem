@@ -25,6 +25,7 @@ module Teamlab
     attr_accessor :proxy
 
     def initialize(params = {})
+      default_configuration
       @server = params[:server]
       @username = params[:username]
       @password = params[:password]
