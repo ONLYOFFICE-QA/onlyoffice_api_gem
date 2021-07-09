@@ -5,8 +5,8 @@ module Teamlab
   class People
     include PeopleReassign
 
-    def initialize
-      @request = Teamlab::Request.new('people')
+    def initialize(config)
+      @request = Teamlab::Request.new(config, 'people')
     end
 
     def get_people

@@ -9,7 +9,8 @@ module Teamlab
   class Request
     include HTTParty
 
-    def initialize(api_additive)
+    def initialize(config, api_additive)
+      @config = config
       @api_additive = api_additive.to_s
     end
 
@@ -49,8 +50,16 @@ module Teamlab
       response
     end
 
+    def server
+      @config.server || Teamlab.config.server
+    end
+
+    def api_path
+      @config.api_path || Teamlab.config.api_path
+    end
+
     def generate_request_url(command)
-      Teamlab.config.server + Teamlab.config.api_path + @api_additive + command
+      server + api_path + @api_additive + command
     end
 
     def parse_args(args, type)

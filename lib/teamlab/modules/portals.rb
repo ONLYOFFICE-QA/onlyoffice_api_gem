@@ -2,8 +2,8 @@
 
 module Teamlab
   class Portal
-    def initialize
-      @request = Teamlab::Request.new('portal')
+    def initialize(config)
+      @request = Teamlab::Request.new(config, 'portal')
     end
 
     def invite_user_url

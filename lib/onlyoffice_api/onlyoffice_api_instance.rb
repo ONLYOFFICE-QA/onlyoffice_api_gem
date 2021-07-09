@@ -7,7 +7,7 @@ module Teamlab
   class OnlyofficeApiInstance
     def initialize(params = {})
       @config = Config.new(params)
-      auth_response = Teamlab::Request.new('authentication').post('', userName: @config.username, password: @config.password).body
+      auth_response = Teamlab::Request.new(@config, 'authentication').post('', userName: @config.username, password: @config.password).body
       raise "Cannot get response token for #{auth_response}" if auth_response['response'].nil? || auth_response['response']['token'].nil?
 
       @config.token = auth_response['response']['token']
@@ -15,51 +15,51 @@ module Teamlab
     end
 
     def people
-      @people ||= Teamlab::People.new
+      @people ||= Teamlab::People.new(@config)
     end
 
     def group
-      @group ||= Teamlab::Group.new
+      @group ||= Teamlab::Group.new(@config)
     end
 
     def settings
-      @settings ||= Teamlab::Settings.new
+      @settings ||= Teamlab::Settings.new(@config)
     end
 
     def files
-      @files ||= Teamlab::Files.new
+      @files ||= Teamlab::Files.new(@config)
     end
 
     def project
-      @project ||= Teamlab::Project.new
+      @project ||= Teamlab::Project.new(@config)
     end
 
     def portal
-      @portal ||= Teamlab::Portal.new
+      @portal ||= Teamlab::Portal.new(@config)
     end
 
     def crm
-      @crm ||= Teamlab::Crm.new
+      @crm ||= Teamlab::Crm.new(@config)
     end
 
     def community
-      @community ||= Teamlab::Community.new
+      @community ||= Teamlab::Community.new(@config)
     end
 
     def calendar
-      @calendar ||= Teamlab::Calendar.new
+      @calendar ||= Teamlab::Calendar.new(@config)
     end
 
     def mail
-      @mail ||= Teamlab::Mail.new
+      @mail ||= Teamlab::Mail.new(@config)
     end
 
     def mailserver
-      @mailserver ||= Teamlab::MailServer.new
+      @mailserver ||= Teamlab::MailServer.new(@config)
     end
 
     def feed
-      @feed ||= Teamlab::Feed.new
+      @feed ||= Teamlab::Feed.new(@config)
     end
   end
 end

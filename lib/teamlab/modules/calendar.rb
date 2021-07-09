@@ -2,8 +2,8 @@
 
 module Teamlab
   class Calendar
-    def initialize
-      @request = Teamlab::Request.new('calendar')
+    def initialize(config)
+      @request = Teamlab::Request.new(config, 'calendar')
     end
 
     def get_default_access

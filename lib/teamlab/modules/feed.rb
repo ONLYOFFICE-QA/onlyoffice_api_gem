@@ -2,8 +2,8 @@
 
 module Teamlab
   class Feed
-    def initialize
-      @request = Teamlab::Request.new('feed')
+    def initialize(config)
+      @request = Teamlab::Request.new(config, 'feed')
     end
 
     # TODO: find out how it should work api.onlyoffice.com missing documentation

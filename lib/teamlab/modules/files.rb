@@ -2,8 +2,8 @@
 
 module Teamlab
   class Files
-    def initialize
-      @request = Teamlab::Request.new('files')
+    def initialize(config)
+      @request = Teamlab::Request.new(config, 'files')
     end
 
     # region File Creation
