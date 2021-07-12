@@ -189,7 +189,7 @@ describe '[Calendar]' do
 
   describe '#delete_event_series' do
     before do
-      event = Teamlab.calendar.add_event(@data_collector[:calendar_ids].last, random_word, description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false)
+      event = api.calendar.add_event(@data_collector[:calendar_ids].last, random_word, description: random_word, startDate: DateTime.now, endDate: DateTime.now, repeatType: '', alertType: '-1', isAllDayLong: false)
       @data_collector[:calendar_event_ids] << event.data.first['objectId']
     end
 

@@ -9,7 +9,8 @@ module Teamlab
   class Request
     include HTTParty
 
-    def initialize(api_additive)
+    def initialize(config, api_additive)
+      @config = config
       @api_additive = api_additive.to_s
     end
 
@@ -49,8 +50,24 @@ module Teamlab
       response
     end
 
+    def server
+      @config&.server || Teamlab.config.server
+    end
+
+    def api_path
+      @config&.api_path || Teamlab.config.api_path
+    end
+
+    def headers
+      @config&.headers || Teamlab.config.headers
+    end
+
+    def proxy
+      @config&.proxy || Teamlab.config.proxy
+    end
+
     def generate_request_url(command)
-      Teamlab.config.server + Teamlab.config.api_path + @api_additive + command
+      server + api_path + @api_additive + command
     end
 
     def parse_args(args, type)
@@ -58,7 +75,7 @@ module Teamlab
       opts = {}
       opts[:body] = args.last.instance_of?(Hash) ? args.pop : {}
       opts[:body].delete_if { |_key, value| value == [] }
-      opts[:headers] = Teamlab.config.headers
+      opts[:headers] = headers
       opts = init_proxy(opts)
       opts[:query] = opts.delete(:body) if type == :get
       [command, opts]
@@ -67,12 +84,12 @@ module Teamlab
     # @param opts [Hash] options to init
     # @return [Hash] options
     def init_proxy(opts)
-      return opts unless Teamlab.config.proxy
+      return opts unless proxy
 
-      opts[:http_proxyaddr] ||= Teamlab.config.proxy.proxy_address
-      opts[:http_proxyport] ||= Teamlab.config.proxy.proxy_port
-      opts[:http_proxyuser] ||= Teamlab.config.proxy.proxy_user
-      opts[:http_proxypass] ||= Teamlab.config.proxy.proxy_pass
+      opts[:http_proxyaddr] ||= proxy.proxy_address
+      opts[:http_proxyport] ||= proxy.proxy_port
+      opts[:http_proxyuser] ||= proxy.proxy_user
+      opts[:http_proxypass] ||= proxy.proxy_pass
       opts
     end
   end

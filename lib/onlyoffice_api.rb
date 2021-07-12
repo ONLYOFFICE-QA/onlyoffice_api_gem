@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'onlyoffice_api/onlyoffice_api_instance'
 require_relative 'teamlab/version'
 require_relative 'teamlab/config'
 require_relative 'teamlab/request'

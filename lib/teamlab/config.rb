@@ -8,7 +8,7 @@ module Teamlab
   def self.configure(&block)
     @config ||= Config.new
     yield @config if block
-    auth_response = Teamlab::Request.new('authentication').post('', userName: @config.username, password: @config.password).body
+    auth_response = Teamlab::Request.new(nil, 'authentication').post('', userName: @config.username, password: @config.password).body
     raise "Cannot get response token for #{auth_response}" if auth_response['response'].nil? || auth_response['response']['token'].nil?
 
     @config.token = auth_response['response']['token']
@@ -24,8 +24,11 @@ module Teamlab
     # @return [Net::HTTP::Proxy] connection proxy
     attr_accessor :proxy
 
-    def initialize
+    def initialize(params = {})
       default_configuration
+      @server = params[:server]
+      @username = params[:username]
+      @password = params[:password]
     end
 
     def default_configuration

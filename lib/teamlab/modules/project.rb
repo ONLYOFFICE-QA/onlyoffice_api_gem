@@ -30,8 +30,8 @@ module Teamlab
     include ProjectsTemplates
     include ProjectsTime
 
-    def initialize
-      @request = Teamlab::Request.new('project')
+    def initialize(config = nil)
+      @request = Teamlab::Request.new(config, 'project')
     end
   end
 end

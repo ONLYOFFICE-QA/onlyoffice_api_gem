@@ -25,8 +25,8 @@ module Teamlab
     include MailSettings
     include MailTags
 
-    def initialize
-      @request = Teamlab::Request.new('mail')
+    def initialize(config = nil)
+      @request = Teamlab::Request.new(config, 'mail')
     end
 
     # @return [Teamlab::Response] Returns all Mail running operations (only complex)

@@ -14,14 +14,14 @@ require_relative 'spec_helper/portal_cleanup'
 require_relative 'spec_helper/request_helper'
 require_relative 'support/http_data'
 
-def configure_test_portal
-  Teamlab.configure do |config|
-    config.server = ENV['ONLYOFFICE_API_GEM_TEST_PORTAL']
-    config.username = ENV['ONLYOFFICE_API_GEM_TEST_USER']
-    config.password = ENV['ONLYOFFICE_API_GEM_TEST_PASSWORD']
-  end
+def api
+  @api ||= Teamlab::OnlyofficeApiInstance.new(server: ENV['ONLYOFFICE_API_GEM_TEST_PORTAL'],
+                                              username: ENV['ONLYOFFICE_API_GEM_TEST_USER'],
+                                              password: ENV['ONLYOFFICE_API_GEM_TEST_PASSWORD'])
+end
 
-  reset_portal
+def configure_test_portal
+  reset_portal(api)
 end
 
 RSpec.configure do |c|
@@ -37,7 +37,7 @@ shared_examples_for 'an api request' do |*flags|
   before { skip } if flags.include?(:skip)
   before do
     if RequestHelper.current_responce.nil?
-      @module = Teamlab.send(teamlab_module)
+      @module = api.send(teamlab_module)
       puts "#{command}(#{args.join(', ')})"
       RequestHelper.current_responce = args.empty? ? @module.send(command) : @module.send(command, *args)
       if add_data_to_collector
