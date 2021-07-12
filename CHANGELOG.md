@@ -4,6 +4,10 @@
 
 ## 0.11.0 (2021-06-22)
 
+### New Features
+
+* Add `OnlyofficeApiInstance` class for usage without global namespace setup
+
 ### Changes
 
 * Add more detailed exception if responce is not JSON
