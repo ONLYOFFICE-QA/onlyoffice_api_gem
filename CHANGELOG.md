@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 0.12.0 (2021-07-12)
+
 ### New Features
 
 * Add `OnlyofficeApiInstance` class for usage without global namespace setup
