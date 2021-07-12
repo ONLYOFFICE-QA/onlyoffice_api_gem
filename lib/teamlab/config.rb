@@ -32,11 +32,11 @@ module Teamlab
     end
 
     def default_configuration
-      @server ||= 'https://onlyoffice.com'
-      @api_path ||= '/api/2.0/'
-      @api_additive ||= ''
-      @username ||= 'user'
-      @password ||= 'password'
+      @server = 'https://onlyoffice.com'
+      @api_path = '/api/2.0/'
+      @api_additive = ''
+      @username = 'user'
+      @password = 'password'
     end
   end
 end
