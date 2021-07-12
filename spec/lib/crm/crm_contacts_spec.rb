@@ -94,7 +94,7 @@ describe '[CRM]' do
     it_behaves_like 'an api request' do
       let(:command) { :add_contact_info }
       i = -1
-      let(:args) { [@data_collector[:new_contact_ids][i += 1], info_type = CONTACT_INFO_TYPES.sample, random_word, random_info_category(info_type)] }
+      let(:args) { [@data_collector[:new_contact_ids][i += 1], info_type = CONTACT_INFO_TYPES.sample, random_word, random_info_category(api, info_type)] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :contact_info_ids }
       let(:param_names) { %w[id] }

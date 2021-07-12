@@ -32,8 +32,8 @@ def random_settings_entity_id
   SETTINGS_ENTITY_IDS.sample
 end
 
-def random_info_category(info_type)
-  Teamlab.crm.get_all_categories(info_type).data.sample
+def random_info_category(api, info_type)
+  api.crm.get_all_categories(info_type).data.sample
 end
 
 # region OPTIONS
