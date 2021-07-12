@@ -2,7 +2,7 @@
 
 module Teamlab
   class Portal
-    def initialize(config)
+    def initialize(config = nil)
       @request = Teamlab::Request.new(config, 'portal')
     end
 

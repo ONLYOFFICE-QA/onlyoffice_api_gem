@@ -2,7 +2,7 @@
 
 module Teamlab
   class Files
-    def initialize(config)
+    def initialize(config = nil)
       @request = Teamlab::Request.new(config, 'files')
     end
 

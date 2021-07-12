@@ -11,7 +11,7 @@ module Teamlab
     include MailserverDomains
     include MailserverMailboxes
 
-    def initialize(config)
+    def initialize(config = nil)
       @request = Teamlab::Request.new(config, 'mailserver')
     end
   end

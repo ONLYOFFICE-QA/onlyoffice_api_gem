@@ -13,7 +13,7 @@ module Teamlab
     include CommunityForums
     include CommunityWiki
 
-    def initialize(config)
+    def initialize(config = nil)
       @request = Teamlab::Request.new(config, 'community')
     end
   end

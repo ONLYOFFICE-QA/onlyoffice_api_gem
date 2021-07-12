@@ -2,7 +2,7 @@
 
 module Teamlab
   class Feed
-    def initialize(config)
+    def initialize(config = nil)
       @request = Teamlab::Request.new(config, 'feed')
     end
 

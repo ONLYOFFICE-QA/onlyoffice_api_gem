@@ -51,19 +51,19 @@ module Teamlab
     end
 
     def server
-      @config.server || Teamlab.config.server
+      @config&.server || Teamlab.config.server
     end
 
     def api_path
-      @config.api_path || Teamlab.config.api_path
+      @config&.api_path || Teamlab.config.api_path
     end
 
     def headers
-      @config.headers || Teamlab.config.headers
+      @config&.headers || Teamlab.config.headers
     end
 
     def proxy
-      @config.proxy || Teamlab.config.proxy
+      @config&.proxy || Teamlab.config.proxy
     end
 
     def generate_request_url(command)

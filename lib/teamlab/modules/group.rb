@@ -6,7 +6,7 @@ module Teamlab
   class Group
     include GroupHelper
 
-    def initialize(config)
+    def initialize(config = nil)
       @request = Teamlab::Request.new(config, 'group')
     end
 
