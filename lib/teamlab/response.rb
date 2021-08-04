@@ -41,7 +41,10 @@ module Teamlab
     end
 
     def self.response_is_correct?(response)
-      response.success && response.error.nil? && response.body.is_a?(Hash)
+      answer = response.success && response.error.nil? && response.body.is_a?(Hash)
+      raise('Response should be always successful') unless answer
+
+      answer
     end
 
     private
