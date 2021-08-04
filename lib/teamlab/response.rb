@@ -40,6 +40,10 @@ module Teamlab
       @body['response']
     end
 
+    def self.response_is_correct?(response)
+      response.success && response.error.nil? && response.body.is_a?(Hash)
+    end
+
     private
 
     # Sometime in strange situation, like maybe nginx errors
