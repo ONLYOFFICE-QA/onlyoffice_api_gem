@@ -56,7 +56,7 @@ shared_examples_for 'an api request' do |*flags|
     end
 
     it 'returns Teamlab::Response object with successful parameter, nil error and hash body' do
-      expect(Teamlab::Response).to be_response_is_correct(RequestHelper.current_responce)
+      expect(RequestHelper.current_responce).to be_correct(command)
     end
   end
 

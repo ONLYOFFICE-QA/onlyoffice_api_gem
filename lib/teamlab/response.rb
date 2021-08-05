@@ -40,11 +40,11 @@ module Teamlab
       @body['response']
     end
 
-    def self.response_is_correct?(response)
-      answer = response.success && response.error.nil? && response.body.is_a?(Hash)
-      raise('Response should be always successful') unless response.success
-      raise('Response should not contain errors') unless response.error.nil?
-      raise('Response should be Hash') unless response.body.is_a?(Hash)
+    def correct?(command)
+      answer = @success && @error.nil? && @body.is_a?(Hash)
+      raise("Response should be always successful for #{command}") unless @success
+      raise("Response should not contain errors for #{command}") unless @error.nil?
+      raise("Response should be Hash for #{command}") unless @body.is_a?(Hash)
 
       answer
     end
