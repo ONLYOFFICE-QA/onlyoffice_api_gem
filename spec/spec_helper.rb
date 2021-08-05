@@ -55,16 +55,8 @@ shared_examples_for 'an api request' do |*flags|
       expect(RequestHelper.current_responce).to be_instance_of(Teamlab::Response)
     end
 
-    it 'returns Teamlab::Response object with successful parameter, set to true' do
-      expect(RequestHelper.current_responce.success).to be_truthy
-    end
-
-    it 'returns Teamlab::Response object with nil error parameter' do
-      expect(RequestHelper.current_responce.error).to be_nil
-    end
-
-    it 'returns Teamlab::Response object with hash body' do
-      expect(RequestHelper.current_responce.body).to be_instance_of(Hash)
+    it 'returns Teamlab::Response object with successful parameter, nil error and hash body' do
+      expect(RequestHelper.current_responce).to be_correct(command)
     end
   end
 

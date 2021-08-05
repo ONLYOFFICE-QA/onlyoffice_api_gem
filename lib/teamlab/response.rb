@@ -40,6 +40,18 @@ module Teamlab
       @body['response']
     end
 
+    # Check if responce is succeed, has nil error and has hash body
+    # @param [Symbol] current api method
+    # @return [Boolean] result of responce check
+    def correct?(command)
+      result = @success && @error.nil? && @body.is_a?(Hash)
+      raise("Response should be always successful for #{command}") unless @success
+      raise("Response should not contain errors for #{command}") unless @error.nil?
+      raise("Response should be Hash for #{command}") unless @body.is_a?(Hash)
+
+      result
+    end
+
     private
 
     # Sometime in strange situation, like maybe nginx errors
