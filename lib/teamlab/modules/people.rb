@@ -45,10 +45,6 @@ module Teamlab
       @request.post(nil, { isVisitor: is_visitor, email: email, firstname: firstname, lastname: lastname }.merge(options))
     end
 
-    def active(options = {})
-      @request.post(['active'], options) # TODO: need some fixing
-    end
-
     def update_contacts(user_id, contacts = {})
       @request.post([user_id, 'contacts'], contacts)
     end
@@ -99,6 +95,22 @@ module Teamlab
 
     def unlink_account(provider)
       @request.delete([%w[thirdparty unlinkaccount]], provider: provider)
+    end
+
+    def get_user_by_email(email)
+      @request.get(['email'], email: email)
+    end
+
+    def get_user_photoes(user_id)
+      @request.get([user_id, 'photo'])
+    end
+
+    def send_delete_instruction
+      @request.put(%w[self delete])
+    end
+
+    def join_to_affiliate_programme
+      @request.put(%w[self joinaffiliate])
     end
   end
 end

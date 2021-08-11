@@ -47,6 +47,13 @@ describe '[People]' do
     end
   end
 
+  describe '#get_people_by_email' do
+    it_behaves_like 'an api request' do
+      let(:command) { :get_user_by_email }
+      let(:args) { [new_user['email']] }
+    end
+  end
+
   describe '#get_people_by_status' do
     it_behaves_like 'an api request' do
       let(:command) { :get_people_by_status }
@@ -110,6 +117,13 @@ describe '[People]' do
     end
   end
 
+  describe '#get_user_photoes' do
+    it_behaves_like 'an api request' do
+      let(:command) { :get_user_photoes }
+      let(:args) { [new_user['id']] }
+    end
+  end
+
   describe '#add_contacts' do
     it_behaves_like 'an api request' do
       let(:command) { :add_contacts }
@@ -156,6 +170,18 @@ describe '[People]' do
     it_behaves_like 'an api request' do
       let(:command) { :delete_user }
       let(:args) { [new_user['id']] }
+    end
+  end
+
+  describe '#send_delete_instruction' do
+    it_behaves_like 'an api request' do
+      let(:command) { :send_delete_instruction }
+    end
+  end
+
+  describe '#join_to_affiliate_programme' do
+    it_behaves_like 'an api request' do
+      let(:command) { :join_to_affiliate_programme }
     end
   end
 end
