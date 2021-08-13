@@ -14,6 +14,8 @@ require_relative 'spec_helper/portal_cleanup'
 require_relative 'spec_helper/request_helper'
 require_relative 'support/http_data'
 
+include PortalCleanup
+
 def api
   @api ||= Teamlab::OnlyofficeApiInstance.new(server: ENV['ONLYOFFICE_API_GEM_TEST_PORTAL'],
                                               username: ENV['ONLYOFFICE_API_GEM_TEST_USER'],
@@ -24,11 +26,11 @@ def configure_test_portal
   reset_portal(api)
 end
 
+configure_test_portal
+
 RSpec.configure do |c|
-  c.include PortalCleanup
   c.before(:all) do
     @data_collector = {}
-    configure_test_portal
   end
 end
 

@@ -2,6 +2,8 @@
 
 require_relative '../spec_helper'
 
+new_user = api.people.add_user(random_bool, random_email, random_word.capitalize, random_word.capitalize).data
+
 describe '[People]' do
   let(:teamlab_module) { :people }
 
@@ -35,19 +37,13 @@ describe '[People]' do
     it_behaves_like 'an api request' do
       let(:command) { :add_user }
       let(:args) { [random_bool, random_email, random_word.capitalize, random_word.capitalize] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :new_user_ids }
-      let(:param_names) { %w[id] }
     end
   end
 
   describe '#get_user_by_username' do
     it_behaves_like 'an api request' do
       let(:command) { :get_user_by_username }
-      let(:args) { [random_id(:new_user)] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :emails }
-      let(:param_names) { %w[email] }
+      let(:args) { [new_user['userName']] }
     end
   end
 
@@ -75,14 +71,14 @@ describe '[People]' do
   describe '#update_contacts' do
     it_behaves_like 'an api request' do
       let(:command) { :update_contacts }
-      let(:args) { [random_id(:new_user), USER_CONTACTS] }
+      let(:args) { [new_user['id'], USER_CONTACTS] }
     end
   end
 
   describe '#send_invite' do
     it_behaves_like 'an api request' do
       let(:command) { :send_invite }
-      let(:args) { [@data_collector[:new_user_ids]] }
+      let(:args) { [new_user['id']] }
     end
   end
 
@@ -96,28 +92,28 @@ describe '[People]' do
   describe '#update_user' do
     it_behaves_like 'an api request' do
       let(:command) { :update_user }
-      let(:args) { [random_id(:new_user), random_bool, random_email, random_word, random_word, { comment: random_word }] }
+      let(:args) { [new_user['id'], random_bool, random_email, random_word, random_word, { comment: random_word }] }
     end
   end
 
   describe '#change_people_type' do
     it_behaves_like 'an api request' do
       let(:command) { :change_people_type }
-      let(:args) { [USER_TYPES.sample, @data_collector[:new_user_ids]] }
+      let(:args) { [USER_TYPES.sample, new_user['id']] }
     end
   end
 
   describe '#update_photo' do
     it_behaves_like 'an api request' do
       let(:command) { :update_photo }
-      let(:args) { [random_id(:new_user), PATH_TO_IMAGE] }
+      let(:args) { [new_user['id'], PATH_TO_IMAGE] }
     end
   end
 
   describe '#add_contacts' do
     it_behaves_like 'an api request' do
       let(:command) { :add_contacts }
-      let(:args) { [USER_CONTACTS, random_id(:new_user)] }
+      let(:args) { [USER_CONTACTS, new_user['id']] }
     end
   end
 
@@ -131,28 +127,21 @@ describe '[People]' do
   describe '#delete_photo' do
     it_behaves_like 'an api request' do
       let(:command) { :delete_photo }
-      let(:args) { [random_id(:new_user)] }
+      let(:args) { [new_user['id']] }
     end
   end
 
   describe '#delete_contacts' do
     it_behaves_like 'an api request' do
       let(:command) { :delete_contacts }
-      let(:args) { [random_id(:new_user), USER_CONTACTS] }
+      let(:args) { [new_user['id'], USER_CONTACTS] }
     end
   end
 
   describe '#change_people_status' do
     it_behaves_like 'an api request' do
       let(:command) { :change_people_status }
-      let(:args) { ['Terminated', @data_collector[:new_user_ids]] }
-    end
-  end
-
-  describe '#delete_user' do
-    it_behaves_like 'an api request' do
-      let(:command) { :delete_user }
-      let(:args) { [@data_collector[:new_user_ids].pop] }
+      let(:args) { ['Terminated', new_user['id']] }
     end
   end
 
@@ -160,6 +149,13 @@ describe '[People]' do
     it_behaves_like 'an api request' do
       let(:command) { :unlink_account }
       let(:args) { [USER_THIRD_PARTIES_PROVIDERS.sample] }
+    end
+  end
+
+  describe '#delete_user' do
+    it_behaves_like 'an api request' do
+      let(:command) { :delete_user }
+      let(:args) { [new_user['id']] }
     end
   end
 end
