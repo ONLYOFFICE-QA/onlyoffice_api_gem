@@ -2,7 +2,7 @@
 
 require_relative '../spec_helper'
 
-describe '[Group]', test_type: :use_clean_up do
+describe '[Group]' do
   let(:teamlab_module) { :group }
 
   describe '#add_user' do

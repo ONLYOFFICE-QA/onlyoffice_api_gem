@@ -26,11 +26,11 @@ def configure_test_portal
   reset_portal(api)
 end
 
+configure_test_portal
+
 RSpec.configure do |c|
-  c.before(:all, test_type: :use_clean_up) do
-    c.include PortalCleanup
+  c.before(:all) do
     @data_collector = {}
-    configure_test_portal
   end
 end
 
