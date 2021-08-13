@@ -2,6 +2,7 @@
 
 require_relative '../spec_helper'
 
+configure_test_portal
 new_user = api.people.add_user(random_bool, random_email, random_word.capitalize, random_word.capitalize).data
 
 describe '[People]' do
