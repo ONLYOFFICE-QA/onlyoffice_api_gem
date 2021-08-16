@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 require_relative 'people/people_reassign'
+require_relative 'people/people_remove'
 module Teamlab
   class People
     include PeopleReassign
+    include PeopleRemove
 
     def initialize(config = nil)
       @request = Teamlab::Request.new(config, 'people')
