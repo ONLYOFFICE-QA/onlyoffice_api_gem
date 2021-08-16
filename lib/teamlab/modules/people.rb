@@ -97,18 +97,27 @@ module Teamlab
       @request.delete([%w[thirdparty unlinkaccount]], provider: provider)
     end
 
+    # Returns the detailed information about the profile of the user with the email specified in the request
+    # @param email [String] User email
+    # @return [Hash] result user search by email
     def get_user_by_email(email)
       @request.get(['email'], email: email)
     end
 
+    # Get user photos
+    # @param userid [String] User ID
+    # @return [Hash] result user photos
     def get_user_photoes(user_id)
       @request.get([user_id, 'photo'])
     end
 
+    # Send instructions for delete user own profile
     def send_delete_instruction
       @request.put(%w[self delete])
     end
 
+    # Join to affiliate programme
+    # @return [String] link to affiliate programme
     def join_to_affiliate_programme
       @request.put(%w[self joinaffiliate])
     end
