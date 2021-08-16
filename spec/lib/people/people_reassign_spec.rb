@@ -16,9 +16,9 @@ describe '[People] Reassign' do
     end
   end
 
-  describe '#get_reassign_progress' do
+  describe '#reassign_progress' do
     it_behaves_like 'an api request' do
-      let(:command) { :get_reassign_progress }
+      let(:command) { :reassign_progress }
       let(:args) { [from_user_reassign['id']] }
     end
   end
