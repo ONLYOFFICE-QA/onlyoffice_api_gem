@@ -112,6 +112,7 @@ module Teamlab
     end
 
     # Send instructions for delete user own profile
+    # @return [Void] send `Deletion of your profile` letter
     def send_delete_instruction
       @request.put(%w[self delete])
     end
