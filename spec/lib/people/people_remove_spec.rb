@@ -15,9 +15,9 @@ describe '[People] Remove' do
     end
   end
 
-  describe '#get_remove_progress' do
+  describe '#remove_progress' do
     it_behaves_like 'an api request' do
-      let(:command) { :get_remove_progress }
+      let(:command) { :remove_progress }
       let(:args) { [user_to_remove['id']] }
     end
   end

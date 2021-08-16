@@ -13,7 +13,7 @@ module Teamlab
     # Returns the progress of the started remove process
     # @param userId [String] guid of user to remove
     # @return [Hash] remove progress data
-    def get_remove_progress(user_id)
+    def remove_progress(user_id)
       @request.get(%w[remove progress], userId: user_id)
     end
 
