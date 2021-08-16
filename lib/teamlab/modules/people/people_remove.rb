@@ -5,14 +5,14 @@ module Teamlab
   module PeopleRemove
     # Start a remove process
     # @param userId [String] guid of user to remove
-    # @param [Hash] remove progress data
+    # @return [Hash] remove progress data
     def start_remove(user_id)
       @request.post(%w[remove start], userId: user_id)
     end
 
     # Returns the progress of the started remove process
     # @param userId [String] guid of user to remove
-    # @param from_user_id [String] remove progress data
+    # @return [Hash] remove progress data
     def get_remove_progress(user_id)
       @request.get(%w[remove progress], userId: user_id)
     end
