@@ -97,7 +97,7 @@ module Teamlab
       @request.delete([%w[thirdparty unlinkaccount]], provider: provider)
     end
 
-    # Returns the detailed information about the profile of the user with the email specified in the request
+    # Return the detailed information about the profile of the user with the email specified in the request
     # @param email [String] User email
     # @return [Hash] result user search by email
     def get_user_by_email(email)
