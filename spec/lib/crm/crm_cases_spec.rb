@@ -2,6 +2,7 @@
 
 require 'spec_helper'
 
+p a
 crm_case_user = api.crm.create_person(random_word.capitalize, random_word.capitalize).data
 crm_case = api.crm.create_case(random_word, { members: crm_case_user['id'] }).data
 crm_case_for_group_deleting = api.crm.create_case(random_word).data
