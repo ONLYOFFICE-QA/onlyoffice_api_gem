@@ -4,7 +4,7 @@ require 'spec_helper'
 
 from_user_reassign = api.people.add_user(random_bool, random_email, random_word.capitalize, random_word.capitalize).data
 api.people.change_people_status('2', [from_user_reassign['id']])
-to_user_reassign = api.people.add_user(false , random_email, random_word.capitalize, random_word.capitalize).data
+to_user_reassign = api.people.add_user(false, random_email, random_word.capitalize, random_word.capitalize).data
 
 describe '[People] Reassign' do
   let(:teamlab_module) { :people }
