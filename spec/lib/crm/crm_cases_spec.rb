@@ -10,6 +10,12 @@ case_for_group_deleting_by_filter = api.crm.create_case(random_word).data
 describe '[CRM]' do
   let(:teamlab_module) { :crm }
 
+  describe '#create_case' do
+    it_behaves_like 'an api request' do
+      let(:command) { :create_case }
+      let(:args) { [random_word, { members:crm_case_user['id'] }] }
+    end
+  end
   describe '#get_cases_by_prefix' do
     it_behaves_like 'an api request' do
       let(:command) { :get_cases_by_prefix }
