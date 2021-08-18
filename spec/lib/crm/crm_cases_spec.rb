@@ -13,9 +13,10 @@ describe '[CRM]' do
   describe '#create_case' do
     it_behaves_like 'an api request' do
       let(:command) { :create_case }
-      let(:args) { [random_word, { members:crm_case_user['id'] }] }
+      let(:args) { [random_word, { members: crm_case_user['id'] }] }
     end
   end
+
   describe '#get_cases_by_prefix' do
     it_behaves_like 'an api request' do
       let(:command) { :get_cases_by_prefix }
