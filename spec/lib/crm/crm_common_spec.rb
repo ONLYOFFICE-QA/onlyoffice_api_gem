@@ -2,6 +2,8 @@
 
 require 'spec_helper'
 
+currency_rate =  api.crm.create_currency_rate(CURRENCY.sample, CURRENCY.sample, rand(1.00..10.00)).data
+
 describe '[CRM]' do
   let(:teamlab_module) { :crm }
 
@@ -37,27 +39,31 @@ describe '[CRM]' do
     end
   end
 
-  describe '#set_currency_rate' do
+  describe '#create_currency_rate' do
     it_behaves_like 'an api request' do
-      let(:command) { :set_currency_rate }
+      let(:command) { :create_currency_rate }
       let(:args) { [CURRENCY.sample, CURRENCY.sample, rand(1.00..10.00)] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :new_currency_rate_ids }
-      let(:param_names) { %w[id] }
     end
   end
 
   describe '#get_currency_rate_by_id' do
     it_behaves_like 'an api request' do
       let(:command) { :get_currency_rate_by_id }
-      let(:args) { [random_id(:new_currency_rate)] }
+      let(:args) { [currency_rate['id']] }
+    end
+  end
+
+  describe '#get_currency_rate_by_currency' do
+    it_behaves_like 'an api request' do
+      let(:command) { :get_currency_rate_by_currency }
+      let(:args) { [currency_rate['fromCurrency'], currency_rate['toCurrency']] }
     end
   end
 
   describe '#delete_currency_rate_by_id' do
     it_behaves_like 'an api request' do
       let(:command) { :delete_currency_rate_by_id }
-      let(:args) { [@data_collector[:new_currency_rate_ids].pop] }
+      let(:args) { [currency_rate['id']] }
     end
   end
 
@@ -65,6 +71,12 @@ describe '[CRM]' do
     it_behaves_like 'an api request' do
       let(:command) { :set_is_portal_configured }
       let(:args) { [{ configured: random_bool }] }
+    end
+  end
+
+  describe '#change_web_form_key' do
+    it_behaves_like 'an api request' do
+      let(:command) { :change_web_form_key }
     end
   end
 end
