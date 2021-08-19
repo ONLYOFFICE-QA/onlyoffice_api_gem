@@ -73,10 +73,4 @@ describe '[CRM]' do
       let(:args) { [{ configured: random_bool }] }
     end
   end
-
-  describe '#change_web_form_key' do
-    it_behaves_like 'an api request' do
-      let(:command) { :change_web_form_key }
-    end
-  end
 end

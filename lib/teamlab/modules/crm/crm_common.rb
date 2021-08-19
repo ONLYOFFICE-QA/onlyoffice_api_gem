@@ -31,6 +31,10 @@ module Teamlab
       @request.get(['currency', 'rates', id.to_s], {})
     end
 
+    # Get currency rate by currencies
+    # @param from_currency [String] rate from currency
+    # @param to_currency [String] rate to currency
+    # @return [Hash] currency rate data
     def get_currency_rate_by_currency(from_currency, to_currency)
       @request.get(['currency', 'rates', from_currency.to_s, to_currency.to_s])
     end
@@ -41,10 +45,6 @@ module Teamlab
 
     def set_is_portal_configured(options = {})
       @request.put(%w[settings], options)
-    end
-
-    def change_web_form_key
-      @request.put(%w[settings webformkey change])
     end
   end
 end
