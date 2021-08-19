@@ -1,5 +1,7 @@
 # Change log
 
+##
+
 ### New Features
 
 * Add `CRM#get_currency_rate_by_currency` method
