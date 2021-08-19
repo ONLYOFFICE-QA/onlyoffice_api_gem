@@ -10,8 +10,6 @@
 
 * Rename `set_currency_rate` to `create_currency_rate` according to documentation
 
-## master (unreleased)
-
 ## 0.12.0 (2021-07-12)
 
 ### New Features
