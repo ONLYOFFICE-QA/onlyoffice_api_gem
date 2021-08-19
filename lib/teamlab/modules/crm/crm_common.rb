@@ -23,12 +23,20 @@ module Teamlab
       @request.get(%w[currency rates], {})
     end
 
-    def set_currency_rate(from = 'EUR', to = 'USD', rate = '1.0')
+    def create_currency_rate(from = 'EUR', to = 'USD', rate = '1.0')
       @request.post(%w[currency rates], fromCurrency: from, toCurrency: to, rate: rate)
     end
 
     def get_currency_rate_by_id(id)
       @request.get(['currency', 'rates', id.to_s], {})
+    end
+
+    # Get currency rate by currencies
+    # @param from_currency [String] rate from currency
+    # @param to_currency [String] rate to currency
+    # @return [Hash] currency rate data
+    def get_currency_rate_by_currency(from_currency, to_currency)
+      @request.get(['currency', 'rates', from_currency.to_s, to_currency.to_s])
     end
 
     def delete_currency_rate_by_id(id)
@@ -37,6 +45,16 @@ module Teamlab
 
     def set_is_portal_configured(options = {})
       @request.put(%w[settings], options)
+    end
+
+    # Update currency rate object
+    # @param id [String] id of rate currency
+    # @param from [String] rate from currency
+    # @param to [String] rate to currency
+    # @param rate [String] currency rate
+    # @return [Hash] currency and rate data
+    def update_currency_rate(id, from, to, rate)
+      @request.put(['currency', 'rates', id.to_s], fromCurrency: from, toCurrency: to, rate: rate)
     end
   end
 end

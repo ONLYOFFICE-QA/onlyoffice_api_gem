@@ -2,6 +2,15 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add `CRM#get_currency_rate_by_currency` method
+* Add `CRM#update_currency_rate` method
+
+### Refactor
+
+* Rename `set_currency_rate` to `create_currency_rate` according to documentation
+
 ## 0.12.0 (2021-07-12)
 
 ### New Features
