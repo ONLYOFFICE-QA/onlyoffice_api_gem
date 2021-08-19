@@ -46,6 +46,13 @@ describe '[CRM]' do
     end
   end
 
+  describe '#update_currency_rate' do
+    it_behaves_like 'an api request' do
+      let(:command) { :update_currency_rate }
+      let(:args) { [currency_rate['id'], currency_rate['fromCurrency'], currency_rate['toCurrency'], rand(1.00..10.00)] }
+    end
+  end
+
   describe '#get_currency_rate_by_id' do
     it_behaves_like 'an api request' do
       let(:command) { :get_currency_rate_by_id }

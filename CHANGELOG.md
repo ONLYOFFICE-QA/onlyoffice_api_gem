@@ -5,6 +5,7 @@
 ### New Features
 
 * Add `CRM#get_currency_rate_by_currency` method
+* Add `CRM#update_currency_rate` method
 
 ### Refactor
 

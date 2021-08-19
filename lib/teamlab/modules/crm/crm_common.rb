@@ -46,5 +46,15 @@ module Teamlab
     def set_is_portal_configured(options = {})
       @request.put(%w[settings], options)
     end
+
+    # Update currency rate object
+    # @param id [String] id of rate currency
+    # @param from [String] rate from currency
+    # @param to [String] rate to currency
+    # @param rate [String] currency rate
+    # @return [Hash] currency and rate data
+    def update_currency_rate(id, from, to, rate)
+      @request.put(['currency', 'rates', id.to_s], fromCurrency: from, toCurrency: to, rate: rate)
+    end
   end
 end
