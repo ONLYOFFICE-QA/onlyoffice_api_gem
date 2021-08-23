@@ -14,7 +14,7 @@ GEM
     concurrent-ruby (1.1.9)
     diff-lcs (1.4.4)
     docile (1.4.0)
-    faker (2.18.0)
+    faker (2.19.0)
       i18n (>= 1.6, < 2)
     httparty (0.18.1)
       mime-types (~> 3.0)
