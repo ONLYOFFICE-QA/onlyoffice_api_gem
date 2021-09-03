@@ -17,7 +17,7 @@
 ### Refactor
 
 * Rename `set_currency_rate` to `create_currency_rate` according to documentation
-* Rename `get_reassign_progress` to `reassign_progress` 
+* Rename `get_reassign_progress` to `reassign_progress`
 
 ## 0.12.0 (2021-07-12)
 
