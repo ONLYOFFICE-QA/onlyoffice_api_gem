@@ -239,23 +239,5 @@ module Teamlab
     def remove_contact_from_project(contact_id, project_id)
       @request.delete(['contact', contact_id.to_s, 'project', project_id.to_s])
     end
-
-    # Adds the address information to the contact with the selected ID
-    # @param contactid [String] Contact ID
-    # @param address [Hash] contact address parameters: street, city, state, zip, country
-    # @return [Hash] contact information
-    def add_address_info(contact_id, address = {})
-      p address
-      @request.post(['contact', contact_id.to_s, 'addressdata'], { address: address })
-    end
-
-    # Updates the address information with the parameters specified in the request for the contact with the selected ID
-    # @param contactid [String] Contact ID
-    # @param info_id [String] Contact information record ID
-    # @param address [Hash] contact address parameters: street, city, state, zip, country
-    # @return [Hash] contact information
-    def update_address_info(contact_id, info_id, address = {})
-      @request.put(['contact', contact_id.to_s, 'addressdata', info_id.to_s], { address: address })
-    end
   end
 end
