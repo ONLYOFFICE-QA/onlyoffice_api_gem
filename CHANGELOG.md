@@ -6,10 +6,18 @@
 
 * Add `CRM#get_currency_rate_by_currency` method
 * Add `CRM#update_currency_rate` method
+* Add `People#get_user_by_email` method
+* Add `People#get_user_photoes` method
+* Add `People#send_delete_instruction` method
+* Add `People#join_to_affiliate_programme` method
+* Add `People#start_remove` method
+* Add `People#remove_progress` method
+* Add `People#terminate_remove` method
 
 ### Refactor
 
 * Rename `set_currency_rate` to `create_currency_rate` according to documentation
+* Rename `get_reassign_progress` to `reassign_progress`
 
 ## 0.12.0 (2021-07-12)
 
