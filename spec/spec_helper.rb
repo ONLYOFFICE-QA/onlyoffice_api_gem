@@ -17,9 +17,9 @@ require_relative 'support/http_data'
 include PortalCleanup
 
 def api
-  @api ||= Teamlab::OnlyofficeApiInstance.new(server: 'https://olgaapitest12345.teamlab.info',
-                                              username: 'nola4951@mail.ru',
-                                              password: 'qwertyui')
+  @api ||= Teamlab::OnlyofficeApiInstance.new(server: 'https://nctautotest-20210903150656-community-birthays-spec.teamlab.info',
+                                              username: 'teamlab.ruby@gmail.com',
+                                              password: '12345678')
 end
 
 def configure_test_portal
