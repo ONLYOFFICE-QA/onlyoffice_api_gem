@@ -6,6 +6,10 @@
 
 * Add `CRM#get_currency_rate_by_currency` method
 * Add `CRM#update_currency_rate` method
+* Add `CRM#get_contact_information` method
+* Add `CRM#get_contact_access_rights` method
+* Add `CRM#add_address_info` method
+* Add `CRM#update_address_info` method
 * Add `People#get_user_by_email` method
 * Add `People#get_user_photoes` method
 * Add `People#send_delete_instruction` method

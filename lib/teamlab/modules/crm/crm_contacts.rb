@@ -139,6 +139,13 @@ module Teamlab
       @request.get(['contact', 'company', company_id.to_s, 'person'])
     end
 
+    # Returns the detailed information about the contacts Email, Phone, Web Site/Social Networks and Address information with the ID
+    # @param contact_id [String] Contact ID
+    # @return [Hash] Contact information
+    def get_contact_information(contact_id)
+      @request.get(['contact', contact_id.to_s, 'data'])
+    end
+
     def get_contact_information_by_type(contact_id, info_type)
       @request.get(['contact', contact_id.to_s, 'data', info_type.to_s])
     end
@@ -192,6 +199,13 @@ module Teamlab
       @request.put(['contact', contact_id.to_s, 'access'], options)
     end
 
+    # Returns access rights to the contact with the ID specified in the request
+    # @param contact_id [String] Contact ID
+    # @return [Array] List of contacts
+    def get_contact_access_rights(contact_id)
+      @request.get(['contact', contact_id.to_s, 'access'])
+    end
+
     def update_company(company_id, company_name, options = {})
       @request.put(['contact', 'company', company_id.to_s], { companyName: company_name.to_s }.merge(options))
     end
@@ -238,6 +252,23 @@ module Teamlab
 
     def remove_contact_from_project(contact_id, project_id)
       @request.delete(['contact', contact_id.to_s, 'project', project_id.to_s])
+    end
+
+    # Adds the address information to the contact with the selected ID
+    # @param contact_id [String] Contact ID
+    # @param address [Hash] Contact address parameters: street, city, state, zip, country, isPrimary
+    # @return [Hash] Contact information
+    def add_address_info(contact_id, address = {})
+      @request.post(['contact', contact_id.to_s, 'addressdata'], { address: address })
+    end
+
+    # Updates the address information with the parameters specified in the request for the contact with the selected ID
+    # @param contact_id [String] Contact ID
+    # @param info_id [String] Contact information record ID
+    # @param address [Hash] Contact address parameters: street, city, state, zip, country, isPrimary
+    # @return [Hash] Contact information
+    def update_address_info(contact_id, info_id, address = {})
+      @request.put(['contact', contact_id.to_s, 'addressdata', info_id.to_s], { address: address })
     end
   end
 end
