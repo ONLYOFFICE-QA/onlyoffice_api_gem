@@ -16,6 +16,7 @@ new_company = api.crm.create_company(random_word, [contacts_user['id']], personL
 opportunity_stage = api.crm.create_opportunity_stage(random_word.capitalize, COLORS_NAMES.sample).data
 new_opportunity = api.crm.create_opportunity(opportunity_stage['id'], random_word, contacts_user['id']).data
 new_project = api.project.create_project(random_word, random_word, contacts_user['id'], random_word(3), random_bool).data
+address_info = api.crm.add_address_info(first_contact['id'], street: random_word).data
 
 describe '[CRM]' do
   let(:teamlab_module) { :crm }
@@ -254,7 +255,7 @@ describe '[CRM]' do
   describe '#get_contact_info' do
     it_behaves_like 'an api request' do
       let(:command) { :get_contact_info }
-      let(:args) { [second_contact['id'], CONTACT_INFO_TYPES.sample] }
+      let(:args) { [second_contact['id'], contact_info['id']] }
     end
   end
 
@@ -269,6 +270,13 @@ describe '[CRM]' do
     it_behaves_like 'an api request' do
       let(:command) { :get_company_linked_persons_list }
       let(:args) { [new_company['id']] }
+    end
+  end
+
+  describe '#get_contact_information' do
+    it_behaves_like 'an api request' do
+      let(:command) { :get_contact_information }
+      let(:args) { [second_contact['id']] }
     end
   end
 
@@ -335,6 +343,13 @@ describe '[CRM]' do
     end
   end
 
+  describe '#get_contact_access_rights' do
+    it_behaves_like 'an api request' do
+      let(:command) { :get_contact_access_rights }
+      let(:args) { [first_contact['id']] }
+    end
+  end
+
   describe '#update_contact_info' do
     it_behaves_like 'an api request' do
       let(:command) { :update_contact_info }
@@ -395,6 +410,36 @@ describe '[CRM]' do
     it_behaves_like 'an api request' do
       let(:command) { :delete_contact }
       let(:args) { [second_contact['id']] }
+    end
+  end
+
+  describe '#add_address_info' do
+    it_behaves_like 'an api request' do
+      let(:command) { :add_address_info }
+      let(:args) do
+        [second_contact['id'],
+         { street: random_word,
+           city: random_word,
+           state: random_word,
+           zip: random_word,
+           country: random_word,
+           isPrimary: true }]
+      end
+    end
+  end
+
+  describe '#update_address_info' do
+    it_behaves_like 'an api request' do
+      let(:command) { :update_address_info }
+      let(:args) do
+        [first_contact['id'],
+         address_info['id'],
+         { street: random_word,
+           city: random_word,
+           state: random_word,
+           zip: random_word,
+           country: random_word }]
+      end
     end
   end
 end
