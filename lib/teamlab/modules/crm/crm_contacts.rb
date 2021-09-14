@@ -140,7 +140,7 @@ module Teamlab
     end
 
     # Returns the detailed information about the contacts Email, Phone, Web Site/Social Networks and Address information with the ID
-    # @param contactid [String] Contact ID
+    # @param contact_id [String] Contact ID
     # @return [Hash] Contact information
     def get_contact_information(contact_id)
       @request.get(['contact', contact_id.to_s, 'data'])
@@ -200,7 +200,7 @@ module Teamlab
     end
 
     # Returns access rights to the contact with the ID specified in the request
-    # @param contactid [String] Contact ID
+    # @param contact_id [String] Contact ID
     # @return [Array] List of contacts
     def get_contact_access_rights(contact_id)
       @request.get(['contact', contact_id.to_s, 'access'])
@@ -255,7 +255,7 @@ module Teamlab
     end
 
     # Adds the address information to the contact with the selected ID
-    # @param contactid [String] Contact ID
+    # @param contact_id [String] Contact ID
     # @param address [Hash] Contact address parameters: street, city, state, zip, country, isPrimary
     # @return [Hash] Contact information
     def add_address_info(contact_id, address = {})
@@ -263,7 +263,7 @@ module Teamlab
     end
 
     # Updates the address information with the parameters specified in the request for the contact with the selected ID
-    # @param contactid [String] Contact ID
+    # @param contact_id [String] Contact ID
     # @param info_id [String] Contact information record ID
     # @param address [Hash] Contact address parameters: street, city, state, zip, country, isPrimary
     # @return [Hash] Contact information
