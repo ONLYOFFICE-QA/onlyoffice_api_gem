@@ -364,6 +364,36 @@ describe '[CRM]' do
     end
   end
 
+  describe '#add_address_info' do
+    it_behaves_like 'an api request' do
+      let(:command) { :add_address_info }
+      let(:args) do
+        [second_contact['id'],
+         { street: random_word,
+           city: random_word,
+           state: random_word,
+           zip: random_word,
+           country: random_word,
+           isPrimary: true }]
+      end
+    end
+  end
+
+  describe '#update_address_info' do
+    it_behaves_like 'an api request' do
+      let(:command) { :update_address_info }
+      let(:args) do
+        [first_contact['id'],
+         address_info['id'],
+         { street: random_word,
+           city: random_word,
+           state: random_word,
+           zip: random_word,
+           country: random_word }]
+      end
+    end
+  end
+
   describe '#remove_contact_from_project' do
     it_behaves_like 'an api request' do
       let(:command) { :remove_contact_from_project }
@@ -410,36 +440,6 @@ describe '[CRM]' do
     it_behaves_like 'an api request' do
       let(:command) { :delete_contact }
       let(:args) { [second_contact['id']] }
-    end
-  end
-
-  describe '#add_address_info' do
-    it_behaves_like 'an api request' do
-      let(:command) { :add_address_info }
-      let(:args) do
-        [second_contact['id'],
-         { street: random_word,
-           city: random_word,
-           state: random_word,
-           zip: random_word,
-           country: random_word,
-           isPrimary: true }]
-      end
-    end
-  end
-
-  describe '#update_address_info' do
-    it_behaves_like 'an api request' do
-      let(:command) { :update_address_info }
-      let(:args) do
-        [first_contact['id'],
-         address_info['id'],
-         { street: random_word,
-           city: random_word,
-           state: random_word,
-           zip: random_word,
-           country: random_word }]
-      end
     end
   end
 end
