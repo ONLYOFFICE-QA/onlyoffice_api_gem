@@ -16,7 +16,7 @@ new_company = api.crm.create_company(random_word, [contacts_user['id']], personL
 opportunity_stage = api.crm.create_opportunity_stage(random_word.capitalize, COLORS_NAMES.sample).data
 new_opportunity = api.crm.create_opportunity(opportunity_stage['id'], random_word, contacts_user['id']).data
 new_project = api.project.create_project(random_word, random_word, contacts_user['id'], random_word(3), random_bool).data
-address_info = api.crm.add_address_info(first_contact['id'], street: random_word).data
+address_info = api.crm.add_address_info(first_contact['id'], street: random_word, city: random_word, state: random_word, zip: random_word, country: random_word).data
 
 describe '[CRM]' do
   let(:teamlab_module) { :crm }
