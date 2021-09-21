@@ -117,5 +117,19 @@ module Teamlab
     def get_invoice_item_by_id(invoice_item_id)
       @request.get(['invoiceitem', invoice_item_id])
     end
+
+    # Returns the existence of an invoice with the number specified in the request
+    # @param number [String] Invoice number
+    # @return [Boolean] Invoice existence
+    def check_invoice_existence_by_number(number)
+      @request.get(%w[invoice bynumber exist], number: number)
+    end
+
+    # Returns the detailed information about an invoice with the number specified in the request
+    # @param number [String] Invoice number
+    # @return [Hash] Invoice data
+    def get_invoice_by_number(number)
+      @request.get(%w[invoice bynumber], number: number)
+    end
   end
 end
