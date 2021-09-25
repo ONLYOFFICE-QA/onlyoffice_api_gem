@@ -23,6 +23,13 @@ module Teamlab
       @request.get(['opportunity', opportunity_id.to_s, 'contact'])
     end
 
+    # Returns a list of all the opportunities for the contact with the ID specified in the request
+    # @param contact_id [String] Contact ID
+    # @return [Array] List of opportunities
+    def get_contact_opportunities(contact_id)
+      @request.get(['opportunity', 'bycontact', contact_id.to_s])
+    end
+
     def create_opportunity(stage_id, title, responsible_id, options = {})
       options[:bidCurrencyAbbr] ||= 'USD'
       @request.post(%w[opportunity], { stageId: stage_id, title: title, responsibleid: responsible_id }.merge(options))

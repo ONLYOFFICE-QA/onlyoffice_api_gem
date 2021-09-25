@@ -12,6 +12,7 @@
 * Add `CRM#update_address_info` method
 * Add `CRM#check_invoice_existence_by_number` method
 * Add `CRM#get_invoice_by_number` method
+* Add `CRM#get_contact_opportunities` method
 * Add `People#get_user_by_email` method
 * Add `People#get_user_photoes` method
 * Add `People#send_delete_instruction` method
