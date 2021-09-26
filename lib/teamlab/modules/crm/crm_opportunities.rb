@@ -24,7 +24,7 @@ module Teamlab
     end
 
     # Returns a list of all the opportunities for the contact with the ID specified in the request
-    # @param contact_id [String] Contact ID
+    # @param contact_id [String, Integer] Contact ID
     # @return [Array] List of opportunities
     def get_contact_opportunities(contact_id)
       @request.get(['opportunity', 'bycontact', contact_id.to_s])
