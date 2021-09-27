@@ -50,5 +50,14 @@ module Teamlab
     def add_contact_tag_to_group(entity_type, entity_id, tag)
       @request.post([entity_type.to_s, entity_id.to_s, 'tag', 'group'], tagName: tag)
     end
+
+    # Deletes the selected tag from the entity (company or person) specified in the request and from all the related contacts
+    # @param entity_type [String, Integer] Entity type
+    # @param entity_id [String, Integer] Entity ID
+    # @param tag [String] Tag name
+    # @return [String] Tag name
+    def delete_contact_tag_to_group(entity_type, entity_id, tag)
+      @request.delete([entity_type.to_s, entity_id.to_s, 'tag', 'group'], tagName: tag)
+    end
   end
 end
