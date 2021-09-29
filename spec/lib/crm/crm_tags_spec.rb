@@ -9,7 +9,7 @@ tag_company = api.crm.create_company(random_word, [tag_user['id']], personList: 
 tag_first = api.crm.create_tag(entry_type, random_word(4)).data
 tag_second = api.crm.create_tag(entry_type, random_word(4)).data
 tag_third = api.crm.create_tag(entry_type, random_word(4)).data
-unused_tag = api.crm.create_tag(entry_type, random_word(4)).data
+api.crm.create_tag(entry_type, random_word(4)).data # do not use this tag, it was created to check delete_unused_tags method
 
 describe '[CRM]' do
   let(:teamlab_module) { :crm }
