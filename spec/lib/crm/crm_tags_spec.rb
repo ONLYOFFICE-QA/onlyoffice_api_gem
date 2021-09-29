@@ -84,9 +84,9 @@ describe '[CRM]' do
     end
   end
 
-  describe '#delete_contact_tag_to_group' do
+  describe '#delete_contact_tag_of_group' do
     it_behaves_like 'an api request' do
-      let(:command) { :delete_contact_tag_to_group }
+      let(:command) { :delete_contact_tag_of_group }
       let(:args) { [:company, tag_company['id'], tag_third] }
     end
   end
