@@ -42,7 +42,7 @@ module Teamlab
     # Returns a list of all the subscribers of the discussion with the selected message
     # @param message_id [Integer, String] Message ID
     # @return [Array] List of subscibers
-    def get_discussion_subscribers(message_id)
+    def discussion_subscribers(message_id)
       @request.get(['message', message_id.to_s, 'subscribes'])
     end
 

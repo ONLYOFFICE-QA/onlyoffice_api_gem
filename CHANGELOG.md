@@ -23,7 +23,7 @@
 * Add `People#terminate_remove` method
 * Add `Projects#get_a_comment_preview` method
 * Add `Projects#add_project_comment` method
-* Add `Projects#get_discussion_subscribers` method
+* Add `Projects#discussion_subscribers` method
 * Add `Projects#preview_of_discussion_message` method
 
 ### Refactor

@@ -72,9 +72,9 @@ describe '[Project] Discussions' do
     end
   end
 
-  describe '#get_discussion_subscribers' do
+  describe '#discussion_subscribers' do
     it_behaves_like 'an api request' do
-      let(:command) { :get_discussion_subscribers }
+      let(:command) { :discussion_subscribers }
       let(:args) { [discussion['id']] }
     end
   end
