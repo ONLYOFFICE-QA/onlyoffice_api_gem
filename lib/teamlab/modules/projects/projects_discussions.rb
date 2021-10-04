@@ -39,8 +39,22 @@ module Teamlab
       @request.put(['message', message_id.to_s, 'subscribe'])
     end
 
+    # Returns a list of all the subscribers of the discussion with the selected message
+    # @param message_id [Integer, String] Message ID
+    # @return [Array] List of subscibers
+    def discussion_subscribers(message_id)
+      @request.get(['message', message_id.to_s, 'subscribes'])
+    end
+
     def delete_message(message_id)
       @request.delete(['message', message_id.to_s])
+    end
+
+    # Returns a preview of the discussion message
+    # @param [String] Message text in the HTML format
+    # @return [Hash] Message preview
+    def preview_of_discussion_message(htmltext)
+      @request.post(%w[message discussion preview], htmltext: htmltext)
     end
   end
 end
