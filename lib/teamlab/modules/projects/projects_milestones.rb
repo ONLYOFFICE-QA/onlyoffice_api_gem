@@ -34,7 +34,7 @@ module Teamlab
     # Returns a list of all the milestones within a project with the ID specified in the request
     # @param project_id [Symbol, String] Project ID
     # @return [Array] List of milestones
-    def get_milestones_by_project_id(project_id)
+    def milestones_by_project_id(project_id)
       @request.get([project_id.to_s, 'milestone'])
     end
 
@@ -42,7 +42,7 @@ module Teamlab
     # @param project_id [Symbol, String] Project ID
     # @param status [Symbol, String] Milestone status
     # @return [Array] List of milestones
-    def get_milestones_by_project_id_and_status(project_id, status)
+    def milestones_by_project_id_and_status(project_id, status)
       @request.get([project_id.to_s, 'milestone', status.to_s])
     end
 

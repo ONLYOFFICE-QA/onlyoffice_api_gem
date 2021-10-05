@@ -65,16 +65,16 @@ describe '[Project] Milestones' do
     end
   end
 
-  describe '#get_milestones_by_project_id' do
+  describe '#milestones_by_project_id' do
     it_behaves_like 'an api request' do
-      let(:command) { :get_milestones_by_project_id }
+      let(:command) { :milestones_by_project_id }
       let(:args) { [milestones_project['id']] }
     end
   end
 
-  describe '#get_milestones_by_project_id_and_status' do
+  describe '#milestones_by_project_id_and_status' do
     it_behaves_like 'an api request' do
-      let(:command) { :get_milestones_by_project_id_and_status }
+      let(:command) { :milestones_by_project_id_and_status }
       let(:args) { [milestones_project['id'], milestone_status] }
     end
   end

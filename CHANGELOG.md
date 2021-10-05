@@ -26,8 +26,8 @@
 * Add `Projects#discussion_subscribers` method
 * Add `Projects#preview_of_discussion_message` method
 * Add `Projects#delete_milestones` method
-* Add `Projects#get_milestones_by_project_id_and_status` method
-* Add `Projects#get_milestones_by_project_id` method
+* Add `Projects#milestones_by_project_id_and_status` method
+* Add `Projects#milestones_by_project_id` method
 
 ### Refactor
 
