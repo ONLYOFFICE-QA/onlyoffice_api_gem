@@ -31,6 +31,21 @@ module Teamlab
       @request.get(['milestone', year.to_s, month.to_s, day.to_s])
     end
 
+    # Returns a list of all the milestones within a project with the ID specified in the request
+    # @param project_id [Symbol, String] Project ID
+    # @return [Array] List of milestones
+    def get_milestones_by_project_id(project_id)
+      @request.get([project_id.to_s, 'milestone'])
+    end
+
+    # Returns a list of all the milestones within a project with the ID and status specified in the request
+    # @param project_id [Symbol, String] Project ID
+    # @param status [Symbol, String] Milestone status
+    # @return [Array] List of milestones
+    def get_milestones_by_project_id_and_status(project_id, status)
+      @request.get([project_id.to_s, 'milestone', status.to_s])
+    end
+
     def update_milestone(id, title, deadline, options = {})
       @request.put(['milestone', id.to_s], { title: title, deadline: deadline }.merge(options))
     end
@@ -41,6 +56,13 @@ module Teamlab
 
     def delete_milestone(id)
       @request.delete(['milestone', id.to_s])
+    end
+
+    # Deletes the milestones with the IDs specified in the request
+    # @param ids [Array] Milestone IDs
+    # @return [Array] Deleted milestones
+    def delete_milestones(ids)
+      @request.delete(['milestone'], { ids: ids })
     end
   end
 end
