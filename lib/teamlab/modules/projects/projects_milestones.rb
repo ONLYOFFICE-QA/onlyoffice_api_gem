@@ -46,6 +46,10 @@ module Teamlab
       @request.get([project_id.to_s, 'milestone', status.to_s])
     end
 
+    def add_milestone(project_id, title, deadline, responsible_id, options = {})
+      @request.post([project_id.to_s, 'milestone'], { title: title, deadline: deadline, responsible: responsible_id }.merge(options))
+    end
+
     def update_milestone(id, title, deadline, options = {})
       @request.put(['milestone', id.to_s], { title: title, deadline: deadline }.merge(options))
     end
