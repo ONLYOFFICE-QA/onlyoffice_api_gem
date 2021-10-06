@@ -56,7 +56,7 @@ module Teamlab
     # @option isNotify [Boolean] Reminds me 48 hours before the milestone due date
     # @option description [String] Milestone description
     # @option notifyResponsible [Boolean] Notifies the responsible about the milestone actions or not
-    # @ return [Hash] Added milestone
+    # @return [Hash] Added milestone
     def add_milestone(project_id, title, deadline, responsible_id, options = {})
       @request.post([project_id.to_s, 'milestone'], { title: title, deadline: deadline, responsible: responsible_id }.merge(options))
     end
