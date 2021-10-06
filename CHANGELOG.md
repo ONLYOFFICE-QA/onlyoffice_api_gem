@@ -28,6 +28,7 @@
 * Add `Projects#delete_milestones` method
 * Add `Projects#milestones_by_project_id_and_status` method
 * Add `Projects#milestones_by_project_id` method
+* Add `Projects#delete_projects` method
 
 ### Refactor
 

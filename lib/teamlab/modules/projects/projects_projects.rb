@@ -35,10 +35,6 @@ module Teamlab
       @request.get([project_id.to_s, 'files'])
     end
 
-    def get_milestones(project_id)
-      @request.get([project_id.to_s, 'milestone'])
-    end
-
     def search_all_projects(query)
       @request.get(['@search', query.to_s])
     end
@@ -47,16 +43,8 @@ module Teamlab
       @request.get([project_id.to_s, '@search', query.to_s])
     end
 
-    def get_milestones_with_status(project_id, status)
-      @request.get([project_id.to_s, 'milestone', status.to_s])
-    end
-
     def create_project(title, description, responsible_id, tags, private, options = {})
       @request.post('', { title: title, description: description, responsibleid: responsible_id, tags: tags, private: private }.merge(options))
-    end
-
-    def add_milestone(project_id, title, deadline, responsible_id, options = {})
-      @request.post([project_id.to_s, 'milestone'], { title: title, deadline: deadline, responsible: responsible_id }.merge(options))
     end
 
     def update_project(id, title, responsible_id, options = {})
@@ -77,6 +65,13 @@ module Teamlab
 
     def delete_project(id)
       @request.delete([id.to_s])
+    end
+
+    # Deletes the projects with the IDs specified in the request from the portal
+    # @param ids [Array] List of project IDs
+    # @return [Array] Deleted projects
+    def delete_projects(ids)
+      @request.delete('', { projectids: ids })
     end
   end
 end
