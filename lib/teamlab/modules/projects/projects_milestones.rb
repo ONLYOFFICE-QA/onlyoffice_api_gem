@@ -46,6 +46,17 @@ module Teamlab
       @request.get([project_id.to_s, 'milestone', status.to_s])
     end
 
+    # Adds a new milestone using the parameters (project ID, milestone title, deadline, etc) specified in the request
+    # @param project_id [Symbol, String] Project ID
+    # @param title [String] Milestone title
+    # @param deadline [String] Milestone deadline
+    # @param responsible_id [String] Milestone responsible
+    # @param options [Hash] options to create a Milestone with
+    # @option isKey [Boolean] Specifies if this is a key milestone or not
+    # @option isNotify [Boolean] Reminds me 48 hours before the milestone due date
+    # @option description [String] Milestone description
+    # @option notifyResponsible [Boolean] Notifies the responsible about the milestone actions or not
+    # @ return [Hash] Added milestone
     def add_milestone(project_id, title, deadline, responsible_id, options = {})
       @request.post([project_id.to_s, 'milestone'], { title: title, deadline: deadline, responsible: responsible_id }.merge(options))
     end
