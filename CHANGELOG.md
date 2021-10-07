@@ -30,6 +30,7 @@
 * Add `Projects#milestones_by_project_id` method
 * Add `Projects#delete_projects` method
 * Add `Projects#report_template` method
+* Add `Projects#update_projects_settings` method
 
 ### Refactor
 
