@@ -14,9 +14,9 @@ describe '[Project] Projects' do
     end
   end
 
-  describe '#get_report_template' do
+  describe '#report_template' do
     it_behaves_like 'an api request' do
-      let(:command) { :get_report_template }
+      let(:command) { :report_template }
       let(:args) { [report_template['id']] }
     end
   end
