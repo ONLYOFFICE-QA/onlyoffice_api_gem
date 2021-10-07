@@ -2,6 +2,8 @@
 
 require 'spec_helper'
 
+report_template = api.project.create_report_template(random_word).data
+
 describe '[Project] Projects' do
   let(:teamlab_module) { :project }
 
@@ -9,23 +11,27 @@ describe '[Project] Projects' do
     it_behaves_like 'an api request' do
       let(:command) { :create_report_template }
       let(:args) { [random_word] }
-      let(:add_data_to_collector) { true }
-      let(:data_param) { :report_template_ids }
-      let(:param_names) { %w[id] }
+    end
+  end
+
+  describe '#get_report_template' do
+    it_behaves_like 'an api request' do
+      let(:command) { :get_report_template }
+      let(:args) { [report_template['id']] }
     end
   end
 
   describe '#update_report_template' do
     it_behaves_like 'an api request' do
       let(:command) { :update_report_template }
-      let(:args) { [random_id(:report_template), random_word] }
+      let(:args) { [report_template['id'], random_word] }
     end
   end
 
   describe '#delete_report_template' do
     it_behaves_like 'an api request' do
       let(:command) { :delete_report_template }
-      let(:args) { [@data_collector[:report_template_ids].pop] }
+      let(:args) { [report_template['id']] }
     end
   end
 end
