@@ -37,6 +37,10 @@
 * Rename `set_currency_rate` to `create_currency_rate` according to documentation
 * Rename `get_reassign_progress` to `reassign_progress`
 
+### Changes
+
+* Use new uploader for `codecov` instead of deprecated one
+
 ## 0.12.0 (2021-07-12)
 
 ### New Features
