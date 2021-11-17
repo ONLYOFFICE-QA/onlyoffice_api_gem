@@ -40,6 +40,7 @@
 ### Changes
 
 * Use new uploader for `codecov` instead of deprecated one
+* Require `mfa` for releasing gem
 
 ## 0.12.0 (2021-07-12)
 

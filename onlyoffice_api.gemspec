@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
     'changelog_uri' => "#{s.homepage}/blob/master/CHANGELOG.md",
     'documentation_uri' => "https://www.rubydoc.info/gems/#{s.name}",
     'homepage_uri' => s.homepage,
-    'source_code_uri' => s.homepage
+    'source_code_uri' => s.homepage,
+    'rubygems_mfa_required' => 'true'
   }
   s.email = %w[rzagudaev@gmail.com shockwavenn@gmail.com nazarov90@gmail.com]
   s.files = Dir['lib/**/*']
