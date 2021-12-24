@@ -51,7 +51,7 @@ describe '[Calendar]' do
     it_behaves_like 'an api request' do
       let(:command) { :add_icsevent }
       i = -1
-      let(:args) { [@data_collector[:calendar_ids][i += 1], File.open(EVENT_ICS).read, { repeatType: '', alertType: '-1' }] }
+      let(:args) { [@data_collector[:calendar_ids][i += 1], File.read(EVENT_ICS), { repeatType: '', alertType: '-1' }] }
       let(:add_data_to_collector) { true }
       let(:data_param) { :calendar_event_uids }
       let(:param_names) { %w[uniqueId] }
@@ -169,7 +169,7 @@ describe '[Calendar]' do
     it_behaves_like 'an api request' do
       let(:command) { :update_icsevent }
       i = -1
-      let(:args) { [@data_collector[:calendar_ids][i += 1], @data_collector[:calendar_event_ids][i], File.open(EVENT_ICS).read] }
+      let(:args) { [@data_collector[:calendar_ids][i += 1], @data_collector[:calendar_event_ids][i], File.read(EVENT_ICS)] }
     end
   end
 
