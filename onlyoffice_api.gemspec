@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('overcommit', '~> 0')
   s.add_development_dependency('rake', '~> 13')
   s.add_development_dependency('rspec', '~> 3')
+  s.add_development_dependency('rspec-retry', '~> 0')
   s.add_development_dependency('rubocop', '>= 0.49.0')
   s.add_development_dependency('rubocop-performance', '~> 1')
   s.add_development_dependency('rubocop-rake', '~> 0')

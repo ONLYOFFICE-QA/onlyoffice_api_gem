@@ -28,10 +28,13 @@ end
 
 configure_test_portal
 
-RSpec.configure do |c|
-  c.before(:all) do
+RSpec.configure do |config|
+  config.before(:all) do
     @data_collector = {}
   end
+
+  config.default_retry_count = 3
+  config.verbose_retry = true
 end
 
 shared_examples_for 'an api request' do |*flags|
