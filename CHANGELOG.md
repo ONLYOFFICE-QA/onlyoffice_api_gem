@@ -31,6 +31,7 @@
 * Add `Projects#delete_projects` method
 * Add `Projects#report_template` method
 * Add `Projects#update_projects_settings` method
+* Add `rspec-retry` support
 
 ### Refactor
 
