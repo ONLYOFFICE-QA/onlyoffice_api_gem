@@ -9,6 +9,7 @@ end
 
 require 'faker'
 require 'rspec'
+require 'rspec/retry'
 require 'onlyoffice_api'
 require_relative 'spec_helper/portal_cleanup'
 require_relative 'spec_helper/request_helper'
