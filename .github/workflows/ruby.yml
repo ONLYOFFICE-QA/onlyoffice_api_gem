@@ -29,7 +29,7 @@ jobs:
         bundle install --jobs 4 --retry 3
     - name: Check source files using `rubocop`
       run: rubocop
-    - name: Build and test with Rake
+    - name: Run tests
       env:
         ONLYOFFICE_API_GEM_TEST_PORTAL: ${{ secrets.ONLYOFFICE_API_GEM_TEST_PORTAL }}
         ONLYOFFICE_API_GEM_TEST_USER: ${{ secrets.ONLYOFFICE_API_GEM_TEST_USER }}
