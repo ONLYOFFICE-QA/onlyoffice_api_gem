@@ -14,10 +14,21 @@ jobs:
       max-parallel: 1
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+    - name: Check markdown files using `markdownlint`
+      run: |
+        npm install -g markdownlint-cli
+        markdownlint *.md
     - name: Set up Ruby ${{ matrix.ruby }}
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
+    - name: Install dependencies
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+    - name: Check source files using `rubocop`
+      run: rubocop
     - name: Build and test with Rake
       env:
         ONLYOFFICE_API_GEM_TEST_PORTAL: ${{ secrets.ONLYOFFICE_API_GEM_TEST_PORTAL }}
@@ -26,16 +37,7 @@ jobs:
         ONLYOFFICE_API_GEM_MAIL_NAME: ${{ secrets.ONLYOFFICE_API_GEM_MAIL_NAME }}
         ONLYOFFICE_API_GEM_MAIL_PASS: ${{ secrets.ONLYOFFICE_API_GEM_MAIL_PASS }}
       run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
         bundle exec rake
-    - uses: actions/setup-node@v1
-    - name: Check markdown files using `markdownlint`
-      run: |
-        npm install -g markdownlint-cli
-        markdownlint *.md
-    - name: Check source files using `rubocop`
-      run: rubocop
     - uses: codecov/codecov-action@v2
       with:
         fail_ci_if_error: true
