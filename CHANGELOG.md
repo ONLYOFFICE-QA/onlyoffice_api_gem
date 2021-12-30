@@ -32,6 +32,7 @@
 * Add `Projects#report_template` method
 * Add `Projects#update_projects_settings` method
 * Add `rspec-retry` support
+* Add `ruby-3.1` to CI
 
 ### Refactor
 
