@@ -45,6 +45,7 @@
 * Use new uploader for `codecov` instead of deprecated one
 * Require `mfa` for releasing gem
 * Fix issues from new rubocop version `v1.24.0`
+* Remove `teamlab_spec` since it was used for non-actual preparations
 
 ## 0.12.0 (2021-07-12)
 
