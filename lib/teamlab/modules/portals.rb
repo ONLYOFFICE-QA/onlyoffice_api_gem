@@ -13,5 +13,11 @@ module Teamlab
     def invite_visitor_url
       @request.get(%w[users invite visitor])
     end
+
+    # Deletes the current portal immediately
+    # WARNING: Do not test this method in specs in this project
+    def delete_portal
+      @request.delete(%w[deleteportalimmediately])
+    end
   end
 end
