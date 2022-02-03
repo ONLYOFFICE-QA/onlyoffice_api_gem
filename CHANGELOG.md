@@ -34,6 +34,7 @@
 * Add `Portal#delete_portal` method
 * Add `rspec-retry` support
 * Add `ruby-3.1` to CI
+* Add `yamllint` to CI
 * Run linters in CI before actual tests
 
 ### Refactor
