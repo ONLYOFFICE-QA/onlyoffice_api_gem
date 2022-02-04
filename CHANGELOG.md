@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 1.0.0 (2022-02-03)
+
 ### New Features
 
 * Add `CRM#get_currency_rate_by_currency` method
