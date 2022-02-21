@@ -5,6 +5,7 @@
 ### Fixes
 
 * Fix `markdownlint` failure because of old `nodejs` in CI
+* Fix api request for non-escaped urls
 
 ## 1.0.0 (2022-02-03)
 

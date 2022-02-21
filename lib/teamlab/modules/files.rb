@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'cgi'
+
 module Teamlab
   class Files
     def initialize(config = nil)
@@ -25,15 +27,15 @@ module Teamlab
     end
 
     def create_txt(folder_id, title, content)
-      @request.post([folder_id.to_s, 'text'], title: title.to_s, content: content.to_s)
+      @request.post([escape_folder_id(folder_id), 'text'], title: title.to_s, content: content.to_s)
     end
 
     def create_html(folder_id, title, content)
-      @request.post([folder_id.to_s, 'html'], title: title.to_s, content: content.to_s)
+      @request.post([escape_folder_id(folder_id), 'html'], title: title.to_s, content: content.to_s)
     end
 
     def create_file(folder_id, title)
-      @request.post([folder_id.to_s, 'file'], title: title.to_s)
+      @request.post([escape_folder_id(folder_id), 'file'], title: title.to_s)
     end
 
     # endregion
@@ -52,13 +54,13 @@ module Teamlab
       @request.get(['file', fileid.to_s, 'checkconversion'])
     end
 
-    def move_to_folder(dest_folder_id, options = {})
-      @request.put(%w[fileops move], { destFolderId: dest_folder_id }.merge(options))
+    def move_to_folder(folder_id, options = {})
+      @request.put(%w[fileops move], { destFolderId: escape_folder_id(folder_id) }.merge(options))
     end
     alias move_files move_to_folder
 
-    def copy_to_folder(dest_folder_id, options = {})
-      @request.put(%w[fileops copy], { destFolderId: dest_folder_id }.merge(options))
+    def copy_to_folder(folder_id, options = {})
+      @request.put(%w[fileops copy], { destFolderId: escape_folder_id(folder_id) }.merge(options))
     end
 
     def delete(options = {})
@@ -135,27 +137,27 @@ module Teamlab
     end
 
     def get_folder(folder_id, options = {})
-      @request.get([folder_id.to_s], options)
+      @request.get([escape_folder_id(folder_id)], options)
     end
 
     def get_folder_info(folder_id)
-      @request.get(['folder', folder_id.to_s])
+      @request.get(['folder', escape_folder_id(folder_id)])
     end
 
     def get_folder_path(folder_id)
-      @request.get(['folder', folder_id.to_s, 'path'])
+      @request.get(['folder', escape_folder_id(folder_id), 'path'])
     end
 
     def new_folder(folder_id, title)
-      @request.post(['folder', folder_id.to_s], title: title)
+      @request.post(['folder', escape_folder_id(folder_id)], title: title)
     end
 
     def rename_folder(folder_id, title)
-      @request.put(['folder', folder_id.to_s], title: title)
+      @request.put(['folder', escape_folder_id(folder_id)], title: title)
     end
 
     def delete_folder(folder_id)
-      @request.delete(['folder', folder_id.to_s])
+      @request.delete(['folder', escape_folder_id(folder_id)])
     end
 
     # endregion
@@ -167,7 +169,7 @@ module Teamlab
     end
 
     def get_folder_sharing(folder_id)
-      @request.get(['folder', folder_id.to_s, 'share'])
+      @request.get(['folder', escape_folder_id(folder_id), 'share'])
     end
 
     def share_file(file_id, user_id, access_type, options = {})
@@ -175,7 +177,7 @@ module Teamlab
     end
 
     def share_folder(folder_id, user_id, access_type, options = {})
-      @request.put(['folder', folder_id.to_s, 'share'], { share: { shareTo: user_id, Access: access_type } }.merge(options))
+      @request.put(['folder', escape_folder_id(folder_id), 'share'], { share: { shareTo: user_id, Access: access_type } }.merge(options))
     end
 
     def removes_sharing_rights(options = {})
@@ -224,15 +226,15 @@ module Teamlab
     end
 
     def upload_to_folder(folder_id, file)
-      @request.post([folder_id.to_s, 'upload'], somefile: File.new(file))
+      @request.post([escape_folder_id(folder_id), 'upload'], somefile: File.new(file))
     end
 
     def insert_file(folder_id, file, title: File.basename(file), keep_convert_status: false)
-      @request.post([folder_id.to_s, 'insert'], file: File.new(file), title: title, keepConvertStatus: keep_convert_status)
+      @request.post([escape_folder_id(folder_id), 'insert'], file: File.new(file), title: title, keepConvertStatus: keep_convert_status)
     end
 
     def chunked_upload(folder_id, filename, file_size)
-      @request.post([folder_id.to_s, 'upload', 'create_session'], fileName: filename, fileSize: file_size)
+      @request.post([escape_folder_id(folder_id), 'upload', 'create_session'], fileName: filename, fileSize: file_size)
     end
 
     # endregion
@@ -251,6 +253,18 @@ module Teamlab
 
     def check_overwrite(set_value = true)
       @request.put(%w[updateifexist], set: set_value)
+    end
+
+    # Sometimes folder id require escaping
+    # Because for example for folders from connected account will have id like this:
+    # ```
+    # sbox-193828-|New_Folder__474b010d-ad5f-49ff-8b3a-5b2583c1fbcc
+    # ```
+    # And this need escaping
+    # @param [Integer, String] id to escape
+    # @return [String] result after escape
+    def escape_folder_id(id)
+      CGI.escape(id.to_s)
     end
   end
 end
