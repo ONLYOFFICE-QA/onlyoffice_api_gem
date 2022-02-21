@@ -67,7 +67,7 @@ module Teamlab
     end
 
     def generate_request_url(command)
-      server + api_path + @api_additive + command
+      server + api_path + @api_additive + CGI.escape(command)
     end
 
     def parse_args(args, type)
