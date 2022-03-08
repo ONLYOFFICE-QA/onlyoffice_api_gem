@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### Fixes
+
+* Fix not available `IMAGE_URL` constant in specs
+
 ## 1.0.1 (2022-02-21)
 
 ### Fixes
