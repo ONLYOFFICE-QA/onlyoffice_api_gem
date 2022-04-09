@@ -6,6 +6,10 @@
 
 * Fix not available `IMAGE_URL` constant in specs
 
+### Changes
+
+* Check `dependabot` at 8AM by Moscow Time
+
 ## 1.0.1 (2022-02-21)
 
 ### Fixes
