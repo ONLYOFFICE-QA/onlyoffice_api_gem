@@ -9,6 +9,7 @@
 ### Changes
 
 * Check `dependabot` at 8AM by Moscow Time
+* Fix `rubocop-1.28.1` code issues
 
 ## 1.0.1 (2022-02-21)
 
