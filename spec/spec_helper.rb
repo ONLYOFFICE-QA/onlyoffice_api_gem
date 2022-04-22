@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-if ENV['CI'] == 'true'
+if ENV['CI']
   require 'simplecov'
   SimpleCov.start
   require 'simplecov-cobertura'
@@ -18,9 +18,9 @@ require_relative 'support/http_data'
 include PortalCleanup
 
 def api
-  @api ||= Teamlab::OnlyofficeApiInstance.new(server: ENV['ONLYOFFICE_API_GEM_TEST_PORTAL'],
-                                              username: ENV['ONLYOFFICE_API_GEM_TEST_USER'],
-                                              password: ENV['ONLYOFFICE_API_GEM_TEST_PASSWORD'])
+  @api ||= Teamlab::OnlyofficeApiInstance.new(server: ENV.fetch('ONLYOFFICE_API_GEM_TEST_PORTAL', 'unknown_server'),
+                                              username: ENV.fetch('ONLYOFFICE_API_GEM_TEST_USER', 'unknown_user'),
+                                              password: ENV.fetch('ONLYOFFICE_API_GEM_TEST_PASSWORD', 'unknown_pass'))
 end
 
 def configure_test_portal

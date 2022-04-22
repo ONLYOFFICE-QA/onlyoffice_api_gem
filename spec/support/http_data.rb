@@ -112,5 +112,5 @@ EVENT_ICS = File.expand_path('../lib/data/event.ics', __dir__)
 CALENDAR_WEB_URL = 'https://raw.githubusercontent.com/ONLYOFFICE/onlyoffice_api_gem/master/spec/lib/data/basic.ics'
 # endregion
 
-EMAIL = ENV['ONLYOFFICE_API_GEM_MAIL_NAME']
-EMAIL_PASS = ENV['ONLYOFFICE_API_GEM_MAIL_PASS']
+EMAIL = ENV.fetch('ONLYOFFICE_API_GEM_MAIL_NAME', 'unknown_mail')
+EMAIL_PASS = ENV.fetch('ONLYOFFICE_API_GEM_MAIL_PASS', 'unknown_mail_pass')
