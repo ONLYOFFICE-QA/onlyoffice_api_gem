@@ -178,10 +178,4 @@ describe '[People]' do
       let(:command) { :send_delete_instruction }
     end
   end
-
-  describe '#join_to_affiliate_programme' do
-    it_behaves_like 'an api request' do
-      let(:command) { :join_to_affiliate_programme }
-    end
-  end
 end
