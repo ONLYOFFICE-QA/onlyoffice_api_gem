@@ -10,6 +10,7 @@
 
 * Check `dependabot` at 8AM by Moscow Time
 * Fix `rubocop-1.28.1` code issues
+* Remove deprecated in v12.0 `People#join_to_affiliate_programme` method
 
 ## 1.0.1 (2022-02-21)
 

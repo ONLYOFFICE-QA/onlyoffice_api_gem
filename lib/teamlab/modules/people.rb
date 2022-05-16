@@ -118,11 +118,5 @@ module Teamlab
     def send_delete_instruction
       @request.put(%w[self delete])
     end
-
-    # Join to affiliate programme
-    # @return [String] link to affiliate programme
-    def join_to_affiliate_programme
-      @request.put(%w[self joinaffiliate])
-    end
   end
 end
