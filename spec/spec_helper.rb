@@ -44,7 +44,7 @@ shared_examples_for 'an api request' do |*flags|
   before do
     if RequestHelper.current_responce.nil?
       @module = api.send(teamlab_module)
-      puts "#{command}(#{args.join(', ')})"
+      logger.info("Send request: `#{command}(#{args.join(', ')})`")
       RequestHelper.current_responce = args.empty? ? @module.send(command) : @module.send(command, *args)
       if add_data_to_collector
         @data_collector[data_param] ||= []
