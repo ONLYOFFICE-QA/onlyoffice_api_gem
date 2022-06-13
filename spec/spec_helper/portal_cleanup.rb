@@ -7,8 +7,14 @@ module PortalCleanup
   include CrmCleanup
   include MailServerCleanup
 
+  # @return [Logger] logger class
+  def logger
+    @logger ||= Logger.new($stdout)
+  end
+
   # @return [Void] reset all portal data
   def reset_portal(api)
+    logger.info('Start process of cleaning up portal')
     reset_modules(api)
     remove_users(api)
     remove_blog_posts(api)
@@ -20,6 +26,7 @@ module PortalCleanup
     crm_cleanup(api)
     remove_projects(api)
     remove_mailserver_mailboxes(api)
+    logger.info('Finished process of cleaning up portal')
   end
 
   # @param [Teamlab::OnlyofficeApiInstance] api to use
