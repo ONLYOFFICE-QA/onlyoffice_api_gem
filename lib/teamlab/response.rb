@@ -22,10 +22,10 @@ module Teamlab
     end
 
     def generate_err_msg(http_response)
-      "API request failed\n\noriginal request:\n"\
-        "#{http_response.request.http_method} #{http_response.request.path}\nbody: "\
-        "#{JSON.pretty_generate(http_response.request.options[:body])}"\
-        "\n\nresponse:\n"\
+      "API request failed\n\noriginal request:\n" \
+        "#{http_response.request.http_method} #{http_response.request.path}\nbody: " \
+        "#{JSON.pretty_generate(http_response.request.options[:body])}" \
+        "\n\nresponse:\n" \
         "#{prettify_response(http_response.parsed_response)}"
     end
 
@@ -64,7 +64,7 @@ module Teamlab
       JSON.parse(responce.body)
     rescue JSON::ParserError => e
       request_info = "#{responce.request.http_method} #{responce.request.uri}"
-      raise NoJsonInResponce, "Request `#{request_info}` responce body is not a json\n "\
+      raise NoJsonInResponce, "Request `#{request_info}` responce body is not a json\n " \
                               "Parsing error: \n#{e}\n"
     end
 
