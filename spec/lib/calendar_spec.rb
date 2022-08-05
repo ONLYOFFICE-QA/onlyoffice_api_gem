@@ -174,8 +174,7 @@ describe '[Calendar]' do
   end
 
   describe '#unsubscribe_from_event' do
-    it_behaves_like 'an api request', :pending do
-      pending('Probably https://bugzilla.onlyoffice.com/show_bug.cgi?id=57087')
+    it_behaves_like 'an api request' do
       let(:command) { :unsubscribe_from_event }
       let(:args) { [@data_collector[:calendar_event_ids][-1]] }
     end
