@@ -12,7 +12,7 @@ GEM
     concurrent-ruby (1.1.10)
     diff-lcs (1.5.0)
     docile (1.4.0)
-    faker (2.23.0)
+    faker (3.0.0)
       i18n (>= 1.8.11, < 2)
     httparty (0.20.0)
       mime-types (~> 3.0)
@@ -89,7 +89,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  faker (~> 2)
+  faker (~> 3)
   onlyoffice_api!
   overcommit (~> 0)
   rake (~> 13)
