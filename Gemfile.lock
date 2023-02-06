@@ -9,10 +9,10 @@ GEM
   specs:
     ast (2.4.2)
     childprocess (4.1.0)
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.0)
     diff-lcs (1.5.0)
     docile (1.4.0)
-    faker (3.0.0)
+    faker (3.1.1)
       i18n (>= 1.8.11, < 2)
     httparty (0.20.0)
       mime-types (~> 3.0)
