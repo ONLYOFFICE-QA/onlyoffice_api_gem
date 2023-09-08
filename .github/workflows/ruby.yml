@@ -35,6 +35,6 @@ jobs:
           bundle exec rake
       - name: Run codecov on latest ruby
         if: matrix.ruby == '3.1'
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v2
         with:
           fail_ci_if_error: true
