@@ -13,6 +13,7 @@
 * Remove deprecated in v12.0 `People#join_to_affiliate_programme` method
 * Add `Logger` support in rspec test results
 * Drop `ruby-2.5`, `ruby-2.6` support, since it's EOL'ed
+* Run `codecov` in CI only on latest ruby
 
 ## 1.0.1 (2022-02-21)
 
