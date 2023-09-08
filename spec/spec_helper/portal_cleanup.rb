@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'logger'
 require_relative 'portal_cleanup/crm_cleanup'
 require_relative 'portal_cleanup/mailserver_cleanup'
 
