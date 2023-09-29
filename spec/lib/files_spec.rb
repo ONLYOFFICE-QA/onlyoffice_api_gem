@@ -295,7 +295,7 @@ describe '[Files]' do
     end
   end
 
-  describe '#remove_third_party_account', :skip do
+  describe '#remove_third_party_account', skip: 'Not implemented for tests' do
     skip 'not implemented for tests'
     it_behaves_like 'an api request' do
       let(:command) { :remove_third_party_account }
