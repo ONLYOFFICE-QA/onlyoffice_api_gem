@@ -74,7 +74,7 @@ SETTINGS_PORTAL_DEFAULT_PAGE_MODULE_CHOICE = '00000000-0000-0000-0000-0000000000
 # region Files
 FILE_FOR_OPERATIONS_VERSION = 1
 FILES_SHARE_TYPES = %w[None ReadWrite Read Restrict].freeze
-FILE_FOR_UPLOAD = "#{File.dirname(__FILE__)}/../../spec/lib/data/docx_file.docx"
+FILE_FOR_UPLOAD = "#{File.dirname(__FILE__)}/../../spec/lib/data/docx_file.docx".freeze
 # endregion
 
 # region Projects
