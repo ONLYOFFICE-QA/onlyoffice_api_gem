@@ -42,8 +42,6 @@ module Teamlab
         attempts += 1
         retry if attempts < 3
         raise "Can't #{type} to #{url} because of TimeoutError: #{e}"
-      rescue StandardError => e
-        raise e
       end
       raise("Error #{response.code}: #{response.error}") unless response.success
 
