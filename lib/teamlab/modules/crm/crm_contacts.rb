@@ -211,7 +211,7 @@ module Teamlab
     end
 
     def update_crm_entity_creation_date(entity_name, entity_id, date = '2007-01-01')
-      id_field = "#{entity_name}id".to_sym
+      id_field = :"#{entity_name}id"
       options = {}
       options[id_field] = entity_id.to_s
       options[:creationDate] = date.to_s
@@ -219,7 +219,7 @@ module Teamlab
     end
 
     def update_crm_entity_modification_date(entity_name, entity_id, date = '2007-01-01')
-      id_field = "#{entity_name}id".to_sym
+      id_field = :"#{entity_name}id"
       options = {}
       options[id_field] = entity_id.to_s
       options[:lastModifedDate] = date.to_s
