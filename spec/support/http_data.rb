@@ -21,7 +21,7 @@ def add_data_to_collector
 end
 
 def random_id(param)
-  data_name = "#{param}_ids".to_sym
+  data_name = :"#{param}_ids"
   raise "No data for `#{data_name}` is found in `data_collector`" unless @data_collector.key?(data_name)
   raise "Data `data_collector['#{param}']` is empty!" if @data_collector[data_name].empty?
 
