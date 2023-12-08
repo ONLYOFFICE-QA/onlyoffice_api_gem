@@ -39,4 +39,3 @@ jobs:
           bundle install
       - name: Run Rubocop
         run: rubocop
- 
