@@ -24,7 +24,7 @@ module Teamlab
     end
 
     %w[day week month year].each do |e|
-      define_method("get_top_of_#{e}_bookmarks") { @request.get(['bookmark', 'top', e.to_s]) }
+      define_method(:"get_top_of_#{e}_bookmarks") { @request.get(['bookmark', 'top', e.to_s]) }
     end
 
     def get_bookmarks_by_tag(tag)
