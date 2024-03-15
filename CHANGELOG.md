@@ -5,6 +5,7 @@
 ### New Features
 
 * Add `ruby-3.2` to CI
+* Add `dependabot` check for `GitHub Actions`
 
 ### Fixes
 
