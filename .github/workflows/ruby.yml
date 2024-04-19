@@ -35,4 +35,6 @@ jobs:
         if: matrix.ruby == '3.3'
         uses: codecov/codecov-action@v4
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: ONLYOFFICE-QA/onlyoffice_api_gem
           fail_ci_if_error: true
