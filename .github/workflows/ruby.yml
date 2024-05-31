@@ -3,6 +3,9 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    concurrency:
+      group: rspec_tests
+      cancel-in-progress: false
     continue-on-error: ${{ matrix.allow-failures }}
     strategy:
       matrix:
