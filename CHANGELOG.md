@@ -22,6 +22,7 @@
 * Run `codecov` in CI only on latest ruby
 * Extract `rubocop` CI task to separate job
 * Migrate to `codecov-4` GitHub Action
+* Prohibit parallel run of CI (cause conflicts with multiple PR's)
 
 ## 1.0.1 (2022-02-21)
 
