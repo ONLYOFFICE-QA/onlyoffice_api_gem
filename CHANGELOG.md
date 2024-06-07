@@ -23,6 +23,7 @@
 * Extract `rubocop` CI task to separate job
 * Migrate to `codecov-4` GitHub Action
 * Prohibit parallel run of CI (cause conflicts with multiple PR's)
+* Remove all existing crm tags and cases in specs before running tests
 
 ## 1.0.1 (2022-02-21)
 
