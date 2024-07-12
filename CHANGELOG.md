@@ -24,6 +24,7 @@
 * Migrate to `codecov-4` GitHub Action
 * Prohibit parallel run of CI (cause conflicts with multiple PR's)
 * Remove all existing crm tags and cases in specs before running tests
+* Fixes from `rubocop-1.65.0` upgrade (`Gemspec/AddRuntimeDependency`)
 
 ## 1.0.1 (2022-02-21)
 
