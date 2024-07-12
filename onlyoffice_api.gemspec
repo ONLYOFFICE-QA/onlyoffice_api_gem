@@ -22,6 +22,6 @@ Gem::Specification.new do |s|
   }
   s.email = %w[rzagudaev@gmail.com shockwavenn@gmail.com nazarov90@gmail.com]
   s.files = Dir['lib/**/*']
-  s.add_runtime_dependency('httparty', '~> 0.16')
+  s.add_dependency('httparty', '~> 0.16')
   s.license = 'AGPL-3.0'
 end
