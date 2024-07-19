@@ -10,6 +10,8 @@ module CrmCleanup
     remove_tags_for_entity(api, 'contact')
     remove_tags_for_entity(api, 'opportunity')
     remove_tags_for_entity(api, 'case')
+    remove_tasks(api)
+    remove_tasks_categories(api)
     remove_cases(api)
   end
 
@@ -59,5 +61,38 @@ module CrmCleanup
       cases = api.crm.get_case_list.body['response']
     end
     logger.info('Finished removing all CRM cases')
+  end
+
+  # Remove all tasks
+  # @param [Teamlab::OnlyofficeApiInstance] api to use
+  # @return [Void]
+  def remove_tasks(api)
+    logger.info('Start removing all CRM tasks')
+    tasks = api.crm.get_task_list_by_filter.body['response']
+    while tasks.size.positive?
+      logger.info("Found #{tasks.size} CRM tasks")
+      tasks.each do |task|
+        api.crm.delete_task(task['id'])
+      end
+      tasks = api.crm.get_task_list_by_filter.body['response']
+    end
+    logger.info('Finished removing all CRM tasks')
+  end
+
+  # Remove all tasks categories
+  # @param [Teamlab::OnlyofficeApiInstance] api to use
+  # @return [Void]
+  def remove_tasks_categories(api)
+    logger.info('Start removing all CRM tasks categories')
+    categories = api.crm.get_all_task_categories.body['response']
+    # One category cannot deleted by portal design
+    while categories.size > 1
+      logger.info("Found #{categories.size} CRM tasks categories")
+      categories[1..].each do |category|
+        api.crm.delete_task_category(category['id'])
+      end
+      categories = api.crm.get_all_task_categories.body['response']
+    end
+    logger.info('Finished removing all CRM tasks categories')
   end
 end
