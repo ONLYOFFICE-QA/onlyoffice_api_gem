@@ -8,6 +8,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    bigdecimal (3.1.8)
     childprocess (5.1.0)
       logger (~> 1.5)
     concurrent-ruby (1.3.4)
@@ -27,7 +28,8 @@ GEM
     language_server-protocol (3.17.0.3)
     logger (1.6.1)
     mini_mime (1.1.5)
-    multi_xml (0.6.0)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
     overcommit (0.64.0)
       childprocess (>= 0.6.3, < 6)
       iniparse (~> 1.4)
@@ -106,4 +108,4 @@ DEPENDENCIES
   yard (>= 0.9.20)
 
 BUNDLED WITH
-   2.5.15
+   2.5.20
