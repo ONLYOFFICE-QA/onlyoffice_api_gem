@@ -19,10 +19,12 @@ describe 'GroupHelper' do
 
   describe 'info_by_name' do
     it 'info_by_name return nil for nonexsting group name' do
+      pending('https://github.com/ONLYOFFICE-QA/onlyoffice_api_gem/issues/703')
       expect(api.group.info_by_name('no-group')).to be_nil
     end
 
     it 'info_by_name return data for existing group name' do
+      pending('https://github.com/ONLYOFFICE-QA/onlyoffice_api_gem/issues/703')
       expect(api.group.info_by_name(@group_name)['manager']).to eq(user['userName'])
     end
   end

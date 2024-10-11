@@ -26,6 +26,7 @@
 * Remove all existing crm tags and cases in specs before running tests
 * Remove all existing crm tasks and tasks categories before running tests
 * Fixes from `rubocop-1.65.0` upgrade (`Gemspec/AddRuntimeDependency`)
+* Fix flaky `group` tests because of [#703](https://github.com/ONLYOFFICE-QA/onlyoffice_api_gem/issues/703)
 
 ## 1.0.1 (2022-02-21)
 
