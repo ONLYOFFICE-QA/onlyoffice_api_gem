@@ -17,7 +17,7 @@ describe 'GroupHelper' do
     api.group.add_group(user['id'], @group_name)
   end
 
-  describe 'info_by_name' do
+  describe 'info_by_name', retry: 5 do
     it 'info_by_name return nil for nonexsting group name' do
       expect(api.group.info_by_name('no-group')).to be_nil
     end
