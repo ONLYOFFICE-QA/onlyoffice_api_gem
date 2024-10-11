@@ -14,6 +14,7 @@ describe 'GroupHelper' do
 
   before do
     @group_name = Faker::Music::RockBand.name
+    skip('https://github.com/ONLYOFFICE-QA/onlyoffice_api_gem/issues/703')
     api.group.add_group(user['id'], @group_name)
   end
 
