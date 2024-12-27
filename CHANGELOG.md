@@ -6,6 +6,7 @@
 
 * Add `ruby-3.2` to CI
 * Add `ruby-3.3` to CI
+* Add `ruby-3.4` to CI
 * Add `dependabot` check for `GitHub Actions`
 
 ### Fixes
@@ -26,6 +27,7 @@
 * Remove all existing crm tags and cases in specs before running tests
 * Remove all existing crm tasks and tasks categories before running tests
 * Fixes from `rubocop-1.65.0` upgrade (`Gemspec/AddRuntimeDependency`)
+* Remove `ruby-3.0` from CI, since it's EOLed
 
 ## 1.0.1 (2022-02-21)
 
