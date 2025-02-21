@@ -29,6 +29,7 @@
 * Remove all existing crm tasks and tasks categories before running tests
 * Fixes from `rubocop-1.65.0` upgrade (`Gemspec/AddRuntimeDependency`)
 * Remove `ruby-3.0` from CI, since it's EOLed
+* Fix `rubocop-performance-1.24.0` cop `Performance/ArraySemiInfiniteRangeSlice`
 
 ## 1.0.1 (2022-02-21)
 

@@ -88,7 +88,7 @@ module CrmCleanup
     # One category cannot deleted by portal design
     while categories.size > 1
       logger.info("Found #{categories.size} CRM tasks categories")
-      categories[1..].each do |category|
+      categories.drop(1).each do |category|
         api.crm.delete_task_category(category['id'])
       end
       categories = api.crm.get_all_task_categories.body['response']
