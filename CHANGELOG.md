@@ -12,6 +12,7 @@
 ### Fixes
 
 * Fix not available `IMAGE_URL` constant in specs
+* Run `rubocop` in CI through `bundle exec`
 
 ### Changes
 
